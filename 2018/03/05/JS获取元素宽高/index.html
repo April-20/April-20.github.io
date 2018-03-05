@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="obj.style.width(height)这个方法只适用标签的style属性里添加的width值，除此之外都返回空。(返回值是带单位的字符串形式)。 obj.getBoundingClientRect()获取一个元素相对于浏览器视口的的坐标（无论父元素定位与否），返回一个Object对象，该对象有6个属性：top/left/right/bottom/width/height。几乎所有浏览器都支">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS获取元素宽高">
+<meta property="og:url" content="http://yoursite.com/2018/03/05/JS获取元素宽高/index.html">
+<meta property="og:site_name" content="LittleCorn个人博客">
+<meta property="og:description" content="obj.style.width(height)这个方法只适用标签的style属性里添加的width值，除此之外都返回空。(返回值是带单位的字符串形式)。 obj.getBoundingClientRect()获取一个元素相对于浏览器视口的的坐标（无论父元素定位与否），返回一个Object对象，该对象有6个属性：top/left/right/bottom/width/height。几乎所有浏览器都支">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-05T13:01:16.520Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS获取元素宽高">
+<meta name="twitter:description" content="obj.style.width(height)这个方法只适用标签的style属性里添加的width值，除此之外都返回空。(返回值是带单位的字符串形式)。 obj.getBoundingClientRect()获取一个元素相对于浏览器视口的的坐标（无论父元素定位与否），返回一个Object对象，该对象有6个属性：top/left/right/bottom/width/height。几乎所有浏览器都支">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/05/JS获取元素宽高/"/>
+
+
+
+
+
+  <title>JS获取元素宽高 | LittleCorn个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LittleCorn个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">碎碎念~</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/05/JS获取元素宽高/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JS获取元素宽高</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-05T20:18:50+08:00">
+                2018-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="obj-style-width-height"><a href="#obj-style-width-height" class="headerlink" title="obj.style.width(height)"></a>obj.style.width(height)</h3><p>这个方法只适用标签的style属性里添加的width值，除此之外都返回空。(返回值是带单位的字符串形式)。</p>
+<h3 id="obj-getBoundingClientRect"><a href="#obj-getBoundingClientRect" class="headerlink" title="obj.getBoundingClientRect()"></a>obj.getBoundingClientRect()</h3><p>获取一个元素相对于浏览器视口的的坐标（无论父元素定位与否），返回一个Object对象，该对象有6个属性：top/left/right/bottom/width/height。几乎所有浏览器都支持该方法。</p>
+<p>注意：right是指元素右边界距窗口最左边的距离，bottom是指元素下边界距窗口最上面的距离。</p>
+<blockquote>
+<p>IE、Firefox3+、Opera9.5、Chrome、Safari支持，在IE中，默认坐标从(2,2)开始计算，导致最终距离比其他浏览器多出两个像素，我们需要做个兼容。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.documentElement.clientTop; <span class="comment">//非IE为0，IE为2</span></span><br><span class="line"><span class="built_in">document</span>.documentElement.clientLeft; <span class="comment">//非IE为0，IE为2</span></span><br><span class="line"></span><br><span class="line">functiongGetRect (element) &#123;</span><br><span class="line">    <span class="keyword">var</span> rect = element.getBoundingClientRect();</span><br><span class="line">    <span class="keyword">var</span> top = <span class="built_in">document</span>.documentElement.clientTop;</span><br><span class="line">    <span class="keyword">var</span> left= <span class="built_in">document</span>.documentElement.clientLeft;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        top  :   rect.top - top,</span><br><span class="line">        bottom  :   rect.bottom - top,</span><br><span class="line">        left  :   rect.left - left,</span><br><span class="line">        right  :    rect.right - left</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="window-getComputedStyle-width-obj-currentStyle"><a href="#window-getComputedStyle-width-obj-currentStyle" class="headerlink" title="window.getComputedStyle().width/obj.currentStyle()"></a>window.getComputedStyle().width/obj.currentStyle()</h3><p>getComputedStyle()可以获取当前元素所有最终使用的CSS属性值，包括获取伪类元素样式（即使没有CSS代码，也会把默认的祖宗八代都显示出来），只读。</p>
+<p>currentStyle是IE浏览器自娱自乐的一个属性，返回的是元素当前应用的最终CSS属性值（包括外链CSS文件，页面中嵌入的style属性等）。</p>
+<p>currentStyle属性貌似不支持伪类样式获取，这是与getComputedStyle方法的差异。</p>
+<h3 id="window-naturalWidth-height"><a href="#window-naturalWidth-height" class="headerlink" title="window.naturalWidth(height)"></a>window.naturalWidth(height)</h3><p>naturalWidth和naturalHeight是html5新增的属性，它们可以直接获取图片的原始宽高。而且这在Fixefox/Chrome/Safari/Opera/IE9里已经实现。</p>
+<p><strong>应用场景：</strong> 图片放大缩小的时候</p>
+<h3 id="obj-clientWidth-height"><a href="#obj-clientWidth-height" class="headerlink" title="obj.clientWidth(height)"></a>obj.clientWidth(height)</h3><p>这组属性可以获取元素可视区的大小，可以得到元素内容及内边距所占据的空间大小。返回了元素大小，但没有单位，默认单位是px，如果你强行设置了单位，比如100em之类，它还是会返回px的大小。(CSS获取的话，是照着你设置的样式获取)。</p>
+<p>对于元素的实际大小，clientWidth和clientHeight理解方式如下：</p>
+<ul>
+<li>增加边框，无变化；</li>
+<li>增加外边距，无变化；</li>
+<li>增加滚动条，最终值等于原本大小减去滚动条的大小；</li>
+<li>增加内边距，最终值等于原本大小加上内边距的大小；</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"test"</span>&gt;&lt;/div&gt;</span><br><span class="line">#test&#123;</span><br><span class="line">    background-color: green;</span><br><span class="line">    width: <span class="number">200</span>px;</span><br><span class="line">    height: <span class="number">200</span>px;</span><br><span class="line">    border: solid <span class="number">5</span>px red;  <span class="comment">/* 对应a理解，结果：200,200 */</span></span><br><span class="line">    margin: <span class="number">10</span>px;  <span class="comment">/* 对应b理解，结果：200,200*/</span></span><br><span class="line">    padding: <span class="number">20</span>px;  <span class="comment">/* 对应c理解，结果：240,240*/</span></span><br><span class="line">    overflow: scroll;  <span class="comment">/* 对应d理解，结果：223,223，223=200（css大小）+40（两边内边距）-17（滚动条宽度）*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> obj = <span class="built_in">document</span>.getElementById(<span class="string">"test"</span>);</span><br><span class="line">    alert(obj.clientWidth + <span class="string">","</span> + obj.clientHeight);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="obj-scrollWidth-height"><a href="#obj-scrollWidth-height" class="headerlink" title="obj.scrollWidth(height)"></a>obj.scrollWidth(height)</h3><p> 这组属性可以获取滚动内容(可见内容)的元素大小。返回了元素大小，默认单位是px。如果没有设置任何CSS的宽和高度，它会得到计算后的宽度和高度。</p>
+<p> 对于元素的实际大小，scrollWidth和scrollHeight理解如下:</p>
+<ul>
+<li>增加边框，不同浏览器有不同解释（下面在IE8中运行正常，IE6运行不正常）：<ul>
+<li>Firefox和Opera浏览器会增加边框的大小，220x220</li>
+<li>IE、Chrome和Safari浏览器会忽略边框大小，200x200</li>
+<li>IE浏览器只显示它本来内容的高度，200x18（IE8已经修改该问题）</li>
+<li>增加内边距，最终值会等于原本大小加上内边距大小，220x220，IE为220x38.</li>
+<li>增加滚动条，最终值会等于原本大小减去滚动条大小，184x184，IE为184x18.</li>
+<li>增加外边据，无变化。</li>
+<li>增加内容溢出，Firefox、Chrome和IE获取实际内容高度，Opera比前三个浏览器获取的高度偏小，Safari比前三个浏览器获取的高度偏大.</li>
+</ul>
+</li>
+</ul>
+<h3 id="obj-offsetWidth-height"><a href="#obj-offsetWidth-height" class="headerlink" title="obj.offsetWidth(height)"></a>obj.offsetWidth(height)</h3><p>这组属性可以返回元素实际大小，包含边框、内边距和滚动条。返回了元素大小，默认单位是px。如果没有设置任何CSS的宽和高度，他会得到计算后的宽度和高度。</p>
+<p>对于元素的实际大小，offsetWidth和offsetHeight理解如下：</p>
+<ul>
+<li>增加边框，最终值会等于原本大小加上边框大小，为220；</li>
+<li>增加内边距，最终值会等于原本大小加上内边距大小，为220；</li>
+<li>增加外边据，无变化；</li>
+<li>增加滚动条，无变化，不会减小；</li>
+</ul>
+<p>对于元素大小的获取，一般是块级(block)元素并且以设置了CSS大小的元素较为方便。如果是内联元素(inline)或者没有设置大小的元素就尤为麻烦，所以，建议使用的时候注意。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"test"</span>&gt;test div element&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">#test&#123;</span></span><br><span class="line"><span class="regexp">    background-color: green;</span></span><br><span class="line"><span class="regexp">    width: 200px;</span></span><br><span class="line"><span class="regexp">    height: 200px;</span></span><br><span class="line"><span class="regexp">    border: solid 10px red; /</span>*结果：<span class="number">220</span>,<span class="number">220</span>*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">    margin: 10px; /</span>*结果：<span class="number">220</span>,<span class="number">220</span>（无变化）*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">    padding: 10px; /</span>*结果：<span class="number">240</span>,<span class="number">240</span>*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">    overflow：scroll; /</span>*结果：<span class="number">240</span>,<span class="number">240</span>（无变化）*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">window.onload = function()&#123;</span></span><br><span class="line"><span class="regexp">    var obj = document.getElementById("test");</span></span><br><span class="line"><span class="regexp">    alert(obj.offsetWidth + "," + obj.offsetHeight);</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/05/Sticky-footer布局/" rel="next" title="Sticky footer布局">
+                <i class="fa fa-chevron-left"></i> Sticky footer布局
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/05/JS排序算法/" rel="prev" title="JS排序算法">
+                JS排序算法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/blog-logo.jpg"
+                alt="Aisling Chen" />
+            
+              <p class="site-author-name" itemprop="name">Aisling Chen</p>
+              <p class="site-description motion-element" itemprop="description">生活不止苟且，还有诗和远方</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#obj-style-width-height"><span class="nav-number">1.</span> <span class="nav-text">obj.style.width(height)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#obj-getBoundingClientRect"><span class="nav-number">2.</span> <span class="nav-text">obj.getBoundingClientRect()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#window-getComputedStyle-width-obj-currentStyle"><span class="nav-number">3.</span> <span class="nav-text">window.getComputedStyle().width/obj.currentStyle()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#window-naturalWidth-height"><span class="nav-number">4.</span> <span class="nav-text">window.naturalWidth(height)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#obj-clientWidth-height"><span class="nav-number">5.</span> <span class="nav-text">obj.clientWidth(height)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#obj-scrollWidth-height"><span class="nav-number">6.</span> <span class="nav-text">obj.scrollWidth(height)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#obj-offsetWidth-height"><span class="nav-number">7.</span> <span class="nav-text">obj.offsetWidth(height)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Aisling Chen</span>
+
+  
+</div>
+
+<!-- 
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+ 
+
+
+  <span class="post-meta-divider">|</span>
+ 
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+ -->
+
+ 
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
