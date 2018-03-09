@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="LittleCorn个人博客">
 <meta property="og:description" content="原型链继承 原型链继承是JS默认的继承方式  模式：基于构造器工作模式、使用原型链模式。 原理：让子类的原型对象指向父类的一个实例。12Child.prototype = new Parent();Child.prototype.constructor = Child; 注意：这里第一行代码相当于完全删除了子类原型对象原先的值，然后赋予了一个新值，此时Child.prototype.constru">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-25T10:35:09.317Z">
+<meta property="og:updated_time" content="2018-03-08T02:00:00.353Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS多种继承方式">
 <meta name="twitter:description" content="原型链继承 原型链继承是JS默认的继承方式  模式：基于构造器工作模式、使用原型链模式。 原理：让子类的原型对象指向父类的一个实例。12Child.prototype = new Parent();Child.prototype.constructor = Child; 注意：这里第一行代码相当于完全删除了子类原型对象原先的值，然后赋予了一个新值，此时Child.prototype.constru">
@@ -377,6 +377,9 @@
 <hr>
 <h3 id="全属性拷贝法（浅拷贝）"><a href="#全属性拷贝法（浅拷贝）" class="headerlink" title="全属性拷贝法（浅拷贝）"></a>全属性拷贝法（浅拷贝）</h3><p>模式：基于对象工作模式、属性拷贝模式。</p>
 <p>原理：创建一个空对象，然后逐步为其添加属性，直接将父对象的属性全部拷贝过来，然后返回这个对象。</p>
+<blockquote>
+<p>Object.assign()也可以实现浅拷贝</p>
+</blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extendCopy</span>(<span class="params">p</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> c = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> p)&#123;</span><br><span class="line">        c[i] = p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    c.uber = p;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Chinese = &#123;</span><br><span class="line">　  nation:<span class="string">'中国'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Doctor = &#123;</span><br><span class="line">    career: <span class="string">'医生'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Doctor = extendCopy(Chinese);</span><br><span class="line"></span><br><span class="line">alert(Doctor.nation); <span class="comment">// 中国</span></span><br></pre></td></tr></table></figure>
 <p>注意：这里只是拷贝基本类型的属性，对于引用类型属性，子对象只是获得一个内存地址，而不是真正拷贝，因此存在父对象被篡改的可能。</p>
@@ -535,7 +538,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -546,7 +549,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -557,7 +560,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

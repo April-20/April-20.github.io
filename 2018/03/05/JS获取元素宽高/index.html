@@ -362,7 +362,7 @@
 <li>增加滚动条，最终值等于原本大小减去滚动条的大小；</li>
 <li>增加内边距，最终值等于原本大小加上内边距的大小；</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"test"</span>&gt;&lt;/div&gt;</span><br><span class="line">#test&#123;</span><br><span class="line">    background-color: green;</span><br><span class="line">    width: <span class="number">200</span>px;</span><br><span class="line">    height: <span class="number">200</span>px;</span><br><span class="line">    border: solid <span class="number">5</span>px red;  <span class="comment">/* 对应a理解，结果：200,200 */</span></span><br><span class="line">    margin: <span class="number">10</span>px;  <span class="comment">/* 对应b理解，结果：200,200*/</span></span><br><span class="line">    padding: <span class="number">20</span>px;  <span class="comment">/* 对应c理解，结果：240,240*/</span></span><br><span class="line">    overflow: scroll;  <span class="comment">/* 对应d理解，结果：223,223，223=200（css大小）+40（两边内边距）-17（滚动条宽度）*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> obj = <span class="built_in">document</span>.getElementById(<span class="string">"test"</span>);</span><br><span class="line">    alert(obj.clientWidth + <span class="string">","</span> + obj.clientHeight);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"test"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">#test&#123;</span><br><span class="line">    background-color: green;</span><br><span class="line">    width: <span class="number">200</span>px;</span><br><span class="line">    height: <span class="number">200</span>px;</span><br><span class="line">    border: solid <span class="number">5</span>px red;  <span class="comment">/* 对应a理解，结果：200,200 */</span></span><br><span class="line">    margin: <span class="number">10</span>px;  <span class="comment">/* 对应b理解，结果：200,200*/</span></span><br><span class="line">    padding: <span class="number">20</span>px;  <span class="comment">/* 对应c理解，结果：240,240*/</span></span><br><span class="line">    overflow: scroll;  <span class="comment">/* 对应d理解，结果：223,223，223=200（css大小）+40（两边内边距）-17（滚动条宽度）*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> obj = <span class="built_in">document</span>.getElementById(<span class="string">"test"</span>);</span><br><span class="line">    alert(obj.clientWidth + <span class="string">","</span> + obj.clientHeight);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="obj-scrollWidth-height"><a href="#obj-scrollWidth-height" class="headerlink" title="obj.scrollWidth(height)"></a>obj.scrollWidth(height)</h3><p> 这组属性可以获取滚动内容(可见内容)的元素大小。返回了元素大小，默认单位是px。如果没有设置任何CSS的宽和高度，它会得到计算后的宽度和高度。</p>
 <p> 对于元素的实际大小，scrollWidth和scrollHeight理解如下:</p>
 <ul>
@@ -510,7 +510,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -521,7 +521,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -532,7 +532,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="LittleCorn个人博客">
 <meta property="og:description" content="创建XMLHttpRequest对象Ajax（Asynchronous Javascript And XML）即异步JavaScript和XML. Ajax不是一种新的编程语言，而是一种用于创建更好更快以及交互性更强的web应用程序的技术。是一套综合多项技术的浏览器网页开发技术。 原理：通过浏览器的XMLHttpRequest对象来向服务器发送异步请求并接收服务器响应数据。然后用JavaScrip">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-26T14:06:33.790Z">
+<meta property="og:updated_time" content="2018-03-07T05:55:04.947Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ajax详解">
 <meta name="twitter:description" content="创建XMLHttpRequest对象Ajax（Asynchronous Javascript And XML）即异步JavaScript和XML. Ajax不是一种新的编程语言，而是一种用于创建更好更快以及交互性更强的web应用程序的技术。是一套综合多项技术的浏览器网页开发技术。 原理：通过浏览器的XMLHttpRequest对象来向服务器发送异步请求并接收服务器响应数据。然后用JavaScrip">
@@ -382,6 +382,7 @@
 <li>200: 一切正常,交易成功.</li>
 <li>201: 服务器创建了文档.</li>
 <li>202: 已经接收请求,但尚未处理</li>
+<li><strong>206</strong>：客户端只是请求资源的一部分，服务器只对请求的部分资源执行GET方法，相应报文中通过Content-Range指定范围的资源。(通常大资源请求时)</li>
 </ul>
 </li>
 <li>3xx: 重定向<ul>
@@ -408,7 +409,7 @@
 </li>
 <li>6xx: 自定义错误</li>
 </ul>
-<p>当readyState=4且status=200或304时表示响应已就绪.</p>
+<p>当readyState=4且status=200或304时表示响应已就绪。206也是响应成功，当发生大资源的断点请求或带宽截流的时候。（后台可以开启gzip压缩）</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(xhr.readyState == <span class="number">4</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(xhr.status == <span class="number">200</span> || xhr.status == <span class="number">304</span>)&#123;</span><br><span class="line">            <span class="comment">//success</span></span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">// error</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>服务器响应:</p>
 <ul>
@@ -595,7 +596,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -606,7 +607,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -617,7 +618,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="LittleCorn个人博客">
 <meta property="og:description" content="JavaScript是单线程JavaScript语言的一大特点就是单线程，也就是说，同一时间只能做一件事。 JavaScript作为浏览器脚本语言，主要用途是与用户互动以及操作DOM，这就决定了它只能是单线程的（如果js同时有两个线程，一个线程在某个DOM节点上添加内容，另一个线程删除了这个节点，这时浏览器应该以哪个为准呢？）。 为了利用多核CPU的计算能力，HTML5提出的WebWorker标准">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-24T18:03:09.934Z">
+<meta property="og:updated_time" content="2018-03-07T05:59:29.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="事件循环机制">
 <meta name="twitter:description" content="JavaScript是单线程JavaScript语言的一大特点就是单线程，也就是说，同一时间只能做一件事。 JavaScript作为浏览器脚本语言，主要用途是与用户互动以及操作DOM，这就决定了它只能是单线程的（如果js同时有两个线程，一个线程在某个DOM节点上添加内容，另一个线程删除了这个节点，这时浏览器应该以哪个为准呢？）。 为了利用多核CPU的计算能力，HTML5提出的WebWorker标准">
@@ -345,9 +345,13 @@
         <h3 id="JavaScript是单线程"><a href="#JavaScript是单线程" class="headerlink" title="JavaScript是单线程"></a>JavaScript是单线程</h3><p>JavaScript语言的一大特点就是单线程，也就是说，同一时间只能做一件事。</p>
 <p>JavaScript作为浏览器脚本语言，主要用途是与用户互动以及操作DOM，这就决定了它只能是单线程的（如果js同时有两个线程，一个线程在某个DOM节点上添加内容，另一个线程删除了这个节点，这时浏览器应该以哪个为准呢？）。</p>
 <p>为了利用多核CPU的计算能力，HTML5提出的WebWorker标准，允许JavaScript脚本创建多个线程，但是子线程完全受主线程控制，且不得操作DOM。所以，新标准并没有改变JavaScript单线程的本质。</p>
+<blockquote>
+<p>JavaScript是单线程的，之所以可以执行异步任务，是因为浏览器是多线程的，可以协助JavaScript执行异步任务。</p>
+</blockquote>
 <h3 id="任务队列"><a href="#任务队列" class="headerlink" title="任务队列"></a>任务队列</h3><p>单线程就意味着，所有任务需要排队，前一个任务结束，才会执行后一个任务。如果前一个任务耗时很长（比如IO设备），后一个任务就不得不一直等着。</p>
 <p>JavaScript语言的设计者意识到，这时主线程完全可以不管IO设备，挂起处于等待中的任务，先运行排在后面的任务。等到IO设备返回了结果，再回过头，把挂起的任务继续执行下去。</p>
-<p>于是，所有任务可以分成两种，一种是同步任务（synchronous），另一种是异步任务（asynchronous）。同步任务指的是，在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务；异步任务指的是，不进入主线程、而进入”任务队列”（task queue）的任务，只有”任务队列”通知主线程，某个异步任务可以执行了，该任务才会进入主线程执行。</p>
+<p>于是，所有任务可以分成两种，一种是<strong>同步任务</strong>（synchronous），另一种是<strong>异步任务</strong>（asynchronous）。同步任务指的是，在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务；异步任务指的是，不进入主线程、而进入”任务队列”（task queue）的任务，只有”任务队列”通知主线程，某个异步任务可以执行了，该任务才会进入主线程执行。</p>
+<p>常见的异步任务：定时器，网络请求，事件绑定等。异步任务非阻塞，同步任务阻塞。</p>
 <p><strong>“任务队列”是一个事件的队列</strong>（也可以理解成消息的队列），IO设备完成一项任务，就在”任务队列”中添加一个事件，表示相关的异步任务可以进入”执行栈”了。主线程读取”任务队列”，就是读取里面有哪些事件。</p>
 <p>“任务队列”中的事件，除了IO设备的事件以外，还包括一些用户产生的事件（比如鼠标点击、页面滚动等等）。只要指定过回调函数，这些事件发生时就会进入”任务队列”，等待主线程读取。</p>
 <p>所谓”回调函数”（callback），就是那些会被主线程挂起来的代码。异步任务必须指定回调函数，当主线程开始执行异步任务，就是执行对应的回调函数。</p>
@@ -512,7 +516,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -523,7 +527,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -534,7 +538,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

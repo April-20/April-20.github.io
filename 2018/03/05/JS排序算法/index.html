@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="算法导图图片名词解释：n: 数据规模。k:“桶”的个数。In-place: 占用常数内存，不占用额外内存。Out-place: 占用额外内存  内排序：指排序时数据元素全部存在计算机的随机存储器RAM中。 外排序：待排序记录的数量很大时，以至于内存一次不能容纳全部记录，在排序过程中还需要外存进行访问的排序过程。 插入排序核心思想： 将一个待排序的数据元素插入到前面已经拍好序的数列中的适当位置，使数">
+<meta name="description" content="算法导图图片名词解释：n: 数据规模。k:“桶”的个数。In-place: 占用常数内存，不占用额外内存。Out-place: 占用额外内存  稳定性：排序后2个相等键值的顺序和排序之前它们的顺序相同   内排序：指排序时数据元素全部存在计算机的随机存储器RAM中。 外排序：待排序记录的数量很大时，以至于内存一次不能容纳全部记录，在排序过程中还需要外存进行访问的排序过程。 交换排序核心思想： 一组">
 <meta name="keywords" content="JavaScript,算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS排序算法">
 <meta property="og:url" content="http://yoursite.com/2018/03/05/JS排序算法/index.html">
 <meta property="og:site_name" content="LittleCorn个人博客">
-<meta property="og:description" content="算法导图图片名词解释：n: 数据规模。k:“桶”的个数。In-place: 占用常数内存，不占用额外内存。Out-place: 占用额外内存  内排序：指排序时数据元素全部存在计算机的随机存储器RAM中。 外排序：待排序记录的数量很大时，以至于内存一次不能容纳全部记录，在排序过程中还需要外存进行访问的排序过程。 插入排序核心思想： 将一个待排序的数据元素插入到前面已经拍好序的数列中的适当位置，使数">
+<meta property="og:description" content="算法导图图片名词解释：n: 数据规模。k:“桶”的个数。In-place: 占用常数内存，不占用额外内存。Out-place: 占用额外内存  稳定性：排序后2个相等键值的顺序和排序之前它们的顺序相同   内排序：指排序时数据元素全部存在计算机的随机存储器RAM中。 外排序：待排序记录的数量很大时，以至于内存一次不能容纳全部记录，在排序过程中还需要外存进行访问的排序过程。 交换排序核心思想： 一组">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/排序算法.png">
 <meta property="og:image" content="http://yoursite.com/images/排序算法分类.png">
-<meta property="og:updated_time" content="2018-03-05T14:08:09.613Z">
+<meta property="og:updated_time" content="2018-03-09T04:24:48.463Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS排序算法">
-<meta name="twitter:description" content="算法导图图片名词解释：n: 数据规模。k:“桶”的个数。In-place: 占用常数内存，不占用额外内存。Out-place: 占用额外内存  内排序：指排序时数据元素全部存在计算机的随机存储器RAM中。 外排序：待排序记录的数量很大时，以至于内存一次不能容纳全部记录，在排序过程中还需要外存进行访问的排序过程。 插入排序核心思想： 将一个待排序的数据元素插入到前面已经拍好序的数列中的适当位置，使数">
+<meta name="twitter:description" content="算法导图图片名词解释：n: 数据规模。k:“桶”的个数。In-place: 占用常数内存，不占用额外内存。Out-place: 占用额外内存  稳定性：排序后2个相等键值的顺序和排序之前它们的顺序相同   内排序：指排序时数据元素全部存在计算机的随机存储器RAM中。 外排序：待排序记录的数量很大时，以至于内存一次不能容纳全部记录，在排序过程中还需要外存进行访问的排序过程。 交换排序核心思想： 一组">
 <meta name="twitter:image" content="http://yoursite.com/images/排序算法.png">
 
 
@@ -346,11 +346,139 @@
 
       
         <h3 id="算法导图"><a href="#算法导图" class="headerlink" title="算法导图"></a>算法导图</h3><p><img src="/images/排序算法.png" alt="image"><br>图片名词解释：n: 数据规模。k:“桶”的个数。In-place: 占用常数内存，不占用额外内存。Out-place: 占用额外内存</p>
+<blockquote>
+<p>稳定性：排序后2个相等键值的顺序和排序之前它们的顺序相同</p>
+</blockquote>
 <p><img src="/images/排序算法分类.png" alt="image"></p>
 <p>内排序：指排序时数据元素全部存在计算机的随机存储器RAM中。</p>
 <p>外排序：待排序记录的数量很大时，以至于内存一次不能容纳全部记录，在排序过程中还需要外存进行访问的排序过程。</p>
+<h3 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h3><p><strong>核心思想：</strong></p>
+<p>一组待排序的数据元素中，按照位置的先后顺序相互比较各自的关键码，如果逆序，则交换这两个数据元素，直到该序列数据元素有序为止。</p>
+<h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p>原理：</p>
+<ol>
+<li>比较相邻的两个元素，如果前一个比后一个大，则交换位置；</li>
+<li>第一轮的时候最后一个元素应该是最大的一个；</li>
+<li>按照步骤一的方法进行相邻的两个元素比较，这个时候由于最后一个元素已经是最大的了，所以最后一个元素不用比较。</li>
+<li>重复上面的步骤。</li>
+</ol>
+<blockquote>
+<p>即自上而下对相邻的2个数依次进行比较和调整，让较大的数向下沉，较小的数向上冒。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> len = arr.length;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>;j&lt;len<span class="number">-1</span>-i;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[j] &gt; arr[j+<span class="number">1</span>])&#123;</span><br><span class="line">                <span class="keyword">var</span> temp = arr[j+<span class="number">1</span>];</span><br><span class="line">                arr[j+<span class="number">1</span>] = arr[j];</span><br><span class="line">                arr[j] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>只有2个元素的数组，顺序与要求相反时，才将特它们位置交换，否则保持不变，所以冒泡排序是稳定的。</p>
+</blockquote>
+<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p>原理：</p>
+<ol>
+<li>选择一个基准元素，通过一趟排序后把数组分为两部分，一部分比基准元素小，一部分大于等于基准元素；</li>
+<li>此时基准元素在排序后的正确位置，然后用同样的方法递归地排序划分其余两部分。</li>
+</ol>
+<blockquote>
+<p>快速排序是对冒泡排序的一种改进，第一躺排序时将数据分成两部分，一部分比另一部分所有的数据都要小。然后递归调用，在两边都实行快速排序。快排是分而治之的典型应用，是在冒泡排序的基础上的递归分治法。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(arr.length &lt;= <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> index = <span class="built_in">Math</span>.floor(arr.length / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">var</span> middle = arr.splice(index,<span class="number">1</span>)[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">var</span> left = [];</span><br><span class="line">    <span class="keyword">var</span> right = [];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(arr[i] &lt; middle)&#123;</span><br><span class="line">            left.push(arr[i]);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            right.push(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> quickSort(left).concat([middle],quickSort(right));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>快速排序的内循环比大多数算法都要短小，所以速度更快。快排最坏的运行情况是O(n^2),比如已经有顺序的快排，所以快排不稳定。最好的情况是O(nlogn)。</p>
+</blockquote>
 <h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p><strong>核心思想：</strong> 将一个待排序的数据元素插入到前面已经拍好序的数列中的适当位置，使数据元素依然有序，直到待排序数据元素全部插入完为止。</p>
-<h4 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h4><p><strong>核心思想：</strong> 将欲插入的第i个数据元素的关键码与前面已经排好的i-1，i-2，i-3.。。数据元素的值进行顺序比较，通过这种线性搜索的方法找到第i个数据元素的插入位置，并且原来位置的数据元素后移，直到全部排好顺序。（从1开始，依次与前面元素比较， 如果小，则交换）</p>
+<h4 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h4><p>原理：</p>
+<ol>
+<li>从第一个元素开始，该元素可以认为已经被排序；</li>
+<li>取出下一个元素，在已经排序的元素序列中从后先前扫描；</li>
+<li>如果已排好元素大于新元素，将已排好元素移动到下一个位置；</li>
+<li>重复步骤3，直到找到已排序元素小于或者等于新元素的位置，将新元素插入到下一位置中；</li>
+<li>重复步骤2.</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">   <span class="comment">// 假设第1个元素是一个有序的数列，从第二个以后的是无序的数列</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> preIndex = i<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">var</span> current = arr[i];</span><br><span class="line">        <span class="keyword">while</span>(preIndex &gt;=<span class="number">0</span> &amp;&amp; arr[preIndex] &gt; current)&#123;</span><br><span class="line">            arr[preIndex + <span class="number">1</span>] = arr[preIndex];</span><br><span class="line">            preIndex--;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[preIndex + <span class="number">1</span>] = current;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>插入排序对于大小相等的元素，保持原来的位置不变，所以插入排序是稳定的。</p>
+</blockquote>
+<h4 id="二分查找-折半查找"><a href="#二分查找-折半查找" class="headerlink" title="二分查找(折半查找)"></a>二分查找(折半查找)</h4><p>原理：</p>
+<ol>
+<li>将数组的第一个位置设为下边界，最后一个位置设为上边界；</li>
+<li>如果下边界等于或小于上边界，则将中点设置为上边界与下边界之和除以2；</li>
+<li>如果中点的元素小于查询的值，则将下边界设置为中间点所在下标+1；</li>
+<li>如果中点元素大于查询的值，则将上边界设置为中点所在下标-1；</li>
+<li>否则中点元素即为要查找的元素，可以进行返回。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binarySort</span>(<span class="params">arr,data</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> end = arr.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">var</span> start = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(start &lt;= end)&#123;</span><br><span class="line">        <span class="keyword">var</span> mid = <span class="built_in">Math</span>.floor((start + end)/<span class="number">2</span>);</span><br><span class="line">        <span class="keyword">if</span>(arr[mid] &lt; data)&#123;</span><br><span class="line">            start = mid+<span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(arr[mid] &gt; data)&#123;</span><br><span class="line">            end = mid<span class="number">-1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>折半查找是插入排序的一种优化算法。</p>
+</blockquote>
+<h4 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h4><p>原理：</p>
+<ol>
+<li>先将要排序的一组数列按某个增量d(d=n/2)分成若干组，每组中的下标相差为d，对每组中的全部元素进行插入排序；</li>
+<li>然后再用一个较小的增量(d/2)对它进行分组，再每组中再进行插入排序，当增量减到1时，再进行插入排序，排序完成。</li>
+</ol>
+<blockquote>
+<p>希尔排序是插入排序的一种更高效率的实现，它与插入排序的不同之处在于，它会优先比较距离较远的元素。希尔排序的核心在于间隔序列的设定。既可以提前设定好间隔序列，也可以动态定义间隔序列。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shellSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> len = arr.length, temp, gap = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(gap &lt; len/<span class="number">3</span>)&#123;<span class="comment">//动态定义间隔序列</span></span><br><span class="line">        gap = gap * <span class="number">3</span> + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(gap;gap&gt;<span class="number">0</span>;gap = <span class="built_in">Math</span>.floor(gap/<span class="number">3</span>))&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=gap;i&lt;len;i++)&#123;</span><br><span class="line">            temp = arr[i];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> j=i-gap; j&gt;=<span class="number">0</span> &amp;&amp; arr[j]&gt;temp; j-=gap)&#123;</span><br><span class="line">                arr[j+gap] = arr[j];</span><br><span class="line">            &#125;</span><br><span class="line">            arr[j+gap] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>希尔排序的多次插入排序中，第一次插入排序是稳定的，但在不同的插入排序过程中，同一个元素可能会在各自的插入排序中移动，所以希尔排序是不稳定的。</p>
+</blockquote>
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><p><strong>核心思想：</strong></p>
+<p>每一趟扫描时，从待排序的数据元素中选出最小或最大的一个元素，顺序放在已排好顺序数列的最后，直到全部排序的数据排完为止。</p>
+<h4 id="简单选择排序"><a href="#简单选择排序" class="headerlink" title="简单选择排序"></a>简单选择排序</h4><p>原理：</p>
+<ol>
+<li>首先再未排序的数列中找到最小(最大)的元素，存放在排序序列的起始位置；</li>
+<li>然后，再从剩下未排序的元素中继续寻找最小元素，放在已排好序列的末尾。依次类推，直到所有元素均排序完毕。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> len = arr.length, minIndex, temp;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;len<span class="number">-1</span>; i++)&#123;</span><br><span class="line">       minIndex = i;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">var</span> j=i+<span class="number">1</span>; j&lt;len; j++)&#123;</span><br><span class="line">           <span class="keyword">if</span>(arr[j] &lt; arr[minIndex])&#123;</span><br><span class="line">               minIndex = j;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       temp = arr[i];</span><br><span class="line">       arr[i] = arr[minIndex];</span><br><span class="line">       arr[minIndex] = temp;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>每趟扫描，如果当前元素比一个元素小，而且这个小元素又出现在一个和当前元素相等的元素后面，则它们的位置发生了交换，所以简单选择排序不稳定。但是无论社么数据进去时间复杂度都是O(n^2)，所以简单选择排序是在时间复杂度上表现最稳定的排序算法之一。用它的时候，数据规模越小越好。</p>
+</blockquote>
+<h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4><blockquote>
+<p>堆排序是一种树形选择排序，是对简单选择排序的改进；堆积是一个近似完全二叉树的结构；并同时满足堆积的性质：即子节点的值总是小于(或大于)它的父节点。</p>
+</blockquote>
+<p>原理：</p>
+<ol>
+<li>初始时，把要排序的数列看作一颗顺序存错的二叉树，调整它们的存储序列，使之成为一个堆，此时堆的节点数最大。</li>
+<li>然后将根节点与堆的最后一个节点交换；</li>
+<li>然后对前面n-1个数重新调整使之成为堆。</li>
+<li>依次类推，直到只有2个节点的堆，并对他们做交换，最后得到有n个节点的有序序列。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">heapify</span>(<span class="params">arr,x,len</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> left = <span class="number">2</span>*x+<span class="number">1</span>,</span><br><span class="line">        right = <span class="number">2</span>*x+<span class="number">2</span>,</span><br><span class="line">        largest = x,</span><br><span class="line">        temp;</span><br><span class="line">    <span class="keyword">if</span>(left &lt; len &amp;&amp; arr[left] &gt; arr[largest])&#123;</span><br><span class="line">        largest = left;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(right &lt; len &amp;&amp; arr[right] &gt; arr[largest])&#123;</span><br><span class="line">        largest = right;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(largest != x)&#123;</span><br><span class="line">        temp = arr[x];</span><br><span class="line">        arr[x] = arr[largest];</span><br><span class="line">        arr[largest] = temp;</span><br><span class="line">        heapify(arr,largest,len);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">heapSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> heapSize = arr.length, temp;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="built_in">Math</span>.floor(heapSize / <span class="number">2</span>) - <span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">        heapify(arr,i,heapSize);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> j = heapSize<span class="number">-1</span>; j&gt;=<span class="number">1</span>;j--)&#123;</span><br><span class="line">        temp = arr[<span class="number">0</span>];</span><br><span class="line">        arr[<span class="number">0</span>] = arr[j];</span><br><span class="line">        arr[j] = temp;</span><br><span class="line">        heapify(arr,<span class="number">0</span>,--heapSize);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>堆排序可能会使两个相等的元素位置发生交换，所以堆排序是不稳定。</p>
+</blockquote>
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p>原理：</p>
+<ol>
+<li>把待排序的序列分成若干个子序列，每个子序列是有序的；</li>
+<li>然后再把有序子序列合并为整体有序序列。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>合并过程中可以确保2个相等的当前元素中，把处在前面的元素保存在结果序列的前面。因此，归并排序是稳定的。</p>
+</blockquote>
+<h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><p>原理：</p>
+<ol>
+<li>将所有待比较的元素统一为同样的数位长度，数位较短的前面补0；</li>
+<li>然后，从最低位开始，依次进行依次排序，这样从最低位排序一直到最高位排序完成后，数列就是一个有序数列了。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">radixSort</span>(<span class="params">arr, maxDigit</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> mod = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">var</span> dev = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">var</span> counter = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; maxDigit; i++, dev *= <span class="number">10</span>, mod *= <span class="number">10</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; arr.length; j++) &#123;</span><br><span class="line">            <span class="keyword">var</span> bucket = <span class="built_in">parseInt</span>((arr[j] % mod) / dev);</span><br><span class="line">            <span class="keyword">if</span>(counter[bucket]==<span class="literal">null</span>) &#123;</span><br><span class="line">                counter[bucket] = [];</span><br><span class="line">            &#125;</span><br><span class="line">            counter[bucket].push(arr[j]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> pos = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; counter.length; j++) &#123;</span><br><span class="line">            <span class="keyword">var</span> value = <span class="literal">null</span>;</span><br><span class="line">            <span class="keyword">if</span>(counter[j]!=<span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="keyword">while</span> ((value = counter[j].shift()) != <span class="literal">null</span>) &#123;</span><br><span class="line">                      arr[pos++] = value;</span><br><span class="line">                &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>按照低位优先排位，然后收集；再按照高位排序，然后再收集；依次类推，直到最高位。基数排序基于分别排序，分别收集，所以是稳定。</p>
+</blockquote>
+<h3 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h3><p> 解析:计数排序使用一个额外的数组C，其中第i个元素是待排序数组A中值等于i的元素的个数。然后根据数组C来将A中的元素排到正确的位置。它只能对整数进行排序。</p>
+<h3 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h3><p>解析:假设输入数据服从均匀分布，将数据分到有限数量的桶里，每个桶再分别排序（有可能再使用别的排序算法或是以递归方式继续使用桶排序进行排。</p>
+<p><strong>基数排序 vs 计数排序 vs 桶排序</strong></p>
+<ul>
+<li>基数排序：根据键值的每位数字来分配桶</li>
+<li>计数排序：每个桶只存储单一键值</li>
+<li>桶排序：每个桶存储一定范围的数值</li>
+</ul>
+<hr>
+<h3 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h3><h4 id="对称加密算法"><a href="#对称加密算法" class="headerlink" title="对称加密算法"></a>对称加密算法</h4><p>对称密钥加密（英语：Symmetric-key algorithm）又称为对称加密、私钥加密、共享密钥加密，是密码学中的一类加密算法。这类算法在加密和解密时使用相同的密钥，或是使用两个可以简单地相互推算的密钥。事实上，这组密钥成为在两个或多个成员间的共同秘密，以便维持专属的通讯联系。与公开密钥加密相比，要求双方取得相同的密钥是对称密钥加密的主要缺点之一。</p>
+<p>所以，为什么叫对称加密呢，你可以这么理解，一方通过密钥将信息加密后，把密文传给另一方，另一方通过这个相同的密钥将密文解密，转换成可以理解的明文。</p>
+<blockquote>
+<p>常见的对称加密算法有DES、3DES、AES、Blowfish、IDEA、RC5、RC6。</p>
+</blockquote>
+<h4 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h4><p>公开密钥加密（英语：public-key cryptography，又译为公开密钥加密），也称为非对称加密（asymmetric cryptography），一种密码学算法类型，在这种密码学方法中，需要一对密钥(其实这里密钥说法不好，就是“钥”)，一个是私人密钥，另一个则是公开密钥。这两个密钥是数学相关，用某用户密钥加密后所得的信息，只能用该用户的解密密钥才能解密。如果知道了其中一个，并不能计算出另外一个。因此如果公开了一对密钥中的一个，并不会危害到另外一个的秘密性质。称公开的密钥为公钥；不公开的密钥为私钥。</p>
+<p>每个人生成一个“私钥-公钥”对，这个私钥需要每个人自行进行保护！公钥可以随便分享。同时，生成的这个“私钥-公钥”对还有个强大的功能就是，使用私钥加密的信息，只能由该私钥对应的公钥才能解密，使用公钥加密的信息，只能由该公钥对应的私钥才能解密！</p>
+<blockquote>
+<p>这种加密算法应用非常广泛，SSH, HTTPS, TLS，电子证书，电子签名，电子身份证等等</p>
+</blockquote>
 
       
     </div>
@@ -393,8 +521,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/05/Http协议详解/" rel="prev" title="Http协议详解">
-                Http协议详解 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/05/HTTP协议详解/" rel="prev" title="HTTP协议详解">
+                HTTP协议详解 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -476,7 +604,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -487,7 +615,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -498,7 +626,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -531,7 +659,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法导图"><span class="nav-number">1.</span> <span class="nav-text">算法导图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入排序"><span class="nav-number">2.</span> <span class="nav-text">插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#直接插入排序"><span class="nav-number">2.1.</span> <span class="nav-text">直接插入排序</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法导图"><span class="nav-number">1.</span> <span class="nav-text">算法导图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交换排序"><span class="nav-number">2.</span> <span class="nav-text">交换排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#冒泡排序"><span class="nav-number">2.1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快速排序"><span class="nav-number">2.2.</span> <span class="nav-text">快速排序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入排序"><span class="nav-number">3.</span> <span class="nav-text">插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#直接插入排序"><span class="nav-number">3.1.</span> <span class="nav-text">直接插入排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二分查找-折半查找"><span class="nav-number">3.2.</span> <span class="nav-text">二分查找(折半查找)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#希尔排序"><span class="nav-number">3.3.</span> <span class="nav-text">希尔排序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择排序"><span class="nav-number">4.</span> <span class="nav-text">选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简单选择排序"><span class="nav-number">4.1.</span> <span class="nav-text">简单选择排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#堆排序"><span class="nav-number">4.2.</span> <span class="nav-text">堆排序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#归并排序"><span class="nav-number">5.</span> <span class="nav-text">归并排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基数排序"><span class="nav-number">6.</span> <span class="nav-text">基数排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计数排序"><span class="nav-number">7.</span> <span class="nav-text">计数排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#桶排序"><span class="nav-number">8.</span> <span class="nav-text">桶排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加密算法"><span class="nav-number">9.</span> <span class="nav-text">加密算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对称加密算法"><span class="nav-number">9.1.</span> <span class="nav-text">对称加密算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非对称加密"><span class="nav-number">9.2.</span> <span class="nav-text">非对称加密</span></a></li></ol></li></ol></div>
             
 
           </div>

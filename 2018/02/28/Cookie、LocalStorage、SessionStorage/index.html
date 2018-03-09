@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="LittleCorn个人博客">
 <meta property="og:description" content="Cookie 产生由来：作为http规范的一部分而存在，作用是与服务器进行交互。 存储大小：单个域名存储量比较小（各浏览器不同，大致4k）。 有效时期：在设置的cookie过期时间内一直有效。 作用域：在所有同源窗口中都是共享的。 数据传递：会随着请求发送到服务端，在浏览器和服务器之间来回传递。  LocalStorage 产生由来：HTML5引入的，作用是在本地存储用户的浏览数据。 存储大小：单">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-27T07:08:13.818Z">
+<meta property="og:updated_time" content="2018-03-06T06:24:49.202Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cookie、LocalStorage、SessionStorage">
 <meta name="twitter:description" content="Cookie 产生由来：作为http规范的一部分而存在，作用是与服务器进行交互。 存储大小：单个域名存储量比较小（各浏览器不同，大致4k）。 有效时期：在设置的cookie过期时间内一直有效。 作用域：在所有同源窗口中都是共享的。 数据传递：会随着请求发送到服务端，在浏览器和服务器之间来回传递。  LocalStorage 产生由来：HTML5引入的，作用是在本地存储用户的浏览数据。 存储大小：单">
@@ -385,6 +385,12 @@
 <blockquote>
 <p>IE浏览器使用UserData来存储数据。</p>
 </blockquote>
+<p><strong>浏览器无痕模式(隐身模式)下是不能使用localStorage/sessionStorage的,可以用try catch提醒用户关闭无痕模式。</strong></p>
+<blockquote>
+<p>无痕模式，就是用户在浏览网页的过程中什么都不缓存，什么也不记录，不留下痕迹。</p>
+</blockquote>
+<p>自然地，localStorage也被禁用了。但此时window.localStorage并不是null，它还是原来的localStorage对象，只不过<br>这个对象的方法被禁用了。如果单纯只按上面的方法判断，js会抛出异常。</p>
+<p>所以得用下面的代码去判断这个localStorage是否可用：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> storageTest = <span class="function"><span class="keyword">function</span>(<span class="params">storage</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!!storage)&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            storage.setItem(<span class="string">"key"</span>, <span class="string">"value"</span>);</span><br><span class="line">            storage.removeItem(<span class="string">"key"</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span>(e)&#123;</span><br><span class="line">            alert(<span class="string">"请关闭浏览器无痕模式"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">storageTest(<span class="built_in">window</span>.localStorage);</span><br><span class="line">storageTest(<span class="built_in">window</span>.sessionStorage);</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -510,7 +516,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -521,7 +527,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -532,7 +538,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
