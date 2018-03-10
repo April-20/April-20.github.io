@@ -252,6 +252,220 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/10/JS多种继承方式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/10/JS多种继承方式/" itemprop="url">JS多种继承方式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-10T15:16:45+08:00">
+                2018-02-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h3><blockquote>
+<p>原型链继承是JS默认的继承方式</p>
+</blockquote>
+<p>模式：基于构造器工作模式、使用原型链模式。</p>
+<p>原理：让子类的原型对象指向父类的一个实例。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Child.prototype = <span class="keyword">new</span> Parent();</span><br><span class="line">Child.prototype.constructor = Child;</span><br></pre></td></tr></table></figure></p>
+<p>注意：这里第一行代码相当于完全删除了子类原型对象原先的值，然后赋予了一个新值，此时Child.prototype.constructor=Parent，进而导致Child的实例的constructor也指向Parent。为了保证继承链的有序，必须手动纠正，将Child.prototype.constructor指向Child。</p>
+<p>特点：简单。易于实现。但搜索效率低，无法实现多继承，来自原型对象的引用类型属性是所有实例共享的，创建子类实例时，无法向父类构造函数传参。</p>
+<h3 id="构造器借用call-apply"><a href="#构造器借用call-apply" class="headerlink" title="构造器借用call/apply()"></a>构造器借用call/apply()</h3><p>模式：基于构造器工作模式。</p>
+<p>原理：使用call/apply方法，将父对象的构造函数绑定在子对象上。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    Parent.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>特点：这里子对象只是继承父对象自身属性，并没有继承父对象原型属性。</p>
+<p>我们也可以选择继承原型属性：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    Parent.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>);</span><br><span class="line">&#125;</span><br><span class="line">Child.prototype =  <span class="keyword">new</span> Parent();</span><br></pre></td></tr></table></figure>
+<p>注意：父对象的构造器会被调用两次，一次发生在通过apply()方法继承其自身属性时，另一次发生在通过new操作符继承其原型时。这样一来，父对象的自身属性事实上被继承了两次。</p>
+<h3 id="直接继承于原型"><a href="#直接继承于原型" class="headerlink" title="直接继承于原型"></a>直接继承于原型</h3><p>模式：基于构造器工作模式、原型拷贝模式（不存在原型链，所有实例共用一个原型对象）。</p>
+<p>原理：让子类的原型对象指向父类的原型对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Child.prototype = Parent.prototype;</span><br><span class="line">Child.prototype.constructor = Child;</span><br></pre></td></tr></table></figure>
+<p>注意：第二行代码实际上把Parent.prototype.constructor也改掉了，使其指向了Child。</p>
+<p>特点：效率比较高，因为继承关系不需要新建实例，不存在链，比较省内存。但是由于所有实例共享同一个原型对象，所以一旦子对象对其原型进行修改，父对象原型也会随之被修改。此时子类仅继承父类原型上的属性和方法，不继承父类的自身属性，所以无法调用父类自身属性和方法。</p>
+<h3 id="临时构造器–new-F"><a href="#临时构造器–new-F" class="headerlink" title="临时构造器–new F()"></a>临时构造器–new F()</h3><blockquote>
+<p>针对于直接继承原型模式的弊端，可以利用一个临时构造器充当中介，打破连锁关系。</p>
+</blockquote>
+<p>模式：基于构造器工作模式、使用原型链模式。</p>
+<p>原理：创建一个空函数F(),将其原型指向为父类的原型对象，然后让子类的原型对象指向空函数的实例。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extend</span>(<span class="params">Child, Parent</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">    F.prototype = Parent.prototype;</span><br><span class="line">    Child.prototype = <span class="keyword">new</span> F();</span><br><span class="line">    Child.prototype.constructor = Child;</span><br><span class="line">    Child.uber = Parent.prototype;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：最后一行代码，意思是为子类设置一个uber属性，这个属性直接指向父对象的prototype属性（uber是一个德语词，意思是“向上、上一层”）。这等于在子对象上打开一条通道，可以直接调用父对象的方法。这一行只是为了实现继承的完备性，纯属备用性质。</p>
+<p>特点：子类只继承父类的原型属性，且对子对象原型的修改不会影响到父对象的原型（因为构造器函数创建实例的时候，是新创建一个对象并返回，新对象具有全新的属性，并在内存中拥有自己独立的存储空间）。</p>
+<h3 id="原型属性拷贝法"><a href="#原型属性拷贝法" class="headerlink" title="原型属性拷贝法"></a>原型属性拷贝法</h3><p>模式：基于构造器工作模式、拷贝属性、使用原型模式。</p>
+<p>原理：将父对象原型中的属性全部拷贝给子对象的原型。（无需为继承单独创建实例，原型链本身也更短）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extend2</span>(<span class="params">Child, Parent</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> p = Parent.prototype;</span><br><span class="line">    <span class="keyword">var</span> c = Child.prototype;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> p)&#123;</span><br><span class="line">        c[i] = p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    c.uber = p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意： 对象类型（包括函数和数组）通常都是以引用形式来进行拷贝的，即拷贝的只是该对象在内存中的指针，也就是说原型属性拷贝法，子对象原型上的引用类型属性和父对象原型上的引用类型属性实际上是同一个对象，并没有重建。那么对子对象原型上的引用类型属性的修改就会影响到父对象。</p>
+<p>特点：原型属性拷贝法会对部分原型属性（基本数据类型）进行重建，这种方法使属性查找更多的停留在对象本身，从而减少原型链上的查找。</p>
+<hr>
+<h3 id="全属性拷贝法（浅拷贝）"><a href="#全属性拷贝法（浅拷贝）" class="headerlink" title="全属性拷贝法（浅拷贝）"></a>全属性拷贝法（浅拷贝）</h3><p>模式：基于对象工作模式、属性拷贝模式。</p>
+<p>原理：创建一个空对象，然后逐步为其添加属性，直接将父对象的属性全部拷贝过来，然后返回这个对象。</p>
+<blockquote>
+<p>Object.assign()也可以实现浅拷贝</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extendCopy</span>(<span class="params">p</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> c = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> p)&#123;</span><br><span class="line">        c[i] = p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    c.uber = p;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Chinese = &#123;</span><br><span class="line">　  nation:<span class="string">'中国'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Doctor = &#123;</span><br><span class="line">    career: <span class="string">'医生'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Doctor = extendCopy(Chinese);</span><br><span class="line"></span><br><span class="line">alert(Doctor.nation); <span class="comment">// 中国</span></span><br></pre></td></tr></table></figure>
+<p>注意：这里只是拷贝基本类型的属性，对于引用类型属性，子对象只是获得一个内存地址，而不是真正拷贝，因此存在父对象被篡改的可能。</p>
+<p>特点：基于对象工作模式的继承，是在对象之间进行直接的属性拷贝，不存在构造器函数，不存在原型。</p>
+<h3 id="深拷贝法"><a href="#深拷贝法" class="headerlink" title="深拷贝法"></a>深拷贝法</h3><p>模式：基于对象工作模式、属性拷贝模式。</p>
+<p>原理：递归调用“浅拷贝”。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">p, c</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> c = c || &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> p)&#123;</span><br><span class="line">        <span class="keyword">if</span>(p.hasOwnProperty(i))&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">typeof</span> p[i] === <span class="string">'object'</span>)&#123;</span><br><span class="line">                c[i] = <span class="built_in">Array</span>.isArray(p[i]) ? [] : &#123;&#125;;</span><br><span class="line">                deepCopy(p[i], c[i]);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                c[i] = p[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：在拷贝每个属性之前，使用hasOwnProperty()来确认不会错误拷贝不需要的继承属性。然后判断属性是否是Object类型，若是，再次调用深拷贝函数（即针对该属性循环遍历拷贝）。使用Array.isArray()方法区分Array对象和普通Object对象。</p>
+<p>特点：此时所有的对象执行的都是值传递，子对象对属性的修改不会影响父对象。</p>
+<h3 id="原型继承法Object"><a href="#原型继承法Object" class="headerlink" title="原型继承法Object()"></a>原型继承法Object()</h3><p>模式：基于对象工作模式、使用原型链模式。</p>
+<p>原理：用Object函数接受一个父对象，并返回一个以该对象为原型的新对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Object</span>(<span class="params">o</span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">    F.prototype = o;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：这个Object函数被ES5采纳，更名为：Object.create()</strong></p>
+<p>通过Object.create(null)可以创建出来没有原型的对象。</p>
+<p>特点：直接在对象之间构建继承关系，发挥原型固有优势，但是子对象对引用类型属性的修改会影响到父对象。</p>
+<h3 id="多重继承法"><a href="#多重继承法" class="headerlink" title="多重继承法"></a>多重继承法</h3><p>模式：基于对象工作模式、属性拷贝模式。</p>
+<p>原理：按照父对象出现顺序依次对他们执行属性拷贝。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multi</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n = &#123;&#125;, stuff, len = <span class="built_in">arguments</span>.length;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>; j&lt;len; j++)&#123;</span><br><span class="line">        stuff = <span class="built_in">arguments</span>[j];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> stuff)&#123;</span><br><span class="line">            n[i] = stuff[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>特点：函数中的循环按照对象的输入顺序来进行遍历的，如果其中两个对象拥有相同的属性，后一个会覆盖前一个。对于引用类型属性，子对象的修改仍然会影响父对象。</p>
+<h3 id="寄生式继承"><a href="#寄生式继承" class="headerlink" title="寄生式继承"></a>寄生式继承</h3><p>模式：基于对象工作模式、使用原型链模式。</p>
+<p>原理：通过一个类似构造器的函数来创建对象，该函数会执行相应的对象属性拷贝，并对其进行扩展，然后返回该拷贝。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">parasite</span>(<span class="params">victim</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> that = <span class="built_in">Object</span>.create(victim);</span><br><span class="line">    that.more = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> that;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：之所以说是“类构造器函数”，是因为他返回了一个对象，但它只是一个普通函数，调用它不需要new 操作符。</p>
+<p>特点：在创建对象的函数中直接吸收其他对象的功能，然后对其进行扩展并返回。</p>
+<hr>
+<h3 id="组合式继承"><a href="#组合式继承" class="headerlink" title="组合式继承"></a>组合式继承</h3><h4 id="原型继承-属性拷贝"><a href="#原型继承-属性拷贝" class="headerlink" title="原型继承+属性拷贝"></a>原型继承+属性拷贝</h4><p>模式：基于对象工作模式、使用原型链模式、属性拷贝模式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">objectPlus</span>(<span class="params">o, stuff</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">    F.prototype = o;</span><br><span class="line">    n = <span class="keyword">new</span> F();</span><br><span class="line">    n.uber = o;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> stuff)&#123;</span><br><span class="line">        n[i] = stuff[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>特点：通过一个函数一次性完成对对象的继承与扩展。</p>
+<h4 id="构造器借用-属性拷贝"><a href="#构造器借用-属性拷贝" class="headerlink" title="构造器借用+属性拷贝"></a>构造器借用+属性拷贝</h4><p>模式：基于构造器工作模式、使用原型链模式、属性拷贝模式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    Parent.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>);</span><br><span class="line">&#125;</span><br><span class="line">extend2(Child,Parent);</span><br></pre></td></tr></table></figure>
+<p>特点：它允许我们在不重复调用父对象构造器的情况下，同时继承其自身属性和原型属性。</p>
+<hr>
+<h3 id="ES6的extends方法"><a href="#ES6的extends方法" class="headerlink" title="ES6的extends方法"></a>ES6的extends方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span></span>&#123;</span><br><span class="line">    <span class="comment">//.....</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Parent</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(x, y, color)&#123;</span><br><span class="line">        <span class="keyword">super</span>(x,y); <span class="comment">//调用父类的constructor(x,y)</span></span><br><span class="line">        <span class="keyword">this</span>.color = color;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    toString()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.color + <span class="string">" "</span> + <span class="keyword">super</span>.toString(); <span class="comment">//调用父类的toString()  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：子类必须在constructor方法中调用super方法，否则新建实例时会报错。这是因为子类没有自己的this对象，而是继承父类的this对象，然后对其进行加工。如果不调用super方法，就得不到this对象。</p>
+<p>特点：实质是先创造父类的实例对象，然后用子类的构造函数修改this。（这与ES5截然相反，ES5的继承，是先创造子类的实例对象this，然后再将父类的方法添加到this上面。）</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/05/事件循环机制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1541,7 +1755,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1563,7 +1777,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

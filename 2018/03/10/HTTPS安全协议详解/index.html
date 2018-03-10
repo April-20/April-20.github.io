@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="协议,HTTPS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="HTTPS原始的HTTP协议连接通信，服务器和用户之间是直接进行明文传输，数据都是没有加密的，这就会导致信息被监听篡改、服务器或客户端被伪装等安全问题。 HTTP存在的问题：  明文传输，内容可以直接被窃听； 无法验证报文的完整性，可能被篡改； 不验证通信方身份，可能遇到假的客户端或服务器。 无法阻止海量请求下的DOS攻击(Denial of Service,拒绝服务攻击)  为了保证数据传输的安">
+<meta name="keywords" content="协议,HTTPS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTPS安全协议详解">
+<meta property="og:url" content="http://yoursite.com/2018/03/10/HTTPS安全协议详解/index.html">
+<meta property="og:site_name" content="LittleCorn个人博客">
+<meta property="og:description" content="HTTPS原始的HTTP协议连接通信，服务器和用户之间是直接进行明文传输，数据都是没有加密的，这就会导致信息被监听篡改、服务器或客户端被伪装等安全问题。 HTTP存在的问题：  明文传输，内容可以直接被窃听； 无法验证报文的完整性，可能被篡改； 不验证通信方身份，可能遇到假的客户端或服务器。 无法阻止海量请求下的DOS攻击(Denial of Service,拒绝服务攻击)  为了保证数据传输的安">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/HTTPS安全通信机制.png">
+<meta property="og:updated_time" content="2018-03-10T08:43:32.984Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTTPS安全协议详解">
+<meta name="twitter:description" content="HTTPS原始的HTTP协议连接通信，服务器和用户之间是直接进行明文传输，数据都是没有加密的，这就会导致信息被监听篡改、服务器或客户端被伪装等安全问题。 HTTP存在的问题：  明文传输，内容可以直接被窃听； 无法验证报文的完整性，可能被篡改； 不验证通信方身份，可能遇到假的客户端或服务器。 无法阻止海量请求下的DOS攻击(Denial of Service,拒绝服务攻击)  为了保证数据传输的安">
+<meta name="twitter:image" content="http://yoursite.com/images/HTTPS安全通信机制.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/10/HTTPS安全协议详解/"/>
+
+
+
+
+
+  <title>HTTPS安全协议详解 | LittleCorn个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LittleCorn个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">碎碎念~</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/10/HTTPS安全协议详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HTTPS安全协议详解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-10T12:21:06+08:00">
+                2018-03-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h3><p>原始的HTTP协议连接通信，服务器和用户之间是直接进行明文传输，数据都是没有加密的，这就会导致信息被监听篡改、服务器或客户端被伪装等安全问题。</p>
+<p><strong>HTTP存在的问题：</strong></p>
+<ul>
+<li>明文传输，内容可以直接被窃听；</li>
+<li>无法验证报文的完整性，可能被篡改；</li>
+<li>不验证通信方身份，可能遇到假的客户端或服务器。</li>
+<li>无法阻止海量请求下的DOS攻击(Denial of Service,拒绝服务攻击)</li>
+</ul>
+<p>为了保证数据传输的安全性，网景公司设计了SSL(Secure Sockets Layer)协议用于对HTTP协议传输的数据进行加密，于是就诞生了HTTPS(超文本传输安全协议)。</p>
+<p><strong>HTTPS = HTTP + 加密 + 认证 + 完整性保护</strong></p>
+<p>SSL目前的版本是3.0，被IETF（Internet Engineering Task Force）定义在RFC 6101中，之后IETF对SSL 3.0进行了升级，于是出现了TLS（Transport Layer Security） 1.0，定义在RFC 2246。实际上我们现在的HTTPS都是用的TLS协议，但是由于SSL出现的时间比较早，并且依旧被现在浏览器所支持，因此SSL依然是HTTPS的代名词，但无论是TLS还是SSL都是上个世纪的事情，SSL最后一个版本是3.0，今后TLS将会继承SSL优良血统继续为我们进行加密服务。目前TLS的版本是1.2，定义在RFC 5246中，暂时还没有被广泛的使用。</p>
+<h3 id="SSL"><a href="#SSL" class="headerlink" title="SSL"></a>SSL</h3><blockquote>
+<p>要注意，HTTPS 并非是应用层的新协议，而是 HTTP 通信接口部分用 SSL 协议代替而已。本来，HTTP 是直接基于 TCP 通信。在 HTTPS 中，HTTP先和 SSL 通信，SSL 再和 TCP 通信。所以说 HTTPS 是披了层 SSL 外壳的 HTTP。SSL 是独立于 HTTP 的协议，所以其他类似于 HTTP 的应用层 SMTP 等协议都可以配合 SSL 协议使用，也可以给它们增强安全性。</p>
+</blockquote>
+<p><strong>SSL采用混合加密机制(对称加密+非对称加密)</strong></p>
+<ul>
+<li><strong>对称加密算法</strong>：也叫“共享密钥加密”，加密和解密使用同一把密钥，加密的同时，也会把密钥发送给对方。在发送密钥过程中可能会造成密钥被窃取。</li>
+<li><strong>非对称加密算法</strong>：也叫“公开密钥加密”，存在两把密钥，一个公钥，一个私钥。公钥随意对外开放，任何人都可以知道，但是私钥只有自己知道，发送方使用对方的公钥对数据进行加密，对方接到信息后，使用自己的私钥进行解密。(在不使用私钥的情况下很难还原信息)</li>
+</ul>
+<blockquote>
+<p>非对称加密算法使用的一般是RSA算法。这个算法主要原理：将两个大素数相乘很简单，但想要这个乘积进行因式分解极其困难，因此可以将乘积公开作为密钥。</p>
+<p>常见的对称加密算法有DES、3DES、AES、Blowfish、IDEA、RC5、RC6。<br>非对称加密算法应用非常广泛，SSH, HTTPS, TLS，电子证书，电子签名，电子身份证等等</p>
+</blockquote>
+<p>对称加密算法处理速度快，但是密钥无法保证安全的发送给对方；非对称加密算法可以使密钥安全交换，但是处理速度慢。</p>
+<p>于是HTTPS采用混合加密的方式，利用非对称加密算法加密在对称加密方式中使用的密钥，在确保密钥安全前提下，使用对称加密方式进行通信。(即在交换密钥环节使用非对称加密方式，之后的建立通信交换报文阶段则使用对称加密方式)。</p>
+<h3 id="CA-数字证书认证机构"><a href="#CA-数字证书认证机构" class="headerlink" title="CA 数字证书认证机构"></a>CA 数字证书认证机构</h3><p>非对称加密方式的缺点就是，无法证明公开密钥本身就是货真价实的公开密钥。为了解决这个问题，出现了数字认证机构(CA,Certificate Authority)和其他相关机关颁发的公开密钥证书。</p>
+<p>数字证书认证机构处于客户端与服务器双方都可信赖的第三方机构的立场上。威瑞信(VeriSign)就是其中一家非常有名的数字证书认证机构。</p>
+<p><strong>业务流程：</strong></p>
+<ul>
+<li>服务器的运营人员向数字证书认证机构提出公开密钥的申请，数字证书认证机构在判断提出申请者的身份之后，会对申请的公开密钥<strong>做数字签名</strong>(即用机构自己的私有密钥加密服务器申请的公钥)；然后将服务器公钥、数字签名以及申请者身份等信息放入公钥证书。</li>
+<li>服务器会将这份由数字证书认证机构认证颁发的公钥证书发送给客户端，以进行公开密钥加密方式的通信。公钥证书也可以叫做数字证书或直接证书。</li>
+<li>接到证书的客户端可使用数字证书认证机构的公开密钥，对那张证书上的数字签名进行验证，一旦通过，客户端就可以确定服务器公开密钥的真实性。</li>
+</ul>
+<blockquote>
+<p>多数浏览器开发商在发布版本时，会事先在内部植入常用的认证机关的公开密钥。</p>
+</blockquote>
+<h3 id="HTTPS安全通信机制"><a href="#HTTPS安全通信机制" class="headerlink" title="HTTPS安全通信机制"></a>HTTPS安全通信机制</h3><p><img src="/images/HTTPS安全通信机制.png" alt="image"></p>
+<ol>
+<li>客户端通过发送Clien Hello 报文开始SSL通信。报文中包含客户端支持的SSL的指定版本、加密组件(Cipher Suite)列表(所使用的加密算法及密钥长度等)。</li>
+<li>服务器可以进行SSL通信时，会以Server Hello报文作为应答。和客户端一样，在报文中包含SSL版本以及加密组件。服务器的加密组件内容是从接收到的客户端加密组件内筛选出来的。</li>
+<li>之后服务器发送Certificate报文。报文中包含公开密钥证书。</li>
+<li>最后服务器发送Server Hello Done 报文通信客户端，最初阶段的SSL握手协商部分结束。</li>
+<li>SSL第一次握手结束后，客户端以Client Key Exchange 报文作为回应。报文中包含通信加密中使用的一种被称为Pre-master secret 的随机密码串。该报文已用步骤3中的公开密钥进行加密。</li>
+<li>接着客户端继续发送Change Cipher Spec报文。该报文会提示服务器，在此报文之后的通信会采用pre-master secret密钥加密。</li>
+<li>客户端发送Finished报文。该报文包含连接至今全部报文的整体校验值。该握手协商是否能够成功，要以服务器是否能够正确解密该报文作为判断标准。</li>
+<li>服务器同样发送Change Cipher Spec报文。</li>
+<li>服务器发送Finished报文。</li>
+<li>服务器和客户端的Finished报文交换完毕之后，SSL连接就算建立完成。当然，通信会受到SSL的保护。从此处开始进行应用层协议的通信，即发送HTTP请求。</li>
+<li>应用层协议通信，即发送HTTP响应。</li>
+<li>最后由客户端断开连接。断开连接时，发送close_notify报文。这步之后再发送TCP FIN报文来关闭与TCP的通信。（在以上流程中，应用层发送数据时会附加一种叫做MAC(Message Authentication Code)的报文摘要。MAC能够查知报文是否遭到篡改，从而保护报文的完整性。）</li>
+</ol>
+<h3 id="HTTPS缺点"><a href="#HTTPS缺点" class="headerlink" title="HTTPS缺点"></a>HTTPS缺点</h3><p><strong>HTTPS因为使用了SSL，处理速度会变慢！</strong></p>
+<ul>
+<li>和使用HTTP相比，网络负载可能会变慢2到100倍。除去和TCP连接、发送HTTP请求、响应以外，还必须进行SSL通信，因此整体上处理通信量不可避免会增加。</li>
+<li>另一点SSL必须进行加密处理。在服务器和客户端需要进行加密和解密的运算处理。因此从结果上讲，比起HTTP会更多地消耗服务器和客户端地硬件资源，导致负载增强。</li>
+</ul>
+<blockquote>
+<p>针对速度变慢这一问题，并没有根本性的解决方案，我们会使用 SSL 加速器这种（专用服务器）硬件来改善该问题。该硬件为 SSL 通信专用硬件，相对软件来讲，能够提高数倍 SSL 的计算速度。仅在 SSL 处理时发挥 SSL加速器的功效，以分担负载。</p>
+</blockquote>
+<p>既然 HTTPS 那么安全可靠，那为何所有的 Web 网站不一直使用 HTTPS？</p>
+<ul>
+<li>其中一个原因是，因为与纯文本通信相比，加密通信会消耗更多的 CPU 及内存资源。如果每次通信都加密，会消耗相当多的资源，平摊到一台计算机上时，能够处理的请求数量必定也会随之减少。</li>
+</ul>
+<p>因此，如果是非敏感信息则使用 HTTP通信，<strong>只有在包含个人信息等敏感数据时，才利用 HTTPS 加密通信</strong>。特别是每当那些访问量较多的 Web 网站在进行加密处理时，它们所承担着的负载不容小觑。在进行加密处理时，并非对所有内容都进行加密处理，而是仅在那些需要信息隐藏时才会加密，以节约资源。</p>
+<ul>
+<li>除此之外，想要节约购买证书的开销也是原因之一。</li>
+</ul>
+<p>要进行 HTTPS 通信，证书是必不可少的。而使用的证书必须向认证机构（CA）购买。证书价格可能会根据不同的认证机构略有不同。通常，一年的授权需要数万日元（现在一万日元大约折合 600 人民币）。那些购买证书并不合算的服务以及一些个人网站，可能只会选择采用HTTP 的通信方式。</p>
+<h3 id="HTTP瓶颈"><a href="#HTTP瓶颈" class="headerlink" title="HTTP瓶颈"></a>HTTP瓶颈</h3><ul>
+<li>一条连接上只可发送一个请求。</li>
+<li>请求只能从客户端开始。客户端不可以接收除响应以外的指令。</li>
+<li>请求 / 响应首部未经压缩就发送。首部信息越多延迟越大。</li>
+<li>发送冗长的首部。每次互相发送相同的首部造成的浪费较多。</li>
+<li>可任意选择数据压缩格式。非强制压缩发送</li>
+</ul>
+<p><strong>解决方法：</strong></p>
+<ul>
+<li>Ajax。和以前的同步通信相比，由于它只更新一部分页面，响应中传输的数据量会因此而减少，这一优点显而易见。而利用 Ajax 实时地从服务器获取内容，有可能会导致大量请求产生。另外，Ajax 仍未解决 HTTP 协议本身存在的问题。</li>
+<li>Comet。一旦服务器端有内容更新了，Comet 不会让请求等待，而是直接给客户端返回响应。这是一种通过延迟应答，模拟实现服务器端向客户端推送（Server Push）的功能。Comet 会先将响应置于挂起状态，当服务器端有内容更新时，再返回该响应。因此，服务器端一旦有更新，就可以立即反馈给客户端。内容上虽然可以做到实时更新，但为了保留响应，一次连接的持续时间也变长了。期间，为了维持连接会消耗更多的资源。另外，Comet 也仍未解决 HTTP 协议本身存在的问题。</li>
+</ul>
+<h3 id="SPDY"><a href="#SPDY" class="headerlink" title="SPDY"></a>SPDY</h3><p>处于持续开发状态中的 SPDY 协议，正是为了在协议级别消除 HTTP 所遭遇的瓶颈。</p>
+<p>SPDY 没有完全改写 HTTP 协议，而是在 TCP/IP 的应用层与运输层之间通过新加<strong>会话层</strong>的形式运作。同时，考虑到安全性问题， SPDY 规定通信中使用 SSL。SPDY 以会话层的形式加入，控制对数据的流动，但还是采用 HTTP 建立通信连接。因此，可照常使用 HTTP 的 GET 和 POST 等方 法、Cookie 以及 HTTP 报文等。</p>
+<p><strong>使用 SPDY 后，HTTP 协议额外获得以下功能：</strong></p>
+<ul>
+<li><strong>多路复用流</strong>。通过单一的 TCP 连接，可以无限制处理多个 HTTP 请求。所有请求的处理都在一条TCP 连接上完成，因此 TCP 的处理效率得到提高。</li>
+<li><strong>赋予请求优先级</strong>。SPDY 不仅可以无限制地并发处理请求，还可以给请求逐个分配优先级顺序。这样主要是为了在发送多个请求时，解决因带宽低而导致响应变慢的问题。</li>
+<li><strong>压缩 HTTP 首部</strong>。压缩 HTTP 请求和响应的首部。这样一来，通信产生的数据包数量和发送的字节数就更少了。</li>
+<li><strong>推送功能</strong>。支持服务器主动向客户端推送数据的功能。这样，服务器可直接发送数据，而不必等待客户端的请求。</li>
+<li><strong>服务器提示功能</strong>。服务器可以主动提示客户端请求所需的资源。由于在客户端发现资源之前就可以获知资源的存在，因此在资源已缓存等情况下，可以避免发送不必要的请求。</li>
+</ul>
+<blockquote>
+<p>希望使用 SPDY 时，Web 的内容端不必做什么特别改动，而 Web 浏览器及 Web 服务器都要为对应 SPDY 做出一定程度上的改动。有好几家 Web 浏览器已经针对SPDY 做出了相应的调整。另外，Web 服务器也进行了实验性质的应用，但把该技术导入实际的 Web 网站却进展不佳。因为 SPDY 基本上只是将单个域名（ IP 地址）的通信多路复用，所以当一个 Web 网站上使用多个域名下的资源，改善效果就会受到限制。SPDY 的确是一种可有效消除 HTTP 瓶颈的技术，但很多 Web 网站存在的问题并非仅仅是由 HTTP 瓶颈所导致。对 Web 本身的速度提升，还应该从其他可细致钻研的地方入手，比如改善 Web 内容的编写方式等。</p>
+</blockquote>
+<h3 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h3><p>WebSocket，即 Web 浏览器与 Web 服务器之间全双工通信标准。其中，WebSocket协议由 IETF 定为标准，WebSocket API 由 W3C 定为标准。仍在开发中的 WebSocket技术主要是为了解决 Ajax 和 Comet 里 XMLHttpRequest 附带的缺陷所引起的问题。</p>
+<p>一旦 Web 服务器与客户端之间建立起 WebSocket 协议的通信连接，之后所有的通信都依靠这个专用协议进行。通信过程中可互相发送 JSON、XML、HTML 或图片等任意格式的数据。<br>由于是建立在 HTTP 基础上的协议，因此连接的发起方仍是客户端，而一旦确立WebSocket 通信连接，不论服务器还是客户端，任意一方都可直接向对方发送报文。</p>
+<p><strong>特点：</strong></p>
+<ul>
+<li><strong>推送功能</strong>。支持由服务器向客户端推送数据的推送功能。这样，服务器可直接发送数据，而不必等待客户端的请求。</li>
+<li><strong>减少通信量</strong>。只要建立起 WebSocket 连接，就希望一直保持连接状态。和 HTTP 相比，不但每次连接时的总开销减少，而且由于 WebSocket 的首部信息很小，通信量也相应减少了。<br>为了实现 WebSocket 通信，在 HTTP 连接建立之后，需要完成一次“握手”（Handshaking）的步骤。<br>成功握手确立 WebSocket 连接之后，通信时不再使用 HTTP 的数据帧，而采用 WebSocket 独立的数据帧。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/协议/" rel="tag"># 协议</a>
+          
+            <a href="/tags/HTTPS/" rel="tag"># HTTPS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/08/错误监控与上报/" rel="next" title="错误监控与上报">
+                <i class="fa fa-chevron-left"></i> 错误监控与上报
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/blog-logo.jpg"
+                alt="Aisling Chen" />
+            
+              <p class="site-author-name" itemprop="name">Aisling Chen</p>
+              <p class="site-description motion-element" itemprop="description">生活不止苟且，还有诗和远方</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTPS"><span class="nav-number">1.</span> <span class="nav-text">HTTPS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSL"><span class="nav-number">2.</span> <span class="nav-text">SSL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CA-数字证书认证机构"><span class="nav-number">3.</span> <span class="nav-text">CA 数字证书认证机构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTPS安全通信机制"><span class="nav-number">4.</span> <span class="nav-text">HTTPS安全通信机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTPS缺点"><span class="nav-number">5.</span> <span class="nav-text">HTTPS缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP瓶颈"><span class="nav-number">6.</span> <span class="nav-text">HTTP瓶颈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SPDY"><span class="nav-number">7.</span> <span class="nav-text">SPDY</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WebSocket"><span class="nav-number">8.</span> <span class="nav-text">WebSocket</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Aisling Chen</span>
+
+  
+</div>
+
+<!-- 
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+ 
+
+
+  <span class="post-meta-divider">|</span>
+ 
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+ -->
+
+ 
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
