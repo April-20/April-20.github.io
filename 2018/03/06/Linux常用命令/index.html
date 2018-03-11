@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="生活不止苟且，还有诗和远方">
+<meta name="description" content="背景shell是壳的意思，有壳就有核，核指的是 UNIX/Linux 内核，Shell之所以叫Shell 是因为它隐藏了操作系统底层的细节。我们可以换个大家一下就能懂的词来理解Shell:命令解析器。 当我们在终端中输入node，按回车，会启用node解释器，输入python按回车会启动Python解释器，之后就可以在里面输入并执行对应语言的代码啦。 在 UNIX/Linux 中比较流行的常见的">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux常用命令">
+<meta property="og:title" content="Linux常用命令">
 <meta property="og:url" content="http://yoursite.com/2018/03/06/Linux常用命令/index.html">
 <meta property="og:site_name" content="LittleCorn个人博客">
-<meta property="og:description" content="生活不止苟且，还有诗和远方">
+<meta property="og:description" content="背景shell是壳的意思，有壳就有核，核指的是 UNIX/Linux 内核，Shell之所以叫Shell 是因为它隐藏了操作系统底层的细节。我们可以换个大家一下就能懂的词来理解Shell:命令解析器。 当我们在终端中输入node，按回车，会启用node解释器，输入python按回车会启动Python解释器，之后就可以在里面输入并执行对应语言的代码啦。 在 UNIX/Linux 中比较流行的常见的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-06T09:53:00.350Z">
+<meta property="og:image" content="http://yoursite.com/images/Linux文件权限.jpg">
+<meta property="og:updated_time" content="2018-03-11T07:37:56.089Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux常用命令">
-<meta name="twitter:description" content="生活不止苟且，还有诗和远方">
+<meta name="twitter:title" content="Linux常用命令">
+<meta name="twitter:description" content="背景shell是壳的意思，有壳就有核，核指的是 UNIX/Linux 内核，Shell之所以叫Shell 是因为它隐藏了操作系统底层的细节。我们可以换个大家一下就能懂的词来理解Shell:命令解析器。 当我们在终端中输入node，按回车，会启用node解释器，输入python按回车会启动Python解释器，之后就可以在里面输入并执行对应语言的代码啦。 在 UNIX/Linux 中比较流行的常见的">
+<meta name="twitter:image" content="http://yoursite.com/images/Linux文件权限.jpg">
 
 
 
@@ -126,7 +128,7 @@
 
 
 
-  <title>linux常用命令 | LittleCorn个人博客</title>
+  <title>Linux常用命令 | LittleCorn个人博客</title>
   
 
 
@@ -270,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">linux常用命令</h1>
+          <h1 class="post-title" itemprop="name headline">Linux常用命令</h1>
         
 
         <div class="post-meta">
@@ -342,7 +344,330 @@
       
 
       
-        
+        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>shell是壳的意思，有壳就有核，核指的是 UNIX/Linux 内核，Shell之所以叫Shell 是因为它隐藏了操作系统底层的细节。我们可以换个大家一下就能懂的词来理解Shell:<strong>命令解析器</strong>。</p>
+<p>当我们在终端中输入node，按回车，会启用node解释器，输入python按回车会启动Python解释器，之后就可以在里面输入并执行对应语言的代码啦。</p>
+<p>在 UNIX/Linux 中比较流行的常见的 Shell 有 bash、zsh、ksh、csh 等等，Ubuntu 终端默认使用的是 bash。</p>
+<h3 id="shell常用快捷键"><a href="#shell常用快捷键" class="headerlink" title="shell常用快捷键"></a>shell常用快捷键</h3><ul>
+<li><p>Tap: 点击Tab键可以实现命令补全,目录补全、命令参数补全;</p>
+</li>
+<li><p>Ctrl+c: 强行终止当前程序（常用）;</p>
+</li>
+<li><p>Ctrl+d: 键盘输入结束或退出终端（常用）;</p>
+</li>
+<li><p>Ctrl+s: 暂停当前程序，暂停后按下任意键恢复运行;</p>
+</li>
+<li><p>Ctrl+z: 将当前程序放到后台运行，恢复到前台为命令fg;</p>
+</li>
+<li><p>Ctrl+a: 将光标移至输入行头，相当于Home键;</p>
+</li>
+<li><p>Ctrl+e: 将光标移至输入行末，相当于End键;</p>
+</li>
+<li><p>Ctrl+k: 删除从光标所在位置到行末,常配合ctrl+a使用;</p>
+</li>
+<li><p>Alt+Backspace: 向前删除一个单词，常配合ctrl+e使用;</p>
+</li>
+<li><p>Shift+PgUp: 将终端显示向上滚动;</p>
+</li>
+<li><p>Shift+PgDn: 将终端显示向下滚动;</p>
+</li>
+<li><p>上下方向键: 浏览历史输入记录;</p>
+</li>
+</ul>
+<h3 id="常见的bash命令"><a href="#常见的bash命令" class="headerlink" title="常见的bash命令"></a>常见的bash命令</h3><h4 id="文件相关"><a href="#文件相关" class="headerlink" title="文件相关"></a>文件相关</h4><ul>
+<li><p>ls 列出某文件夹下的文件，添加参数可实现更细致的功能，</p>
+</li>
+<li><p>ls -a 列出所有文件，包括隐藏文件</p>
+</li>
+<li><p>ls -l 列出文件及其详细信息</p>
+</li>
+<li><p>cd 切换目录（cd到不存在的目录时会报错）</p>
+</li>
+<li><p>pwd 打印当前目录</p>
+</li>
+<li><p>cat 读取某一个文件内的内容</p>
+</li>
+<li><p>wc 获取某一个文件的行数和字数</p>
+</li>
+<li><p>cp 复制某文件</p>
+</li>
+<li><p>mkdir 创建目录</p>
+</li>
+<li><p>rmdir 删除目录</p>
+</li>
+<li><p>rm-rf: r删除内部所有文件，f参数表示强制，rm -r junk删除junk目录及其下面的所有文件；</p>
+</li>
+<li><p>mv 移动 mv photos.jpg Photos 将photos移动到文件夹Photos下</p>
+</li>
+<li><p>sort 排序</p>
+</li>
+<li><p>diff 比较两个文件的异同</p>
+</li>
+</ul>
+<h4 id="系统相关"><a href="#系统相关" class="headerlink" title="系统相关"></a>系统相关</h4><ul>
+<li><p>date 获取当前时间</p>
+</li>
+<li><p>uname 返回系统名称</p>
+</li>
+<li><p>hostname 返回系统的主机名称</p>
+</li>
+</ul>
+<h4 id="网络相关"><a href="#网络相关" class="headerlink" title="网络相关"></a>网络相关</h4><ul>
+<li><p>host xx.xxx.com 显示某域名相关托管服务器/邮件服务器</p>
+</li>
+<li><p>ping 8.8.8.8 检测连接</p>
+</li>
+</ul>
+<h4 id="搜索相关命令"><a href="#搜索相关命令" class="headerlink" title="搜索相关命令"></a>搜索相关命令</h4><p><strong>whereis</strong></p>
+<ul>
+<li><p>描述：简单快捷</p>
+</li>
+<li><p>使用 $whereis who</p>
+</li>
+<li><p>说明：这个搜索很快，因为它并没有从硬盘中依次查找，而是直接从数据库中查询。whereis 只能搜索二进制文件(-b)，man 帮助文件(-m)和源代码文件(-s)。</p>
+</li>
+</ul>
+<p><strong>locate</strong></p>
+<ul>
+<li><p>描述：快而全</p>
+</li>
+<li><p>使用 $locate /etc/sh （查找 /etc 下所有以 sh 开头的文件），$locate /usr/share/*.jpg （注意要添加 * 号前面的反斜杠转义，否则会无法找到。)</p>
+</li>
+<li></li>
+<li><p>说明：通过/var/lib/mlocate/mlocate.db 数据库查找，不过这个数据库也不是实时更新的，系统会使用定时任务每天自动执行 updatedb 命令更新一次，所以有时候你刚添加的文件，它可能会找不到，需要手动执行一次 updatedb 命令（在我们的环境中必须先执行一次该命令）。它可以用来查找指定目录下的不同文件类型</p>
+</li>
+<li><p>可带参数：如-i 参数可以忽略大小写进行查找</p>
+</li>
+</ul>
+<p><strong>which</strong></p>
+<ul>
+<li><p>描述：小而精</p>
+</li>
+<li><p>使用：$ which man</p>
+</li>
+<li><p>说明：我们通常使用 which 来确定是否安装了某个指定的软件，因为它只从 PATH 环境变量指定的路径中去搜索命令。</p>
+</li>
+</ul>
+<p><strong>find</strong></p>
+<ul>
+<li><p>描述：精而细</p>
+</li>
+<li><p>使用：$sudo find /etc/ -name interfaces/</p>
+</li>
+<li><p>格式 find [path] [option] [action];</p>
+</li>
+<li><p>说明：find 应该是这几个命令中<strong>最强大的</strong>了，它不但可以通过文件类型、文件名进行查找而且可以根据文件的属性（如文件的时间戳，文件的权限等）进行搜索。find很强大也相对而言很复杂，在此先不赘述；</p>
+</li>
+</ul>
+<h4 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h4><ul>
+<li><p>–version/-V 查看某个程序的版本</p>
+</li>
+<li><p>history 显示历史</p>
+</li>
+<li><p>echo：返回你给的值,可以简单理解为js中的console或python中的print</p>
+</li>
+<li><p>man 使用一个叫做less的程序，查看某个命令的帮助文档</p>
+</li>
+<li><p>less: linenumer u d keyarray search(大小写敏感)，正则表达式</p>
+</li>
+</ul>
+<h4 id="通配符（Globbing）"><a href="#通配符（Globbing）" class="headerlink" title="通配符（Globbing）"></a>通配符（Globbing）</h4><p>使用命令时可在参数中使用通配符：</p>
+<ul>
+<li><code>*</code>：匹配 0 或多个字符，如<code>ls *.html</code>将匹配所有以html结尾的文件,<code>ls b*.png</code>将匹配所有以b开头，png结尾的文件；</li>
+<li><code>?</code>：匹配任意一个字符,如<code>ls abc?.png</code> 可匹配abcd.png/abce.png</li>
+<li><code>[list]</code>:匹配 list 中的任意单一字符</li>
+<li><code>[!list]</code>:匹配 除list 中的任意单一字符以外的字符</li>
+<li><code>[c1-c2]</code>:匹配 c1-c2 中的任意单一字符 如：[0-9] [a-z]</li>
+<li><code>{string1,string2,...}</code>:匹配 string1 或 string2 (或更多)其一字符串，如 <code>{css,html}</code>， <code>ls app.{html.css}</code>将匹配app.css 和app.html;</li>
+<li><p><code>{c1..c2}</code>:匹配 c1-c2 中全部字符 如{1..10}</p>
+</li>
+<li><p>使用<code>man</code>查看帮助（man分类如下：）</p>
+</li>
+<li>注意通配符大小写敏感</li>
+</ul>
+<h3 id="用户管理系统"><a href="#用户管理系统" class="headerlink" title="用户管理系统"></a>用户管理系统</h3><p>Linux 是一个可以实现多用户登陆的操作系统，多用户可以同时登陆同一台主机，共享主机的一些资源，不同的用户也分别有自己的用户空间，可用于存放各自的文件。虽然不同用户的文件是放在同一个物理磁盘上的甚至同一个逻辑分区或者目录里，但是由于 Linux 的用户管理和 文件权限机制，不同用户不可以轻易地查看、修改彼此的文件。</p>
+<h4 id="查看用户"><a href="#查看用户" class="headerlink" title="查看用户"></a>查看用户</h4><ul>
+<li><p>$ who am i 只列出用户名</p>
+</li>
+<li><p>$ who mom likes/who am i 列出用户名，所使用终端的编号和开启时间；</p>
+</li>
+<li><p>$ finger 列出当前用户的详细信息，需使用apt-get提前安装；</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ who mom likes</span><br><span class="line">zhangwang ttys003  May  8 14:58 </span><br><span class="line">$ who am i</span><br><span class="line">zhangwang ttys003  May  8 14:58 </span><br><span class="line"><span class="comment"># pts/0 中 pts(mac ttys) 表示伪终端,pts/0(ttys003) 后面那个数字就表示打开的伪终端序号</span></span><br><span class="line">$ sudo apt-get finger</span><br><span class="line">$ finger</span><br><span class="line"><span class="comment"># 会列出当前用户的信息</span></span><br><span class="line">Login      Name        Tty      Idle  Login Time   Office     Office Phone</span><br><span class="line">zhangwang  zhangwang   pts/0          May  4 21:04 (125.34.199.251)</span><br></pre></td></tr></table></figure>
+<p><strong>老大用户root</strong></p>
+<p>一般通过上面的操作会发现我们当前登录的用户并非root,在Linux中，老大root 账户拥有整个系统至高无上的权利，它可以操作系统中所有的对象。在某些发行版中，这个用户并不显式存在，不过如果其它的用户具有使用sudo的权利（后文会叙述如何获取），通过sudo 命令也可以达到用root账号操作的效果。创建用户就是一个需要sudo权限的命令。</p>
+<h4 id="创建用户adduser"><a href="#创建用户adduser" class="headerlink" title="创建用户adduser"></a>创建用户adduser</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">zhangwang@Ubuntu:~$ sudo adduser student</span><br><span class="line">[sudo] password for zhangwang: </span><br><span class="line">Adding user `student&apos; ...</span><br><span class="line">Adding new group `student&apos; (1002) ...</span><br><span class="line">Adding new user `student&apos; (1002) with group `student&apos; ...</span><br><span class="line">Creating home directory `/home/student&apos; ...</span><br><span class="line">Copying files from `/etc/skel&apos; ...</span><br><span class="line">Enter new UNIX password: </span><br><span class="line">Retype new UNIX password: </span><br><span class="line">passwd: password updated successfully</span><br><span class="line">Changing the user information for student</span><br><span class="line">Enter the new value, or press ENTER for the default</span><br><span class="line">    Full Name []: Udacity Linux Student</span><br><span class="line">    Room Number []: </span><br><span class="line">    Work Phone []: </span><br><span class="line">    Home Phone []: </span><br><span class="line">    Other []: </span><br><span class="line">Is the information correct? [Y/n] Y</span><br><span class="line"># finger 用户管理用户</span><br><span class="line">zhangwang@Ubuntu:~$ finger student</span><br><span class="line">Login: student                    Name: Udacity Linux Student</span><br><span class="line">Directory: /home/student                Shell: /bin/bash</span><br><span class="line">Never logged in.</span><br><span class="line">No mail.</span><br><span class="line">No Plan.</span><br></pre></td></tr></table></figure>
+<h4 id="切换用户相关命令"><a href="#切换用户相关命令" class="headerlink" title="切换用户相关命令"></a>切换用户相关命令</h4><ul>
+<li><p>su <user>: 切换到用户user,执行时需要输入目标用户的密码；</user></p>
+</li>
+<li><p>su - <user>: 切换用户，同时环境变量也会跟着改变成目标用户的环境变量。</user></p>
+</li>
+<li><p>su -l lilei: 切换登录用户;</p>
+</li>
+</ul>
+<p>有时候我们也会看到添加用户使用的命令是useradd,而非adduser下面说说二者的区别：</p>
+<ul>
+<li><p>sudo adduser lilei: 新建一个叫做lilei的用户，添加用户到系统，同时也会默认为新用户创建 home目录：</p>
+</li>
+<li><p>sudo useradd: 只创建用户，创建完了需要用 passwd lilei 去设置新用户的密码;</p>
+</li>
+</ul>
+<h4 id="查看用户属于那些组（groups）"><a href="#查看用户属于那些组（groups）" class="headerlink" title="查看用户属于那些组（groups）"></a>查看用户属于那些组（groups）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~ groups zhangwang</span><br><span class="line"># staff everyone localaccounts _appserverusr admin...</span><br></pre></td></tr></table></figure>
+<p>关于用户组我们需要注意：</p>
+<ul>
+<li><p>每次新建用户如果不指定用户组的话，默认会自动创建一个与用户名相同的用户组；</p>
+</li>
+<li><p>默认情况下在 sudo 用户组里的可以使用 sudo 命令获得 root 权限。</p>
+</li>
+<li><p>使用cat /etc/group | sort命令查看某组包含那些成员:/etc/group文件中分行显示了用户组（Group）、用户组口令、GID 及该用户组所包含的用户（User），格式如下：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">group_name:password:GID:user_list</span><br><span class="line">group:*:16:</span><br><span class="line">interactusers:*:51:</span><br><span class="line">kmem:*:2:root</span><br><span class="line">localaccounts:*:61:</span><br><span class="line"># *表示密码不可见</span><br><span class="line">mail:*:6:_teamsserver</span><br></pre></td></tr></table></figure>
+<h4 id="为用户添加组织"><a href="#为用户添加组织" class="headerlink" title="为用户添加组织"></a>为用户添加组织</h4><p>不同的组对不同的文件可能具有不同的操作权限，比如说通过上述命令新建的用户默认是没有使用sudo的权限的，我们可以使用<strong>usermod</strong>命令把它加入sudo组用以具备相应的权限。<br>方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo usermod -G sudo student</span><br><span class="line">$ groups lilei</span><br><span class="line"># lilei:lilei sudo</span><br></pre></td></tr></table></figure>
+<h4 id="删除用户的方法"><a href="#删除用户的方法" class="headerlink" title="删除用户的方法"></a>删除用户的方法</h4><p>删除用户也是一个需要管理员权限的命令，使用方法如下：</p>
+<ul>
+<li><p><strong>sudo deluser student –remove-home</strong>：删除用户及用户相关文件；</p>
+</li>
+<li><p>直接的<strong>deluser</strong>会删除该用户，但是不会删除用户相关文件；</p>
+</li>
+</ul>
+<h3 id="文件权限管理"><a href="#文件权限管理" class="headerlink" title="文件权限管理"></a>文件权限管理</h3><ul>
+<li><p>ls -l: 查看文件及其权限;</p>
+</li>
+<li><p>ls -A：显示隐藏文件（包括以.开头的文件）；(a-&gt;all)</p>
+</li>
+<li><p>ls -Al: 显示隐藏文件及其权限；</p>
+</li>
+<li><p>ls -dl &lt;查看一文件的完整属性&gt;:(d-&gt;detail)</p>
+</li>
+<li><p>ls -AsSh: 显示所有文件大小，并以普通人类能看懂的方式呈现(小 s 为显示文件大小，大 S 为按文件大小排序);</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">➜  Python ls -l</span><br><span class="line">total 0</span><br><span class="line">drwxr-xr-x   9 zhangwang  staff  306  5 11 19:06 Bucketlist</span><br><span class="line">drwxr-xr-x  10 zhangwang  staff  340  5  4 13:58 TofelWePrograme</span><br><span class="line">drwxr-xr-x  14 zhangwang  staff  476  4 25 16:41 alien_invasion</span><br><span class="line">drwxr-xr-x  12 zhangwang  staff  408  5 25 11:13 flasky</span><br><span class="line">drwxr-xr-x  10 zhangwang  staff  340  4 26 19:06 learning_log</span><br><span class="line"># 文件类型和权限 链接数 所有者 用户所在组 大小 最后修改时间 文件名称</span><br></pre></td></tr></table></figure>
+<h4 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h4><p>说到文件，不得不提文件类型，Linux中的文件不同于Windows中的文件，在Linux 里面一切皆文件，主要文件类型有以下几种：</p>
+<ul>
+<li><p>普通文件：一般是用一些相关的应用程序创建的（如图像工具、文档工具、归档工具… 或 cp工具等),这类文件的删除方式是用rm 命令,而创建使用touch命令,用符号-表示；</p>
+</li>
+<li><p>目录：目录在Linux是一个比较特殊的文件，用字符d表示，删除用rm 或rmdir命令；</p>
+</li>
+<li><p>块设备文件：存在于/dev目录下，如硬盘，光驱等设备，用字符d表示;</p>
+</li>
+<li><p>设备文件：（ /dev 目录下有各种设备文件，大都跟具体的硬件设备相关），如猫的串口设备，用字符c表示；</p>
+</li>
+<li><p>socket文件; 用字符s表示，比如启动MySQL服务器时，产生的mysql.sock的文件;</p>
+</li>
+<li><p>pipe 管道文件：可以实现两个程序（可以从不同机器上telnet）实时交互，用字符p表示；</p>
+</li>
+<li><p>链接文件: 软链接等同于 Windows 上的快捷方式；用字符 l 表示；</p>
+</li>
+</ul>
+<blockquote>
+<p>软硬链接文件的共同点和区别：无论是修改软链接，硬链接生成的文件还是直接修改源文件，相应的文件都会改变，但是如果删除了源文件，硬链接生成的文件依旧存在而软链接生成的文件就不再有效了。</p>
+</blockquote>
+<h4 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h4><p>上面的代码示例中，另一个比较让人疑惑的是drwxr-xr-x这样的语句，这段语句表明了文件的权限。Linux中文件权限主要由以下几种：</p>
+<ul>
+<li><p>读权限：可以使用 cat <file name=""> 之类的命令来读取某个文件的内容;</file></p>
+</li>
+<li><p>写权限，表示你可以编辑和修改某个文件；</p>
+</li>
+<li><p>执行权限，通常指可以运行的二进制程序文件或者脚本文件(Linux 上不是通过文件后缀名来区分文件的类型);</p>
+</li>
+<li><p>所有者权限，所属用户组权限，是指你所在的用户组中的所有其它用户对于该文件的权限。</p>
+</li>
+</ul>
+<blockquote>
+<p>一个目录同时具有读权限和执行权限才可以打开并查看内部文件，而一个目录要有写权限才允许在其中创建其它文件，这是因为目录文件实际保存着该目录里面的文件的列表等信息。</p>
+</blockquote>
+<p><img src="/images/Linux文件权限.jpg" alt="image"></p>
+<h4 id="修改文件权限-chmod"><a href="#修改文件权限-chmod" class="headerlink" title="修改文件权限(chmod)"></a>修改文件权限(chmod)</h4><p>从上图中可以看出，每个文件有三组权限（拥有者，所属用户组，其他用户，这个顺序是一定的），修改权限的命令是chmod,修改文件权限的方法有两种,所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 用数字的形式表示，数字的来源及计算方法见下图,数字的意义见下图</span><br><span class="line">$ chmod 700 iphone6 # 让用户对iPhone6文件具备读写权限，所在组和其它用户都没有读写权限</span><br><span class="line"># 用字母的形式表示，g、o 还有 u 分别表示 group、others 和 user，+ 和 - 分别表示增加和去掉相应的权限</span><br><span class="line">$ chmod go-rw iphone6 # 让用户所属用户组及其它用户对iPhone6这个文件不再有读写权限</span><br></pre></td></tr></table></figure>
+<h4 id="更改文件所有者-chown"><a href="#更改文件所有者-chown" class="headerlink" title="更改文件所有者(chown)"></a>更改文件所有者(chown)</h4><p>上面描述文件权限时，都是以自己，所在组，其它三个级别来描述的，那如果你登录的当前账户不是某个文件的所有者，你又不想让这个文件对所有用户开发你想用到的权限，该怎么办呢。还记得前面我们说过老大root用户对所有的文件具有绝对的支配权，我们可以利用这个账号把一个文件过继给另外一个用户（更改文件的所有者）以方便该用户对该文件的操作，使用方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># sudo 表示以root的权限执行，下面语句的意思是把/etc/apt文件夹下面的sources.list的所有权转让给用户zhangwang</span><br><span class="line">$ sudo chown zhangwang /etc/apt/sources.list </span><br><span class="line">$ sudo chmod 700 /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+<h4 id="文件基本操作"><a href="#文件基本操作" class="headerlink" title="文件基本操作"></a>文件基本操作</h4><p><strong>创建 touch:</strong></p>
+<ul>
+<li><p>主要作用是来更改已有文件的时间戳的（比如，最近访问时间，最近修改时间）;</p>
+</li>
+<li><p>在不加任何参数的情况下，只指定一个文件名，则可以创建一个指定文件名的空白普通文件（不会覆盖已有同名文件）</p>
+</li>
+</ul>
+<p><strong>创建 mkdir:</strong></p>
+<ul>
+<li><p>新建空目录 $mkdir mydir</p>
+</li>
+<li><p>新建多级目录 $mkdir -p father/son/grandson</p>
+</li>
+</ul>
+<p><strong>复制移动 cp:</strong></p>
+<ul>
+<li><p>$ cp test father/son/grandson: 复制test文件到father/son/grandson；</p>
+</li>
+<li><p>$ cp -r father family: 递归复制目录</p>
+</li>
+</ul>
+<p><strong>移动mv:</strong></p>
+<ul>
+<li><p>$ mv file1 Documents: 移动文件files到Documents目录</p>
+</li>
+<li><p>$ mv file1 myfile: 将文件“ file1 ”重命名为“ myfile ”</p>
+</li>
+</ul>
+<p><strong>删除rm:</strong></p>
+<ul>
+<li><p>$ rm test</p>
+</li>
+<li><p>$ rm -f test: 删除只读文件，强制删除</p>
+</li>
+<li><p>$ rm -r family: 删除目录（递归删除其中的子文件）</p>
+</li>
+</ul>
+<p><strong>其它操作</strong></p>
+<ul>
+<li>rename: 批量重命名,需要用到正则表达式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 使用通配符批量创建 5 个文件:</span><br><span class="line">$ touch file&#123;1..5&#125;.txt</span><br><span class="line"></span><br><span class="line"># 批量将这 5 个后缀为 .txt 的文本文件重命名为以 .c 为后缀的文件:</span><br><span class="line">$ rename &apos;s/\.txt/\.c/&apos; *.txt</span><br><span class="line"></span><br><span class="line"># 批量将这 5 个文件，文件名改为大写:</span><br><span class="line">$ rename &apos;y/a-z/A-Z/&apos; *.c</span><br></pre></td></tr></table></figure>
+<h4 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h4><p><strong>cat: 打印文件内容到标准输出（终端）(正序)；</strong></p>
+<ul>
+<li><p>cat -n passwd: 显示行号</p>
+</li>
+<li><p>tac: 打印文件内容到标准输出（终端）(逆序)；</p>
+</li>
+</ul>
+<blockquote>
+<p>标准输入输出：当我们执行一个 shell 命令行时通常会自动打开三个标准文件，即标准输入文件（stdin），默认对应终端的键盘、标准输出文件（stdout）和标准错误输出文件（stderr），后两个文件都对应被重定向到终端的屏幕，以便我们能直接看到输出内容。进程将从标准输入文件中得到输入数据，将正常输出数据输出到标准输出文件，而将错误信息送到标准错误文件中。</p>
+</blockquote>
+<p>对cat,tac参数的说明如下：</p>
+<ul>
+<li>-b : 指定添加行号的方式，主要有两种：<ul>
+<li>-b a: 表示无论是否为空行，同样列出行号(“cat -n”就是这种方式)</li>
+<li>-b t: 只列出非空行的编号并列出（默认为这种方式）</li>
+</ul>
+</li>
+<li>-n : 设置行号的样式，主要有三种：<ul>
+<li>-n ln: 在行号字段最左端显示</li>
+<li>-n rn: 在行号字段最右边显示，且不加 0</li>
+<li>-n rz: 在行号字段最右边显示，且加 0</li>
+</ul>
+</li>
+<li>-w : 行号字段占用的位数(默认为 6 位)</li>
+</ul>
+<hr>
+<ul>
+<li><p><strong>more</strong>: 比较简单，只能向一个方向滚动,查看文件：打开后默认只显示一屏内容，终端底部显示当前阅读的进度。可以使用 Enter 键向下滚动一行，使用 Space 键向下滚动一屏，按下 h 显示帮助，q 退出。</p>
+</li>
+<li><p><strong>less</strong>: less 基于 more 和 vi查看文件，使用基本和 more 一致</p>
+</li>
+<li><p><strong>head</strong>: 查看文件的头几行（默认10行）</p>
+</li>
+<li><p><strong>tail</strong>: 查看文件的尾几行（默认10行）</p>
+<ul>
+<li>$ tail -n 1 /etc/passwd 查看固定行数</li>
+</ul>
+</li>
+<li><p><strong>file</strong>: 查看文件类型$ file /bin/ls</p>
+</li>
+</ul>
+
       
     </div>
     
@@ -436,8 +761,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -456,7 +790,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -467,7 +801,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -478,7 +812,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -501,6 +835,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shell常用快捷键"><span class="nav-number">2.</span> <span class="nav-text">shell常用快捷键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见的bash命令"><span class="nav-number">3.</span> <span class="nav-text">常见的bash命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件相关"><span class="nav-number">3.1.</span> <span class="nav-text">文件相关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统相关"><span class="nav-number">3.2.</span> <span class="nav-text">系统相关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络相关"><span class="nav-number">3.3.</span> <span class="nav-text">网络相关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#搜索相关命令"><span class="nav-number">3.4.</span> <span class="nav-text">搜索相关命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其它"><span class="nav-number">3.5.</span> <span class="nav-text">其它</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通配符（Globbing）"><span class="nav-number">3.6.</span> <span class="nav-text">通配符（Globbing）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户管理系统"><span class="nav-number">4.</span> <span class="nav-text">用户管理系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查看用户"><span class="nav-number">4.1.</span> <span class="nav-text">查看用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建用户adduser"><span class="nav-number">4.2.</span> <span class="nav-text">创建用户adduser</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切换用户相关命令"><span class="nav-number">4.3.</span> <span class="nav-text">切换用户相关命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看用户属于那些组（groups）"><span class="nav-number">4.4.</span> <span class="nav-text">查看用户属于那些组（groups）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为用户添加组织"><span class="nav-number">4.5.</span> <span class="nav-text">为用户添加组织</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除用户的方法"><span class="nav-number">4.6.</span> <span class="nav-text">删除用户的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件权限管理"><span class="nav-number">5.</span> <span class="nav-text">文件权限管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件类型"><span class="nav-number">5.1.</span> <span class="nav-text">文件类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件权限"><span class="nav-number">5.2.</span> <span class="nav-text">文件权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改文件权限-chmod"><span class="nav-number">5.3.</span> <span class="nav-text">修改文件权限(chmod)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更改文件所有者-chown"><span class="nav-number">5.4.</span> <span class="nav-text">更改文件所有者(chown)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件基本操作"><span class="nav-number">5.5.</span> <span class="nav-text">文件基本操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看文件"><span class="nav-number">5.6.</span> <span class="nav-text">查看文件</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

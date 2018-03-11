@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="函数式编程最主要的特征是：函数是第一等公民。 所谓“第一等公民” ，指的是函数与其他数据类型一样，处于平等地位，可以赋值给其他变量，也可以作为参数，传入另一个函数，或作为别的函数的返回值。 只用表达式，不用语句 “表达式”是一个单纯的运算过程，总是返回值；“语句”是执行某种操作，没有返回值。函数式编程要求，只使用表达式，不使用语句。也就是说，每一步都是单纯的运算，而且都有返回值。 如：封装一个改变">
+<meta name="description" content="函数式编程 简单说，”函数式编程”是一种”编程范式”（programming paradigm），也就是如何编写程序的方法论。它属于”结构化编程”的一种，主要思想是把运算过程尽量写成一系列嵌套的函数调用。  函数式编程五大特点：  函数是”第一等公民” 只用”表达式”，不用”语句” 没有”副作用” 不修改状态 引用透明  函数是第一等公民。 所谓“第一等公民” ，指的是函数与其他数据类型一样，处于">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS函数柯里化">
 <meta property="og:url" content="http://yoursite.com/2018/02/14/JS函数柯里化/index.html">
 <meta property="og:site_name" content="LittleCorn个人博客">
-<meta property="og:description" content="函数式编程最主要的特征是：函数是第一等公民。 所谓“第一等公民” ，指的是函数与其他数据类型一样，处于平等地位，可以赋值给其他变量，也可以作为参数，传入另一个函数，或作为别的函数的返回值。 只用表达式，不用语句 “表达式”是一个单纯的运算过程，总是返回值；“语句”是执行某种操作，没有返回值。函数式编程要求，只使用表达式，不使用语句。也就是说，每一步都是单纯的运算，而且都有返回值。 如：封装一个改变">
+<meta property="og:description" content="函数式编程 简单说，”函数式编程”是一种”编程范式”（programming paradigm），也就是如何编写程序的方法论。它属于”结构化编程”的一种，主要思想是把运算过程尽量写成一系列嵌套的函数调用。  函数式编程五大特点：  函数是”第一等公民” 只用”表达式”，不用”语句” 没有”副作用” 不修改状态 引用透明  函数是第一等公民。 所谓“第一等公民” ，指的是函数与其他数据类型一样，处于">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-25T12:54:26.322Z">
+<meta property="og:updated_time" content="2018-03-11T03:09:40.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS函数柯里化">
-<meta name="twitter:description" content="函数式编程最主要的特征是：函数是第一等公民。 所谓“第一等公民” ，指的是函数与其他数据类型一样，处于平等地位，可以赋值给其他变量，也可以作为参数，传入另一个函数，或作为别的函数的返回值。 只用表达式，不用语句 “表达式”是一个单纯的运算过程，总是返回值；“语句”是执行某种操作，没有返回值。函数式编程要求，只使用表达式，不使用语句。也就是说，每一步都是单纯的运算，而且都有返回值。 如：封装一个改变">
+<meta name="twitter:description" content="函数式编程 简单说，”函数式编程”是一种”编程范式”（programming paradigm），也就是如何编写程序的方法论。它属于”结构化编程”的一种，主要思想是把运算过程尽量写成一系列嵌套的函数调用。  函数式编程五大特点：  函数是”第一等公民” 只用”表达式”，不用”语句” 没有”副作用” 不修改状态 引用透明  函数是第一等公民。 所谓“第一等公民” ，指的是函数与其他数据类型一样，处于">
 
 
 
@@ -342,7 +342,18 @@
       
 
       
-        <h3 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h3><p><strong>最主要的特征是：函数是第一等公民。</strong></p>
+        <h3 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h3><blockquote>
+<p>简单说，”函数式编程”是一种”编程范式”（programming paradigm），也就是如何编写程序的方法论。它属于”结构化编程”的一种，主要思想是把运算过程尽量写成一系列嵌套的函数调用。</p>
+</blockquote>
+<p><strong>函数式编程五大特点：</strong></p>
+<ul>
+<li><strong>函数是”第一等公民”</strong></li>
+<li><strong>只用”表达式”，不用”语句”</strong></li>
+<li><strong>没有”副作用”</strong></li>
+<li><strong>不修改状态</strong></li>
+<li><strong>引用透明</strong></li>
+</ul>
+<p><strong>函数是第一等公民。</strong></p>
 <p>所谓“第一等公民” ，指的是函数与其他数据类型一样，处于平等地位，可以赋值给其他变量，也可以作为参数，传入另一个函数，或作为别的函数的返回值。</p>
 <p><strong>只用表达式，不用语句</strong></p>
 <p>“表达式”是一个单纯的运算过程，总是返回值；“语句”是执行某种操作，没有返回值。函数式编程要求，只使用表达式，不使用语句。也就是说，每一步都是单纯的运算，而且都有返回值。</p>
@@ -354,6 +365,10 @@
 <p>相同的输入总会得到相同的输出，并且不会产生副作用的函数，就是纯函数。</p>
 <p>所谓“副作用”，指的是函数内部与外部互动（最典型的情况，就是修改全局变量的值），产生运算以外的其他结果。</p>
 <p>函数式编程强调没有“副作用”，意味着函数要保持独立，所有功能就是返回一个新的值，没有其他行为，尤其不得修改外部变量的值。</p>
+<p><strong>不修改状态</strong></p>
+<p>上一点已经提到，函数式编程只是返回新的值，不修改系统变量。因此，不修改变量，也是它的一个重要特点。</p>
+<p><strong>引用透明</strong></p>
+<p>引用透明（Referential transparency），指的是函数的运行不依赖于外部变量或”状态”，只依赖于输入的参数，任何时候只要参数相同，引用函数所得到的返回值总是相同的。</p>
 <h3 id="柯里化"><a href="#柯里化" class="headerlink" title="柯里化"></a>柯里化</h3><p>JS忍者中说：在一个函数中首先填充几个参数，然后再返回一个新函数的技术称为“柯里化”。</p>
 <p>维基百科中：柯里化是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受剩余参数而且返回结果的新函数的技术。</p>
 <p>柯里化通常也称部分求值，其含义是给函数分步传递参数，每次传递参数后部分应用参数，并返回一个更具体的函数接受剩下的参数，这中间可嵌套多层这样的接受部分参数的函数，直至返回最后结果。</p>
@@ -376,6 +391,23 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'cyl'</span></span><br><span class="line">&#125;,</span><br><span class="line">fun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;.bind(obj);</span><br><span class="line"></span><br><span class="line">fun()  <span class="comment">//柯里化</span></span><br></pre></td></tr></table></figure>
 <p>bind方法实现的机制就是柯里化（简写）：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.bind = <span class="function"><span class="keyword">function</span>(<span class="params">context</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> fn = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> fn.apply(context,args.slice(<span class="number">1</span>));</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="偏函数"><a href="#偏函数" class="headerlink" title="偏函数"></a>偏函数</h3><p>偏函数指的是：固化函数的一个或一些参数，从而产生一个新的函数。</p>
+<p><strong>偏函数</strong>就是固定一个函数的一个或者多个参数，也就是将一个 n 元函数转换成一个 n - x 元函数。</p>
+<p><strong>柯里化</strong>指的是将一个具有多个参数的函数，转换成能够通过一系列的函数链式调用，其中每一个函数都只有一个参数。把一个n元函数转换成n个一元函数。</p>
+<p><strong>偏函数是用特定的值来具体化参数，而Currying是变成了一条函数链。</strong></p>
+<p><strong>应用：</strong></p>
+<p>当我们不想一次一次重复相同的参数时，偏函数是很便捷的。如我们有send(from,to)函数，如果from总是相同的，可以使用偏函数简化调用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AddBySeven = Partial(Add, <span class="number">7</span>);</span><br><span class="line">AddBySeven(<span class="number">5</span>, <span class="number">10</span>); <span class="comment">// returns 22;</span></span><br></pre></td></tr></table></figure>
+<p>这是偏函数，固定了你函数的某一个或几个参数，返回一个新的函数，接收剩下的参数, 参数个数可能是1个，也可能是2个，甚至更多。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curryAdd = Curry(Add);</span><br><span class="line">AddBySeven = curryAdd(<span class="number">7</span>);</span><br><span class="line">AddBySeven(<span class="number">5</span>)(<span class="number">10</span>); <span class="comment">// returns 22</span></span><br><span class="line"><span class="comment">// curryAdd(7)(5)(10)</span></span><br></pre></td></tr></table></figure>
+<p>柯理化是把一个有n个参数的函数变成n个只有1个参数的函数。</p>
+<p><strong>函数柯里化提供了一种非常自然的方式来实现某些偏函数应用。</strong></p>
+<ul>
+<li>偏函数应用是找一个函数，固定其中的几个参数值，从而得到一个新的函数。</li>
+<li>函数柯里化是一种使用匿名单参数函数来实现多参数函数的方法。</li>
+<li>函数柯里化能够让你轻松的实现某些偏函数应用。</li>
+<li>有些语言(例如 Haskell, OCaml)所有的多参函数都是在内部通过函数柯里化实现的。</li>
+</ul>
 
       
     </div>
@@ -499,7 +531,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -510,7 +542,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -521,7 +553,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -554,7 +586,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数式编程"><span class="nav-number">1.</span> <span class="nav-text">函数式编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#柯里化"><span class="nav-number">2.</span> <span class="nav-text">柯里化</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数式编程"><span class="nav-number">1.</span> <span class="nav-text">函数式编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#柯里化"><span class="nav-number">2.</span> <span class="nav-text">柯里化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#偏函数"><span class="nav-number">3.</span> <span class="nav-text">偏函数</span></a></li></ol></div>
             
 
           </div>
