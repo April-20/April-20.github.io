@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="webpack," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="babel-loader开启缓存babel-loader 提供了 cacheDirectory特定选项（默认 false）：设置时，给定的目录将用于缓存加载器的结果。 123456789rules: [  &amp;#123;    test: /\.js$/,    loader: &apos;babel-loader?cacheDirectory=true&apos;,    exclude: /node_modules">
+<meta name="keywords" content="webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack打包优化">
+<meta property="og:url" content="http://yoursite.com/2018/03/14/webpack打包优化/index.html">
+<meta property="og:site_name" content="LittleCorn个人博客">
+<meta property="og:description" content="babel-loader开启缓存babel-loader 提供了 cacheDirectory特定选项（默认 false）：设置时，给定的目录将用于缓存加载器的结果。 123456789rules: [  &amp;#123;    test: /\.js$/,    loader: &apos;babel-loader?cacheDirectory=true&apos;,    exclude: /node_modules">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-14T07:32:53.753Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack打包优化">
+<meta name="twitter:description" content="babel-loader开启缓存babel-loader 提供了 cacheDirectory特定选项（默认 false）：设置时，给定的目录将用于缓存加载器的结果。 123456789rules: [  &amp;#123;    test: /\.js$/,    loader: &apos;babel-loader?cacheDirectory=true&apos;,    exclude: /node_modules">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/14/webpack打包优化/"/>
+
+
+
+
+
+  <title>webpack打包优化 | LittleCorn个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LittleCorn个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">碎碎念~</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/14/webpack打包优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">webpack打包优化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-14T13:36:31+08:00">
+                2018-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/开发工具/" itemprop="url" rel="index">
+                    <span itemprop="name">开发工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="babel-loader开启缓存"><a href="#babel-loader开启缓存" class="headerlink" title="babel-loader开启缓存"></a>babel-loader开启缓存</h3><p>babel-loader 提供了 cacheDirectory特定选项（默认 false）：设置时，给定的目录将用于缓存加载器的结果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">rules: [</span><br><span class="line">  &#123;</span><br><span class="line">    test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">    loader: <span class="string">'babel-loader?cacheDirectory=true'</span>,</span><br><span class="line">    exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">    include: [resolve(<span class="string">'src'</span>), resolve(<span class="string">'test'</span>)]</span><br><span class="line">  &#125;,</span><br><span class="line">  ... ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="cnd配合externals"><a href="#cnd配合externals" class="headerlink" title="cnd配合externals"></a>cnd配合externals</h3><p>如今前端开发，自然是使用ES6甚至更高版本，撸将起来才更嗨。但由于浏览器兼容问题，仍得使用 babel 转换。而这 babel-polyfill 也得引入以确保兼容；还比如项目开发中常用到的 moment, lodash等，都是挺大的存在，如果必须引入的话，即考虑外部引入之，再借助 externals 予以指定， webpack可以处理使之不参与打包，而依旧可以在代码中通过CMD、AMD或者window/global全局的方式访问。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack 中予以指定</span></span><br><span class="line">externals: &#123;</span><br><span class="line">  <span class="comment">// 'vue': 'Vue',</span></span><br><span class="line">  <span class="comment">// 'lodash': '_',</span></span><br><span class="line">  <span class="string">'babel-polyfill'</span>: <span class="string">'window'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">&lt;script src=<span class="string">"//cdn.bootcss.com/autotrack/2.4.1/autotrack.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">"//cdn.bootcss.com/babel-polyfill/7.0.0-alpha.15/polyfill.min.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="noParse"><a href="#noParse" class="headerlink" title="noParse"></a>noParse</h3><p>webpack打包的时候，有时不需要解析某些模块的依赖（这些模块并没有依赖，或者并根本就没有模块化），我们可以直接加上这个参数，直接跳过这种解析。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">  noParse: <span class="regexp">/node_modules\/(element-ui\.js)/</span>,</span><br><span class="line">  rules: [</span><br><span class="line">    &#123;</span><br><span class="line">      ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="优化搜索路径"><a href="#优化搜索路径" class="headerlink" title="优化搜索路径"></a>优化搜索路径</h3><p>在webpack打包时，会有各种各样的路径要去查询搜索，我们可以加上一些配置，让它搜索地更快。</p>
+<p>Webpack的resolve.modules配置模块库（即 node_modules）所在的位置，在 js 里出现 import ‘vue’ 这样不是相对、也不是绝对路径的写法时，会去 node_modules 目录下找。但是默认的配置，会采用向上递归搜索的方式去寻找，但通常项目目录里只有一个 node_modules，且是在项目根目录，为了减少搜索范围，可以直接写明 node_modules 的全路径；同样，对于别名(alias)的配置，亦当如此。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resolve</span> (<span class="params">dir</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> path.join(__dirname, <span class="string">'..'</span>, dir)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  resolve: &#123;</span><br><span class="line">    extensions: [<span class="string">'.js'</span>, <span class="string">'.vue'</span>, <span class="string">'.json'</span>],</span><br><span class="line">    modules: [</span><br><span class="line">      resolve(<span class="string">'src'</span>),</span><br><span class="line">      resolve(<span class="string">'node_modules'</span>)</span><br><span class="line">    ],</span><br><span class="line">    alias: &#123;</span><br><span class="line">      <span class="string">'vue$'</span>: <span class="string">'vue/dist/vue.common.js'</span>,</span><br><span class="line">      <span class="string">'src'</span>: resolve(<span class="string">'src'</span>),</span><br><span class="line">      <span class="string">'assets'</span>: resolve(<span class="string">'src/assets'</span>),</span><br><span class="line">      <span class="string">'components'</span>: resolve(<span class="string">'src/components'</span>),</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">      <span class="string">'store'</span>: resolve(<span class="string">'src/store'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="设置include-exclude"><a href="#设置include-exclude" class="headerlink" title="设置include/exclude"></a>设置include/exclude</h3><p>对于include，更精确指定要处理的目录，这可以减少不必要的遍历，从而减少性能损失。同样，对于已经明确知道的，不需要处理的目录，则应该予以排除，从而进一步提升性能。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">  loaders: [</span><br><span class="line">    &#123;</span><br><span class="line">      test: <span class="regexp">/\.vue$/</span>,</span><br><span class="line">      loader: <span class="string">'vue-loader'</span>,</span><br><span class="line">      include: [resolve(<span class="string">'src'</span>)],</span><br><span class="line">      exclude: <span class="regexp">/node_modules\/(?!(autotrack|dom-utils))|vendor\.dll\.js/</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="模块化引入"><a href="#模块化引入" class="headerlink" title="模块化引入"></a>模块化引入</h3><p>有些模块是可以以模块化来引入的，就是说可以只引入其中的一部分，比如说lodash</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原来的引入方式</span></span><br><span class="line"> <span class="keyword">import</span> &#123;debounce&#125; <span class="keyword">from</span> <span class="string">'lodash'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//按模块化的引入方式</span></span><br><span class="line"><span class="keyword">import</span> debounce <span class="keyword">from</span> <span class="string">'lodash/debounce'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="异步加载模块"><a href="#异步加载模块" class="headerlink" title="异步加载模块"></a>异步加载模块</h3><p>根据需要去异步加载，避免无端就引入早成的浪费。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Foo <span class="keyword">from</span> <span class="string">'./Foo.vue'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//按需引入</span></span><br><span class="line"><span class="keyword">const</span> Foo = <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'./Foo.vue'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="ParallelUglifyPlugin"><a href="#ParallelUglifyPlugin" class="headerlink" title="ParallelUglifyPlugin"></a>ParallelUglifyPlugin</h3><p>webpack自带的UglifyJS插件，是单线程执行的，而webpack-parallel-uglify-plugin可以并行运行UglifyJS插件，更加充分合理地使用CPU资源，大大减少构建时间。（该插件应用于生成环境）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ParallelUglifyPlugin = <span class="built_in">require</span>(<span class="string">'webpack-parallel-uglify-plugin'</span>);</span><br><span class="line"><span class="keyword">new</span> ParallelUglifyPlugin(&#123;</span><br><span class="line">  cacheDir: <span class="string">'.cache/'</span>,</span><br><span class="line">  uglifyJS:&#123;</span><br><span class="line">    output: &#123;</span><br><span class="line">      comments: <span class="literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    compress: &#123;</span><br><span class="line">      warnings: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="DllPlugin-DllReferencePlugin"><a href="#DllPlugin-DllReferencePlugin" class="headerlink" title="DllPlugin/DllReferencePlugin"></a>DllPlugin/DllReferencePlugin</h3><blockquote>
+<p>一个dll包，就是一个很纯净的依赖库，它本身不能运行，是用来给你的 app 或者业务代码引用的。</p>
+</blockquote>
+<p>Dll是动态链接库的意思，实际上就是将这些npm打包生成一个JSON文件，这个文件里包含了npm包的路径对应信息。webpack会先打包dll包，然后引用dll包，打包业务代码。</p>
+<p>首先，打包dll包，需要配置一个dll.config.js文件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> vendors = [</span><br><span class="line">    <span class="string">'react'</span>,</span><br><span class="line">    <span class="string">'react-dom'</span>,</span><br><span class="line">    <span class="string">'react-router'</span>,</span><br><span class="line">    <span class="comment">// ...其它库</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: <span class="string">'build'</span>,</span><br><span class="line">        filename: <span class="string">'[name].js'</span>,</span><br><span class="line">        library: <span class="string">'[name]'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    entry: &#123;</span><br><span class="line">        <span class="string">"lib"</span>: vendors,</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> webpack.DllPlugin(&#123;</span><br><span class="line">            path: <span class="string">'manifest.json'</span>,</span><br><span class="line">            name: <span class="string">'[name]'</span>,</span><br><span class="line">            context: __dirname,</span><br><span class="line">        &#125;),</span><br><span class="line">    ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>运行webpack，会输出mainifest.json文件，里面就是相应包的对应信息。</p>
+<p>然后再在项目配置文件中配置DllReferencePlugin，使用manifest这个清单文件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: <span class="string">'build'</span>,</span><br><span class="line">        filename: <span class="string">'[name].js'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    entry: &#123;</span><br><span class="line">        app: <span class="string">'./src/index.js'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> webpack.DllReferencePlugin(&#123;</span><br><span class="line">            context: __dirname,</span><br><span class="line">            manifest: <span class="built_in">require</span>(<span class="string">'./manifest.json'</span>),</span><br><span class="line">        &#125;),</span><br><span class="line">    ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="CommonsChunkPlugin"><a href="#CommonsChunkPlugin" class="headerlink" title="CommonsChunkPlugin"></a>CommonsChunkPlugin</h3><p>使用CommonsChunkPlugin提取公共的模块，可以减少文件体积，也有助于浏览器层的文件缓存，还是比较推荐的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 提取公共模块文件</span></span><br><span class="line"><span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">    chunks: [<span class="string">'home'</span>, <span class="string">'detail'</span>],</span><br><span class="line">    <span class="comment">// 开发环境下需要使用热更新替换，而此时common用chunkhash会出错，可以直接不用hash</span></span><br><span class="line">    filename: <span class="string">'[name].js'</span> + (isProduction ? <span class="string">'?[chunkhash:8]'</span> : <span class="string">''</span>),</span><br><span class="line">    name: <span class="string">'common'</span></span><br><span class="line">&#125;),</span><br><span class="line"></span><br><span class="line"><span class="comment">// 切合公共模块的提取规则，有时后你需要明确指定默认放到公共文件的模块</span></span><br><span class="line"><span class="comment">// 文件入口配置</span></span><br><span class="line">entry: &#123;</span><br><span class="line">    home: <span class="string">'./src/js/home'</span>,</span><br><span class="line">    detail: <span class="string">'./src/js/detail'</span>,</span><br><span class="line">    <span class="comment">// 提取jquery入公共文件</span></span><br><span class="line">    common: [<span class="string">'jquery'</span>, <span class="string">'react'</span>, <span class="string">'react-dom'</span>]</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="HappyPack"><a href="#HappyPack" class="headerlink" title="HappyPack"></a>HappyPack</h3><p>Happypack 的处理思路是：将原有的 webpack 对 loader 的执行过程，从单一进程的形式扩展多进程模式，从而加速代码构建；原本的流程保持不变，这样可以在不修改原有配置的基础上，来完成对编译过程的优化，具体配置如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> HappyPack = <span class="built_in">require</span>(<span class="string">'happypack'</span>);</span><br><span class="line"><span class="keyword">var</span> happyThreadPool = HappyPack.ThreadPool(&#123; <span class="attr">size</span>: os.cpus().length &#125;);</span><br><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">  loaders: [</span><br><span class="line">    &#123;</span><br><span class="line">      test: <span class="regexp">/\.js[x]?$/</span>,</span><br><span class="line">      include: [resolve(<span class="string">'src'</span>)],</span><br><span class="line">      exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">      loader: <span class="string">'happypack/loader?id=happybabel'</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;,</span><br><span class="line">plugins: [</span><br><span class="line">  <span class="keyword">new</span> HappyPack(&#123;</span><br><span class="line">    id: <span class="string">'happybabel'</span>,</span><br><span class="line">    loaders: [<span class="string">'babel-loader'</span>],</span><br><span class="line">    threadPool: happyThreadPool,</span><br><span class="line">    cache: <span class="literal">true</span>,</span><br><span class="line">    verbose: <span class="literal">true</span></span><br><span class="line">  &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>可以看到，通过在 loader 中配置直接指向 happypack 提供的 loader，对于文件实际匹配的处理 loader，则是通过配置在 plugin 属性来传递说明，这里 happypack 提供的 loader 与 plugin 的衔接匹配，则是通过id=happybabel来完成。</p>
+<p>Happypack 在编译过程中，除了利用多进程的模式加速编译，还同时开启了cache计算，能充分利用缓存读取构建文件，对构建的速度提升也是非常明显的。</p>
+<h3 id="ModuleConcatenationPlugin"><a href="#ModuleConcatenationPlugin" class="headerlink" title="ModuleConcatenationPlugin"></a>ModuleConcatenationPlugin</h3><p>这是<strong>webpack3的新特性</strong>（Scope Hoisting），其实是借鉴了Rollup打包工具来的，它将一些有联系的模块，放到一个闭包函数里面去，通过减少闭包函数数量从而加快JS的执行速度。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> webpack.optimize.ModuleConcatenationPlugin()</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/webpack/" rel="tag"># webpack</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/11/Linux上手指南/" rel="next" title="Linux上手指南">
+                <i class="fa fa-chevron-left"></i> Linux上手指南
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/blog-logo.jpg"
+                alt="Aisling Chen" />
+            
+              <p class="site-author-name" itemprop="name">Aisling Chen</p>
+              <p class="site-description motion-element" itemprop="description">生活不止苟且，还有诗和远方</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#babel-loader开启缓存"><span class="nav-number">1.</span> <span class="nav-text">babel-loader开启缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cnd配合externals"><span class="nav-number">2.</span> <span class="nav-text">cnd配合externals</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#noParse"><span class="nav-number">3.</span> <span class="nav-text">noParse</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化搜索路径"><span class="nav-number">4.</span> <span class="nav-text">优化搜索路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置include-exclude"><span class="nav-number">5.</span> <span class="nav-text">设置include/exclude</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块化引入"><span class="nav-number">6.</span> <span class="nav-text">模块化引入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步加载模块"><span class="nav-number">7.</span> <span class="nav-text">异步加载模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ParallelUglifyPlugin"><span class="nav-number">8.</span> <span class="nav-text">ParallelUglifyPlugin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DllPlugin-DllReferencePlugin"><span class="nav-number">9.</span> <span class="nav-text">DllPlugin/DllReferencePlugin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CommonsChunkPlugin"><span class="nav-number">10.</span> <span class="nav-text">CommonsChunkPlugin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HappyPack"><span class="nav-number">11.</span> <span class="nav-text">HappyPack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ModuleConcatenationPlugin"><span class="nav-number">12.</span> <span class="nav-text">ModuleConcatenationPlugin</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Aisling Chen</span>
+
+  
+</div>
+
+<!-- 
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+ 
+
+
+  <span class="post-meta-divider">|</span>
+ 
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+ -->
+
+ 
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

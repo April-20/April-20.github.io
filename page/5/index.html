@@ -252,6 +252,214 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/24/浏览器同源政策及跨域处理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/24/浏览器同源政策及跨域处理/" itemprop="url">浏览器同源政策及跨域处理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-24T17:51:43+08:00">
+                2018-02-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="同源政策"><a href="#同源政策" class="headerlink" title="同源政策"></a>同源政策</h3><p>同源政策是浏览器为了保证用户信息的安全，防止恶意的网站窃取数据，规定的一种政策。浏览器会限制从脚本内发起的跨域HTTP请求。</p>
+<p><strong>所谓同源是指协议、域名、端口相同</strong>。</p>
+<p>比如<a href="http://www.test.com/demo/index.html，其协议是http://，域名是" target="_blank" rel="noopener">http://www.test.com/demo/index.html，其协议是http://，域名是</a> www.test.com，端口号是80（默认端口号可以省略），它的同源检测为：</p>
+<ul>
+<li><a href="http://www.test.com/demo/page.html" target="_blank" rel="noopener">http://www.test.com/demo/page.html</a> — 同源</li>
+<li><a href="https://www.test.com/demo/index.html" target="_blank" rel="noopener">https://www.test.com/demo/index.html</a> — 不同源，协议不同</li>
+<li><a href="http://www.study.test.com/demo/index.html" target="_blank" rel="noopener">http://www.study.test.com/demo/index.html</a> — 不同源，域名不同</li>
+<li><a href="http://www.test.com:8080/demo/index.html" target="_blank" rel="noopener">http://www.test.com:8080/demo/index.html</a> — 不同源，端口号不同</li>
+</ul>
+<p>如果非同源，以下三种行为会受到限制：</p>
+<ol>
+<li>Cookie、LocalStorage和IndexDB无法读取。</li>
+<li>DOM无法获得。</li>
+<li>Ajax请求不能发送。</li>
+</ol>
+<p>不受同源策略限制的行为：</p>
+<ul>
+<li>页面中的链接，重定向以及表单提交是不会受到同源策略限制的。</li>
+<li>script/img/link/iframe等的src资源引入可以跨域，但是js不能读写加载的内容。</li>
+</ul>
+<h3 id="document-domain"><a href="#document-domain" class="headerlink" title="document.domain"></a>document.domain</h3><p>cookie是服务器写入浏览器的一小段信息，只有同源的网页才能共享。</p>
+<p><strong>当两个网页一级域名相同，只是二级域名不同时，浏览器允许通过设置document.domain共享cookie</strong>。</p>
+<p>例如：A网站是<a href="http://w1.test.com/a.html，B的网站是http://w2.test.com/b.html，那么只要设置相同的document.domain，两个网页就可以共享cookie。" target="_blank" rel="noopener">http://w1.test.com/a.html，B的网站是http://w2.test.com/b.html，那么只要设置相同的document.domain，两个网页就可以共享cookie。</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.domain = <span class="string">'test.com'</span>;</span><br></pre></td></tr></table></figure>
+<p>现在，A网站通过脚本设置一个cookie。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.cookie = <span class="string">'name=cyl'</span>;</span><br></pre></td></tr></table></figure>
+<p>B网站就可以读到这个cookie。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cookies = <span class="built_in">document</span>.cookie;</span><br></pre></td></tr></table></figure>
+<p>服务器也可以在设置cookie的时候，指定cookie的所属域名为一级域名：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set-cookie: name=cyl; domain=.test.com; path=<span class="regexp">/</span></span><br></pre></td></tr></table></figure>
+<p>这样的话，二级和三级域名不用做任何设置，都可以读取这个cookie。</p>
+<blockquote>
+<p>这种方法只适用于cookie和iframe</p>
+</blockquote>
+<h3 id="window-name"><a href="#window-name" class="headerlink" title="window.name"></a>window.name</h3><p>浏览器窗口有window.name属性，其最大特点是：无论是否同源，只要在同一个窗口里，前一个网页设置了这个属性，后一个网页就可以读取它。</p>
+<p>父窗口先打开一个子窗口，载入一个不同源的网页，该网页将信息写入window.name属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.name = data;</span><br></pre></td></tr></table></figure>
+<p>接着，子窗口跳回一个与主窗口同域的网址：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location = <span class="string">'http://parent.url.com/xxx.html'</span>;</span><br></pre></td></tr></table></figure>
+<p>然后，主窗口就可以读取子窗口的window.name了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = <span class="built_in">document</span>.getElementById(<span class="string">'frameName'</span>).contentWindow.name;</span><br></pre></td></tr></table></figure>
+<p>这种方法的优点是，window.name容量很大，可以设置非常长的字符串；缺点是必须监听子窗口window.name属性的变化，影响网页性能。</p>
+<h3 id="location-hash"><a href="#location-hash" class="headerlink" title="location.hash"></a>location.hash</h3><p>hash值指的是url的#后面的部分，比如<a href="http://www.baidu.com#helloworld，其中“#helloworld”就是location.hash。改变hash值不会刷新页面，因此可以利用hash值来传递数据。" target="_blank" rel="noopener">http://www.baidu.com#helloworld，其中“#helloworld”就是location.hash。改变hash值不会刷新页面，因此可以利用hash值来传递数据。</a></p>
+<p>父窗口可以把信息，写入子窗口的hash里。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> src = <span class="string">'http://www.test.com/'</span>+<span class="string">'#'</span>+ data;</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'frameName'</span>).src = src;</span><br></pre></td></tr></table></figure></p>
+<p>子窗口通过监听hashchange事件得到通知。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onhashchange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> data = <span class="built_in">window</span>.location.hash;</span><br><span class="line">    <span class="comment">//....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>同样的，子窗口也可以改变父窗口的hash值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parent.location.href = target + <span class="string">'#'</span>+ hash;</span><br></pre></td></tr></table></figure>
+<h3 id="postMessage"><a href="#postMessage" class="headerlink" title="postMessage"></a>postMessage</h3><p>HTML5引入了一个全新的API: 跨文档通信API，这个API为window对象新增了一个window.postMessage方法，允许跨窗口通信，不论这两个窗口是否同源。</p>
+<p>postMessage方法的第一个参数是具体的信息内容，第二个参数是接收消息的窗口的源（origin），即“协议+域名+端口”。也可以设置为*，表示不限制域名，向所有窗口发送。</p>
+<p>例如：父窗口<a href="http://study.com向子窗口http://test.com发消息，调用postMessage方法就可以了。" target="_blank" rel="noopener">http://study.com向子窗口http://test.com发消息，调用postMessage方法就可以了。</a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 打开一个新窗口</span></span><br><span class="line"><span class="keyword">var</span> domain = <span class="string">'http://test.com'</span>;</span><br><span class="line"><span class="keyword">var</span> myPopup = <span class="built_in">window</span>.open(domain + <span class="string">'title'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 周期性的发送消息</span></span><br><span class="line">setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> message = <span class="string">'The time is:'</span> + (<span class="keyword">new</span> <span class="built_in">Date</span>().getTime());</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'sending message:'</span>+message);</span><br><span class="line">    myPopup.postMessage(message, domain);</span><br><span class="line">&#125;,<span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//监听消息反馈</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'message'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(event.origin!==<span class="string">'http://test.com'</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'received data:'</span>+event.data);</span><br><span class="line">&#125;,<span class="literal">false</span>);</span><br></pre></td></tr></table></figure></p>
+<p>子窗口接收数据：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'message'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(event.origin!=<span class="string">'http://study.com'</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'received message:'</span>+event.data);</span><br><span class="line">    event.source.postMessage(<span class="string">'Miss you!'</span>, event.origin);</span><br><span class="line">&#125;,<span class="literal">false</span>);</span><br></pre></td></tr></table></figure></p>
+<p>message事件的事件对象event，提供以下三个属性：</p>
+<ul>
+<li>event.source：消息源，消息的发送窗口</li>
+<li>event.origin ： 消息源的网址，用来验证数据源</li>
+<li>event.data ： 消息内容</li>
+</ul>
+<p>注意：一定要验证消息的来源的URL，只有在目标方合法的情况下我们再来处理它发来的消息。</p>
+<p>如果是使用iframe，应该这样写,确保使用的是iframe的contentWindow属性，而不是节点对象：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 捕获iframe</span></span><br><span class="line"><span class="keyword">var</span> domain = <span class="string">'http://test.com'</span>;</span><br><span class="line"><span class="keyword">var</span> iframe = <span class="built_in">document</span>.getElementById(<span class="string">'framName'</span>).contentWindow;</span><br><span class="line"></span><br><span class="line"><span class="comment">//发送消息</span></span><br><span class="line">setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> message = <span class="string">'The time is:'</span>+(<span class="keyword">new</span> <span class="built_in">Date</span>().getTime());</span><br><span class="line">    iframe.postMessage(message, domain);</span><br><span class="line">&#125;,<span class="number">1000</span>);</span><br></pre></td></tr></table></figure></p>
+<h3 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h3><p>JSONP是服务器与客户端跨源通信的常用方法。最大特点就是简单适用，老式浏览器全部支持，服务器改造非常小。</p>
+<p><strong>基本思想：网页通过添加一个script元素，向服务器请求JSON数据，这种做法不受同源策略的限制；服务器收到请求后，将数据放在一个指定名字的回调函数里传出来。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addScriptTag</span>(<span class="params">src</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">  script.setAttribute(<span class="string">"type"</span>,<span class="string">"text/javascript"</span>);</span><br><span class="line">  script.src = src;</span><br><span class="line">  <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  addScriptTag(<span class="string">'http://example.com/ip?callback=foo'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Your public IP address is: '</span> + data.ip);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>请求地址中的callback参数用来指定回调函数的名字，这对于JSONP是必须的。</p>
+<h3 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h3><p>WebSocket是一种通信协议，使用ws://（非加密）和wss://（加密）作为协议前缀。该协议不实行同源策略，只要服务器支持，就可以通过它进行跨源通信。</p>
+<h3 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h3><p> CORS是跨域资源共享（Cross-Origin Resource Sharing）的缩写。<strong>它是W3C标准，是跨源AJAX请求的根本解决方法。</strong></p>
+<p> 相比JSONP只能发送get请求，CORS允许发送任何类型的请求。</p>
+<p> CORS需要浏览器和服务器同时支持，目前，所有浏览器都支持该功能（IE浏览器不能低于IE10）,整个CORS通信过程都是浏览器自动完成，不需要用户参与。因此，实现CORS通信的关键是服务器。只要服务器实现了CORS接口，就可以跨域通信。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/23/Ajax详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2011,178 +2219,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/26/作用域链与闭包/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aisling Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleCorn个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/26/作用域链与闭包/" itemprop="url">作用域链与闭包</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-26T12:23:37+08:00">
-                2018-01-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>所有变量都存在于一个执行环境当中，这个执行环境决定了变量的生命周期，以及哪一部分代码可以访问其中的变量。这个执行环境就称为“作用域”。</p>
-<p>变量的作用域无非就两种：<strong>全局和局部（函数）</strong>。</p>
-<p>注意：<strong>没有块级作用域</strong>！</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> color = <span class="string">"blue"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">alert(color); <span class="comment">// "blue"</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for(var i=0; i&lt;10; i++)&#123;</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">alert(i); // 10</span><br></pre></td></tr></table></figure>
-<p>在js中，if 或 for 语句中的变量声明会将变量添加到当前的执行环境中，即使if执行完毕或者for循环执行结束后，变量也依旧会存在循环外部的执行环境中。</p>
-<p>JavaScript语言的特殊之处，就在于函数内部可以直接读取全局变量，在函数外部无法读取函数内部的局部变量（<strong>即不可逆的由内向外的访问顺序</strong>）。</p>
-<p>这里需要注意的一个点是：函数内部声明变量的时候，一定要使用 var 命令。如果不用的话，实际上声明的是一个全局变量。</p>
-<h3 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h3><p>作用域链：子对象会一级一级地向上寻找所有父对象的变量。父对象的所有变量，对子对象都是可见的，反之则不成立。</p>
-<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><ul>
-<li>全局变量的生命周期是永久的，除非手动删除（全局执行环境直到应用程序退出，如关闭网页或浏览器时，才会被销毁）。</li>
-<li>函数内部的局部变量，会随着函数的调用的结束而被销毁。</li>
-</ul>
-<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>有时我们需要得到函数内部的局部变量，前面说过正常情况下，这是办不到的，所以只有通过变通的方法才能实现。那就是在父函数内部再定义一个子函数，然后再返回这个子函数，我们就可以在父函数外部读取它的内部变量了。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n = <span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = f1();</span><br><span class="line">result();  <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-<p>这里的函数f2，就是闭包。</p>
-<p>闭包可以理解成：能够读取其他函数内部变量的函数。因为在JavaScript中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成“定义在一个函数内部的函数”。其本质，就是将函数内部和函数外部连接起来的一座桥梁。</p>
-<p><strong>闭包的用途</strong>：</p>
-<ul>
-<li>可以读取函数内部变量</li>
-<li>让这些变量的值始终保持在内存中</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n = <span class="number">1</span>;</span><br><span class="line">    add = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        n += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(n);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> f2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = f1();</span><br><span class="line"></span><br><span class="line">result(); <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line">add();</span><br><span class="line"></span><br><span class="line">result(); <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
-<p>在上面代码中，result实际上就是闭包f2函数。它一共运行了两次，第一次的值1，第二次的值是2. 这就证明了，函数f1中的局部变量n一直保存在内存中,并没有在f1调用后自动清除（一般情况下局部变量会随着函数执行结束而被销毁）。</p>
-<p>为什么会这样呢？原因在于f1是f2的父函数，而f2被赋值给了一个全局变量，这导致f2始终在内存中，而f2的存在依赖于f1，因此f1也始终在内存中，不会在调用结束后，被垃圾回收机制回收。</p>
-<p>这里需要注意的是：add这个函数，首先add前面没有使用var关键字，因此add是一个全局变量，而不是局部变量。其次，add的值是一个匿名函数，而这个匿名函数本身也是一个闭包，所以add相当于是一个setter，可以在函数外部对函数内部的变量进行操作。</p>
-<p><strong>使用闭包的注意点：</strong></p>
-<ul>
-<li>由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题，在IE中可能导致内存泄漏（因为IE中的BOM和DOM中的对象是使用C++以COM对象的方式实现的，而COM对象的垃圾收集机制采用的是引用计数的方式。如果两个对象之间形成循环引用，那么这两个对象都无法被回收）。解决方法是，再退出函数之前，将不使用的局部变量全部删除，比如手动把这些变量设置为null。</li>
-<li>闭包会在父函数外部，改变父函数内部变量的值。所以，如果把父函数当作对象使用，把闭包当作它的公用方法，把内部变量当作它的私有属性，这时一定要注意，不要随意改变父函数内部变量的值。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2237,7 +2273,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
