@@ -345,7 +345,7 @@
         <h3 id="babel-loader开启缓存"><a href="#babel-loader开启缓存" class="headerlink" title="babel-loader开启缓存"></a>babel-loader开启缓存</h3><p>babel-loader 提供了 cacheDirectory特定选项（默认 false）：设置时，给定的目录将用于缓存加载器的结果。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">rules: [</span><br><span class="line">  &#123;</span><br><span class="line">    test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">    loader: <span class="string">'babel-loader?cacheDirectory=true'</span>,</span><br><span class="line">    exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">    include: [resolve(<span class="string">'src'</span>), resolve(<span class="string">'test'</span>)]</span><br><span class="line">  &#125;,</span><br><span class="line">  ... ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <h3 id="cnd配合externals"><a href="#cnd配合externals" class="headerlink" title="cnd配合externals"></a>cnd配合externals</h3><p>如今前端开发，自然是使用ES6甚至更高版本，撸将起来才更嗨。但由于浏览器兼容问题，仍得使用 babel 转换。而这 babel-polyfill 也得引入以确保兼容；还比如项目开发中常用到的 moment, lodash等，都是挺大的存在，如果必须引入的话，即考虑外部引入之，再借助 externals 予以指定， webpack可以处理使之不参与打包，而依旧可以在代码中通过CMD、AMD或者window/global全局的方式访问。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack 中予以指定</span></span><br><span class="line">externals: &#123;</span><br><span class="line">  <span class="comment">// 'vue': 'Vue',</span></span><br><span class="line">  <span class="comment">// 'lodash': '_',</span></span><br><span class="line">  <span class="string">'babel-polyfill'</span>: <span class="string">'window'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">&lt;script src=<span class="string">"//cdn.bootcss.com/autotrack/2.4.1/autotrack.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">"//cdn.bootcss.com/babel-polyfill/7.0.0-alpha.15/polyfill.min.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack 中予以指定</span></span><br><span class="line">externals: &#123;</span><br><span class="line">  <span class="comment">// 'vue': 'Vue',</span></span><br><span class="line">  <span class="comment">// 'lodash': '_',</span></span><br><span class="line">  <span class="string">'babel-polyfill'</span>: <span class="string">'window'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">&lt;script src=<span class="string">"//cdn.bootcss.com/autotrack/2.4.1/autotrack.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script src=<span class="string">"//cdn.bootcss.com/babel-polyfill/7.0.0-alpha.15/polyfill.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 <h3 id="noParse"><a href="#noParse" class="headerlink" title="noParse"></a>noParse</h3><p>webpack打包的时候，有时不需要解析某些模块的依赖（这些模块并没有依赖，或者并根本就没有模块化），我们可以直接加上这个参数，直接跳过这种解析。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">  noParse: <span class="regexp">/node_modules\/(element-ui\.js)/</span>,</span><br><span class="line">  rules: [</span><br><span class="line">    &#123;</span><br><span class="line">      ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="优化搜索路径"><a href="#优化搜索路径" class="headerlink" title="优化搜索路径"></a>优化搜索路径</h3><p>在webpack打包时，会有各种各样的路径要去查询搜索，我们可以加上一些配置，让它搜索地更快。</p>
@@ -415,6 +415,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/15/Vue生命周期/" rel="prev" title="Vue生命周期">
+                Vue生命周期 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -495,7 +499,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -506,7 +510,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -517,7 +521,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

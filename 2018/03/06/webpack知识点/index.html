@@ -91,7 +91,7 @@
 <meta property="og:image" content="http://yoursite.com/images/webpack打包过程.png">
 <meta property="og:image" content="http://yoursite.com/images/webpack配置devtool.png">
 <meta property="og:image" content="http://yoursite.com/images/webpack配置devserver.png">
-<meta property="og:updated_time" content="2018-03-07T02:07:23.352Z">
+<meta property="og:updated_time" content="2018-03-16T01:46:36.584Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack知识点">
 <meta name="twitter:description" content="webpack概念 打包工具的角色：文件依赖管理、资源加载管理(合并与嵌入)、效率和优化管理(css和图片的处理，部署与假数据)。打包工具的结构应该是tool+plugins的结构，tool提供基本能力，即文件依赖管理和资源加载管理，在此基础上通过一系列的plugins来丰富打包工具的能力。  WebPack可以看做是模块打包机：它做的事情是，分析你的项目结构，找到JavaScript模块以及其它">
@@ -358,6 +358,15 @@
 <p><img src="/images/webpack工作方式.png" alt="image"></p>
 <p>如果实在要把二者进行比较，Webpack的处理速度更快更直接，能打包更多不同类型的文件。</p>
 <h3 id="webpack工作原理"><a href="#webpack工作原理" class="headerlink" title="webpack工作原理"></a>webpack工作原理</h3><p>webpack处理文件的过程可以分为两个维度：文件间的关系和文件的内容。文件间的关系处理，主要是通过文件和模块标记方法来实现；文件内容的处理主要通过loaders和plugins来处理。</p>
+<p><strong>工作步骤：</strong></p>
+<ul>
+<li>从入口文件开始递归地建立一个依赖关系图；</li>
+<li>把所有文件都转化成模块函数；</li>
+<li>根据依赖关系，按照配置文件把模块函数分组打包成若干个bundle；</li>
+<li>通过script标签把打包地bundle注入到html中，通过mainfest文件来管理bundle文件的运行和加载。</li>
+</ul>
+<p>在webpack打包的文件中，模块以模块函数来表示的。通过把文件转换成模块函数就可以控制模块的运行时间。即加载完成后不会立即执行，等到调用模块函数的时候才会执行。</p>
+<p>webpack的运行就是指执行模块函数得到模块对象的过程。</p>
 <h4 id="文件内容的处理"><a href="#文件内容的处理" class="headerlink" title="文件内容的处理"></a>文件内容的处理</h4><p>在webpack的世界里，js是一等公民，是处理的入口，其他资源都是在js中通过类似require的方式引入。webpack虽然支持命令行操作，但是一般将配置写在webpack.conf.js文件中，文件内容是一个配置对象，基本配置项是：entry、ouput、module、plugins属性。</p>
 <p>这里引入了一个chunk的概念，chunk表示一个文件，默认情况下webpack的输入是一个入口文件，输出也是一个文件，这个文件就是一个chunk，chunkId就是产出时给每个文件一个唯一标识id，chunkhash就是文件内容的md5值，name就是在entry中指定的key值。</p>
 <p>moudle对应loader（加载器 ）的配置，主要对指定类型的文件进行操作，举个例子：js类型的文件和css文件需要不同的loader来处理。最常用的加载器是eslint-loader和babel-loader。</p>
@@ -633,7 +642,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -644,7 +653,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -655,7 +664,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

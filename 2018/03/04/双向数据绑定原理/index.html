@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/vue双向数据绑定.png">
 <meta property="og:image" content="http://yoursite.com/images/vue双向数据绑定compile.png">
-<meta property="og:updated_time" content="2018-03-10T09:32:02.551Z">
+<meta property="og:updated_time" content="2018-03-16T06:01:40.325Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据双向绑定原理">
 <meta name="twitter:description" content="数据劫持-Vuevue采用数据劫持结合发布者-订阅者模式的方式，通过Object.defineProperty()来劫持各个属性的setter、getter，在数据变动时发布消息给订阅者，触发相应的监听回调。 主要思路：  实现一个数据监听器Observer，能够对数据对象的所有属性进行监听，如有变动可拿到最新值并通知订阅者。 实现一个指令解析器Compile，对每个元素节点的指令进行扫描和解析，">
@@ -410,10 +410,18 @@
 <li>在作用域上添加数据本身并不会有性能折扣，如果没有监听器在监控某个属性，它在不在作用域上都无所谓。Angular并不会遍历作用域的属性，它遍历的是监听器。一旦将数据绑定到UI上，就会添加一个监听器。</li>
 <li>$digest里会调用每个getNewValue()，因此，最好关注监听器的数量，还有每个独立的监控函数或者表达式的性能。</li>
 </ul>
-<h3 id="虚拟DOM-React"><a href="#虚拟DOM-React" class="headerlink" title="虚拟DOM-React"></a>虚拟DOM-React</h3><p><strong>原理：</strong> React先将真实的DOM抽象成一个JavaScript对象，也就是时虚拟DOM，在内存中维护一个虚拟的DOM树，对这个树进行读或写，实际上是对虚拟DOM进行。当数据变化时，React会自动更新虚拟DOM，然后将新的虚拟DOM和旧的虚拟DOM进行对比，找到变更的部分，得出一个diff，然后将diff放到一个队列里，最终批量更新这些diff更新到DOM中。</p>
+<h3 id="虚拟DOM-React"><a href="#虚拟DOM-React" class="headerlink" title="虚拟DOM-React"></a>虚拟DOM-React</h3><p><strong>原理：</strong> React先将真实的DOM抽象成一个JavaScript对象，也就是虚拟DOM树，通过虚拟DOM构建正真的DOM；当状态发生变化时，重新构造一颗新的对象树，然后用新的树和旧的树进行比较，记录两棵树的差异；然后批量把所有差异应用到真实的DOM树上。</p>
 <p><strong>优点：</strong> 最终表现在DOM上的修改只是变更的部分，可以保证非常高效的渲染。</p>
 <p><strong>缺点：</strong> 首次渲染大量DOM时，由于多了一层虚拟DOM的计算，会比innerHTML插入慢。</p>
 <p><strong>diff算法：</strong> 首先，每一次生成的虚拟DOM树上的各个节点都对应唯一的一个id，当第二次生成了新的DOM树时， 对原来树上的每一个节点对比新树上对应节点，如果不同，就记录下来这个差异。进行不同的差异进行不同的操作。</p>
+<p>在实际的代码中，会对新旧两棵树进行一个深度优先的遍历，这样每个节点都会有一个唯一的标记。在深度优先遍历的时候，每遍历到一个节点就把该节点和新的的树进行对比。如果有差异的话就记录到一个对象里面(这里有差异类型)。</p>
+<p>上面说的节点的差异指的是什么呢？对 DOM 操作可能会：</p>
+<ul>
+<li>替换掉原来的节点。</li>
+<li>移动、删除、新增子节点。</li>
+<li>修改了节点的属性。</li>
+<li>对于文本节点，文本内容可能会改变。</li>
+</ul>
 
       
     </div>
@@ -539,7 +547,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -550,7 +558,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -561,7 +569,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

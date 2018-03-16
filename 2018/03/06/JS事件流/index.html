@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/事件流Event属性.png">
 <meta property="og:image" content="http://yoursite.com/images/事件流Event方法.png">
-<meta property="og:updated_time" content="2018-03-06T05:53:18.129Z">
+<meta property="og:updated_time" content="2018-03-15T01:52:19.600Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS事件流">
 <meta name="twitter:description" content="DOM级别与DOM事件针对不同级别的DOM，我们的DOM事件处理方式也是不一样的。 DOM级别一共可以分为4个级别：DOM0级，DOM1级，DOM2级和DOM3级。 而DOM事件分为3个级别：DOM0级事件处理，DOM2级事件处理和DOM3级事件处理。其中1级DOM标准中并没有定义事件相关的内容，所以没有所谓的1级DOM事件模型。 事件 事件指可以被 JavaScript 侦测到的行为。即鼠标点击">
@@ -488,6 +488,18 @@
 </ul>
 <p>可以像分配其他事件一样在DOM中分派创建的自定义事件对象。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="built_in">document</span>.implementation.hasFeature(<span class="string">"CustomEvents"</span>,<span class="string">"3.0"</span>))&#123;</span><br><span class="line"><span class="keyword">var</span> e = <span class="built_in">document</span>.createEvent(<span class="string">"CustomEvent"</span>);</span><br><span class="line">e.initCustomEvent(<span class="string">"myEvent"</span>,<span class="literal">true</span>,<span class="literal">false</span>,<span class="string">"hello world!"</span>);</span><br><span class="line">div.dispatchEvent(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="事件代理的优缺点"><a href="#事件代理的优缺点" class="headerlink" title="事件代理的优缺点"></a>事件代理的优缺点</h3><p><strong>优点：</strong></p>
+<ul>
+<li>减少事件注册，节省内存；</li>
+<li>简化dom节点更新时，相应事件的更新。</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>事件委托基于冒泡，对于不冒泡的事件不支持；</li>
+<li>层级过多，冒泡过程中，可能会被某层阻止掉；</li>
+<li>理论上委托会导致浏览器频繁调用处理函数，虽然可能不需要处理。所以建议就近委托；</li>
+<li>把所有事件都用代理可能会出现误判。比如，在document中代理了button的click事件，其他人在引用改js时，可能不知道，造成button触发两个click事件。</li>
+</ul>
 
       
     </div>
@@ -611,7 +623,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -622,7 +634,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -633,7 +645,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -666,7 +678,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM级别与DOM事件"><span class="nav-number">1.</span> <span class="nav-text">DOM级别与DOM事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件"><span class="nav-number">2.</span> <span class="nav-text">事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件流"><span class="nav-number">3.</span> <span class="nav-text">事件流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件处理程序"><span class="nav-number">4.</span> <span class="nav-text">事件处理程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML事件处理程序"><span class="nav-number">4.1.</span> <span class="nav-text">HTML事件处理程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DOM0级事件处理程序"><span class="nav-number">4.2.</span> <span class="nav-text">DOM0级事件处理程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DOM2级事件处理程序（不支持IE）"><span class="nav-number">4.3.</span> <span class="nav-text">DOM2级事件处理程序（不支持IE）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IE事件处理程序"><span class="nav-number">4.4.</span> <span class="nav-text">IE事件处理程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#跨浏览器的事件处理程序"><span class="nav-number">4.5.</span> <span class="nav-text">跨浏览器的事件处理程序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件对象"><span class="nav-number">5.</span> <span class="nav-text">事件对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#属性"><span class="nav-number">5.1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法"><span class="nav-number">5.2.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#兼容性"><span class="nav-number">5.3.</span> <span class="nav-text">兼容性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件委托"><span class="nav-number">6.</span> <span class="nav-text">事件委托</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM3级事件"><span class="nav-number">7.</span> <span class="nav-text">DOM3级事件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM级别与DOM事件"><span class="nav-number">1.</span> <span class="nav-text">DOM级别与DOM事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件"><span class="nav-number">2.</span> <span class="nav-text">事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件流"><span class="nav-number">3.</span> <span class="nav-text">事件流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件处理程序"><span class="nav-number">4.</span> <span class="nav-text">事件处理程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML事件处理程序"><span class="nav-number">4.1.</span> <span class="nav-text">HTML事件处理程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DOM0级事件处理程序"><span class="nav-number">4.2.</span> <span class="nav-text">DOM0级事件处理程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DOM2级事件处理程序（不支持IE）"><span class="nav-number">4.3.</span> <span class="nav-text">DOM2级事件处理程序（不支持IE）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IE事件处理程序"><span class="nav-number">4.4.</span> <span class="nav-text">IE事件处理程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#跨浏览器的事件处理程序"><span class="nav-number">4.5.</span> <span class="nav-text">跨浏览器的事件处理程序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件对象"><span class="nav-number">5.</span> <span class="nav-text">事件对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#属性"><span class="nav-number">5.1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法"><span class="nav-number">5.2.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#兼容性"><span class="nav-number">5.3.</span> <span class="nav-text">兼容性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件委托"><span class="nav-number">6.</span> <span class="nav-text">事件委托</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM3级事件"><span class="nav-number">7.</span> <span class="nav-text">DOM3级事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件代理的优缺点"><span class="nav-number">8.</span> <span class="nav-text">事件代理的优缺点</span></a></li></ol></div>
             
 
           </div>

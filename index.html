@@ -252,6 +252,1020 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/16/React生命周期/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/16/React生命周期/" itemprop="url">React生命周期</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T13:18:48+08:00">
+                2018-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React/" itemprop="url" rel="index">
+                    <span itemprop="name">React</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/images/react生命周期.jpg" alt="image"></p>
+<p>React 生命周期分为三种状态 </p>
+<ol>
+<li>初始化 </li>
+<li>更新 </li>
+<li>销毁</li>
+</ol>
+<ul>
+<li>getDefaultProps()：设置默认的props，也可以用dufaultProps设置组件的默认属性.</li>
+<li>getInitialState()：在使用es6的class语法时是没有这个钩子函数的，可以直接在constructor中定义this.state。此时可以访问this.props</li>
+<li>componentWillMount()：组件初始化时只调用，以后组件更新不调用，整个生命周期只调用一次，此时可以修改state。</li>
+<li>render()：react最重要的步骤，创建虚拟dom，进行diff算法，更新dom树都在此进行。此时就不能更改state了。</li>
+<li>componentDidMount()：组件渲染之后调用，只调用一次。可以通过this.getDOMNode()来访问DOM结构。</li>
+<li>componentWillUpdate(nextProps,nextState)：组件初始化时不调用，只有在组件将要更新时才调用，此时可以修改state</li>
+<li>componentDidUpdate(prevProps,prevState)：组件初始化时不调用，组件更新完成后调用，此时可以获取dom节点。</li>
+<li>componentWillUnmount()：组件将要卸载时调用，一些事件监听和定时器需要在此时清除。</li>
+<li>componentWillReceiveProps(object nextProps)：已加载组件收到新的参数时调用</li>
+<li>shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用。</li>
+</ul>
+<blockquote>
+<p>shouldComponentUpdate(nextProps, nextState): react性能优化非常重要的一环。组件接受新的state或者props时调用，我们可以设置在此对比前后两个props和state是否相同，如果相同则返回false阻止更新，因为相同的属性状态一定会生成相同的dom树，这样就不需要创造新的dom树和旧的dom树进行diff算法对比，节省大量性能，尤其是在dom结构复杂的时候.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/16/MVC、MVP、MVVM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/16/MVC、MVP、MVVM/" itemprop="url">MVC、MVP、MVVM</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T12:10:12+08:00">
+                2018-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><ul>
+<li>视图（View）：用户界面。</li>
+<li>控制器（Controller）：业务逻辑</li>
+<li>模型（Model）：数据保存</li>
+</ul>
+<p>各部分之间的通信方式如下:</p>
+<p><img src="/images/MVC.png" alt="image"></p>
+<ol>
+<li>View 传送指令到 Controller</li>
+<li>Controller 完成业务逻辑后，要求 Model 改变状态</li>
+<li>Model 将新的数据发送到 View，用户得到反馈。</li>
+</ol>
+<p><strong>所有通信都是单向的。</strong></p>
+<h3 id="MVP"><a href="#MVP" class="headerlink" title="MVP"></a>MVP</h3><p>MVP 模式将 Controller 改名为 Presenter，同时改变了通信方向。</p>
+<p><img src="/images/MVP.png" alt="image"></p>
+<ol>
+<li>各部分之间的通信，都是双向的。</li>
+<li>View 与 Model 不发生联系，都通过 Presenter 传递。</li>
+<li>View 非常薄，不部署任何业务逻辑，称为”被动视图”（Passive View），即没有任何主动性，而 Presenter非常厚，所有逻辑都部署在那里。</li>
+</ol>
+<h3 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h3><p>MVVM 模式将 Presenter 改名为 ViewModel，基本上与 MVP 模式完全一致。</p>
+<p><img src="/images/MVVM.png" alt="image"></p>
+<p>唯一的区别是，它采用双向绑定（data-binding）：View的变动，自动反映在 ViewModel，反之亦然。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/16/VueResource学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/16/VueResource学习笔记/" itemprop="url">VueResource学习笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T11:44:45+08:00">
+                2018-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="vue-resource特性"><a href="#vue-resource特性" class="headerlink" title="vue-resource特性"></a>vue-resource特性</h3><ol>
+<li><p><strong>体积小。</strong><br>vue-resource非常小巧，在压缩以后只有大约12KB，服务端启用gzip压缩后只有4.5KB大小，这远比jQuery的体积要小得多。</p>
+</li>
+<li><p><strong>支持主流的浏览器。</strong><br>和Vue.js一样，vue-resource除了不支持IE 9以下的浏览器，其他主流的浏览器都支持。</p>
+</li>
+<li><p><strong>支持Promise API和URI Templates。</strong><br>Promise是ES6的特性，Promise的中文含义为“先知”，Promise对象用于异步计算。 URI Templates表示URI模板，有些类似于 ASP.NET MVC的路由模板。</p>
+</li>
+<li><p><strong>支持拦截器。</strong><br>拦截器是全局的，拦截器可以在请求发送前和发送请求后做一些处理。<br>拦截器在一些场景下会非常有用，比如请求发送前在headers中设置access_token，或者在请求失败时，提供共通的处理方式。</p>
+</li>
+</ol>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*引入Vue框架*/</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="comment">/*引入资源请求插件*/</span></span><br><span class="line"><span class="keyword">import</span> VueResource <span class="keyword">from</span> <span class="string">'vue-resource'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*使用VueResource插件*/</span></span><br><span class="line">Vue.use(VueResource)</span><br></pre></td></tr></table></figure>
+<p>引入vue-resource后，可以基于全局的Vue对象使用http，也可以基于某个Vue实例使用http。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基于全局Vue对象使用http</span></span><br><span class="line">Vue.http(option);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在一个Vue实例内使用$http</span></span><br><span class="line"><span class="keyword">this</span>.$http(option)</span><br></pre></td></tr></table></figure>
+<p><strong>方法：</strong></p>
+<ul>
+<li>get(url, [options])</li>
+<li>head(url, [options])</li>
+<li>delete(url, [options])</li>
+<li>jsonp(url, [options])</li>
+<li>post(url, [body], [options])</li>
+<li>put(url, [body], [options])</li>
+<li>patch(url, [body], [options])</li>
+</ul>
+<p>除了jsonp以外，另外6种的API名称是标准的HTTP方法。当服务端使用REST API时，客户端的编码风格和服务端的编码风格近乎一致，这可以减少前端和后端开发人员的沟通成本。</p>
+<h3 id="options对象"><a href="#options对象" class="headerlink" title="options对象"></a>options对象</h3><p>发送请求时的options选项对象包含以下属性：</p>
+<p><img src="/images/vueResource请求配置.png" alt="image"></p>
+<p><strong>emulateHTTP的作用</strong></p>
+<p>如果Web服务器无法处理PUT, PATCH和DELETE这种REST风格的请求，你可以启用enulateHTTP现象。启用该选项后，请求会以普通的POST方法发出，并且HTTP头信息的X-HTTP-Method-Override属性会设置为实际的HTTP方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.http.options.emulateHTTP = true;</span><br></pre></td></tr></table></figure>
+<p><strong>emulateJSON的作用</strong></p>
+<p>如果Web服务器无法处理编码为application/json的请求，你可以启用emulateJSON选项。启用该选项后，请求会以application/x-www-form-urlencoded作为MIME type，就像普通的HTML表单一样。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.http.options.emulateJSON = true;</span><br></pre></td></tr></table></figure>
+<h3 id="response对象"><a href="#response对象" class="headerlink" title="response对象"></a>response对象</h3><p><img src="/images/vueResource响应对象.png" alt="image"></p>
+<h3 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Vue.http.interceptors.push(<span class="function"><span class="keyword">function</span>(<span class="params">request, next</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="comment">// 请求发送前的处理逻辑</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    next(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">        <span class="comment">// 请求发送后的处理逻辑</span></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">        <span class="comment">// 根据请求的状态，response参数会返回给successCallback或errorCallback</span></span><br><span class="line">        <span class="keyword">return</span> response</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/16/axios学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/16/axios学习笔记/" itemprop="url">axios学习笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T11:23:18+08:00">
+                2018-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="axios特性"><a href="#axios特性" class="headerlink" title="axios特性"></a>axios特性</h3><ul>
+<li>从浏览器中创建 XMLHttpRequests</li>
+<li>从 node.js 创建 http 请求</li>
+<li>支持 Promise API</li>
+<li>拦截请求和响应</li>
+<li>转换请求数据和响应数据</li>
+<li>取消请求</li>
+<li>自动转换 JSON 数据</li>
+<li>客户端支持防御 XSRF</li>
+</ul>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><p>axios 没有挂载在Vue的全局实例里，而是暴露一个全局变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 发送 POST 请求</span></span><br><span class="line">axios(&#123;</span><br><span class="line">  method: <span class="string">'post'</span>,</span><br><span class="line">  url: <span class="string">'/user/12345'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    firstName: <span class="string">'Fred'</span>,</span><br><span class="line">    lastName: <span class="string">'Flintstone'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送 GET 请求（默认的方法）</span></span><br><span class="line">axios(<span class="string">'/user/12345'</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>并发请求</strong></p>
+<ul>
+<li>axios.all(iterable) </li>
+<li>axios.spread(callback)</li>
+</ul>
+<p><strong>请求方法别名</strong></p>
+<ul>
+<li>axios.request(config)</li>
+<li>axios.get(url[, config])</li>
+<li>axios.delete(url[, config])</li>
+<li>axios.head(url[, config])</li>
+<li>axios.post(url[, data[, config]])</li>
+<li>axios.put(url[, data[, config]])</li>
+<li>axios.patch(url[, data[, config]])</li>
+</ul>
+<h3 id="请求配置"><a href="#请求配置" class="headerlink" title="请求配置"></a>请求配置</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// `url` 是用于请求的服务器 URL</span></span><br><span class="line">  url: <span class="string">'/user'</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// `method` 是创建请求时使用的方法</span></span><br><span class="line">  method: <span class="string">'get'</span>, <span class="comment">// 默认是 get</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// `baseURL` 将自动加在 `url` 前面，除非 `url` 是一个绝对 URL。</span></span><br><span class="line">  <span class="comment">// 它可以通过设置一个 `baseURL` 便于为 axios 实例的方法传递相对 URL</span></span><br><span class="line">  baseURL: <span class="string">'https://some-domain.com/api/'</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// `transformRequest` 允许在向服务器发送前，修改请求数据</span></span><br><span class="line">  <span class="comment">// 只能用在 'PUT', 'POST' 和 'PATCH' 这几个请求方法</span></span><br><span class="line">  <span class="comment">// 后面数组中的函数必须返回一个字符串，或 ArrayBuffer，或 Stream</span></span><br><span class="line">  transformRequest: [<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 对 data 进行任意转换处理</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">  &#125;],</span><br><span class="line"></span><br><span class="line">  <span class="comment">// `transformResponse` 在传递给 then/catch 前，允许修改响应数据</span></span><br><span class="line">  transformResponse: [<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 对 data 进行任意转换处理</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">  &#125;],</span><br><span class="line"></span><br><span class="line">  <span class="comment">// `headers` 是即将被发送的自定义请求头</span></span><br><span class="line">  headers: &#123;<span class="string">'X-Requested-With'</span>: <span class="string">'XMLHttpRequest'</span>&#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// `params` 是即将与请求一起发送的 URL 参数</span></span><br><span class="line">  <span class="comment">// 必须是一个无格式对象(plain object)或 URLSearchParams 对象</span></span><br><span class="line">  params: &#123;</span><br><span class="line">    ID: <span class="number">12345</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// `paramsSerializer` 是一个负责 `params` 序列化的函数</span></span><br><span class="line">  <span class="comment">// (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)</span></span><br><span class="line">  paramsSerializer: <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Qs.stringify(params, &#123;<span class="attr">arrayFormat</span>: <span class="string">'brackets'</span>&#125;)</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// `data` 是作为请求主体被发送的数据</span></span><br><span class="line">  <span class="comment">// 只适用于这些请求方法 'PUT', 'POST', 和 'PATCH'</span></span><br><span class="line">  <span class="comment">// 在没有设置 `transformRequest` 时，必须是以下类型之一：</span></span><br><span class="line">  <span class="comment">// - string, plain object, ArrayBuffer, ArrayBufferView, URLSearchParams</span></span><br><span class="line">  <span class="comment">// - 浏览器专属：FormData, File, Blob</span></span><br><span class="line">  <span class="comment">// - Node 专属： Stream</span></span><br><span class="line">  data: &#123;</span><br><span class="line">    firstName: <span class="string">'Fred'</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// `timeout` 指定请求超时的毫秒数(0 表示无超时时间)</span></span><br><span class="line">  <span class="comment">// 如果请求话费了超过 `timeout` 的时间，请求将被中断</span></span><br><span class="line">  timeout: <span class="number">1000</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// `withCredentials` 表示跨域请求时是否需要使用凭证</span></span><br><span class="line">  withCredentials: <span class="literal">false</span>, <span class="comment">// 默认的</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// `adapter` 允许自定义处理请求，以使测试更轻松</span></span><br><span class="line">  <span class="comment">// 返回一个 promise 并应用一个有效的响应 (查阅 [response docs](#response-api)).</span></span><br><span class="line">  adapter: <span class="function"><span class="keyword">function</span> (<span class="params">config</span>) </span>&#123;</span><br><span class="line">    <span class="comment">/* ... */</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// `auth` 表示应该使用 HTTP 基础验证，并提供凭据</span></span><br><span class="line">  <span class="comment">// 这将设置一个 `Authorization` 头，覆写掉现有的任意使用 `headers` 设置的自定义 `Authorization`头</span></span><br><span class="line">  auth: &#123;</span><br><span class="line">    username: <span class="string">'janedoe'</span>,</span><br><span class="line">    password: <span class="string">'s00pers3cret'</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// `responseType` 表示服务器响应的数据类型，可以是 'arraybuffer', 'blob', 'document', 'json', 'text', 'stream'</span></span><br><span class="line">  responseType: <span class="string">'json'</span>, <span class="comment">// 默认的</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// `xsrfCookieName` 是用作 xsrf token 的值的cookie的名称</span></span><br><span class="line">  xsrfCookieName: <span class="string">'XSRF-TOKEN'</span>, <span class="comment">// default</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// `xsrfHeaderName` 是承载 xsrf token 的值的 HTTP 头的名称</span></span><br><span class="line">  xsrfHeaderName: <span class="string">'X-XSRF-TOKEN'</span>, <span class="comment">// 默认的</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// `onUploadProgress` 允许为上传处理进度事件</span></span><br><span class="line">  onUploadProgress: <span class="function"><span class="keyword">function</span> (<span class="params">progressEvent</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 对原生进度事件的处理</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// `onDownloadProgress` 允许为下载处理进度事件</span></span><br><span class="line">  onDownloadProgress: <span class="function"><span class="keyword">function</span> (<span class="params">progressEvent</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 对原生进度事件的处理</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// `maxContentLength` 定义允许的响应内容的最大尺寸</span></span><br><span class="line">  maxContentLength: <span class="number">2000</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// `validateStatus` 定义对于给定的HTTP 响应状态码是 resolve 或 reject  promise 。如果 `validateStatus` 返回 `true` (或者设置为 `null` 或 `undefined`)，promise 将被 resolve; 否则，promise 将被 rejecte</span></span><br><span class="line">  validateStatus: <span class="function"><span class="keyword">function</span> (<span class="params">status</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> status &gt;= <span class="number">200</span> &amp;&amp; status &lt; <span class="number">300</span>; <span class="comment">// 默认的</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// `maxRedirects` 定义在 node.js 中 follow 的最大重定向数目</span></span><br><span class="line">  <span class="comment">// 如果设置为0，将不会 follow 任何重定向</span></span><br><span class="line">  maxRedirects: <span class="number">5</span>, <span class="comment">// 默认的</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// `httpAgent` 和 `httpsAgent` 分别在 node.js 中用于定义在执行 http 和 https 时使用的自定义代理。允许像这样配置选项：</span></span><br><span class="line">  <span class="comment">// `keepAlive` 默认没有启用</span></span><br><span class="line">  httpAgent: <span class="keyword">new</span> http.Agent(&#123; <span class="attr">keepAlive</span>: <span class="literal">true</span> &#125;),</span><br><span class="line">  httpsAgent: <span class="keyword">new</span> https.Agent(&#123; <span class="attr">keepAlive</span>: <span class="literal">true</span> &#125;),</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 'proxy' 定义代理服务器的主机名称和端口</span></span><br><span class="line">  <span class="comment">// `auth` 表示 HTTP 基础验证应当用于连接代理，并提供凭据</span></span><br><span class="line">  <span class="comment">// 这将会设置一个 `Proxy-Authorization` 头，覆写掉已有的通过使用 `header` 设置的自定义 `Proxy-Authorization` 头。</span></span><br><span class="line">  proxy: &#123;</span><br><span class="line">    host: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">    port: <span class="number">9000</span>,</span><br><span class="line">    auth: : &#123;</span><br><span class="line">      username: <span class="string">'mikeymike'</span>,</span><br><span class="line">      password: <span class="string">'rapunz3l'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// `cancelToken` 指定用于取消请求的 cancel token</span></span><br><span class="line">  <span class="comment">// （查看后面的 Cancellation 这节了解更多）</span></span><br><span class="line">  cancelToken: <span class="keyword">new</span> CancelToken(<span class="function"><span class="keyword">function</span> (<span class="params">cancel</span>) </span>&#123;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="响应结构"><a href="#响应结构" class="headerlink" title="响应结构"></a>响应结构</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// `data` 由服务器提供的响应</span></span><br><span class="line">  data: &#123;&#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// `status` 来自服务器响应的 HTTP 状态码</span></span><br><span class="line">  status: <span class="number">200</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// `statusText` 来自服务器响应的 HTTP 状态信息</span></span><br><span class="line">  statusText: <span class="string">'OK'</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// `headers` 服务器响应的头</span></span><br><span class="line">  headers: &#123;&#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// `config` 是为请求提供的配置信息</span></span><br><span class="line">  config: &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="全局默认配置"><a href="#全局默认配置" class="headerlink" title="全局默认配置"></a>全局默认配置</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.baseURL = <span class="string">'https://api.example.com'</span>;</span><br><span class="line">axios.defaults.headers.common[<span class="string">'Authorization'</span>] = AUTH_TOKEN;</span><br><span class="line">axios.defaults.headers.post[<span class="string">'Content-Type'</span>] = <span class="string">'application/x-www-form-urlencoded'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h3><p>在请求或响应被 then 或 catch 处理前拦截它们。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加请求拦截器</span></span><br><span class="line">axios.interceptors.request.use(<span class="function"><span class="keyword">function</span> (<span class="params">config</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 在发送请求之前做些什么</span></span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 对请求错误做些什么</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加响应拦截器</span></span><br><span class="line">axios.interceptors.response.use(<span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 对响应数据做点什么</span></span><br><span class="line">    <span class="keyword">return</span> response;</span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 对响应错误做点什么</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">axios.get(<span class="string">'/user/12345'</span>)</span><br><span class="line">  .catch(<span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (error.response) &#123;</span><br><span class="line">      <span class="comment">// 请求已发出，但服务器响应的状态码不在 2xx 范围内</span></span><br><span class="line">      <span class="built_in">console</span>.log(error.response.data);</span><br><span class="line">      <span class="built_in">console</span>.log(error.response.status);</span><br><span class="line">      <span class="built_in">console</span>.log(error.response.headers);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// Something happened in setting up the request that triggered an Error</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'Error'</span>, error.message);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(error.config);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/16/Vue路由Router/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/16/Vue路由Router/" itemprop="url">Vue路由Router</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T10:27:31+08:00">
+                2018-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li>route，它是一条路由，由这个英文单词也可以看出来，它是单数， Home按钮  =&gt; home内容， 这是一条route,  about按钮 =&gt; about 内容， 这是另一条路由。</li>
+<li>routes 是一组路由，把上面的每一条路由组合起来，形成一个数组。[{home 按钮 =&gt;home内容 }， { about按钮 =&gt; about 内容}]</li>
+<li>router 是一个机制，相当于一个管理者，它来管理路由。因为routes 只是定义了一组路由，它放在哪里是静止的，当真正来了请求，怎么办？ 就是当用户点击home 按钮的时候，怎么办？这时router 就起作用了，它到routes 中去查找，去找到对应的 home 内容，所以页面中就显示了 home 内容。</li>
+</ul>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><p><strong>页面实现（html模版中）</strong></p>
+<p>在vue-router中, 我们看到它定义了两个标签&lt;\router-link&gt; 和&lt;\router-view&gt;来对应点击和显示部分。&lt;\router-link&gt; 就是定义页面中点击的部分，&lt;\router-view&gt; 定义显示部分，就是点击后，区配的内容显示在什么地方。所以 &lt;\router-link&gt; 还有一个非常重要的属性 to，定义点击之后，要到哪里去， 如：&lt;\router-link  to=”/home”&gt;Home&lt;\/router-link&gt;</p>
+<p><strong>js 中配置路由</strong></p>
+<p>首先要定义route,一条路由的实现。它是一个对象，由两个部分组成： path和component.  path 指路径，component 指的是组件。如：{path:’/home’, component: home}</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/home'</span>, <span class="attr">component</span>: Home &#125;,</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/about'</span>, <span class="attr">component</span>: About &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>创建router 对路由进行管理，它是由构造函数 new vueRouter() 创建，接受routes 参数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">      routes <span class="comment">// routes: routes 的简写</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>配置完成后，把router 实例注入到 vue 根实例中,就可以使用路由了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  router</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>)</span><br></pre></td></tr></table></figure>
+<p>执行过程：当用户点击 router-link 标签时，会去寻找它的 to 属性， 它的 to 属性和 js 中配置的路径{ path: ‘/home’, component: Home}  path 一一对应，从而找到了匹配的组件， 最后把组件渲染到 &lt;\router-view&gt; 标签所在的地方。所有的这些实现才是基于hash 实现的。</p>
+<p><strong>实现原理：</strong></p>
+<p>打开浏览器控制台，首先看到 router-link 标签渲染成了 a 标签，to 属性变成了a 标签的 href 属性，这时就明白了点击跳转的意思。router-view 标签渲染成了我们定义的组件，其实它就是一个占位符，它在什么地方，匹配路径的组件就在什么地方，所以 router-link 和router-view 标签一一对应，成对出现。</p>
+<h3 id="redirect-重定向"><a href="#redirect-重定向" class="headerlink" title="redirect 重定向"></a>redirect 重定向</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/'</span>, <span class="attr">redirect</span>: <span class="string">'/goods'</span>&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>还可以是一个方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">path</span>: <span class="string">'/a'</span>, <span class="attr">redirect</span>: <span class="function"><span class="params">to</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 方法接收 目标路由 作为参数</span></span><br><span class="line">      <span class="comment">// return 重定向的 字符串路径/路径对象</span></span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h3><p>上面我们定义的路由，都是严格匹配的，只有router-link 中的to属性和 js 中一条路由route中 path 一模一样，才能显示相应的组件component. 但有时现实却不是这样的，比如不同用户都会进入同一个组件，根据userid来区分，符合路由规则，就会加载指定组件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*新增user路径，配置了动态的id*/</span></span><br><span class="line">&#123;</span><br><span class="line">    path: <span class="string">"/user/:id"</span>,</span><br><span class="line">    component: user</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>params获取动态路由参数</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$route.params.id</span><br></pre></td></tr></table></figure>
+<p><strong>watch监听$route的变化</strong></p>
+<p>动态路由在来回切换时，由于它们都是指向同一组件，vue不会销毁再创建这个组件，而是复用这个组件，就是当第一次点击（如：user123）的时候，vue 把对应的组件渲染出来，但在user123, user456点击来回切换的时候，这个组件就不会发生变化了，组件的生命周期不管用了。这时如果想要在组件来回切换的时候做点事情，那么只能在组件内部（user.vue中）利用<strong>watch 来监听$route 的变化</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">        data () &#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                dynamicSegment: <span class="string">''</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        watch: &#123;</span><br><span class="line">            $route (to,<span class="keyword">from</span>)&#123;</span><br><span class="line">                <span class="comment">// to表示的是你要去的那个组件，from 表示的是你从哪个组件过来的，它们是两个对象，你可以把它打印出来，它们也有一个param 属性</span></span><br><span class="line">                <span class="built_in">console</span>.log(to);</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="keyword">from</span>);</span><br><span class="line">                <span class="keyword">this</span>.dynamicSegment = to.params.id</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="嵌套路由"><a href="#嵌套路由" class="headerlink" title="嵌套路由"></a>嵌套路由</h3><p>路由嵌套路由，父子路由。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link to=&quot;这里要写绝对路径：parent/child&quot;&gt;&lt;/router-link&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">    &#123;</span><br><span class="line">        path:<span class="string">"/home"</span>,</span><br><span class="line">　　　　　<span class="comment">// 下面这个属性也不能少，因为，我们是先进入home页面，才能进入子路由</span></span><br><span class="line">        component: home,</span><br><span class="line">　　　　 <span class="comment">// 子路由</span></span><br><span class="line">        children: [</span><br><span class="line">            &#123;</span><br><span class="line">                path: <span class="string">"phone"</span>,</span><br><span class="line">                component: phone</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                path: <span class="string">"tablet"</span>,</span><br><span class="line">                component: tablet</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                path: <span class="string">"computer"</span>,</span><br><span class="line">                component: computer</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        path: <span class="string">"/about"</span>,</span><br><span class="line">        component: about</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        path: <span class="string">"/user/:id"</span>,</span><br><span class="line">        component: user</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        path: <span class="string">'/'</span>, </span><br><span class="line">        redirect: <span class="string">'/home'</span> </span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="命名路由"><a href="#命名路由" class="headerlink" title="命名路由"></a>命名路由</h3><p>给路由定义不同的名字，根据名字进行匹配。给不同的router-view定义名字，通过名字进行对应组件的渲染 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link to=&quot;/user/123&quot;&gt;User123&lt;/router-link&gt; // 和下面等价 </span><br><span class="line">&lt;router-link :to=&quot;&#123; name: &apos;user&apos;, params: &#123; userId: 123 &#125;&#125;&quot;&gt;User&lt;/router-link&gt;   // 当使用对象作为路由的时候，to前面要加一个冒号,表示绑定</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    path: <span class="string">"/user/:id"</span>,</span><br><span class="line">    name: <span class="string">"user"</span>,</span><br><span class="line">    component: user</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="编程式路由"><a href="#编程式路由" class="headerlink" title="编程式路由"></a>编程式路由</h3><p>这主要应用到按钮点击上。当点击按钮的时候，跳转另一个组件, 这只能用代码，调用<strong>rourter.push()</strong> 方法。 当们把router 注入到根实例中后，组件中通过 this.$router 可以获取到router, 所以在组件中使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">this.$router.push(&quot;home&quot;);//就可以跳转到home界面</span><br><span class="line"></span><br><span class="line">this.$router.push(&quot;name&quot;);</span><br><span class="line">this.$router.push(&#123;path: &quot;name&quot;&#125;);</span><br><span class="line">this.$router.push(&#123;path: &quot;name?a=123&quot;&#125;);</span><br><span class="line">//或者 </span><br><span class="line">this.$router.push(&#123;path: &quot;name&quot;, query:&#123;a: 123&#125;&#125;);</span><br><span class="line">this.$router.go(1);</span><br></pre></td></tr></table></figure>
+<p><strong>query获取push的路由参数</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$route.query.name;</span><br></pre></td></tr></table></figure>
+<p><strong>$router.go(n)</strong> 这个方法的参数是一个整数，意思是在history记录中向前或者后退多少步，类似window.history.go(n)</p>
+<h3 id="History模式"><a href="#History模式" class="headerlink" title="History模式"></a>History模式</h3><p>mode：history || hash  默认是hash，区别是hash带#，history不带#    </p>
+<p>使用history模式时，URL就是正常的url。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  mode: <span class="string">'history'</span>,</span><br><span class="line">  routes: [...]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/15/Vue生命周期/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/15/Vue生命周期/" itemprop="url">Vue生命周期</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-15T10:46:26+08:00">
+                2018-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Vue生命周期"><a href="#Vue生命周期" class="headerlink" title="Vue生命周期"></a>Vue生命周期</h3><p><img src="/images/vue生命周期.png" alt="image"></p>
+<p><img src="/images/vue生命周期钩子.png" alt="image"></p>
+<p>（除了beforeCreate和created钩子之外，其他钩子均在服务器端渲染期间不被调用。）</p>
+<ul>
+<li>beforeCreate执行时：data和el均未初始化，值为undefined；</li>
+<li>created执行时：Vue 实例观察的数据对象data已经配置好，已经可以得到app.message的值，但Vue 实例使用的根 DOM 元素el还未初始化；</li>
+<li>beforeMount执行时：data和el均已经初始化，但从等现象可以看出此时el并没有渲染进数据，el的值为“虚拟”的元素节点；</li>
+<li>mounted执行时：此时el已经渲染完成并挂载到实例上；</li>
+</ul>
+<p><strong>实际应用：</strong></p>
+<ul>
+<li>在created钩子中可以对data数据进行操作，这个时候可以进行ajax请求将返回的数据赋给data；</li>
+<li>在mounted钩子对挂载的dom进行操作；</li>
+<li>在使用vue-router时有时需要使用<keep-alive></keep-alive>来缓存组件状态，这个时候created钩子就不会被重复调用了，如果我们的子组件需要在每次加载的时候进行某些操作，可以使用activated钩子触发。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/14/webpack打包优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -348,7 +1362,7 @@
             <h3 id="babel-loader开启缓存"><a href="#babel-loader开启缓存" class="headerlink" title="babel-loader开启缓存"></a>babel-loader开启缓存</h3><p>babel-loader 提供了 cacheDirectory特定选项（默认 false）：设置时，给定的目录将用于缓存加载器的结果。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">rules: [</span><br><span class="line">  &#123;</span><br><span class="line">    test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">    loader: <span class="string">'babel-loader?cacheDirectory=true'</span>,</span><br><span class="line">    exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">    include: [resolve(<span class="string">'src'</span>), resolve(<span class="string">'test'</span>)]</span><br><span class="line">  &#125;,</span><br><span class="line">  ... ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <h3 id="cnd配合externals"><a href="#cnd配合externals" class="headerlink" title="cnd配合externals"></a>cnd配合externals</h3><p>如今前端开发，自然是使用ES6甚至更高版本，撸将起来才更嗨。但由于浏览器兼容问题，仍得使用 babel 转换。而这 babel-polyfill 也得引入以确保兼容；还比如项目开发中常用到的 moment, lodash等，都是挺大的存在，如果必须引入的话，即考虑外部引入之，再借助 externals 予以指定， webpack可以处理使之不参与打包，而依旧可以在代码中通过CMD、AMD或者window/global全局的方式访问。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack 中予以指定</span></span><br><span class="line">externals: &#123;</span><br><span class="line">  <span class="comment">// 'vue': 'Vue',</span></span><br><span class="line">  <span class="comment">// 'lodash': '_',</span></span><br><span class="line">  <span class="string">'babel-polyfill'</span>: <span class="string">'window'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">&lt;script src=<span class="string">"//cdn.bootcss.com/autotrack/2.4.1/autotrack.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">"//cdn.bootcss.com/babel-polyfill/7.0.0-alpha.15/polyfill.min.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack 中予以指定</span></span><br><span class="line">externals: &#123;</span><br><span class="line">  <span class="comment">// 'vue': 'Vue',</span></span><br><span class="line">  <span class="comment">// 'lodash': '_',</span></span><br><span class="line">  <span class="string">'babel-polyfill'</span>: <span class="string">'window'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">&lt;script src=<span class="string">"//cdn.bootcss.com/autotrack/2.4.1/autotrack.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script src=<span class="string">"//cdn.bootcss.com/babel-polyfill/7.0.0-alpha.15/polyfill.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 <h3 id="noParse"><a href="#noParse" class="headerlink" title="noParse"></a>noParse</h3><p>webpack打包的时候，有时不需要解析某些模块的依赖（这些模块并没有依赖，或者并根本就没有模块化），我们可以直接加上这个参数，直接跳过这种解析。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">  noParse: <span class="regexp">/node_modules\/(element-ui\.js)/</span>,</span><br><span class="line">  rules: [</span><br><span class="line">    &#123;</span><br><span class="line">      ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="优化搜索路径"><a href="#优化搜索路径" class="headerlink" title="优化搜索路径"></a>优化搜索路径</h3><p>在webpack打包时，会有各种各样的路径要去查询搜索，我们可以加上一些配置，让它搜索地更快。</p>
@@ -959,1393 +1973,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/10/JS异步编程方案/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aisling Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleCorn个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/10/JS异步编程方案/" itemprop="url">JS异步编程方案</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-10T21:26:57+08:00">
-                2018-03-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="传统异步编程方法"><a href="#传统异步编程方法" class="headerlink" title="传统异步编程方法"></a>传统异步编程方法</h3><ul>
-<li>回调函数</li>
-<li>事件监听</li>
-<li>发布/订阅</li>
-</ul>
-<p>所谓”异步”，简单说就是一个任务分成两段，先执行第一段，然后转而执行其他任务，等做好了准备，再回过头执行第二段。</p>
-<p>JavaScript 语言对异步编程的实现，就是回调函数。所谓回调函数，就是把任务的第二段单独写在一个函数里面，等到重新执行这个任务的时候，就直接调用这个函数。它的英语名字 callback，直译过来就是”重新调用”。</p>
-<h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h3><p>回调函数本身并没有问题，它的问题出现在多个回调函数嵌套。不难想象，如果依次读取多个文件，就会出现多重嵌套。代码不是纵向发展，而是横向发展，很快就会乱成一团，无法管理。这种情况就称为”回调函数噩梦”（callback hell）。</p>
-<p>Promise就是为了解决这个问题而提出的。它不是新的语法功能，而是一种新的写法，允许将回调函数的横向加载，改成纵向加载。</p>
-<p><strong>特点：</strong></p>
-<ul>
-<li>Promise 的写法只是回调函数的改进，使用then方法以后，异步任务的两段执行看得更清楚了，除此以外，并无新意。</li>
-<li>Promise 的最大问题是代码冗余，原来的任务被Promise 包装了一下，不管什么操作，一眼看去都是一堆 then，原来的语义变得很不清楚。</li>
-</ul>
-<h3 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h3><p>“协程”（coroutine），意思是多个线程互相协作，完成异步任务。</p>
-<p>协程有点像函数，又有点像线程。它的运行流程大致如下：</p>
-<ul>
-<li>第一步，协程A开始执行。</li>
-<li>第二步，协程A执行到一半，进入暂停，执行权转移到协程B。</li>
-<li>第三步，（一段时间后）协程B交还执行权。</li>
-<li>第四步，协程A恢复执行。</li>
-</ul>
-<p>上面流程的协程A，就是异步任务，因为它分成两段（或多段）执行。</p>
-<p>举例来说，读取文件的协程写法如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">asnycJob</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...其他代码</span></span><br><span class="line">  <span class="keyword">var</span> f = <span class="keyword">yield</span> readFile(fileA);</span><br><span class="line">  <span class="comment">// ...其他代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>上面代码的函数 asyncJob 是一个协程，它的奥妙就在其中的 yield 命令。它表示执行到此处，执行权将交给其他协程。也就是说，yield命令是异步两个阶段的分界线。</p>
-<p>协程遇到 yield 命令就暂停，等到执行权返回，再从暂停的地方继续往后执行。它的最大优点，就是代码的写法非常像同步操作，如果去除yield命令，简直一模一样。</p>
-<h3 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h3><p>Generator 函数是协程在 ES6 的实现，最大特点就是可以交出函数的执行权（即暂停执行）。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">gen</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> y = <span class="keyword">yield</span> x + <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">return</span> y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面代码就是一个 Generator 函数。它不同于普通函数，是可以暂停执行的，所以函数名之前要加星号，以示区别。</p>
-<p>整个 Generator 函数就是一个封装的异步任务，或者说是异步任务的容器。异步操作需要暂停的地方，都用 yield 语句注明。Generator 函数的执行方法如下。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> g = gen(<span class="number">1</span>);</span><br><span class="line">g.next() <span class="comment">// &#123; value: 3, done: false &#125;</span></span><br><span class="line">g.next() <span class="comment">// &#123; value: undefined, done: true &#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>上面代码中，调用 Generator 函数，会<strong>返回一个内部指针</strong>（<strong>即遍历器</strong> ）g 。这是 Generator 函数不同于普通函数的另一个地方，即<strong>执行它不会返回结果，返回的是指针对象</strong>。调用指针 g 的 next 方法，会移动内部指针（即执行异步任务的第一段），指向第一个遇到的 yield 语句，上例是执行到 x + 2 为止。</p>
-<p>换言之，next 方法的作用是分阶段执行 Generator 函数。每次调用 next 方法，会返回一个对象，表示当前阶段的信息（ value 属性和 done 属性）。</p>
-<ul>
-<li>value 属性是 yield 语句后面表达式的值，表示当前阶段的值；</li>
-<li>done 属性是一个布尔值，表示 Generator 函数是否执行完毕，即是否还有下一个阶段。</li>
-</ul>
-<h4 id="Generator-函数的数据交换和错误处理"><a href="#Generator-函数的数据交换和错误处理" class="headerlink" title="Generator 函数的数据交换和错误处理"></a>Generator 函数的数据交换和错误处理</h4><p>Generator 函数可以<strong>暂停执行和恢复执行</strong>，这是它能封装异步任务的根本原因。除此之外，它还有两个特性，使它可以作为异步编程的完整解决方案：函数体内外的数据交换和错误处理机制。</p>
-<p>next 方法返回值的 value 属性，是 Generator 函数向外输出数据；next 方法还可以接受参数，这是向 Generator 函数体内输入数据。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">gen</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> y = <span class="keyword">yield</span> x + <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">return</span> y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> g = gen(<span class="number">1</span>);</span><br><span class="line">g.next() <span class="comment">// &#123; value: 3, done: false &#125;</span></span><br><span class="line">g.next(<span class="number">2</span>) <span class="comment">// &#123; value: 2, done: true &#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>上面代码中，第一个 next 方法的 value 属性，返回表达式 x + 2 的值（3）。第二个 next 方法带有参数2，这个参数可以传入 Generator 函数，作为上个阶段异步任务的返回结果，被函数体内的变量 y 接收。因此，这一步的 value 属性，返回的就是2（变量 y 的值）。</p>
-<p><strong>Generator 函数内部还可以部署错误处理代码，捕获函数体外抛出的错误</strong>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">gen</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> y = <span class="keyword">yield</span> x + <span class="number">2</span>;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e)&#123; </span><br><span class="line">    <span class="built_in">console</span>.log(e);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> g = gen(<span class="number">1</span>);</span><br><span class="line">g.next();</span><br><span class="line">g.throw（<span class="string">'出错了'</span>）;</span><br><span class="line"><span class="comment">// 出错了</span></span><br></pre></td></tr></table></figure></p>
-<p>上面代码的最后一行，Generator 函数体外，使用指针对象的 throw 方法抛出的错误，可以被函数体内的 try … catch 代码块捕获。这意味着，<strong>出错的代码与处理错误的代码，实现了时间和空间上的分离</strong>，这对于异步编程无疑是很重要的。</p>
-<p><strong>具体用法：</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fetch = <span class="built_in">require</span>(<span class="string">'node-fetch'</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">gen</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> url = <span class="string">'https://api.github.com/users/github'</span>;</span><br><span class="line">  <span class="keyword">var</span> result = <span class="keyword">yield</span> fetch(url);</span><br><span class="line">  <span class="built_in">console</span>.log(result.bio);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> g = gen();</span><br><span class="line"><span class="keyword">var</span> result = g.next();</span><br><span class="line"></span><br><span class="line">result.value.then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> data.json();</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">  g.next(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>上面代码中，Generator 函数封装了一个异步操作，该操作先读取一个远程接口，然后从 JSON 格式的数据解析信息。就像前面说过的，这段代码非常像同步操作，除了加上了 yield 命令。</p>
-<p>上面代码中，首先执行 Generator 函数，获取遍历器对象，然后使用 next 方法（第二行），执行异步任务的第一阶段。由于 Fetch 模块返回的是一个 Promise 对象，因此要用 then 方法调用下一个next 方法。</p>
-<p><strong>特点：</strong></p>
-<p>可以看到，虽然 Generator 函数将异步操作表示得很简洁，但是流程管理却不方便（即何时执行第一阶段、何时执行第二阶段）。</p>
-<h3 id="async"><a href="#async" class="headerlink" title="async"></a>async</h3><blockquote>
-<p>从最早的回调函数，到 Promise 对象，再到 Generator 函数，每次都有所改进，但又让人觉得不彻底。它们都有额外的复杂性，都需要理解抽象的底层运行机制。</p>
-</blockquote>
-<p>异步I/O不就是读取一个文件吗，干嘛要搞得这么复杂？<strong>异步编程的最高境界，就是根本不用关心它是不是异步。</strong></p>
-<p>async 函数就是隧道尽头的亮光，很多人认为它是异步操作的终极解决方案。</p>
-<p><strong>async 函数就是 Generator 函数的语法糖。</strong></p>
-<p>前文有一个 Generator 函数，依次读取两个文件。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> readFile = <span class="function"><span class="keyword">function</span> (<span class="params">fileName</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">    fs.readFile(fileName, <span class="function"><span class="keyword">function</span>(<span class="params">error, data</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (error) reject(error);</span><br><span class="line">      resolve(data);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> gen = <span class="function"><span class="keyword">function</span>* (<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> f1 = <span class="keyword">yield</span> readFile(<span class="string">'/etc/fstab'</span>);</span><br><span class="line">  <span class="keyword">var</span> f2 = <span class="keyword">yield</span> readFile(<span class="string">'/etc/shells'</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(f1.toString());</span><br><span class="line">  <span class="built_in">console</span>.log(f2.toString());</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>写成 async 函数，就是下面这样。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> asyncReadFile = <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> f1 = <span class="keyword">await</span> readFile(<span class="string">'/etc/fstab'</span>);</span><br><span class="line">  <span class="keyword">var</span> f2 = <span class="keyword">await</span> readFile(<span class="string">'/etc/shells'</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(f1.toString());</span><br><span class="line">  <span class="built_in">console</span>.log(f2.toString());</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>一比较就会发现，async 函数就是将 Generator 函数的星号（*）替换成 async，将 yield 替换成 await，仅此而已。</p>
-<h4 id="async函数地优点"><a href="#async函数地优点" class="headerlink" title="async函数地优点"></a>async函数地优点</h4><ul>
-<li><p><strong>内置执行器</strong>。 Generator 函数的执行必须靠执行器，所以才有了 co 函数库，而 async 函数自带执行器。也就是说，async 函数的执行，与普通函数一模一样，只要一行。</p>
-</li>
-<li><p><strong>更好的语义</strong>。 async 和 await，比起星号和 yield，语义更清楚了。async 表示函数里有异步操作，await 表示紧跟在后面的表达式需要等待结果。</p>
-</li>
-<li><p><strong>更广的适用性</strong>。 co 函数库约定，yield 命令后面只能是 Thunk 函数或 Promise 对象，而 async 函数的 await 命令后面，可以跟 Promise 对象和原始类型的值（数值、字符串和布尔值，但这时等同于同步操作）。</p>
-</li>
-</ul>
-<h4 id="async函数的实现"><a href="#async函数的实现" class="headerlink" title="async函数的实现"></a>async函数的实现</h4><p><strong>async 函数的实现，就是将 Generator 函数和自动执行器，包装在一个函数里。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">args</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">args</span>)</span>&#123; </span><br><span class="line">  <span class="keyword">return</span> spawn(<span class="function"><span class="keyword">function</span>*(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>所有的 async 函数都可以写成上面的第二种形式，其中的 spawn 函数就是自动执行器。</p>
-<p>下面给出 spawn 函数的实现，基本就是前文自动执行器的翻版。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">spawn</span>(<span class="params">genF</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> gen = genF();</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">step</span>(<span class="params">nextF</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> next = nextF();</span><br><span class="line">      &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">        <span class="keyword">return</span> reject(e); </span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(next.done) &#123;</span><br><span class="line">        <span class="keyword">return</span> resolve(next.value);</span><br><span class="line">      &#125; </span><br><span class="line">      <span class="built_in">Promise</span>.resolve(next.value).then(<span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123;</span><br><span class="line">        step(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> gen.next(v); &#125;);      </span><br><span class="line">      &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">        step(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> gen.throw(e); &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    step(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> gen.next(<span class="literal">undefined</span>); &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>async 函数是非常新的语法功能，新到都不属于 ES6，而是属于 ES7。目前，它仍处于提案阶段，但是转码器 Babel 和 regenerator 都已经支持，转码后就能使用。</p>
-<h4 id="具体用法"><a href="#具体用法" class="headerlink" title="具体用法"></a>具体用法</h4><p>同 Generator 函数一样，async 函数返回一个 Promise 对象，可以使用 then 方法添加回调函数。当函数执行的时候，一旦遇到 await 就会先返回，等到触发的异步操作完成，再接着执行函数体内后面的语句。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">getStockPriceByName</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> symbol = <span class="keyword">await</span> getStockSymbol(name);</span><br><span class="line">  <span class="keyword">var</span> stockPrice = <span class="keyword">await</span> getStockPrice(symbol);</span><br><span class="line">  <span class="keyword">return</span> stockPrice;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getStockPriceByName(<span class="string">'goog'</span>).then(<span class="function"><span class="keyword">function</span> (<span class="params">result</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(result);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>上面代码是一个获取股票报价的函数，函数前面的async关键字，表明该函数内部有异步操作。调用该函数时，会立即返回一个Promise对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeout</span>(<span class="params">ms</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(resolve, ms);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">asyncPrint</span>(<span class="params">value, ms</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">await</span> timeout(ms);</span><br><span class="line">  <span class="built_in">console</span>.log(value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">asyncPrint(<span class="string">'hello world'</span>, <span class="number">50</span>);</span><br></pre></td></tr></table></figure>
-<p>上面代码指定50毫秒以后，输出”hello world”。</p>
-<p><strong>await 命令后面的 Promise 对象，运行结果可能是 rejected，所以最好把 await 命令放在 try…catch 代码块中。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> somethingThatReturnsAPromise();</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 另一种写法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">await</span> somethingThatReturnsAPromise().catch(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>await 命令只能用在 async 函数之中，如果用在普通函数，就会报错。</strong></p>
-<hr>
-<h3 id="Thunk-函数"><a href="#Thunk-函数" class="headerlink" title="Thunk 函数"></a>Thunk 函数</h3><p>编译器的”传名调用”实现，往往是将参数放到一个临时函数之中，再将这个临时函数传入函数体。这个临时函数就叫做 Thunk 函数。这就是 Thunk 函数的定义，它是”传名调用”的一种实现策略，用来替换某个表达式。</p>
-<p>在 JavaScript 语言中，Thunk 函数替换的不是表达式，而是多参数函数，将其替换成单参数的版本，且只接受回调函数作为参数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正常版本的readFile（多参数版本）</span></span><br><span class="line">fs.readFile(fileName, callback);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Thunk版本的readFile（单参数版本）</span></span><br><span class="line"><span class="keyword">var</span> readFileThunk = Thunk(fileName);</span><br><span class="line">readFileThunk(callback);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Thunk = <span class="function"><span class="keyword">function</span> (<span class="params">fileName</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">callback</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fs.readFile(fileName, callback); </span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>上面代码中，fs 模块的 readFile 方法是一个多参数函数，两个参数分别为文件名和回调函数。经过转换器处理，它变成了一个单参数函数，只接受回调函数作为参数。这个单参数版本，就叫做 Thunk 函数。</p>
-<p>任何函数，只要参数有回调函数，就能写成 Thunk 函数的形式。</p>
-<p><strong>Thunk 函数现在可以用于 Generator 函数的自动流程管理</strong>。</p>
-<p>Generator 函数的执行过程，其实是将同一个回调函数，反复传入 next 方法的 value 属性。这使得我们可以用递归来自动完成这个过程。</p>
-<p>自动执行的关键是，必须有一种机制，自动控制 Generator 函数的流程，接收和交还程序的执行权。回调函数可以做到这一点，Promise 对象也可以做到这一点。</p>
-<h3 id="co函数"><a href="#co函数" class="headerlink" title="co函数"></a>co函数</h3><p>Generator 函数就是一个异步操作的容器。它的自动执行需要一种机制，当异步操作有了结果，能够自动交回执行权。两种方法可以做到这一点。</p>
-<ul>
-<li>回调函数。将异步操作包装成 Thunk 函数，在回调函数里面交回执行权。</li>
-<li>Promise 对象。将异步操作包装成 Promise 对象，用 then 方法交回执行权。</li>
-</ul>
-<p>co 函数库其实就是将两种自动执行器（Thunk 函数和 Promise 对象），包装成一个库。使用 co 的前提条件是，Generator 函数的 yield 命令后面，只能是 Thunk 函数或 Promise 对象。</p>
-<ul>
-<li>首先，co 函数接受 Generator 函数作为参数，返回一个 Promise 对象。</li>
-<li>在返回的 Promise 对象里面，co 先检查参数 gen 是否为 Generator 函数。如果是，就执行该函数，得到一个内部指针对象；如果不是就返回，并将 Promise 对象的状态改为 resolved 。</li>
-<li>接着，co 将 Generator 函数的内部指针对象的 next 方法，包装成 onFulefilled 函数。这主要是为了能够捕捉抛出的错误。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">co</span>(<span class="params">gen</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> ctx = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> gen === <span class="string">'function'</span>) gen = gen.call(ctx);</span><br><span class="line">    <span class="keyword">if</span> (!gen || <span class="keyword">typeof</span> gen.next !== <span class="string">'function'</span>) <span class="keyword">return</span> resolve(gen);</span><br><span class="line"></span><br><span class="line">    onFulfilled();</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">onFulfilled</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> ret;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        ret = gen.next(res);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">        <span class="keyword">return</span> reject(e);</span><br><span class="line">      &#125;</span><br><span class="line">      next(ret);</span><br><span class="line">    &#125;    </span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>最后，就是关键的 next 函数，它会反复调用自身。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">next</span>(<span class="params">ret</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (ret.done) <span class="keyword">return</span> resolve(ret.value);</span><br><span class="line">  <span class="keyword">var</span> value = toPromise.call(ctx, ret.value);</span><br><span class="line">  <span class="keyword">if</span> (value &amp;&amp; isPromise(value)) <span class="keyword">return</span> value.then(onFulfilled, onRejected);</span><br><span class="line">  <span class="keyword">return</span> onRejected(<span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'You may only yield a function, promise, generator, array, or object, '</span></span><br><span class="line">        + <span class="string">'but the following object was passed: "'</span> + <span class="built_in">String</span>(ret.value) + <span class="string">'"'</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>上面代码中，next 函数的内部代码，一共只有四行命令：</p>
-<ul>
-<li><p>第一行，检查当前是否为 Generator 函数的最后一步，如果是就返回。</p>
-</li>
-<li><p>第二行，确保每一步的返回值，是 Promise 对象。</p>
-</li>
-<li><p>第三行，使用 then 方法，为返回值加上回调函数，然后通过 onFulfilled 函数再次调用 next 函数。</p>
-</li>
-<li><p>第四行，在参数不符合要求的情况下（参数非 Thunk 函数和 Promise 对象），将 Promise 对象的状态改为 rejected，从而终止执行。</p>
-</li>
-</ul>
-<p>co 支持并发的异步操作，即允许某些操作同时进行，等到它们全部完成，才进行下一步。这时，要把并发的操作都放在数组或对象里面。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/10/HTTPS安全协议详解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aisling Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleCorn个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/10/HTTPS安全协议详解/" itemprop="url">HTTPS安全协议详解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-10T12:21:06+08:00">
-                2018-03-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机网络</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h3><p>原始的HTTP协议连接通信，服务器和用户之间是直接进行明文传输，数据都是没有加密的，这就会导致信息被监听篡改、服务器或客户端被伪装等安全问题。</p>
-<p><strong>HTTP存在的问题：</strong></p>
-<ul>
-<li>明文传输，内容可以直接被窃听；</li>
-<li>无法验证报文的完整性，可能被篡改；</li>
-<li>不验证通信方身份，可能遇到假的客户端或服务器。</li>
-<li>无法阻止海量请求下的DOS攻击(Denial of Service,拒绝服务攻击)</li>
-</ul>
-<p>为了保证数据传输的安全性，网景公司设计了SSL(Secure Sockets Layer)协议用于对HTTP协议传输的数据进行加密，于是就诞生了HTTPS(超文本传输安全协议)。</p>
-<p><strong>HTTPS = HTTP + 加密 + 认证 + 完整性保护</strong></p>
-<p>SSL目前的版本是3.0，被IETF（Internet Engineering Task Force）定义在RFC 6101中，之后IETF对SSL 3.0进行了升级，于是出现了TLS（Transport Layer Security） 1.0，定义在RFC 2246。实际上我们现在的HTTPS都是用的TLS协议，但是由于SSL出现的时间比较早，并且依旧被现在浏览器所支持，因此SSL依然是HTTPS的代名词，但无论是TLS还是SSL都是上个世纪的事情，SSL最后一个版本是3.0，今后TLS将会继承SSL优良血统继续为我们进行加密服务。目前TLS的版本是1.2，定义在RFC 5246中，暂时还没有被广泛的使用。</p>
-<h3 id="SSL"><a href="#SSL" class="headerlink" title="SSL"></a>SSL</h3><blockquote>
-<p>要注意，HTTPS 并非是应用层的新协议，而是 HTTP 通信接口部分用 SSL 协议代替而已。本来，HTTP 是直接基于 TCP 通信。在 HTTPS 中，HTTP先和 SSL 通信，SSL 再和 TCP 通信。所以说 HTTPS 是披了层 SSL 外壳的 HTTP。SSL 是独立于 HTTP 的协议，所以其他类似于 HTTP 的应用层 SMTP 等协议都可以配合 SSL 协议使用，也可以给它们增强安全性。</p>
-</blockquote>
-<p><strong>SSL采用混合加密机制(对称加密+非对称加密)</strong></p>
-<ul>
-<li><strong>对称加密算法</strong>：也叫“共享密钥加密”，加密和解密使用同一把密钥，加密的同时，也会把密钥发送给对方。在发送密钥过程中可能会造成密钥被窃取。</li>
-<li><strong>非对称加密算法</strong>：也叫“公开密钥加密”，存在两把密钥，一个公钥，一个私钥。公钥随意对外开放，任何人都可以知道，但是私钥只有自己知道，发送方使用对方的公钥对数据进行加密，对方接到信息后，使用自己的私钥进行解密。(在不使用私钥的情况下很难还原信息)</li>
-</ul>
-<blockquote>
-<p>非对称加密算法使用的一般是RSA算法。这个算法主要原理：将两个大素数相乘很简单，但想要这个乘积进行因式分解极其困难，因此可以将乘积公开作为密钥。</p>
-<p>常见的对称加密算法有DES、3DES、AES、Blowfish、IDEA、RC5、RC6。<br>非对称加密算法应用非常广泛，SSH, HTTPS, TLS，电子证书，电子签名，电子身份证等等</p>
-</blockquote>
-<p>对称加密算法处理速度快，但是密钥无法保证安全的发送给对方；非对称加密算法可以使密钥安全交换，但是处理速度慢。</p>
-<p>于是HTTPS采用混合加密的方式，利用非对称加密算法加密在对称加密方式中使用的密钥，在确保密钥安全前提下，使用对称加密方式进行通信。(即在交换密钥环节使用非对称加密方式，之后的建立通信交换报文阶段则使用对称加密方式)。</p>
-<h3 id="CA-数字证书认证机构"><a href="#CA-数字证书认证机构" class="headerlink" title="CA 数字证书认证机构"></a>CA 数字证书认证机构</h3><p>非对称加密方式的缺点就是，无法证明公开密钥本身就是货真价实的公开密钥。为了解决这个问题，出现了数字认证机构(CA,Certificate Authority)和其他相关机关颁发的公开密钥证书。</p>
-<p>数字证书认证机构处于客户端与服务器双方都可信赖的第三方机构的立场上。威瑞信(VeriSign)就是其中一家非常有名的数字证书认证机构。</p>
-<p><strong>业务流程：</strong></p>
-<ul>
-<li>服务器的运营人员向数字证书认证机构提出公开密钥的申请，数字证书认证机构在判断提出申请者的身份之后，会对申请的公开密钥<strong>做数字签名</strong>(即用机构自己的私有密钥加密服务器申请的公钥)；然后将服务器公钥、数字签名以及申请者身份等信息放入公钥证书。</li>
-<li>服务器会将这份由数字证书认证机构认证颁发的公钥证书发送给客户端，以进行公开密钥加密方式的通信。公钥证书也可以叫做数字证书或直接证书。</li>
-<li>接到证书的客户端可使用数字证书认证机构的公开密钥，对那张证书上的数字签名进行验证，一旦通过，客户端就可以确定服务器公开密钥的真实性。</li>
-</ul>
-<blockquote>
-<p>多数浏览器开发商在发布版本时，会事先在内部植入常用的认证机关的公开密钥。</p>
-</blockquote>
-<h3 id="HTTPS安全通信机制"><a href="#HTTPS安全通信机制" class="headerlink" title="HTTPS安全通信机制"></a>HTTPS安全通信机制</h3><p><img src="/images/HTTPS安全通信机制.png" alt="image"></p>
-<ol>
-<li>客户端通过发送Clien Hello 报文开始SSL通信。报文中包含客户端支持的SSL的指定版本、加密组件(Cipher Suite)列表(所使用的加密算法及密钥长度等)。</li>
-<li>服务器可以进行SSL通信时，会以Server Hello报文作为应答。和客户端一样，在报文中包含SSL版本以及加密组件。服务器的加密组件内容是从接收到的客户端加密组件内筛选出来的。</li>
-<li>之后服务器发送Certificate报文。报文中包含公开密钥证书。</li>
-<li>最后服务器发送Server Hello Done 报文通信客户端，最初阶段的SSL握手协商部分结束。</li>
-<li>SSL第一次握手结束后，客户端以Client Key Exchange 报文作为回应。报文中包含通信加密中使用的一种被称为Pre-master secret 的随机密码串。该报文已用步骤3中的公开密钥进行加密。</li>
-<li>接着客户端继续发送Change Cipher Spec报文。该报文会提示服务器，在此报文之后的通信会采用pre-master secret密钥加密。</li>
-<li>客户端发送Finished报文。该报文包含连接至今全部报文的整体校验值。该握手协商是否能够成功，要以服务器是否能够正确解密该报文作为判断标准。</li>
-<li>服务器同样发送Change Cipher Spec报文。</li>
-<li>服务器发送Finished报文。</li>
-<li>服务器和客户端的Finished报文交换完毕之后，SSL连接就算建立完成。当然，通信会受到SSL的保护。从此处开始进行应用层协议的通信，即发送HTTP请求。</li>
-<li>应用层协议通信，即发送HTTP响应。</li>
-<li>最后由客户端断开连接。断开连接时，发送close_notify报文。这步之后再发送TCP FIN报文来关闭与TCP的通信。（在以上流程中，应用层发送数据时会附加一种叫做MAC(Message Authentication Code)的报文摘要。MAC能够查知报文是否遭到篡改，从而保护报文的完整性。）</li>
-</ol>
-<h3 id="HTTPS缺点"><a href="#HTTPS缺点" class="headerlink" title="HTTPS缺点"></a>HTTPS缺点</h3><p><strong>HTTPS因为使用了SSL，处理速度会变慢！</strong></p>
-<ul>
-<li>和使用HTTP相比，网络负载可能会变慢2到100倍。除去和TCP连接、发送HTTP请求、响应以外，还必须进行SSL通信，因此整体上处理通信量不可避免会增加。</li>
-<li>另一点SSL必须进行加密处理。在服务器和客户端需要进行加密和解密的运算处理。因此从结果上讲，比起HTTP会更多地消耗服务器和客户端地硬件资源，导致负载增强。</li>
-</ul>
-<blockquote>
-<p>针对速度变慢这一问题，并没有根本性的解决方案，我们会使用 SSL 加速器这种（专用服务器）硬件来改善该问题。该硬件为 SSL 通信专用硬件，相对软件来讲，能够提高数倍 SSL 的计算速度。仅在 SSL 处理时发挥 SSL加速器的功效，以分担负载。</p>
-</blockquote>
-<p>既然 HTTPS 那么安全可靠，那为何所有的 Web 网站不一直使用 HTTPS？</p>
-<ul>
-<li>其中一个原因是，因为与纯文本通信相比，加密通信会消耗更多的 CPU 及内存资源。如果每次通信都加密，会消耗相当多的资源，平摊到一台计算机上时，能够处理的请求数量必定也会随之减少。</li>
-</ul>
-<p>因此，如果是非敏感信息则使用 HTTP通信，<strong>只有在包含个人信息等敏感数据时，才利用 HTTPS 加密通信</strong>。特别是每当那些访问量较多的 Web 网站在进行加密处理时，它们所承担着的负载不容小觑。在进行加密处理时，并非对所有内容都进行加密处理，而是仅在那些需要信息隐藏时才会加密，以节约资源。</p>
-<ul>
-<li>除此之外，想要节约购买证书的开销也是原因之一。</li>
-</ul>
-<p>要进行 HTTPS 通信，证书是必不可少的。而使用的证书必须向认证机构（CA）购买。证书价格可能会根据不同的认证机构略有不同。通常，一年的授权需要数万日元（现在一万日元大约折合 600 人民币）。那些购买证书并不合算的服务以及一些个人网站，可能只会选择采用HTTP 的通信方式。</p>
-<h3 id="HTTP瓶颈"><a href="#HTTP瓶颈" class="headerlink" title="HTTP瓶颈"></a>HTTP瓶颈</h3><ul>
-<li>一条连接上只可发送一个请求。</li>
-<li>请求只能从客户端开始。客户端不可以接收除响应以外的指令。</li>
-<li>请求 / 响应首部未经压缩就发送。首部信息越多延迟越大。</li>
-<li>发送冗长的首部。每次互相发送相同的首部造成的浪费较多。</li>
-<li>可任意选择数据压缩格式。非强制压缩发送</li>
-</ul>
-<p><strong>解决方法：</strong></p>
-<ul>
-<li>Ajax。和以前的同步通信相比，由于它只更新一部分页面，响应中传输的数据量会因此而减少，这一优点显而易见。而利用 Ajax 实时地从服务器获取内容，有可能会导致大量请求产生。另外，Ajax 仍未解决 HTTP 协议本身存在的问题。</li>
-<li>Comet。一旦服务器端有内容更新了，Comet 不会让请求等待，而是直接给客户端返回响应。这是一种通过延迟应答，模拟实现服务器端向客户端推送（Server Push）的功能。Comet 会先将响应置于挂起状态，当服务器端有内容更新时，再返回该响应。因此，服务器端一旦有更新，就可以立即反馈给客户端。内容上虽然可以做到实时更新，但为了保留响应，一次连接的持续时间也变长了。期间，为了维持连接会消耗更多的资源。另外，Comet 也仍未解决 HTTP 协议本身存在的问题。</li>
-</ul>
-<h3 id="SPDY"><a href="#SPDY" class="headerlink" title="SPDY"></a>SPDY</h3><p>处于持续开发状态中的 SPDY 协议，正是为了在协议级别消除 HTTP 所遭遇的瓶颈。</p>
-<p>SPDY 没有完全改写 HTTP 协议，而是在 TCP/IP 的应用层与运输层之间通过新加<strong>会话层</strong>的形式运作。同时，考虑到安全性问题， SPDY 规定通信中使用 SSL。SPDY 以会话层的形式加入，控制对数据的流动，但还是采用 HTTP 建立通信连接。因此，可照常使用 HTTP 的 GET 和 POST 等方 法、Cookie 以及 HTTP 报文等。</p>
-<p><strong>使用 SPDY 后，HTTP 协议额外获得以下功能：</strong></p>
-<ul>
-<li><strong>多路复用流</strong>。通过单一的 TCP 连接，可以无限制处理多个 HTTP 请求。所有请求的处理都在一条TCP 连接上完成，因此 TCP 的处理效率得到提高。</li>
-<li><strong>赋予请求优先级</strong>。SPDY 不仅可以无限制地并发处理请求，还可以给请求逐个分配优先级顺序。这样主要是为了在发送多个请求时，解决因带宽低而导致响应变慢的问题。</li>
-<li><strong>压缩 HTTP 首部</strong>。压缩 HTTP 请求和响应的首部。这样一来，通信产生的数据包数量和发送的字节数就更少了。</li>
-<li><strong>推送功能</strong>。支持服务器主动向客户端推送数据的功能。这样，服务器可直接发送数据，而不必等待客户端的请求。</li>
-<li><strong>服务器提示功能</strong>。服务器可以主动提示客户端请求所需的资源。由于在客户端发现资源之前就可以获知资源的存在，因此在资源已缓存等情况下，可以避免发送不必要的请求。</li>
-</ul>
-<blockquote>
-<p>希望使用 SPDY 时，Web 的内容端不必做什么特别改动，而 Web 浏览器及 Web 服务器都要为对应 SPDY 做出一定程度上的改动。有好几家 Web 浏览器已经针对SPDY 做出了相应的调整。另外，Web 服务器也进行了实验性质的应用，但把该技术导入实际的 Web 网站却进展不佳。因为 SPDY 基本上只是将单个域名（ IP 地址）的通信多路复用，所以当一个 Web 网站上使用多个域名下的资源，改善效果就会受到限制。SPDY 的确是一种可有效消除 HTTP 瓶颈的技术，但很多 Web 网站存在的问题并非仅仅是由 HTTP 瓶颈所导致。对 Web 本身的速度提升，还应该从其他可细致钻研的地方入手，比如改善 Web 内容的编写方式等。</p>
-</blockquote>
-<h3 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h3><p>WebSocket，即 Web 浏览器与 Web 服务器之间全双工通信标准。其中，WebSocket协议由 IETF 定为标准，WebSocket API 由 W3C 定为标准。仍在开发中的 WebSocket技术主要是为了解决 Ajax 和 Comet 里 XMLHttpRequest 附带的缺陷所引起的问题。</p>
-<p>一旦 Web 服务器与客户端之间建立起 WebSocket 协议的通信连接，之后所有的通信都依靠这个专用协议进行。通信过程中可互相发送 JSON、XML、HTML 或图片等任意格式的数据。<br>由于是建立在 HTTP 基础上的协议，因此连接的发起方仍是客户端，而一旦确立WebSocket 通信连接，不论服务器还是客户端，任意一方都可直接向对方发送报文。</p>
-<p><strong>特点：</strong></p>
-<ul>
-<li><strong>推送功能</strong>。支持由服务器向客户端推送数据的推送功能。这样，服务器可直接发送数据，而不必等待客户端的请求。</li>
-<li><strong>减少通信量</strong>。只要建立起 WebSocket 连接，就希望一直保持连接状态。和 HTTP 相比，不但每次连接时的总开销减少，而且由于 WebSocket 的首部信息很小，通信量也相应减少了。<br>为了实现 WebSocket 通信，在 HTTP 连接建立之后，需要完成一次“握手”（Handshaking）的步骤。<br>成功握手确立 WebSocket 连接之后，通信时不再使用 HTTP 的数据帧，而采用 WebSocket 独立的数据帧。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/08/错误监控与上报/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aisling Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleCorn个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/08/错误监控与上报/" itemprop="url">错误监控与上报</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T14:34:29+08:00">
-                2018-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/性能优化/" itemprop="url" rel="index">
-                    <span itemprop="name">性能优化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="脚本错误分类"><a href="#脚本错误分类" class="headerlink" title="脚本错误分类"></a>脚本错误分类</h3><ul>
-<li>语法错误</li>
-<li>运行时错误</li>
-<li>资源加载错误</li>
-</ul>
-<blockquote>
-<p>语法错误和运行时错误都属于代码错误，资源加载错误通常是找不到文件或文件加载超时造成的。</p>
-</blockquote>
-<h3 id="监控方式"><a href="#监控方式" class="headerlink" title="监控方式"></a>监控方式</h3><h4 id="try-catch"><a href="#try-catch" class="headerlink" title="try-catch"></a>try-catch</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    test  <span class="comment">// &lt;- throw error</span></span><br><span class="line">&#125; <span class="keyword">catch</span>(e)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'运行时错误信息 ↙'</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>通过给代码块进行 try-catch 包装，当代码块出错时 catch 将能捕获到错误信息，页面也将继续执行。</p>
-<ul>
-<li>无法捕捉到语法错误，只能捕捉运行时错误；</li>
-<li>可以拿到出错的信息，堆栈，出错的文件、行号、列号；</li>
-<li>需要借助工具把所有的function块以及文件块加入try,catch，可以在这个阶段打入更多的静态信息。（异步报错可以通过为异步函数块再包装一层try-catch，增加标识信息来配合定位，可以用工具来进行处理）。</li>
-</ul>
-<h4 id="window-onerror"><a href="#window-onerror" class="headerlink" title="window.onerror"></a>window.onerror</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onerror = <span class="function"><span class="keyword">function</span> (<span class="params">msg, url, row, col, error</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'onerror 错误信息 ↙'</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(&#123;</span><br><span class="line">        msg,  url,  row, col, error</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">test <span class="comment">// &lt;-  throw error</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>可以捕捉语法错误，也可以捕捉运行时错误；</li>
-<li>可以拿到出错的信息，堆栈，出错的文件、行号、列号；</li>
-<li>只要在当前页面执行的js脚本出错都会捕捉到，例如：浏览器插件的javascript、或者flash抛出的异常等。</li>
-<li><strong>跨域的资源需要特殊头部支持(在script标签加一个crossorign属性，或者在响应头加：Acess-Control-Allow-Orign字段)</strong>。</li>
-</ul>
-<p>增加 crossorigin 属性后，浏览器将自动在请求头中添加一个 Origin 字段，发起一个 跨来源资源共享 请求。Origin 向服务端表明了请求来源，服务端将根据来源判断是否正常响应。</p>
-<blockquote>
-<p>onerror 主要用来捕获预料之外的错误，而 try-catch 则可以用在预知情况下监控特定错误，两种形式结合使用更加高效。</p>
-</blockquote>
-<h4 id="Obj-onerror"><a href="#Obj-onerror" class="headerlink" title="Obj.onerror"></a>Obj.onerror</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> img = <span class="built_in">document</span>.getElementById(<span class="string">'#img'</span>);</span><br><span class="line"></span><br><span class="line">img.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 捕获错误 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>利用window的Error事件代理，但是Error事件不会冒泡，可以利用addEventListener捕获进行代理：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'error'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 捕获错误</span></span><br><span class="line">&#125;,<span class="literal">true</span>)</span><br></pre></td></tr></table></figure></p>
-<h3 id="上报方式"><a href="#上报方式" class="headerlink" title="上报方式"></a>上报方式</h3><blockquote>
-<p>监控错误拿到了报错信息，接下来则是将捕抓的错误信息发送到信息收集平台上，发送的形式主要有两种。</p>
-</blockquote>
-<h4 id="通过Ajax发送数据"><a href="#通过Ajax发送数据" class="headerlink" title="通过Ajax发送数据"></a>通过Ajax发送数据</h4><p> ajax上报就是在上文注释错误捕获的地方发起ajax请求，来向服务器发送错误信息。</p>
-<h4 id="动态创建img标签"><a href="#动态创建img标签" class="headerlink" title="动态创建img标签"></a>动态创建img标签</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">report</span>(<span class="params">msg, level</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> reportUrl = <span class="string">"http://localhost:8055/report"</span>;</span><br><span class="line">    <span class="keyword">new</span> Image().src = reportUrl + <span class="string">'?msg='</span> + msg;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/08/图片懒加载/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aisling Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleCorn个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/08/图片懒加载/" itemprop="url">图片懒加载</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T13:57:04+08:00">
-                2018-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/性能优化/" itemprop="url" rel="index">
-                    <span itemprop="name">性能优化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="方式"><a href="#方式" class="headerlink" title="方式"></a>方式</h3><ul>
-<li>延时加载：使用setTimeout或setInterval进行加载延迟，如果用户在加载前就离开了，自然不会进行加载</li>
-<li>条件加载：符合某些条件或者触发了某些条件才开始异步加载</li>
-<li>可视区域加载：仅仅加载用户可以看到的区域，这个主要监控滚动条来实现，一般距离用户看到的底边很近的时候开始加载，这样能保证用户下拉时图片正好介接上，不会有太长时间的停顿。</li>
-</ul>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>页面加载后只让文档可视区内的图片显示，其它不显示，随着用户对页面的滚动，判断其区域位置，生成img标签，让到可视区的图片加载出来。</p>
-<p>给img的父级加属性 (例如data-src），将图片的地址赋值给他，这样就生成img标签后再把data-src的值赋给img的src（通过dataset.src或者getAttribute(‘src’),再赋值给img.setAttribute(‘src’)）。</p>
-<p>在图片出现之前，图片区域显示loading，图片加载完成去掉loading。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oUl = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'ul'</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> aLi = oUl.getElementsByTagName(<span class="string">'li'</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createImg</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> src = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">if</span>(obj.dataset.src)&#123;</span><br><span class="line">        src = obj.dataset.src;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        src = obj.getAttribut(<span class="string">'data-src'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(obj.children.length &lt;=<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">var</span> img = docuemnt.createElement(<span class="string">'img'</span>);</span><br><span class="line">        img.src = src;</span><br><span class="line">        obj.appendChild(img);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;!--计算节点到文档顶部的距离--&gt;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getTop</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> h = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(obj)&#123;</span><br><span class="line">        h+ =obj.offsetTop;</span><br><span class="line">        obj = obj.offsetParent;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> h;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;!--滚动时计算所到区域并进行相关计算--&gt;</span><br><span class="line"><span class="built_in">window</span>.onscroll = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> t = <span class="built_in">document</span>.documentElement.clientHeight + (<span class="built_in">document</span>.body.scrollTop || <span class="built_in">document</span>.documentElement.scrollTop);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(vari=<span class="number">0</span>;i&lt;aLi.length;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(getTop(aLi[i]) &lt; t)&#123;</span><br><span class="line">            setTimeout(<span class="string">'createImg(aLi['</span>+i+<span class="string">'])'</span>, <span class="number">500</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;!--页面加载完便执行一遍--&gt;</span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">window</span>.onscroll();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/08/移动端适配问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aisling Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleCorn个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/08/移动端适配问题/" itemprop="url">移动端适配问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T12:26:36+08:00">
-                2018-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p><strong>分辨率：</strong> </p>
-<p>1334pt x 750pt 指的是屏幕上垂直有1136个物理像素，水平有750个物理像素。</p>
-<p><strong>屏幕尺寸：</strong></p>
-<p>4.7in 注意英寸是长度单位，不是面积单位。4.7英寸指的是屏幕对角线的长度，1英寸等于2.54cm。</p>
-<p><strong>屏幕像素密度：</strong></p>
-<p>326ppi  指的是每英寸屏幕所拥有的像素数，在显示器中，dpi=ppi。dpi强调的是每英寸多少点。同时，屏幕像素密度=分辨率/屏幕尺寸</p>
-<p><strong>设备独立像素：</strong></p>
-<p>设备独立像素，不同于设备像素（物理像素），它是虚拟化的。比如说css像素，我们常说的10px其实指的就是它。需要注意的是，物理像素开发者是无法获取的，它是自然存在的一种东西，该是多少就是多少。</p>
-<p><strong>设备像素比：</strong></p>
-<p>缩写简称dpr，也就是我们经常在谷歌控制台移动端调试顶端会看到的一个值。设备像素比 = 设备像素 / css像素（垂直方向或水平方向）。</p>
-<p>可以通过JS来获取：window.devicePixelRatio</p>
-<p><strong>布局视口</strong></p>
-<p>写过css的小伙伴应该知道，我们在html、body设置width:100%;height:100%;的时候，它并不是无效的。我们都知道100%这种百分数应该是继承父元素而来的。那在这里是继承哪里的呢？</p>
-<p>在PC浏览器中，有一个用来约束CSS布局视口的东西，又叫做初始包含块。这也就是所有宽高继承的由来。除去margin、padding，布局视口和浏览器可视窗口宽度是一致的，同时也和浏览器本身的宽度一致。</p>
-<p><strong>但是在移动端，就大不一样了。</strong></p>
-<p>在移动端，默认的情况下，布局视口的宽度是要远远大于浏览器的宽度的。<strong>这两个视口不同于PC端，是相互独立存在的</strong>。为什么呢？试想一下，如果一个网页不对移动端进行适配，用户进行阅读的时候，如果默认情况下布局视口的宽度等于浏览器宽度，那是不是展示起来更加的不友好。也就是说，如果一个div的宽度为20%，那么它在布局视口宽度为980px的时候，展示给用户的像素还有196px，而如果宽度只有375px的情况下，宽度只有75px，展示的大小相差特别大。</p>
-<p>所以，浏览器厂商为了让用户在小屏幕下网页也能够显示地很好，所以把布局视口宽度设置地很大，一般在768px ~ 1024px之间，最常见的宽度是980px。这个宽度可以通过document.documentElement.clientWidth得到。</p>
-<p><strong>视觉视口</strong></p>
-<p>对于视觉视口来说，这个东西是呈现给用户的，它是用户看到网页区域内CSS像素的数量。由于用户可以自行进行缩放控制，所以这个视口并不是开发者需要重点关注的。</p>
-<p>值得注意的是，在移动端缩放不会改变布局视口的宽度，当缩小的时候，屏幕覆盖的css像素变多，视觉视口变大，反之亦然。</p>
-<p>而在PC端，缩放对应布局宽度和视觉窗口宽度都是联动的。而浏览器宽度本身是固定的，无论怎么缩放都不受影响。</p>
-<p>对于PC端来说：</p>
-<p><img src="/images/pc端视口.png" alt="image"></p>
-<p>对于移动端来说：</p>
-<p><img src="/images/移动端视口.png" alt="image"></p>
-<p><strong>理想视口</strong></p>
-<p>以上，布局视口很明显对用户十分的不友好，完全忽略了手机本来的尺寸。</p>
-<p>所以苹果引入了理想视口的概念，它是对设备来说最理想的布局视口尺寸。理想视口中的网页用户最理想的宽度，用户进入页面的时候不需要缩放。</p>
-<p>那么很明显，所谓的理想宽度就是浏览器（屏幕）的宽度了。</p>
-<p>所以就有了下面的这段代码：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>然而，这段代码其实也并不完美，在IE浏览器中，由于横屏竖屏的切换会对其造成影响，为了解决这个兼容性的问题，最后再加上一句，就有了现在的：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="viewport"><a href="#viewport" class="headerlink" title="viewport"></a>viewport</h3><p> <strong>viewport</strong> – 在html中添加meta标签: 网页的宽度默认等于屏幕的宽度　　　　</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1,user-scalable=0"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>扩展viewport属性：</p>
-<ul>
-<li>width 设置viewport的宽度，可以是数字，或者使用字符串“device-width”；</li>
-<li>initial-scale 页面初始的缩放，首次 load 的时候缩放比例是1，使用它的时候，同时也会将布局视口的尺寸设置为缩放后的尺寸。而缩放的尺寸就是基于屏幕的宽度来的，也就起到了和width=device-width同样的效果。</li>
-<li>minimum-scale/maximum-scale 允许用户缩放的最小/最大比例 </li>
-<li>height 设置viewport的高度，很少设置这个属性</li>
-<li>user-scalable 用户是否可以手动缩放 ，一般两个值 yes/no</li>
-</ul>
-<h3 id="模糊的由来"><a href="#模糊的由来" class="headerlink" title="模糊的由来"></a>模糊的由来</h3><h4 id="dpr的具体表现"><a href="#dpr的具体表现" class="headerlink" title="dpr的具体表现"></a>dpr的具体表现</h4><p>有时候我们会发现，当我们在适某一机型的时候，显示上没什么问题。但是一旦我换到另外一部手机，发现出现了模糊的情况，尤其以图片更为显著。</p>
-<p>其实这个问题，就是涉及到了上面讲到的一个属性：设备像素比，即我们经常说的dpr。下面先来看dpr的表现：</p>
-<p>假设现在有一台iphone6，那么它的设备独立像素是375x667，dpr为2，尺寸是4.7in，那么物理像素就是750x1334。 同样的我们也有一台不知名的设备，它的设备独立像素刚好也是375x667，尺寸也是4.7in，但是dpr为1，此时的物理像素就是375x667。</p>
-<p>于是，它们的屏幕表现如下：</p>
-<p><img src="/images/dpr屏幕模糊.png" alt="image"></p>
-<p>在不同的屏幕上，无论是普通屏幕还是retina屏幕，css像素所呈现的大小是一致的。（如果不理解这句话，可以写一个2px的正方形使用谷歌控制台移动设备调试，在不同的设备之间来回切换，你会发现大小其实是一样的。一开始我总以为这个css像素的实际宽高因为受到dpr的影响而在不同设备上的长宽是不一致的。）</p>
-<p>不同的是，1个css像素对应（覆盖）的物理像素个数。</p>
-<p>所以，如果我们想要在这两个屏幕显示这么一个css样式：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">width</span>: 2<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">heigth</span>: 2<span class="selector-tag">px</span>;</span><br></pre></td></tr></table></figure></p>
-<p>在普通屏幕下，也就是dpr为1的屏幕中，1个css像素对应（覆盖）的是一个物理像素。在retina屏幕下，1个css像素对应（覆盖）的是4个物理像素。换句话说，就是dpr为2的设备。看下面这张图：</p>
-<p><img src="/images/dpr屏幕像素.png" alt="image"></p>
-<p>浅显的理解就是可以看作是2cmx2cm的正方形被切割成四块，然后遇到dpr为2的时候，被切割的四块又被分别切割成四块，但是总面积不变。</p>
-<h4 id="模糊的产生"><a href="#模糊的产生" class="headerlink" title="模糊的产生"></a>模糊的产生</h4><p>知道了1个css像素覆盖的物理像素可能不同，就好理解为什么会出现模糊的情况了。</p>
-<p><strong>位图像素</strong></p>
-<p>位图像素是栅格图像（如：png,jpg,gif等）最小的数据单元。每一个位图像素都包含着一些自身的显示信息。（如：显示位置，颜色值，透明度等）</p>
-<p>理论上来说，1个位图像素对应1个物理像素，图片才能等到完美清晰的展示。</p>
-<p>但是上面说过，在retina屏幕上，会出现1个位图像素对应多个物理像素。</p>
-<p>还是以iphone6为例，1个位图像素对应4个物理像素。由于单个位图像素已经是最小的数据单位了，它不能再被进行切割。于是为了能够显示出来，就只能就近取色，从而导致所谓的图片模糊问题。如下：</p>
-<p><img src="/images/dpr位图像素.png" alt="image"></p>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>很明显，由于位图像素不够分而产生模糊的情况，解决的办法十分简单，就是使用跟dpr同个倍数大小的图片。比如iphone6，一个200x300的img标签，原图就要提供400x600的大小。</p>
-<p>那么当加载到img标签中，浏览器会自动对每1px的css像素减半，可以理解为此时还是维持着1:1的css像素:物理像素，不产生模糊。</p>
-<p>这个做法其实就是手淘团队在做retina适配的一个重要的原理之一。</p>
-<h3 id="1px边框问题"><a href="#1px边框问题" class="headerlink" title="1px边框问题"></a>1px边框问题</h3><p>因为不同设备的dpr不同，1px的css像素覆盖的物理像素个数就不同，所以会产生2px或者3px的问题。</p>
-<p><strong>解决方法：</strong></p>
-<h4 id="伪元素-transform实现"><a href="#伪元素-transform实现" class="headerlink" title="伪元素+transform实现"></a>伪元素+transform实现</h4><p>原理：是把原先元素的 border 去掉，然后利用 :before 或者 :after 重做 border ，并 transform 的 scale 缩小一半，原先的元素相对定位，新做的 border 绝对定位。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.scale</span>&#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">border</span>:none;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.scale</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#000</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">1px</span>;</span><br><span class="line">  <span class="attribute">-webkit-transform</span>: <span class="built_in">scaleY</span>(0.5);</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">scaleY</span>(0.5);</span><br><span class="line">  <span class="attribute">-webkit-transform-origin</span>: <span class="number">0</span> <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">transform-origin</span>: <span class="number">0</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="flexible-js"><a href="#flexible-js" class="headerlink" title="flexible.js"></a>flexible.js</h4><p>这是淘宝移动端采取的方案,前面已经说过1px变粗的原因就在于一刀切的设置viewport宽度,如果能把viewport宽度设置为实际的设备物理宽度, css里的1px不就等于实际1px长了么. flexible.js就是这样干的.</p>
-<h4 id="使用box-shadow模拟边框"><a href="#使用box-shadow模拟边框" class="headerlink" title="使用box-shadow模拟边框"></a>使用box-shadow模拟边框</h4><p>利用css 对阴影处理的方式实现0.5px的效果</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box-shadow-1px</span> &#123;</span><br><span class="line">  <span class="attribute">box-shadow</span>: inset <span class="number">0px</span> -<span class="number">1px</span> <span class="number">1px</span> -<span class="number">1px</span> <span class="number">#c8c7cc</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="图片高清问题"><a href="#图片高清问题" class="headerlink" title="图片高清问题"></a>图片高清问题</h3><p>通过css媒体查询库或者javascript条件判断，在不同的dpr下加载不同尺寸的图片。</p>
-<p>无论从管理上，还是从性能上看，只要有可能，尽量部署独立的图片服务器。</p>
-<h3 id="屏幕适配页面问题"><a href="#屏幕适配页面问题" class="headerlink" title="屏幕适配页面问题"></a>屏幕适配页面问题</h3><blockquote>
-<p>响应式针对的是不同分辨率设备而进行的适配式设计，以利用@media规则为主要手段，而自适应则忽略@media以比例布局为主，目的是适应不同的浏览器窗口大小。</p>
-</blockquote>
-<h4 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h4><h4 id="流式布局-媒体查询"><a href="#流式布局-媒体查询" class="headerlink" title="流式布局+媒体查询"></a>流式布局+媒体查询</h4><p>用来解决不同宽度的布局问题，父级宽度不够的时候，子级节点会“挤下去”    —  使用css3，根据屏幕分辨率进行不同的样式应用</p>
-<p><strong>优劣：</strong></p>
-<ul>
-<li>这种布局通吃pc和移动端，做到精细处，两者的效果都很好，</li>
-<li>缺点是媒体查询是有限的，也就是可以枚举出来的</li>
-<li>对设计要求简单、清晰、复杂的设计稿会直接弄死前端，同时需要多个设计稿</li>
-<li>css3低版本浏览器不支持</li>
-</ul>
-<h4 id="伸缩布局"><a href="#伸缩布局" class="headerlink" title="伸缩布局"></a>伸缩布局</h4><p>使用的是Flexbox ，有兼容性问题。</p>
-<p>整体思路：考虑把一个元素变成一个伸缩容器  –&gt;伸缩容器中子元素的排列方式  –&gt;子元素所占空间</p>
-<h4 id="rem布局"><a href="#rem布局" class="headerlink" title="rem布局"></a>rem布局</h4><p>相对单位rem基准值公式：rem=document.documentElement.clientWidth*dpr/10(10是为了取整)</p>
-<p>赋值给html的font-size:rem</p>
-<p>demo:iPhone4/5  320*2/10=64px</p>
-<p>如需改变根节点的html的font-size的rem属性，可以通过媒体查询/javascript操作</p>
-<h3 id="字体大小问题"><a href="#字体大小问题" class="headerlink" title="字体大小问题"></a>字体大小问题</h3><p>html上，加入了一个自定义属性，data-dpr</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">data-dpr</span>=<span class="string">'dpr'</span>&gt;</span><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>处理dpr的值来适配不同屏幕字体</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!dpr &amp;&amp; !scale) &#123;</span><br><span class="line">    <span class="comment">//devicePixelRatio这个属性是可以获取到设备的dpr的</span></span><br><span class="line">    <span class="keyword">var</span> devicePixelRatio = win.devicePixelRatio;</span><br><span class="line">    <span class="comment">//判断dpr是否为整数</span></span><br><span class="line">    <span class="keyword">var</span> isRegularDpr = devicePixelRatio.toString().match(<span class="regexp">/^[1-9]\d*$/g</span>)</span><br><span class="line">    <span class="keyword">if</span> (isRegularDpr) &#123;</span><br><span class="line">    <span class="comment">// 对于是整数的dpr，对dpr进行操作</span></span><br><span class="line">     <span class="keyword">if</span> (devicePixelRatio &gt;= <span class="number">3</span> &amp;&amp; (!dpr || dpr &gt;= <span class="number">3</span>)) &#123;                </span><br><span class="line">        dpr = <span class="number">3</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (devicePixelRatio &gt;= <span class="number">2</span> &amp;&amp; (!dpr || dpr &gt;= <span class="number">2</span>))&#123;</span><br><span class="line">        dpr = <span class="number">2</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        dpr = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 对于其他的dpr，人采用dpr为1的方案</span></span><br><span class="line">    dpr = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    scale = <span class="number">1</span> / dpr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/08/Grid网格布局/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aisling Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleCorn个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/08/Grid网格布局/" itemprop="url">Grid网格布局</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T11:04:36+08:00">
-                2018-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>flexbox是一维布局，他只能在一条直线上放置你的内容区块；而grid是一个二维布局。可以根据你的设计需求，将内容区块放置到任何你想要放的地方。网络布局可以将应用程序分割成不同的空间，或者定义他们的大小、位置以及层级。</p>
-<p>使用Grid布局非常简单，你只需要给容器（container）定义：display:grid，并设置列（grid-template-columns）和 行（grid-template-rows）的大小，然后用grid-column和grid-row定义容器子元素（grid-item项目）的位置。</p>
-<h4 id="网格容器（Grid-Container）"><a href="#网格容器（Grid-Container）" class="headerlink" title="网格容器（Grid Container）"></a>网格容器（Grid Container）</h4><p>元素应用display:grid，它是其所有网格项的父元素。下面例子container就是网格容器。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item item-1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item item-2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item item-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="网格项（Grid-Item）"><a href="#网格项（Grid-Item）" class="headerlink" title="网格项（Grid Item）"></a>网格项（Grid Item）</h4><p>网格容器的子元素，下面的item元素是网格项，但sub-item不是。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"sub-item"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="网格线（Grid-Line）"><a href="#网格线（Grid-Line）" class="headerlink" title="网格线（Grid Line）"></a>网格线（Grid Line）</h4><p>组成网格线的分界线。它们可以是列网格线（column grid lines），也可以是行网格线（row grid lines）并且居于行或列的任意一侧，下面黄色线就是列网格线。</p>
-<p><img src="/images/grid网格线.png" alt="image"></p>
-<h4 id="网格轨道（Grid-Track）"><a href="#网格轨道（Grid-Track）" class="headerlink" title="网格轨道（Grid Track）"></a>网格轨道（Grid Track）</h4><p>两个相邻的网格线之间为网格轨道。你可以认为它们是网格的列或行，下面在第二个和第三个网格线之间的黄色部分为网格轨道。<br><img src="/images/grid网格轨道.png" alt="image"></p>
-<h4 id="网格单元（Grid-Cell）"><a href="#网格单元（Grid-Cell）" class="headerlink" title="网格单元（Grid Cell）"></a>网格单元（Grid Cell）</h4><p>两个相邻的列网格线和两个相邻的行网格线组成的是网格单元，它是最小的网格单元。下面行网格线1（row grid lines 1）、行网格线2（row grid lines 2）和列网格线2（column grid lines 2）、列网格线3（column grid lines 3）组成的黄色区域为网格单元。</p>
-<p><img src="/images/grid网格单元.png" alt="image"></p>
-<h4 id="网格区（Grid-Area）"><a href="#网格区（Grid-Area）" class="headerlink" title="网格区（Grid Area）"></a>网格区（Grid Area）</h4><p>网格区是由任意数量网格单元组成，下面行网格线1（row grid lines 1）、行网格线3（row grid lines 3）和列网格线1（column grid lines 1）、列网格线3（column grid lines3）组成的黄色区域为网格区。</p>
-<p><img src="/images/grid网格区.png" alt="image"></p>
-<h3 id="网格容器属性"><a href="#网格容器属性" class="headerlink" title="网格容器属性"></a>网格容器属性</h3><h4 id="display"><a href="#display" class="headerlink" title="display"></a>display</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display: grid | inline-grid | subgrid;</span><br></pre></td></tr></table></figure>
-<p>属性值：</p>
-<ul>
-<li>grid: 生成块级网格</li>
-<li>inline-grid: 生成行内网格</li>
-<li>subgrid: 如果网格容器本身是网格项（嵌套网格容器），此属性用来继承其父网格容器的列、行大小。</li>
-</ul>
-<blockquote>
-<p>注：当元素设置了网格布局，column、float、clear、vertical-align属性无效。</p>
-</blockquote>
-<h4 id="grid-template-columns-rows"><a href="#grid-template-columns-rows" class="headerlink" title="grid-template-columns/rows"></a>grid-template-columns/rows</h4><p>设置行和列的大小，在行轨道或列轨道两边是网格线。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grid-template-columns: &lt;track-size&gt; ... | &lt;line-name&gt; &lt;track-size&gt; ... ;</span><br><span class="line">grid-template-rows: &lt;track-size&gt; ... | &lt;line-name&gt; &lt;track-size&gt; ... ;</span><br></pre></td></tr></table></figure></p>
-<p>属性值：</p>
-<ul>
-<li>track-size: 轨道大小，可以使用css长度，百分比或用分数（用fr单位）。</li>
-<li>line-name: 网格线名字，你可以选择任何名字。</li>
-</ul>
-<p>例子：<br>当你设置行或列大小为auto时，网格会自动分配空间和网格线名称。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">40px</span> <span class="number">50px</span> auto <span class="number">50px</span> <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: <span class="number">25%</span> <span class="number">100px</span> auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><img src="/images/grid网格行列.png" alt="image"></p>
-<p>你也可以给网格线定义名字，注意名字需要写在[]里面。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: [first] <span class="number">40px</span> [line2] <span class="number">50px</span> [line3] auto [col4-start] <span class="number">50px</span> [five] <span class="number">40px</span> [end];</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: [row1-start] <span class="number">25%</span> [row1-end] <span class="number">100px</span> [third-line] auto [last-line];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><img src="/images/grid网格行列名.png" alt="image"></p>
-<p>每条网格线可以有多个名字，例如上面行的第二条线有两个名字，分别是row1-end和row2-start。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: [row1-start] <span class="number">25%</span> [row1-end row2-start] <span class="number">25%</span> [row2-end];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>如果你定义包含重复部分，<strong>可以使用repeat()简化。</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(3, 20px [col-start]) <span class="number">5%</span>;</span><br><span class="line">    // 相当于grid-template-columns: 20px [col-start] 20px [col-start] 20px [col-start] 5%;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>用fr单位可以将容器分为几等份</strong>，例如下面分成三等份。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">1</span>fr <span class="number">1</span>fr <span class="number">1</span>fr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>如果fr单位和实际值一起使用，设置fr的行或列将分(除了实际值)剩余部分。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">1</span>fr <span class="number">50px</span> <span class="number">1</span>fr <span class="number">1</span>fr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="grid-template-areas"><a href="#grid-template-areas" class="headerlink" title="grid-template-areas"></a>grid-template-areas</h4><p>通过获取网格项中的grid-area属性值（名称），来定义网格模版。重复网格区（grid-area）名称将跨越网格单元格，‘.’代表空网格单元。</p>
-<p>属性值：</p>
-<ul>
-<li>grid-area-name: 网格项的grid-area属性值（名字）</li>
-<li>‘.’ : 空网格单元</li>
-<li>none: 不定义网格区域</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-a</span>&#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: header;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item-b</span>&#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: main;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item-c</span>&#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: sidebar;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item-d</span>&#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: footer;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">50px</span> <span class="number">50px</span> <span class="number">50px</span> <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: auto;</span><br><span class="line">    <span class="attribute">grid-template-areas</span>: <span class="string">"header header header header"</span></span><br><span class="line">                         <span class="string">"main main . sidebar"</span></span><br><span class="line">                         <span class="string">"footer footer footer footer"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面代码示例会创建四列三行网格，第一行将是header，第二行前两个网格单元是main部分、第三个为空网格单元、第四个为sliderbar，第三行是footer。</p>
-<p><img src="/images/grid网格区域.png" alt="image"></p>
-<h4 id="grid-column-gap"><a href="#grid-column-gap" class="headerlink" title="grid-column-gap"></a>grid-column-gap</h4><p>网格单元间距。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">grid-column-gap</span>：&lt;<span class="selector-tag">line-size</span>&gt;; 和 <span class="selector-tag">grid-row-gap</span>: &lt;<span class="selector-tag">line-size</span>&gt; ;</span><br></pre></td></tr></table></figure></p>
-<p>属性值：</p>
-<ul>
-<li>line-size: 网格线间距,设置单位值。</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">50px</span> <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: <span class="number">80px</span> auto <span class="number">80px</span>; </span><br><span class="line">    <span class="attribute">grid-column-gap</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">grid-row-gap</span>: <span class="number">15px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格单元间距.png" alt="image"></p>
-<blockquote>
-<p>注：间隔仅仅作用在网格单元之间，不作用在容器边缘。</p>
-</blockquote>
-<h4 id="grid-gap"><a href="#grid-gap" class="headerlink" title="grid-gap"></a>grid-gap</h4><p>是grid-column-gap 和 grid-row-gap简写。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">grid-gap</span>：&lt;<span class="selector-tag">grid-column-gap</span>&gt; &lt;<span class="selector-tag">grid-row-gap</span>&gt;;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.container&#123;</span><br><span class="line">    display:grid;</span><br><span class="line">    grid-template-columns: 100px 50px 100px;</span><br><span class="line">    grid-template-rows: 80px auto 80px; </span><br><span class="line">    grid-gap: 10px 15px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注：如果只设置一个值，那么grid-column-gap 和 grid-row-gap都为那个值。</p>
-</blockquote>
-<h4 id="justify-items"><a href="#justify-items" class="headerlink" title="justify-items"></a>justify-items</h4><p>垂直于列网格线对齐，适用于网格容器里的所有网格项。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">justify-items: start | end | center | stretch（默认） ;</span><br></pre></td></tr></table></figure></p>
-<p>属性值：</p>
-<ul>
-<li>start: 左对齐。</li>
-<li>end: 右对齐。</li>
-<li>center: 居中对齐。</li>
-<li>stretch: 填满（默认）。</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">justify-items</span>: start;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格左对齐.png" alt="image"></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">justify-items</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格居中对齐.png" alt="image"></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">justify-items</span>: stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格填满.png" alt="image"></p>
-<h4 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h4><p>垂直于行网格线对齐，适用于网格容器里的所有网格项。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">align-items: start | end | center | stretch ;</span><br></pre></td></tr></table></figure></p>
-<p>属性值：</p>
-<ul>
-<li>start： 顶部对齐。</li>
-<li>end： 底部对齐。</li>
-<li>center： 居中对齐。</li>
-<li>stretch：填满（默认）。</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格垂直居中.png" alt="image"></p>
-<h4 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h4><p>如果用像px非弹性单位定义的话，总网格区域大小有可能小于网格容器，这时候你可以设置网格的对齐方式（水平对齐）<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">justify-content: start | end | center | stretch | space-around | space-between | space-evenly ;</span><br></pre></td></tr></table></figure></p>
-<p>属性值：</p>
-<ul>
-<li>start: 左对齐。</li>
-<li>end: 右对齐。</li>
-<li>center: 居中对齐。</li>
-<li>stretch: 填满网格容器。</li>
-<li>space-around: 网格项两边间距相等，网格项之间间隔是单侧的2倍。</li>
-<li>space-between: 两边对齐，网格项之间间隔相等。</li>
-<li>space-evenly: 网格项间隔相等。</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格justifyContent居中.png" alt="image"></p>
-<h4 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h4><p>如果用像px非弹性单位定义的话，总网格区域大小有可能小于网格容器，这时候你可以设置网格的对齐方式（垂直方向对齐）。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">align-content: start | end | center | stretch | space-around | space-between | space-evenly ;</span><br></pre></td></tr></table></figure></p>
-<p>属性值：</p>
-<ul>
-<li>start: 顶部对齐。</li>
-<li>end: 底部对齐。</li>
-<li>center: 居中对齐。</li>
-<li>stretch: 填满网格容器。</li>
-<li>space-around: - 网格项两边间距相等，网格项之间间隔是单侧的2倍。</li>
-<li>space-between: 两边对齐，网格项之间间隔相等。</li>
-<li>space-evenly: 网格项间隔相等。</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">align-content</span>: center; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格alignContent居中.png" alt="image"></p>
-<h4 id="grid-auto-columns-rows"><a href="#grid-auto-columns-rows" class="headerlink" title="grid-auto-columns/rows"></a>grid-auto-columns/rows</h4><p>自动生成隐式网格轨道（列和行），当你定位网格项超出网格容器范围时，将自动创建隐式网格轨道。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">grid-auto-columns</span>: &lt;<span class="selector-tag">track-size</span>&gt; ... ; 和 <span class="selector-tag">grid-auto-rows</span>: &lt;<span class="selector-tag">track-size</span>&gt; ... ;</span><br></pre></td></tr></table></figure>
-<p>属性值：</p>
-<ul>
-<li>track-size: 网格轨道大小,可以是固定值，百分比或者是分数（fr单位）。</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">60px</span> <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: <span class="number">90px</span> <span class="number">90px</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格auto.png" alt="image"></p>
-<p>这是2✖️2的网格，但是我们来用grid-column 和 grid-row给网格项定位如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-a</span>&#123;</span><br><span class="line">    <span class="attribute">grid-column</span>: <span class="number">1</span> / <span class="number">2</span>;</span><br><span class="line">    <span class="attribute">grid-row</span>: <span class="number">2</span> / <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item-b</span>&#123;</span><br><span class="line">    <span class="attribute">grid-column</span>: <span class="number">5</span> / <span class="number">6</span>;</span><br><span class="line">    <span class="attribute">grid-row</span>: <span class="number">2</span> / <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><img src="/images/grid网格tracks.png" alt="image"></p>
-<p>我们可以看出，网格项item-b定位在第五根列网格线（column line 5 ）和第六根列网格线（column line 6 ）之间。但是我们网格容器根本不存在这两条网格线，所以就用两个0宽度来填充。在这里我们可以用网格自动行（grid-auto-rows）和网格自动列（grid-auto-columns）来定义这些隐式轨道宽度。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-auto-columns</span>: <span class="number">60px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格tracksWidths.png" alt="image"></p>
-<h4 id="grid-auto-flow"><a href="#grid-auto-flow" class="headerlink" title="grid-auto-flow"></a>grid-auto-flow</h4><p>在没有设置网格项的位置时，这个属性控制网格项怎样排列。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grid-auto-flow : row（默认） | column | dense ;</span><br></pre></td></tr></table></figure>
-<p>属性值：</p>
-<ul>
-<li>row: 按照行依次从左到右排列。</li>
-<li>column: 按照列依次从上倒下排列。</li>
-<li>dense: 按先后顺序排列。</li>
-</ul>
-<p>来看看下面结构：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item-a"</span>&gt;</span>item-a<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item-b"</span>&gt;</span>item-b<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item-c"</span>&gt;</span>item-c<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item-d"</span>&gt;</span>item-d<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item-e"</span>&gt;</span>item-e<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">.container&#123;</span><br><span class="line">    display: grid;</span><br><span class="line">    grid-template-columns: 60px 60px 60px 60px 60px;</span><br><span class="line">    grid-template-rows: 30px 30px;</span><br><span class="line">    grid-auto-flow: row;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.item-a&#123;</span><br><span class="line">    grid-column: 1;</span><br><span class="line">    grid-row: 1 / 3;</span><br><span class="line">&#125;</span><br><span class="line">.item-e&#123;</span><br><span class="line">    grid-column: 5;</span><br><span class="line">    grid-row: 1 / 3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>由于我们设置了grid-auto-flow：row，item-b、item-c和item-d在行上是从左到右排列，如下：</p>
-<p><img src="/images/grid网格flowrow.png" alt="image"></p>
-<p>如果我们设置 grid-auto-flow: column;结果如下：</p>
-<p><img src="/images/grid网格flowcolumn.png" alt="image"></p>
-<h4 id="grid"><a href="#grid" class="headerlink" title="grid"></a>grid</h4><p>是一种简写形式，设置网格容器所有属性。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grid: none | &lt;grid-template-rows&gt; / &lt;grid-template-columns&gt; | &lt;grid-auto-flow&gt; [&lt;grid-auto-rows&gt; [ / &lt;grid-auto-columns&gt;] ];</span><br></pre></td></tr></table></figure></p>
-<p>属性值：</p>
-<ul>
-<li>none: 设置为所有属性的默认值。</li>
-<li>&lt;\grid-template-rows&gt; / &lt;\grid-template-columns&gt;: 设置行和列的值，其他属性为默认值。</li>
-<li>&lt;\grid-auto-flow&gt; [ &lt;\grid-auto-rows&gt; [ / &lt;\grid-auto-columns&gt;] ] : 设置网格自动流、网格自动行、网格自动列的值，其他未设置则为默认值。</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">grid</span>: <span class="number">200px</span> auto / <span class="number">1</span>fr auto <span class="number">1</span>fr;</span><br><span class="line">&#125;</span><br><span class="line">//等同于</span><br><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: <span class="number">200px</span> auto;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">1</span>fr auto <span class="number">1</span>fr;</span><br><span class="line">    <span class="attribute">grid-template-areas</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="网格项属性"><a href="#网格项属性" class="headerlink" title="网格项属性"></a>网格项属性</h3><h4 id="grid-column-start-end"><a href="#grid-column-start-end" class="headerlink" title="grid-column-start/end"></a>grid-column-start/end</h4><p>通过网格线来定义网格项的位置。grid-column-start、grid-row-start定义网格项的开始位置，grid-column-end、grid-row-end定义网格项的结束位置。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">grid-column-start: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto ;</span><br><span class="line">grid-column-end: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto ;</span><br><span class="line">grid-row-start: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto ;</span><br><span class="line">grid-row-end: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto ;</span><br></pre></td></tr></table></figure>
-<p>属性值：</p>
-<ul>
-<li>line: 指定带编号或者名字的网格线。</li>
-<li>span <number>: 跨越轨道的数量。</number></li>
-<li>span <name>: 跨越轨道直到对应名字的网格线。</name></li>
-<li>auto: 自动展示位置，默认跨度为1。</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-a</span>&#123;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">grid-column-end</span>: five;</span><br><span class="line">  <span class="attribute">grid-row-start</span>: row1-start</span><br><span class="line">  grid-row-end: <span class="number">3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格startend.png" alt="image"></p>
-<blockquote>
-<p>注：如果未声明grid-column-end或grid-row-end，默认将跨越一个轨道。项目也可以重叠，设置z-index来确定堆叠顺序。</p>
-</blockquote>
-<h4 id="grid-column-rows"><a href="#grid-column-rows" class="headerlink" title="grid-column/rows"></a>grid-column/rows</h4><p>是 grid-column-start、grid-column-end 和 grid-row-start、grid-row-end 的简写。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grid-column: &lt;start-line&gt; / &lt;end-line&gt; | &lt;start-line&gt; / span &lt;value&gt; ;</span><br><span class="line">grid-row: &lt;start-line&gt; / &lt;end-line&gt; | &lt;start-line&gt; / span &lt;value&gt; ;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-c</span>&#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">3</span> / span <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">grid-row</span>: third-line / <span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格rows简写.png" alt="image"></p>
-<h4 id="grid-area"><a href="#grid-area" class="headerlink" title="grid-area"></a>grid-area</h4><p>定义网格项名字，以便创建模块（容器属性grid-template-areas来定义模块）。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grid-area: &lt;name&gt; | &lt;row-start&gt; / &lt;column-start&gt; / &lt;row-end&gt; / &lt;column-end&gt; ;</span><br></pre></td></tr></table></figure></p>
-<p>属性值：</p>
-<ul>
-<li>name: 项目名子。</li>
-<li>&lt;\row-start&gt; / &lt;\column-start&gt; / &lt;\row-end&gt; / &lt;\column-end&gt;: 可以是数字或网格线名字。</li>
-</ul>
-<h4 id="justify-self"><a href="#justify-self" class="headerlink" title="justify-self"></a>justify-self</h4><p>定义单个网格项垂直于列网格线的对齐方式。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">justify-self: justify-self: start | end | center | stretch;</span><br></pre></td></tr></table></figure></p>
-<p>属性值：</p>
-<ul>
-<li>start: 网格区域左对齐。</li>
-<li>end: 网格区域右对齐。</li>
-<li>center: 网格区域居中。</li>
-<li>stretch: 网格区域填满。</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-a</span>&#123;</span><br><span class="line">  <span class="attribute">justify-self</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格项水平居中.png" alt="image"></p>
-<blockquote>
-<p>提示：也可以在容器上设置justify-items，达到全部网格项对齐。</p>
-</blockquote>
-<h4 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h4><p>定义单个网格项垂直于行网格线的对齐方式。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">align-self: start | end | center | stretch;</span><br></pre></td></tr></table></figure></p>
-<p>属性值：</p>
-<ul>
-<li>start: 网格区域顶部对齐。</li>
-<li>end: 网格区域底部对齐。</li>
-<li>center: 网格区域居中。</li>
-<li>stretch: 网格区域填满</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-a</span>&#123;</span><br><span class="line">  <span class="attribute">align-self</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格项垂直居中.png" alt="image"></p>
-<blockquote>
-<p>提示：也可以在容器上设置align-items，达到全部网格项对齐。</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2400,7 +2027,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2411,7 +2038,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2422,7 +2049,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
