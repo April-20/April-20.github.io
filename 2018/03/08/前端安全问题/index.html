@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="LittleCorn个人博客">
 <meta property="og:description" content="XSS跨站脚本（英语：Cross-site scripting，通常简称为：XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。 XSS更偏向于代码实现（即写一段拥有跨站请求功能的JavaScript脚本注入到一条帖子里，然后有用户访问了这个帖子，这就算是中了XSS攻击了）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-08T02:46:01.363Z">
+<meta property="og:updated_time" content="2018-03-18T14:35:14.465Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端安全问题">
 <meta name="twitter:description" content="XSS跨站脚本（英语：Cross-site scripting，通常简称为：XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。 XSS更偏向于代码实现（即写一段拥有跨站请求功能的JavaScript脚本注入到一条帖子里，然后有用户访问了这个帖子，这就算是中了XSS攻击了）">
@@ -375,11 +375,12 @@
 <li>漏洞跟语言平台无关，并非asp才有注入漏洞而asp.net就没有注入漏洞，一切要看设计者是否用心。</li>
 </ul>
 <p><strong>关于安全性</strong></p>
-<ul>
-<li>对用户输入的内容要时刻保持警惕。</li>
-<li>只有客户端的验证等于没有验证。</li>
-<li>永远不要把服务器错误信息暴露给用户。</li>
-</ul>
+<ol>
+<li>永远不要信任用户的输入，要对用户的输入进行校验，可以通过正则表达式，或限制长度，对单引号和双”-“进行转换等。</li>
+<li>永远不要使用动态拼装SQL，可以使用参数化的SQL或者直接使用存储过程进行数据查询存取。</li>
+<li>永远不要使用管理员权限的数据库连接，为每个应用使用单独的权限有限的数据库连接。</li>
+<li>不要把机密信息明文存放，请加密或者hash掉密码和敏感的信息。</li>
+</ol>
 
       
     </div>
@@ -505,7 +506,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -516,7 +517,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -527,7 +528,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

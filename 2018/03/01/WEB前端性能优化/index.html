@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="LittleCorn个人博客">
 <meta property="og:description" content="内容优化 减少HTTP请求数，这条策略是最重要最有效的，因为一个完整的请求要经过NDS寻址，与服务器建立连接，发送数据，等待服务器响应，接收数据这样一个消耗时间成本和资源成本的复杂的过程。常见方法：合并多个CSS文件和js文件，利用CSS Sprites整合图像，Inline Images(使用 data：URL scheme在实际的页面嵌入图像数据 )，合理设置HTTP缓存等。 减少DNS查找。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-07T05:45:54.661Z">
+<meta property="og:updated_time" content="2018-03-18T14:36:22.288Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WEB前端性能优化">
 <meta name="twitter:description" content="内容优化 减少HTTP请求数，这条策略是最重要最有效的，因为一个完整的请求要经过NDS寻址，与服务器建立连接，发送数据，等待服务器响应，接收数据这样一个消耗时间成本和资源成本的复杂的过程。常见方法：合并多个CSS文件和js文件，利用CSS Sprites整合图像，Inline Images(使用 data：URL scheme在实际的页面嵌入图像数据 )，合理设置HTTP缓存等。 减少DNS查找。">
@@ -386,6 +386,23 @@
 <li>对Ajax请求使用GET方法。</li>
 <li>避免空的图像src。</li>
 </ul>
+<h3 id="移动端性能优化"><a href="#移动端性能优化" class="headerlink" title="移动端性能优化"></a>移动端性能优化</h3><ul>
+<li>尽量使用css3动画，开启硬件加速。</li>
+<li>适当使用touch事件代替click事件。</li>
+<li>避免使用css3渐变阴影效果。</li>
+<li>可以用transform: translateZ(0)来开启硬件加速。</li>
+<li>不滥用Float。Float在渲染时计算量比较大，尽量减少使用</li>
+<li>不滥用Web字体。Web字体需要下载，解析，重绘当前页面，尽量减少使用。</li>
+<li>合理使用requestAnimationFrame动画代替setTimeout</li>
+<li>CSS中的属性（CSS3 transitions、CSS3 3D transforms、Opacity、Canvas、WebGL、Video）会触发GPU渲染，请合理使用。过渡使用会引发手机过耗电增加</li>
+</ul>
+<blockquote>
+<p>PC端的在移动端同样适用</p>
+</blockquote>
+<h3 id="渐进增强和优雅降级"><a href="#渐进增强和优雅降级" class="headerlink" title="渐进增强和优雅降级"></a>渐进增强和优雅降级</h3><ul>
+<li>渐进增强 ：针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏览器进行效果、交互等改进和追加功能达到更好的用户体验。</li>
+<li>优雅降级 ：一开始就构建完整的功能，然后再针对低版本浏览器进行兼容。</li>
+</ul>
 
       
     </div>
@@ -509,7 +526,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -520,7 +537,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -531,7 +548,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -564,7 +581,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#内容优化"><span class="nav-number">1.</span> <span class="nav-text">内容优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javascript优化"><span class="nav-number">2.</span> <span class="nav-text">javascript优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS优化"><span class="nav-number">3.</span> <span class="nav-text">CSS优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图像优化"><span class="nav-number">4.</span> <span class="nav-text">图像优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie优化"><span class="nav-number">5.</span> <span class="nav-text">Cookie优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器优化"><span class="nav-number">6.</span> <span class="nav-text">服务器优化</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#内容优化"><span class="nav-number">1.</span> <span class="nav-text">内容优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javascript优化"><span class="nav-number">2.</span> <span class="nav-text">javascript优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS优化"><span class="nav-number">3.</span> <span class="nav-text">CSS优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图像优化"><span class="nav-number">4.</span> <span class="nav-text">图像优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie优化"><span class="nav-number">5.</span> <span class="nav-text">Cookie优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器优化"><span class="nav-number">6.</span> <span class="nav-text">服务器优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动端性能优化"><span class="nav-number">7.</span> <span class="nav-text">移动端性能优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#渐进增强和优雅降级"><span class="nav-number">8.</span> <span class="nav-text">渐进增强和优雅降级</span></a></li></ol></div>
             
 
           </div>

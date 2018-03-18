@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="LittleCorn个人博客">
 <meta property="og:description" content="盒模型标准盒子模型：宽度 = 内容宽度(contengt) + border + padding + margin; 低版本IE盒子模型：宽度 = 内容宽度(content + border + padding) + margin; box-sizing用来控制元素的盒子模型的解析模式，默认为content-box。  content-box：在宽度和高度之外绘制元素的内边框和边框。 border">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-08T05:35:05.826Z">
+<meta property="og:updated_time" content="2018-03-18T13:35:27.142Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS知识点总结">
 <meta name="twitter:description" content="盒模型标准盒子模型：宽度 = 内容宽度(contengt) + border + padding + margin; 低版本IE盒子模型：宽度 = 内容宽度(content + border + padding) + margin; box-sizing用来控制元素的盒子模型的解析模式，默认为content-box。  content-box：在宽度和高度之外绘制元素的内边框和边框。 border">
@@ -387,6 +387,9 @@
 <li>absolute元素：包含块由最近的position不为static的祖先元素创建。如果创建包含块的祖先元素是行内元素，包含块的范围是这个祖先元素中的第一个和最后一个行内块的padding围起来的区域。如果祖先元素不是行内元素，包含块的范围就是这个祖先元素的内边距+width区域。如果没有找到这样的祖先元素，这个绝对定位的元素的包含块为初始块。</li>
 </ul>
 <p><strong>position、display、float：</strong><br>display属性规定元素应该生成的框的类型，position属性规定元素的定位类型；float属性是一种布局方式，定义元素在哪个方向浮动。</p>
+<blockquote>
+<p>position:absolute和float的共同点，可以让元素脱离文档流，并且可以设置宽高。不同点是：float仍会占据位置，absolute会覆盖文档流中的其他元素。</p>
+</blockquote>
 <h3 id="visibility属性值"><a href="#visibility属性值" class="headerlink" title="visibility属性值"></a>visibility属性值</h3><ul>
 <li>visible：(默认值)元素可见。</li>
 <li>hidden：元素不可见。</li>
@@ -463,6 +466,10 @@
 <p>GFC(GridLayout Formatting Contexts)直译为”网格布局格式化上下文”，当为一个元素设置display值为grid的时候，此元素将会获得一个独立的渲染区域，我们可以通过在网格容器上定义网格定义行和网格定义列属性，在网格项目上定义网格行和网格列,为每一个网格项目定义位置和空间。</p>
 <p><strong>FFC</strong></p>
 <p>FFC(Flex Formatting Contexts)直译为”自适应格式化上下文”，display值为flex或者inline-flex的元素将会生成自适应容器。伸缩容器中的每一个子元素都是一个伸缩项目。伸缩项目可以是任意数量的。伸缩容器外和伸缩项目内的一切元素都不受影响。简单地说，Flexbox 定义了伸缩容器内伸缩项目该如何布局。</p>
+<h3 id="FOUC"><a href="#FOUC" class="headerlink" title="FOUC"></a>FOUC</h3><p>Flash Of Unstyled Content 文档样式闪烁</p>
+<p>通过@import引入css文件，浏览器DOM加载完到css加载完成中间会有一段时间页面上的内容是没有样式的，这段时间长度跟网速有关，样式加载完毕后，页面重新渲染，引起重绘，重排。</p>
+<p><strong>解决方法：</strong></p>
+<p>把@import换成link标签，或者在link后面加一个script标签</p>
 <h3 id="margin和padding适用场景"><a href="#margin和padding适用场景" class="headerlink" title="margin和padding适用场景"></a>margin和padding适用场景</h3><p><strong>margin的使用：</strong></p>
 <ul>
 <li>需要在border外侧添加空白。</li>
@@ -635,6 +642,25 @@
 <li>可以精准地控制动画的每一帧</li>
 </ul>
 <p>它的主要场景在游戏，动画方面，用这个方法可以保持较高帧率和效率。比如一个60帧率的游戏，requestAnimationFrame一般会以16ms的间隔调用一次。</p>
+<h3 id="attribute和property"><a href="#attribute和property" class="headerlink" title="attribute和property"></a>attribute和property</h3><ul>
+<li>attribute是DOM元素在文档中作为html标签拥有的属性；</li>
+<li>property是DOM元素在js中作为对象拥有的属性。</li>
+</ul>
+<p>对于html来说，attribute和property是同步的，是会自动更新的。但是对于自定义属性来说，他们是不同的。</p>
+<h3 id="语义化"><a href="#语义化" class="headerlink" title="语义化"></a>语义化</h3><ul>
+<li>丢失样式的时候浏览器可以让页面呈现出清晰的结构；</li>
+<li>有利于SEO：和搜索引擎建立良好的沟通，有助于爬虫抓取更多的有效信息。</li>
+<li>方便其他设备解析：如屏幕阅读器、盲人阅读器等；</li>
+<li>便于团队开发和维护，语义化更具有可读性。</li>
+</ul>
+<h3 id="link和-import"><a href="#link和-import" class="headerlink" title="link和@import"></a>link和@import</h3><ul>
+<li>link属于html标签，而@import是css提供的；</li>
+<li>页面加载的时候，link会被同时加载，而@import会等到加载完整个HTML文件后再加载，会造成文档闪烁；</li>
+<li>@import只有在IE5以上才能识别，而link是HTML标签，无兼容问题；</li>
+<li>link方式的样式的权重 高于@import的权重。</li>
+<li>link除了加载css文件外，还可以定义RSS，定义rel属性等，import只能加载css文件。</li>
+<li>link支持使用JavaScript控制DOM去改变样式，而import不支持。</li>
+</ul>
 
       
     </div>
@@ -758,7 +784,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -769,7 +795,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -780,7 +806,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -813,7 +839,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#盒模型"><span class="nav-number">1.</span> <span class="nav-text">盒模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#box-sizing"><span class="nav-number">2.</span> <span class="nav-text">box-sizing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#display属性值"><span class="nav-number">3.</span> <span class="nav-text">display属性值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#position属性值"><span class="nav-number">4.</span> <span class="nav-text">position属性值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#visibility属性值"><span class="nav-number">5.</span> <span class="nav-text">visibility属性值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#overflow属性值"><span class="nav-number">6.</span> <span class="nav-text">overflow属性值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#清除浮动"><span class="nav-number">7.</span> <span class="nav-text">清除浮动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BFC-块级格式上下文"><span class="nav-number">8.</span> <span class="nav-text">BFC(块级格式上下文)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IFC-内联格式化上下文"><span class="nav-number">9.</span> <span class="nav-text">IFC(内联格式化上下文)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#margin和padding适用场景"><span class="nav-number">10.</span> <span class="nav-text">margin和padding适用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元素竖直方向百分比"><span class="nav-number">11.</span> <span class="nav-text">元素竖直方向百分比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#line-height"><span class="nav-number">12.</span> <span class="nav-text">line-height</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css创建三角形"><span class="nav-number">13.</span> <span class="nav-text">css创建三角形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见兼容性问题"><span class="nav-number">14.</span> <span class="nav-text">常见兼容性问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全屏滚动原理"><span class="nav-number">15.</span> <span class="nav-text">全屏滚动原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#让页面字体边清晰变细"><span class="nav-number">16.</span> <span class="nav-text">让页面字体边清晰变细</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#响应式设计"><span class="nav-number">17.</span> <span class="nav-text">响应式设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动端媒体查询"><span class="nav-number">18.</span> <span class="nav-text">移动端媒体查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视差滚动效果"><span class="nav-number">19.</span> <span class="nav-text">视差滚动效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器怎样解析css选择器"><span class="nav-number">20.</span> <span class="nav-text">浏览器怎样解析css选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在网页中应该使用偶数字体"><span class="nav-number">21.</span> <span class="nav-text">在网页中应该使用偶数字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#手写动画，最小时间间隔"><span class="nav-number">22.</span> <span class="nav-text">手写动画，最小时间间隔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#li与li之间的空白间隔"><span class="nav-number">23.</span> <span class="nav-text">li与li之间的空白间隔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#div设置边框"><span class="nav-number">24.</span> <span class="nav-text">div设置边框</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css选择器"><span class="nav-number">25.</span> <span class="nav-text">css选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css3伪类"><span class="nav-number">26.</span> <span class="nav-text">css3伪类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#before和-after"><span class="nav-number">27.</span> <span class="nav-text">::before和:after</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css3新特性"><span class="nav-number">28.</span> <span class="nav-text">css3新特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-Sprites"><span class="nav-number">29.</span> <span class="nav-text">CSS Sprites</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#style标签位置"><span class="nav-number">30.</span> <span class="nav-text">style标签位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#png、jpg、gif图片格式，webp"><span class="nav-number">31.</span> <span class="nav-text">png、jpg、gif图片格式，webp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有一个高度自适应的div，里面有两个div，一个高度100px，希望另一个填满剩下的高度"><span class="nav-number">32.</span> <span class="nav-text">有一个高度自适应的div，里面有两个div，一个高度100px，希望另一个填满剩下的高度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用div模拟textarea"><span class="nav-number">33.</span> <span class="nav-text">用div模拟textarea</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#input和textarea的区别"><span class="nav-number">34.</span> <span class="nav-text">input和textarea的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#忽略页面中的电话号码"><span class="nav-number">35.</span> <span class="nav-text">忽略页面中的电话号码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1px边框问题"><span class="nav-number">36.</span> <span class="nav-text">1px边框问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rem和em的区别"><span class="nav-number">37.</span> <span class="nav-text">rem和em的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#requestAnimationFrame"><span class="nav-number">38.</span> <span class="nav-text">requestAnimationFrame</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#盒模型"><span class="nav-number">1.</span> <span class="nav-text">盒模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#box-sizing"><span class="nav-number">2.</span> <span class="nav-text">box-sizing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#display属性值"><span class="nav-number">3.</span> <span class="nav-text">display属性值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#position属性值"><span class="nav-number">4.</span> <span class="nav-text">position属性值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#visibility属性值"><span class="nav-number">5.</span> <span class="nav-text">visibility属性值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#overflow属性值"><span class="nav-number">6.</span> <span class="nav-text">overflow属性值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#清除浮动"><span class="nav-number">7.</span> <span class="nav-text">清除浮动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BFC-块级格式上下文"><span class="nav-number">8.</span> <span class="nav-text">BFC(块级格式上下文)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IFC-内联格式化上下文"><span class="nav-number">9.</span> <span class="nav-text">IFC(内联格式化上下文)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FOUC"><span class="nav-number">10.</span> <span class="nav-text">FOUC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#margin和padding适用场景"><span class="nav-number">11.</span> <span class="nav-text">margin和padding适用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元素竖直方向百分比"><span class="nav-number">12.</span> <span class="nav-text">元素竖直方向百分比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#line-height"><span class="nav-number">13.</span> <span class="nav-text">line-height</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css创建三角形"><span class="nav-number">14.</span> <span class="nav-text">css创建三角形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见兼容性问题"><span class="nav-number">15.</span> <span class="nav-text">常见兼容性问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全屏滚动原理"><span class="nav-number">16.</span> <span class="nav-text">全屏滚动原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#让页面字体边清晰变细"><span class="nav-number">17.</span> <span class="nav-text">让页面字体边清晰变细</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#响应式设计"><span class="nav-number">18.</span> <span class="nav-text">响应式设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动端媒体查询"><span class="nav-number">19.</span> <span class="nav-text">移动端媒体查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视差滚动效果"><span class="nav-number">20.</span> <span class="nav-text">视差滚动效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器怎样解析css选择器"><span class="nav-number">21.</span> <span class="nav-text">浏览器怎样解析css选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在网页中应该使用偶数字体"><span class="nav-number">22.</span> <span class="nav-text">在网页中应该使用偶数字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#手写动画，最小时间间隔"><span class="nav-number">23.</span> <span class="nav-text">手写动画，最小时间间隔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#li与li之间的空白间隔"><span class="nav-number">24.</span> <span class="nav-text">li与li之间的空白间隔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#div设置边框"><span class="nav-number">25.</span> <span class="nav-text">div设置边框</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css选择器"><span class="nav-number">26.</span> <span class="nav-text">css选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css3伪类"><span class="nav-number">27.</span> <span class="nav-text">css3伪类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#before和-after"><span class="nav-number">28.</span> <span class="nav-text">::before和:after</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css3新特性"><span class="nav-number">29.</span> <span class="nav-text">css3新特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-Sprites"><span class="nav-number">30.</span> <span class="nav-text">CSS Sprites</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#style标签位置"><span class="nav-number">31.</span> <span class="nav-text">style标签位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#png、jpg、gif图片格式，webp"><span class="nav-number">32.</span> <span class="nav-text">png、jpg、gif图片格式，webp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有一个高度自适应的div，里面有两个div，一个高度100px，希望另一个填满剩下的高度"><span class="nav-number">33.</span> <span class="nav-text">有一个高度自适应的div，里面有两个div，一个高度100px，希望另一个填满剩下的高度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用div模拟textarea"><span class="nav-number">34.</span> <span class="nav-text">用div模拟textarea</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#input和textarea的区别"><span class="nav-number">35.</span> <span class="nav-text">input和textarea的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#忽略页面中的电话号码"><span class="nav-number">36.</span> <span class="nav-text">忽略页面中的电话号码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1px边框问题"><span class="nav-number">37.</span> <span class="nav-text">1px边框问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rem和em的区别"><span class="nav-number">38.</span> <span class="nav-text">rem和em的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#requestAnimationFrame"><span class="nav-number">39.</span> <span class="nav-text">requestAnimationFrame</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#attribute和property"><span class="nav-number">40.</span> <span class="nav-text">attribute和property</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语义化"><span class="nav-number">41.</span> <span class="nav-text">语义化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#link和-import"><span class="nav-number">42.</span> <span class="nav-text">link和@import</span></a></li></ol></div>
             
 
           </div>

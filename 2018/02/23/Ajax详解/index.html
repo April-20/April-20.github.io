@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="LittleCorn个人博客">
 <meta property="og:description" content="创建XMLHttpRequest对象Ajax（Asynchronous Javascript And XML）即异步JavaScript和XML. Ajax不是一种新的编程语言，而是一种用于创建更好更快以及交互性更强的web应用程序的技术。是一套综合多项技术的浏览器网页开发技术。 原理：通过浏览器的XMLHttpRequest对象来向服务器发送异步请求并接收服务器响应数据。然后用JavaScrip">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-07T05:55:04.947Z">
+<meta property="og:updated_time" content="2018-03-18T12:49:09.918Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ajax详解">
 <meta name="twitter:description" content="创建XMLHttpRequest对象Ajax（Asynchronous Javascript And XML）即异步JavaScript和XML. Ajax不是一种新的编程语言，而是一种用于创建更好更快以及交互性更强的web应用程序的技术。是一套综合多项技术的浏览器网页开发技术。 原理：通过浏览器的XMLHttpRequest对象来向服务器发送异步请求并接收服务器响应数据。然后用JavaScrip">
@@ -473,6 +473,13 @@
 <li>loadstart事件：传输开始。</li>
 <li>loadEnd事件：传输结束，但是不知道成功还是失败。</li>
 </ul>
+<h3 id="Ajax和Flash的区别"><a href="#Ajax和Flash的区别" class="headerlink" title="Ajax和Flash的区别"></a>Ajax和Flash的区别</h3><ul>
+<li>Flash适合处理多媒体、矢量图形、访问机器；但是对于css、处理文本上不足，不容易被搜索。</li>
+<li>Ajax对css、文本支持很好，支持搜索；但是对于多媒体、矢量图形、机器访问不足。</li>
+</ul>
+<blockquote>
+<p>共同点：与服务器无刷新传递信息、用户离线和在线状态、操作dom等。</p>
+</blockquote>
 
       
     </div>
@@ -596,7 +603,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -607,7 +614,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -618,7 +625,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -651,7 +658,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建XMLHttpRequest对象"><span class="nav-number">1.</span> <span class="nav-text">创建XMLHttpRequest对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置请求对象信息"><span class="nav-number">2.</span> <span class="nav-text">配置请求对象信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发送请求"><span class="nav-number">3.</span> <span class="nav-text">发送请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监听响应"><span class="nav-number">4.</span> <span class="nav-text">监听响应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ajax函数封装"><span class="nav-number">5.</span> <span class="nav-text">Ajax函数封装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XMLHttpRequest-Level-2"><span class="nav-number">6.</span> <span class="nav-text">XMLHttpRequest Level 2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP请求的时限"><span class="nav-number">6.1.</span> <span class="nav-text">HTTP请求的时限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FormData对象"><span class="nav-number">6.2.</span> <span class="nav-text">FormData对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#上传文件"><span class="nav-number">6.3.</span> <span class="nav-text">上传文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#跨域资源共享（CORS）"><span class="nav-number">6.4.</span> <span class="nav-text">跨域资源共享（CORS）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接收二进制数据"><span class="nav-number">6.5.</span> <span class="nav-text">接收二进制数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进度信息"><span class="nav-number">6.6.</span> <span class="nav-text">进度信息</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建XMLHttpRequest对象"><span class="nav-number">1.</span> <span class="nav-text">创建XMLHttpRequest对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置请求对象信息"><span class="nav-number">2.</span> <span class="nav-text">配置请求对象信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发送请求"><span class="nav-number">3.</span> <span class="nav-text">发送请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监听响应"><span class="nav-number">4.</span> <span class="nav-text">监听响应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ajax函数封装"><span class="nav-number">5.</span> <span class="nav-text">Ajax函数封装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XMLHttpRequest-Level-2"><span class="nav-number">6.</span> <span class="nav-text">XMLHttpRequest Level 2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP请求的时限"><span class="nav-number">6.1.</span> <span class="nav-text">HTTP请求的时限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FormData对象"><span class="nav-number">6.2.</span> <span class="nav-text">FormData对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#上传文件"><span class="nav-number">6.3.</span> <span class="nav-text">上传文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#跨域资源共享（CORS）"><span class="nav-number">6.4.</span> <span class="nav-text">跨域资源共享（CORS）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接收二进制数据"><span class="nav-number">6.5.</span> <span class="nav-text">接收二进制数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进度信息"><span class="nav-number">6.6.</span> <span class="nav-text">进度信息</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ajax和Flash的区别"><span class="nav-number">7.</span> <span class="nav-text">Ajax和Flash的区别</span></a></li></ol></div>
             
 
           </div>

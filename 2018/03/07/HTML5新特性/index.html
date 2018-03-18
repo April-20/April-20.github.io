@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="LittleCorn个人博客">
 <meta property="og:description" content="文档声明方式1&amp;lt;!DOCTYPE html&amp;gt; 语义化标签 header、footer、aside、nav、section、article mark、time、progress、command、details、dialog、summary figure、figcaption、meter、ruby、rt、rp、wbr  移除一些HTML4.01中的元素：  center、font、fram">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-07T07:34:26.651Z">
+<meta property="og:updated_time" content="2018-03-18T14:32:54.507Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML5新特性">
 <meta name="twitter:description" content="文档声明方式1&amp;lt;!DOCTYPE html&amp;gt; 语义化标签 header、footer、aside、nav、section、article mark、time、progress、command、details、dialog、summary figure、figcaption、meter、ruby、rt、rp、wbr  移除一些HTML4.01中的元素：  center、font、fram">
@@ -367,6 +367,7 @@
 <h3 id="localStorage-和-sessionStorage"><a href="#localStorage-和-sessionStorage" class="headerlink" title="localStorage 和 sessionStorage"></a>localStorage 和 sessionStorage</h3><p>HTML5 web 存储,一个比cookie更好的本地存储方式。</p>
 <h3 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h3><p>WebSocket是HTML5开始提供的一种在单个 TCP 连接上进行全双工通讯的协议。</p>
 <h3 id="Web-Workers"><a href="#Web-Workers" class="headerlink" title="Web Workers"></a>Web Workers</h3><p>web worker 是运行在后台的 JavaScript，独立于其他脚本，不会影响页面的性能。您可以继续做任何愿意做的事情：点击、选取内容等等，而此时 web worker 在后台运行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.通过 worker = new Worker( url ) 加载一个JS文件来创建一个worker，同时返回一个worker实例。</span><br><span class="line"></span><br><span class="line">2.通过worker.postMessage( data ) 方法来向worker发送数据。</span><br><span class="line"></span><br><span class="line">3.绑定worker.onmessage方法来接收worker发送过来的数据。</span><br><span class="line"></span><br><span class="line">4.可以使用 worker.terminate() 来终止一个worker的执行。</span><br></pre></td></tr></table></figure>
 <h3 id="Web-SQL"><a href="#Web-SQL" class="headerlink" title="Web SQL"></a>Web SQL</h3><p>Web SQL 数据库 API 并不是 HTML5 规范的一部分，但是它是一个独立的规范，引入了一组使用 SQL 操作客户端数据库的 APIs。</p>
 <h3 id="应用程序缓存"><a href="#应用程序缓存" class="headerlink" title="应用程序缓存"></a>应用程序缓存</h3><p>使用 HTML5，通过创建 cache manifest 文件，可以轻松地创建 web 应用的离线版本。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE HTML&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">manifest</span>=<span class="string">"demo.appcache"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">文档内容......</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h3><p>HTML5的 canvas 元素用于图形的绘制，通过脚本 (通常是JavaScript)来完成。canvas 标签只是图形容器，必须使用脚本来绘制图形。可以使用 canvas 绘制路径,盒、圆、字符以及添加图像。</p>
@@ -573,7 +574,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -584,7 +585,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -595,7 +596,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

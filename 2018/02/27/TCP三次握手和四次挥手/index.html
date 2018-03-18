@@ -88,7 +88,7 @@
 <meta property="og:description" content="建立TCP需要三次握手才能建立，而断开连接则需要四次握手。整个过程如下图所示： 连接过程：首先Client端发送连接请求报文，Server端接受连接后回复ACK报文，并为这次连接分配资源。Client端接收到ACK报文后也向Server端发送ACK报文，并分配资源，这样TCP连接就建立了。 中断连接的可以是client端，也可以是server端。 断开连接：client端发起中断连接请求，即FIN">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/TCP连接.jpg">
-<meta property="og:updated_time" content="2018-02-27T08:24:31.974Z">
+<meta property="og:updated_time" content="2018-03-18T14:38:33.919Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP三次握手和四次挥手">
 <meta name="twitter:description" content="建立TCP需要三次握手才能建立，而断开连接则需要四次握手。整个过程如下图所示： 连接过程：首先Client端发送连接请求报文，Server端接受连接后回复ACK报文，并为这次连接分配资源。Client端接收到ACK报文后也向Server端发送ACK报文，并分配资源，这样TCP连接就建立了。 中断连接的可以是client端，也可以是server端。 断开连接：client端发起中断连接请求，即FIN">
@@ -347,11 +347,29 @@
         <p>建立TCP需要三次握手才能建立，而断开连接则需要四次握手。整个过程如下图所示：<br><img src="/images/TCP连接.jpg" alt="image"></p>
 <p><strong>连接过程</strong>：首先Client端发送连接请求报文，Server端接受连接后回复ACK报文，并为这次连接分配资源。Client端接收到ACK报文后也向Server端发送ACK报文，并分配资源，这样TCP连接就建立了。</p>
 <p><strong>中断连接的可以是client端，也可以是server端。</strong></p>
-<p><strong>断开连接</strong>：client端发起中断连接请求，即FIN报文，告诉server端：“我没有数据要发给你了”。server端接到FIN报文后，会先给client端发送一个ACK报文，告诉client端：“我接到你的请求了”。这个时候server端还可以继续发送数据到client端，当server端数据发送完毕，就会向client端发送FIN报文，告诉client端：“我这边数据发送完毕了，准备好关闭连接了”。client端收到FIN报文后，再向server端发送一个ACK报文，告诉server端：“我知道了，你关闭吧”。server端收到ACK报文后，就断开server连接了。这时client端会等待2MSL，如果没有收到回复，就会关闭client连接。到此，TCP连接关闭。</p>
+<p><strong>断开连接</strong>：client端发起中断连接请求，即FIN报文，告诉server端：“我没有数据要发给你了”。server端接到FIN报文后，会先给client端发送一个ACK报文，确认序号为收到序号+1，告诉client端：“我接到你的请求了”。这个时候server端还可以继续发送数据到client端，当server端数据发送完毕，就会向client端发送FIN报文，告诉client端：“我这边数据发送完毕了，准备好关闭连接了”。client端收到FIN报文后，再向server端发送一个ACK报文，确认序号为收到序号+1，告诉server端：“我知道了，你关闭吧”。server端收到ACK报文后，就断开server连接了。这时client端会等待2MSL，如果没有收到回复，就会关闭client连接。到此，TCP连接关闭。</p>
 <blockquote>
 <p>“三次握手”的第二次握手发送SYN+ACK回应第一次握手的SYN，但是“四次挥手”的第二次挥手只能发送ACK回应第一次挥手的FIN，因此，此时server可能还有数据要传输给client，所以server传输完数据后才能发起第三次挥手，等待client的第四次挥手ACK.</p>
-<p>按道理，四个报文都发送完毕，就可以直接进入close状态了，但是网络可能出现延迟等现象，造成最后一个ACK丢失。所以client端最后等待的2MSL时间就是用来重发可能丢失的ACK报文。</p>
+<p>按道理，四个报文都发送完毕，就可以直接进入close状态了，但是网络可能出现延迟等现象，造成最后一个ACK丢失。所以client端最后等待的2MSL（2倍的报文最大生存时间）时间就是用来重发可能丢失的ACK报文。</p>
 </blockquote>
+<h3 id="TCP和UDP的区别"><a href="#TCP和UDP的区别" class="headerlink" title="TCP和UDP的区别"></a>TCP和UDP的区别</h3><p><strong>TCP</strong></p>
+<ul>
+<li><strong>面向连接的</strong>。发送数据前需要通过三次握手建立连接；</li>
+<li><strong>提供可靠服务</strong>。传送的数据时，有确认、窗口、重传、拥塞控制机制，保证数据的有序、无差错、无重复到达。在数据传完后，会断开连接来节约系统资源。</li>
+<li><strong>效率低</strong>。就是因为发送数据前需要建立连接，所以消耗时间，效率低。</li>
+<li><strong>TCP面向字节流的</strong>。TCP把应用程序看成是一连串的无结构的字节流。TCP有一个缓冲，当应用程序传送的数据块太长，TCP就可以把它划分短一些再传送。如果应用程序一次只发送一个字节，TCP也可以等待积累有足够多的字节后再构成报文段发送出去。</li>
+<li><strong>点到点</strong>。一条TCP连接只能是点到点的。</li>
+<li><strong>应用场景</strong>：对网络通讯质量要求高时，比如HTTP、HTTPS、FTP等文件传输的协议，SMTP等邮件传输的协议。</li>
+</ul>
+<p><strong>UDP</strong></p>
+<ul>
+<li><strong>无连接的</strong>。UDP不需要建立连接，可以直接发送数据。</li>
+<li><strong>不可靠服务</strong>。因为没有TCP那些可靠的机制，在数据传输时，如果网络质量不好，就会很容易丢包。</li>
+<li><strong>效率高</strong>。不需要建立连接，所以传递数据非常快。</li>
+<li><strong>面向报文的</strong>。UDP对应用层交下来的报文，既不合并，也不拆分，而是保留这些报文的边界。这也就是说，应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。</li>
+<li><strong>多对多</strong>。UDP支持一对一、一对多、多对多的交互通信。</li>
+<li><strong>应用场景</strong>：对网络通信速度要求比较高时，比如QQ语言、视频等。</li>
+</ul>
 
       
     </div>
@@ -446,8 +464,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -466,7 +493,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -477,7 +504,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -488,7 +515,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -511,6 +538,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP和UDP的区别"><span class="nav-number">1.</span> <span class="nav-text">TCP和UDP的区别</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
