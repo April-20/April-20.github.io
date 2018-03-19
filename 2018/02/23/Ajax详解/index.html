@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="LittleCorn个人博客">
 <meta property="og:description" content="创建XMLHttpRequest对象Ajax（Asynchronous Javascript And XML）即异步JavaScript和XML. Ajax不是一种新的编程语言，而是一种用于创建更好更快以及交互性更强的web应用程序的技术。是一套综合多项技术的浏览器网页开发技术。 原理：通过浏览器的XMLHttpRequest对象来向服务器发送异步请求并接收服务器响应数据。然后用JavaScrip">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-18T12:49:09.918Z">
+<meta property="og:updated_time" content="2018-03-19T10:27:55.739Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ajax详解">
 <meta name="twitter:description" content="创建XMLHttpRequest对象Ajax（Asynchronous Javascript And XML）即异步JavaScript和XML. Ajax不是一种新的编程语言，而是一种用于创建更好更快以及交互性更强的web应用程序的技术。是一套综合多项技术的浏览器网页开发技术。 原理：通过浏览器的XMLHttpRequest对象来向服务器发送异步请求并接收服务器响应数据。然后用JavaScrip">
@@ -356,6 +356,10 @@
 <li>向服务器发送大量数据时（get有数据量限制）</li>
 <li>发送包含未知字符的用户输入时，post比get更稳定也更可靠。</li>
 </ul>
+<blockquote>
+<p>get请求用于信息获取，使用URL传递参数，对所发送的信息数量有限制，一般不超过2kb，get请求可以设置缓存。post一般用于修改服务器上的资源，对所发送的信息没有限制，post请求不可以缓存。</p>
+<p>get请求需要使用request.QueryString来取得变量的值；post方式通过request.Form来获取变量的值。</p>
+</blockquote>
 <p><strong>如果是post请求，要设置请求头</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">'POST'</span>,<span class="string">'/try/ajax/demo.php'</span>,<span class="literal">true</span>);</span><br><span class="line">xhr.setRequestHeader(<span class="string">"Content-type"</span>,<span class="string">"application/x-www-form-urlencode;charset=gb2312"</span>);</span><br></pre></td></tr></table></figure>
 <h3 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.send([post请求参数]);</span><br></pre></td></tr></table></figure>
@@ -410,6 +414,19 @@
 <li>6xx: 自定义错误</li>
 </ul>
 <p>当readyState=4且status=200或304时表示响应已就绪。206也是响应成功，当发生大资源的断点请求或带宽截流的时候。（后台可以开启gzip压缩）</p>
+<p><strong>403错误常见原因：</strong></p>
+<ul>
+<li>网页脚本文件在当前目录下没有执行权限。</li>
+<li>在不允许写/创建文件的目录下执行了创建/写文件的操作。</li>
+<li>在身份验证的过程中输入了错误的密码。</li>
+<li>你的IP列入黑名单。</li>
+<li>以http方式访问需要SSL连接的网址。</li>
+<li>在一定时间内过多的访问此网站（一般是采集程序），被防火墙拒绝访问了。</li>
+<li>DNS解析错误，手动更改DNS服务器地址。</li>
+<li>连接的用户过多，可以过后再试。</li>
+<li>服务器繁忙，同一IP地址发送请求过多，遭到服务器智能屏蔽。</li>
+</ul>
+<p><strong>解决方法：重建DNS缓存、修改文件夹属性等</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(xhr.readyState == <span class="number">4</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(xhr.status == <span class="number">200</span> || xhr.status == <span class="number">304</span>)&#123;</span><br><span class="line">            <span class="comment">//success</span></span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">// error</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>服务器响应:</p>
 <ul>
@@ -423,6 +440,7 @@
 <li>ajax程序必须测试针对各个浏览器的兼容性.</li>
 <li>ajax更新页面内容的时候并没有刷新整个页面,因此,网页的后退功能是失效的.</li>
 <li>对搜索引擎支持不好. </li>
+<li>安全问题 AJAX暴露了与服务器交互的细节.</li>
 </ul>
 <hr>
 <h3 id="XMLHttpRequest-Level-2"><a href="#XMLHttpRequest-Level-2" class="headerlink" title="XMLHttpRequest Level 2"></a>XMLHttpRequest Level 2</h3><p><strong>老版本的缺点</strong></p>
@@ -603,7 +621,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -625,7 +643,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

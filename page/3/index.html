@@ -252,6 +252,772 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/08/Grid网格布局/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/08/Grid网格布局/" itemprop="url">Grid网格布局</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T11:04:36+08:00">
+                2018-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>flexbox是一维布局，他只能在一条直线上放置你的内容区块；而grid是一个二维布局。可以根据你的设计需求，将内容区块放置到任何你想要放的地方。网络布局可以将应用程序分割成不同的空间，或者定义他们的大小、位置以及层级。</p>
+<p>使用Grid布局非常简单，你只需要给容器（container）定义：display:grid，并设置列（grid-template-columns）和 行（grid-template-rows）的大小，然后用grid-column和grid-row定义容器子元素（grid-item项目）的位置。</p>
+<h4 id="网格容器（Grid-Container）"><a href="#网格容器（Grid-Container）" class="headerlink" title="网格容器（Grid Container）"></a>网格容器（Grid Container）</h4><p>元素应用display:grid，它是其所有网格项的父元素。下面例子container就是网格容器。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item item-1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item item-2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item item-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="网格项（Grid-Item）"><a href="#网格项（Grid-Item）" class="headerlink" title="网格项（Grid Item）"></a>网格项（Grid Item）</h4><p>网格容器的子元素，下面的item元素是网格项，但sub-item不是。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"sub-item"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="网格线（Grid-Line）"><a href="#网格线（Grid-Line）" class="headerlink" title="网格线（Grid Line）"></a>网格线（Grid Line）</h4><p>组成网格线的分界线。它们可以是列网格线（column grid lines），也可以是行网格线（row grid lines）并且居于行或列的任意一侧，下面黄色线就是列网格线。</p>
+<p><img src="/images/grid网格线.png" alt="image"></p>
+<h4 id="网格轨道（Grid-Track）"><a href="#网格轨道（Grid-Track）" class="headerlink" title="网格轨道（Grid Track）"></a>网格轨道（Grid Track）</h4><p>两个相邻的网格线之间为网格轨道。你可以认为它们是网格的列或行，下面在第二个和第三个网格线之间的黄色部分为网格轨道。<br><img src="/images/grid网格轨道.png" alt="image"></p>
+<h4 id="网格单元（Grid-Cell）"><a href="#网格单元（Grid-Cell）" class="headerlink" title="网格单元（Grid Cell）"></a>网格单元（Grid Cell）</h4><p>两个相邻的列网格线和两个相邻的行网格线组成的是网格单元，它是最小的网格单元。下面行网格线1（row grid lines 1）、行网格线2（row grid lines 2）和列网格线2（column grid lines 2）、列网格线3（column grid lines 3）组成的黄色区域为网格单元。</p>
+<p><img src="/images/grid网格单元.png" alt="image"></p>
+<h4 id="网格区（Grid-Area）"><a href="#网格区（Grid-Area）" class="headerlink" title="网格区（Grid Area）"></a>网格区（Grid Area）</h4><p>网格区是由任意数量网格单元组成，下面行网格线1（row grid lines 1）、行网格线3（row grid lines 3）和列网格线1（column grid lines 1）、列网格线3（column grid lines3）组成的黄色区域为网格区。</p>
+<p><img src="/images/grid网格区.png" alt="image"></p>
+<h3 id="网格容器属性"><a href="#网格容器属性" class="headerlink" title="网格容器属性"></a>网格容器属性</h3><h4 id="display"><a href="#display" class="headerlink" title="display"></a>display</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display: grid | inline-grid | subgrid;</span><br></pre></td></tr></table></figure>
+<p>属性值：</p>
+<ul>
+<li>grid: 生成块级网格</li>
+<li>inline-grid: 生成行内网格</li>
+<li>subgrid: 如果网格容器本身是网格项（嵌套网格容器），此属性用来继承其父网格容器的列、行大小。</li>
+</ul>
+<blockquote>
+<p>注：当元素设置了网格布局，column、float、clear、vertical-align属性无效。</p>
+</blockquote>
+<h4 id="grid-template-columns-rows"><a href="#grid-template-columns-rows" class="headerlink" title="grid-template-columns/rows"></a>grid-template-columns/rows</h4><p>设置行和列的大小，在行轨道或列轨道两边是网格线。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grid-template-columns: &lt;track-size&gt; ... | &lt;line-name&gt; &lt;track-size&gt; ... ;</span><br><span class="line">grid-template-rows: &lt;track-size&gt; ... | &lt;line-name&gt; &lt;track-size&gt; ... ;</span><br></pre></td></tr></table></figure></p>
+<p>属性值：</p>
+<ul>
+<li>track-size: 轨道大小，可以使用css长度，百分比或用分数（用fr单位）。</li>
+<li>line-name: 网格线名字，你可以选择任何名字。</li>
+</ul>
+<p>例子：<br>当你设置行或列大小为auto时，网格会自动分配空间和网格线名称。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">40px</span> <span class="number">50px</span> auto <span class="number">50px</span> <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: <span class="number">25%</span> <span class="number">100px</span> auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/grid网格行列.png" alt="image"></p>
+<p>你也可以给网格线定义名字，注意名字需要写在[]里面。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: [first] <span class="number">40px</span> [line2] <span class="number">50px</span> [line3] auto [col4-start] <span class="number">50px</span> [five] <span class="number">40px</span> [end];</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: [row1-start] <span class="number">25%</span> [row1-end] <span class="number">100px</span> [third-line] auto [last-line];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/grid网格行列名.png" alt="image"></p>
+<p>每条网格线可以有多个名字，例如上面行的第二条线有两个名字，分别是row1-end和row2-start。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: [row1-start] <span class="number">25%</span> [row1-end row2-start] <span class="number">25%</span> [row2-end];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果你定义包含重复部分，<strong>可以使用repeat()简化。</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(3, 20px [col-start]) <span class="number">5%</span>;</span><br><span class="line">    // 相当于grid-template-columns: 20px [col-start] 20px [col-start] 20px [col-start] 5%;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>用fr单位可以将容器分为几等份</strong>，例如下面分成三等份。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">1</span>fr <span class="number">1</span>fr <span class="number">1</span>fr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果fr单位和实际值一起使用，设置fr的行或列将分(除了实际值)剩余部分。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">1</span>fr <span class="number">50px</span> <span class="number">1</span>fr <span class="number">1</span>fr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="grid-template-areas"><a href="#grid-template-areas" class="headerlink" title="grid-template-areas"></a>grid-template-areas</h4><p>通过获取网格项中的grid-area属性值（名称），来定义网格模版。重复网格区（grid-area）名称将跨越网格单元格，‘.’代表空网格单元。</p>
+<p>属性值：</p>
+<ul>
+<li>grid-area-name: 网格项的grid-area属性值（名字）</li>
+<li>‘.’ : 空网格单元</li>
+<li>none: 不定义网格区域</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-a</span>&#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: header;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item-b</span>&#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: main;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item-c</span>&#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: sidebar;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item-d</span>&#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: footer;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">50px</span> <span class="number">50px</span> <span class="number">50px</span> <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: auto;</span><br><span class="line">    <span class="attribute">grid-template-areas</span>: <span class="string">"header header header header"</span></span><br><span class="line">                         <span class="string">"main main . sidebar"</span></span><br><span class="line">                         <span class="string">"footer footer footer footer"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码示例会创建四列三行网格，第一行将是header，第二行前两个网格单元是main部分、第三个为空网格单元、第四个为sliderbar，第三行是footer。</p>
+<p><img src="/images/grid网格区域.png" alt="image"></p>
+<h4 id="grid-column-gap"><a href="#grid-column-gap" class="headerlink" title="grid-column-gap"></a>grid-column-gap</h4><p>网格单元间距。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">grid-column-gap</span>：&lt;<span class="selector-tag">line-size</span>&gt;; 和 <span class="selector-tag">grid-row-gap</span>: &lt;<span class="selector-tag">line-size</span>&gt; ;</span><br></pre></td></tr></table></figure></p>
+<p>属性值：</p>
+<ul>
+<li>line-size: 网格线间距,设置单位值。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">50px</span> <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: <span class="number">80px</span> auto <span class="number">80px</span>; </span><br><span class="line">    <span class="attribute">grid-column-gap</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">grid-row-gap</span>: <span class="number">15px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/grid网格单元间距.png" alt="image"></p>
+<blockquote>
+<p>注：间隔仅仅作用在网格单元之间，不作用在容器边缘。</p>
+</blockquote>
+<h4 id="grid-gap"><a href="#grid-gap" class="headerlink" title="grid-gap"></a>grid-gap</h4><p>是grid-column-gap 和 grid-row-gap简写。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">grid-gap</span>：&lt;<span class="selector-tag">grid-column-gap</span>&gt; &lt;<span class="selector-tag">grid-row-gap</span>&gt;;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.container&#123;</span><br><span class="line">    display:grid;</span><br><span class="line">    grid-template-columns: 100px 50px 100px;</span><br><span class="line">    grid-template-rows: 80px auto 80px; </span><br><span class="line">    grid-gap: 10px 15px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注：如果只设置一个值，那么grid-column-gap 和 grid-row-gap都为那个值。</p>
+</blockquote>
+<h4 id="justify-items"><a href="#justify-items" class="headerlink" title="justify-items"></a>justify-items</h4><p>垂直于列网格线对齐，适用于网格容器里的所有网格项。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">justify-items: start | end | center | stretch（默认） ;</span><br></pre></td></tr></table></figure></p>
+<p>属性值：</p>
+<ul>
+<li>start: 左对齐。</li>
+<li>end: 右对齐。</li>
+<li>center: 居中对齐。</li>
+<li>stretch: 填满（默认）。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">justify-items</span>: start;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/grid网格左对齐.png" alt="image"></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">justify-items</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/grid网格居中对齐.png" alt="image"></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">justify-items</span>: stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/grid网格填满.png" alt="image"></p>
+<h4 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h4><p>垂直于行网格线对齐，适用于网格容器里的所有网格项。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">align-items: start | end | center | stretch ;</span><br></pre></td></tr></table></figure></p>
+<p>属性值：</p>
+<ul>
+<li>start： 顶部对齐。</li>
+<li>end： 底部对齐。</li>
+<li>center： 居中对齐。</li>
+<li>stretch：填满（默认）。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/grid网格垂直居中.png" alt="image"></p>
+<h4 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h4><p>如果用像px非弹性单位定义的话，总网格区域大小有可能小于网格容器，这时候你可以设置网格的对齐方式（水平对齐）<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">justify-content: start | end | center | stretch | space-around | space-between | space-evenly ;</span><br></pre></td></tr></table></figure></p>
+<p>属性值：</p>
+<ul>
+<li>start: 左对齐。</li>
+<li>end: 右对齐。</li>
+<li>center: 居中对齐。</li>
+<li>stretch: 填满网格容器。</li>
+<li>space-around: 网格项两边间距相等，网格项之间间隔是单侧的2倍。</li>
+<li>space-between: 两边对齐，网格项之间间隔相等。</li>
+<li>space-evenly: 网格项间隔相等。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/grid网格justifyContent居中.png" alt="image"></p>
+<h4 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h4><p>如果用像px非弹性单位定义的话，总网格区域大小有可能小于网格容器，这时候你可以设置网格的对齐方式（垂直方向对齐）。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">align-content: start | end | center | stretch | space-around | space-between | space-evenly ;</span><br></pre></td></tr></table></figure></p>
+<p>属性值：</p>
+<ul>
+<li>start: 顶部对齐。</li>
+<li>end: 底部对齐。</li>
+<li>center: 居中对齐。</li>
+<li>stretch: 填满网格容器。</li>
+<li>space-around: - 网格项两边间距相等，网格项之间间隔是单侧的2倍。</li>
+<li>space-between: 两边对齐，网格项之间间隔相等。</li>
+<li>space-evenly: 网格项间隔相等。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">align-content</span>: center; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/grid网格alignContent居中.png" alt="image"></p>
+<h4 id="grid-auto-columns-rows"><a href="#grid-auto-columns-rows" class="headerlink" title="grid-auto-columns/rows"></a>grid-auto-columns/rows</h4><p>自动生成隐式网格轨道（列和行），当你定位网格项超出网格容器范围时，将自动创建隐式网格轨道。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">grid-auto-columns</span>: &lt;<span class="selector-tag">track-size</span>&gt; ... ; 和 <span class="selector-tag">grid-auto-rows</span>: &lt;<span class="selector-tag">track-size</span>&gt; ... ;</span><br></pre></td></tr></table></figure>
+<p>属性值：</p>
+<ul>
+<li>track-size: 网格轨道大小,可以是固定值，百分比或者是分数（fr单位）。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">60px</span> <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: <span class="number">90px</span> <span class="number">90px</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/grid网格auto.png" alt="image"></p>
+<p>这是2✖️2的网格，但是我们来用grid-column 和 grid-row给网格项定位如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-a</span>&#123;</span><br><span class="line">    <span class="attribute">grid-column</span>: <span class="number">1</span> / <span class="number">2</span>;</span><br><span class="line">    <span class="attribute">grid-row</span>: <span class="number">2</span> / <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item-b</span>&#123;</span><br><span class="line">    <span class="attribute">grid-column</span>: <span class="number">5</span> / <span class="number">6</span>;</span><br><span class="line">    <span class="attribute">grid-row</span>: <span class="number">2</span> / <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/grid网格tracks.png" alt="image"></p>
+<p>我们可以看出，网格项item-b定位在第五根列网格线（column line 5 ）和第六根列网格线（column line 6 ）之间。但是我们网格容器根本不存在这两条网格线，所以就用两个0宽度来填充。在这里我们可以用网格自动行（grid-auto-rows）和网格自动列（grid-auto-columns）来定义这些隐式轨道宽度。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-auto-columns</span>: <span class="number">60px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/grid网格tracksWidths.png" alt="image"></p>
+<h4 id="grid-auto-flow"><a href="#grid-auto-flow" class="headerlink" title="grid-auto-flow"></a>grid-auto-flow</h4><p>在没有设置网格项的位置时，这个属性控制网格项怎样排列。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grid-auto-flow : row（默认） | column | dense ;</span><br></pre></td></tr></table></figure>
+<p>属性值：</p>
+<ul>
+<li>row: 按照行依次从左到右排列。</li>
+<li>column: 按照列依次从上倒下排列。</li>
+<li>dense: 按先后顺序排列。</li>
+</ul>
+<p>来看看下面结构：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item-a"</span>&gt;</span>item-a<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item-b"</span>&gt;</span>item-b<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item-c"</span>&gt;</span>item-c<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item-d"</span>&gt;</span>item-d<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item-e"</span>&gt;</span>item-e<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">.container&#123;</span><br><span class="line">    display: grid;</span><br><span class="line">    grid-template-columns: 60px 60px 60px 60px 60px;</span><br><span class="line">    grid-template-rows: 30px 30px;</span><br><span class="line">    grid-auto-flow: row;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.item-a&#123;</span><br><span class="line">    grid-column: 1;</span><br><span class="line">    grid-row: 1 / 3;</span><br><span class="line">&#125;</span><br><span class="line">.item-e&#123;</span><br><span class="line">    grid-column: 5;</span><br><span class="line">    grid-row: 1 / 3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于我们设置了grid-auto-flow：row，item-b、item-c和item-d在行上是从左到右排列，如下：</p>
+<p><img src="/images/grid网格flowrow.png" alt="image"></p>
+<p>如果我们设置 grid-auto-flow: column;结果如下：</p>
+<p><img src="/images/grid网格flowcolumn.png" alt="image"></p>
+<h4 id="grid"><a href="#grid" class="headerlink" title="grid"></a>grid</h4><p>是一种简写形式，设置网格容器所有属性。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grid: none | &lt;grid-template-rows&gt; / &lt;grid-template-columns&gt; | &lt;grid-auto-flow&gt; [&lt;grid-auto-rows&gt; [ / &lt;grid-auto-columns&gt;] ];</span><br></pre></td></tr></table></figure></p>
+<p>属性值：</p>
+<ul>
+<li>none: 设置为所有属性的默认值。</li>
+<li>&lt;\grid-template-rows&gt; / &lt;\grid-template-columns&gt;: 设置行和列的值，其他属性为默认值。</li>
+<li>&lt;\grid-auto-flow&gt; [ &lt;\grid-auto-rows&gt; [ / &lt;\grid-auto-columns&gt;] ] : 设置网格自动流、网格自动行、网格自动列的值，其他未设置则为默认值。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">grid</span>: <span class="number">200px</span> auto / <span class="number">1</span>fr auto <span class="number">1</span>fr;</span><br><span class="line">&#125;</span><br><span class="line">//等同于</span><br><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: <span class="number">200px</span> auto;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">1</span>fr auto <span class="number">1</span>fr;</span><br><span class="line">    <span class="attribute">grid-template-areas</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="网格项属性"><a href="#网格项属性" class="headerlink" title="网格项属性"></a>网格项属性</h3><h4 id="grid-column-start-end"><a href="#grid-column-start-end" class="headerlink" title="grid-column-start/end"></a>grid-column-start/end</h4><p>通过网格线来定义网格项的位置。grid-column-start、grid-row-start定义网格项的开始位置，grid-column-end、grid-row-end定义网格项的结束位置。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">grid-column-start: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto ;</span><br><span class="line">grid-column-end: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto ;</span><br><span class="line">grid-row-start: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto ;</span><br><span class="line">grid-row-end: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto ;</span><br></pre></td></tr></table></figure>
+<p>属性值：</p>
+<ul>
+<li>line: 指定带编号或者名字的网格线。</li>
+<li>span <number>: 跨越轨道的数量。</number></li>
+<li>span <name>: 跨越轨道直到对应名字的网格线。</name></li>
+<li>auto: 自动展示位置，默认跨度为1。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-a</span>&#123;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">grid-column-end</span>: five;</span><br><span class="line">  <span class="attribute">grid-row-start</span>: row1-start</span><br><span class="line">  grid-row-end: <span class="number">3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/grid网格startend.png" alt="image"></p>
+<blockquote>
+<p>注：如果未声明grid-column-end或grid-row-end，默认将跨越一个轨道。项目也可以重叠，设置z-index来确定堆叠顺序。</p>
+</blockquote>
+<h4 id="grid-column-rows"><a href="#grid-column-rows" class="headerlink" title="grid-column/rows"></a>grid-column/rows</h4><p>是 grid-column-start、grid-column-end 和 grid-row-start、grid-row-end 的简写。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grid-column: &lt;start-line&gt; / &lt;end-line&gt; | &lt;start-line&gt; / span &lt;value&gt; ;</span><br><span class="line">grid-row: &lt;start-line&gt; / &lt;end-line&gt; | &lt;start-line&gt; / span &lt;value&gt; ;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-c</span>&#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">3</span> / span <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">grid-row</span>: third-line / <span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/grid网格rows简写.png" alt="image"></p>
+<h4 id="grid-area"><a href="#grid-area" class="headerlink" title="grid-area"></a>grid-area</h4><p>定义网格项名字，以便创建模块（容器属性grid-template-areas来定义模块）。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grid-area: &lt;name&gt; | &lt;row-start&gt; / &lt;column-start&gt; / &lt;row-end&gt; / &lt;column-end&gt; ;</span><br></pre></td></tr></table></figure></p>
+<p>属性值：</p>
+<ul>
+<li>name: 项目名子。</li>
+<li>&lt;\row-start&gt; / &lt;\column-start&gt; / &lt;\row-end&gt; / &lt;\column-end&gt;: 可以是数字或网格线名字。</li>
+</ul>
+<h4 id="justify-self"><a href="#justify-self" class="headerlink" title="justify-self"></a>justify-self</h4><p>定义单个网格项垂直于列网格线的对齐方式。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">justify-self: justify-self: start | end | center | stretch;</span><br></pre></td></tr></table></figure></p>
+<p>属性值：</p>
+<ul>
+<li>start: 网格区域左对齐。</li>
+<li>end: 网格区域右对齐。</li>
+<li>center: 网格区域居中。</li>
+<li>stretch: 网格区域填满。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-a</span>&#123;</span><br><span class="line">  <span class="attribute">justify-self</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/grid网格项水平居中.png" alt="image"></p>
+<blockquote>
+<p>提示：也可以在容器上设置justify-items，达到全部网格项对齐。</p>
+</blockquote>
+<h4 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h4><p>定义单个网格项垂直于行网格线的对齐方式。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">align-self: start | end | center | stretch;</span><br></pre></td></tr></table></figure></p>
+<p>属性值：</p>
+<ul>
+<li>start: 网格区域顶部对齐。</li>
+<li>end: 网格区域底部对齐。</li>
+<li>center: 网格区域居中。</li>
+<li>stretch: 网格区域填满</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-a</span>&#123;</span><br><span class="line">  <span class="attribute">align-self</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/grid网格项垂直居中.png" alt="image"></p>
+<blockquote>
+<p>提示：也可以在容器上设置align-items，达到全部网格项对齐。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/08/前端安全问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/08/前端安全问题/" itemprop="url">前端安全问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T10:14:21+08:00">
+                2018-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h3><p>跨站脚本（英语：Cross-site scripting，通常简称为：XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。<strong>这类攻击通常包含了HTML以及用户端脚本语言。</strong></p>
+<p>XSS更偏向于代码实现（即写一段拥有跨站请求功能的JavaScript脚本注入到一条帖子里，然后有用户访问了这个帖子，这就算是中了XSS攻击了）</p>
+<blockquote>
+<p>当应用程序收到含有不可信的数据，在没有进行适当的验证和转义的情况下，就将它发送给一个网页浏览器，这就会产生跨站脚本攻击。XSS允许攻击者在受害者的浏览器上执行脚本，从而劫持用户会话、危害网站、或者将用户转向恶意网站。</p>
+</blockquote>
+<p><strong>攻击方法：</strong></p>
+<ol>
+<li>手动攻击:<br>编写注入脚本，比如”/&gt;<script>alert(document.cookie());</script>&lt;!–等;<br>手动测试目标网站上有的input, textarea等所有可能输入文本信息的区域</li>
+<li>自动攻击<br>利用工具扫描目标网站所有的网页并自动测试写好的注入脚本，比如：Burpsuite等.</li>
+</ol>
+<p><strong>防御方法：</strong></p>
+<ol>
+<li>将cookie等敏感信息设置为httponly，禁止Javascript通过document.cookie获得</li>
+<li>对所有的输入做严格的校验尤其是在服务器端，过滤掉任何不合法的输入，比如手机号必须是数字，通常可以采用正则表达式</li>
+<li>净化和过滤掉不必要的html标签，比如：<iframe>, alt,<script> 等</li>
+<li>净化和过滤掉不必要的Javascript的事件标签，比如：onclick, onfocus等</li>
+<li>转义单引号，双引号，尖括号等特殊字符，可以采用htmlencode编码 或者过滤掉这些特殊字符</li>
+<li>设置浏览器的安全设置来防范典型的XSS注入(设置 X-XSS-Protection 头)</li>
+</ol>
+<h3 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h3><p>跨站请求伪造（英语：Cross-site request forgery），也被称为 one-click attack 或者 session riding，通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的Web应用程序上<strong>执行非本意的操作的攻击方法。</strong> </p>
+<blockquote>
+<p>一个跨站请求伪造攻击迫使登录用户的浏览器将伪造的http请求，包含用户的会话cookie和其他认证信息，发送到一个存在漏洞的web应用程序。这就允许攻击者迫使用户浏览器向存在漏洞的应用程序发送请求，而这些请求会被应用程序认为是用户的合法请求。</p>
+</blockquote>
+<p>跟跨网站脚本（XSS）相比，XSS 利用的是用户对指定网站的信任，CSRF 利用的是网站对用户网页浏览器的信任。 </p>
+<p><strong>防御措施：</strong></p>
+<ul>
+<li>检查referer, X-Requested-With, Orign头，是否来自合法的源</li>
+<li>使用POST代替GET</li>
+<li>添加校验Token至表单中</li>
+<li>添加验证码或其他人机验证手段</li>
+</ul>
+<h3 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h3><p><strong>攻击方法：</strong></p>
+<ul>
+<li>编写恶意字符串，比如‘ or  1=1–等，</li>
+<li>手动测试目标网站上所有涉及数据库操作的地方.</li>
+</ul>
+<p><strong>防御方法：</strong></p>
+<ol>
+<li>禁止目标网站利用动态拼接字符串的方式访问数据库</li>
+<li>减少不必要的数据库抛出的错误信息</li>
+<li>对数据库的操作赋予严格的权限控制</li>
+<li>净化和过滤掉不必要的SQL保留字，比如：where, or, exec 等</li>
+<li>转义单引号，上引号，尖括号等特殊字符，可以采用htmlencode编码 或者过滤掉这些特殊字符</li>
+</ol>
+<p><strong>关于安全性</strong></p>
+<ol>
+<li>永远不要信任用户的输入，要对用户的输入进行校验，可以通过正则表达式，或限制长度，对单引号和双”-“进行转换等。</li>
+<li>永远不要使用动态拼装SQL，可以使用参数化的SQL或者直接使用存储过程进行数据查询存取。</li>
+<li>永远不要使用管理员权限的数据库连接，为每个应用使用单独的权限有限的数据库连接。</li>
+<li>不要把机密信息明文存放，请加密或者hash掉密码和敏感的信息。</li>
+</ol>
+</script></iframe></li></ol>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/07/数据结构知识点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/07/数据结构知识点/" itemprop="url">数据结构知识点</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-07T20:28:11+08:00">
+                2018-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="数组和链表的区别"><a href="#数组和链表的区别" class="headerlink" title="数组和链表的区别"></a>数组和链表的区别</h3><ul>
+<li><p>数组是将元素在内存中连续存放。链表中的元素在内存中不是顺序存储的，而是通过存在元素中的指针联系到一起。</p>
+</li>
+<li><p>数组必须事先定义固定的长度，不能适应数据动态的增减的情况。当数据增加时，可能超出原先定义的元素个数；当数据减少时，造成内存浪费；链表动态地进行存储分配，可以适应数据动态地增减的情况。</p>
+</li>
+<li>（静态）数组从栈中分配空间，对于程序员方便快速，但是自由度小；链表从堆中分配空间，自由度大但是申请管理比较麻烦。</li>
+</ul>
+<p>数组和链表在存储数据方面到底谁好？根据数组和链表的特性，分两种情况讨论：</p>
+<ul>
+<li>当进行数据查询时，数组可以直接通过下标迅速访问数组中的元素。而链表则需要从第一个元素开始一直找到需要的元素位置，显然，数组的查询效率会比链表的高。</li>
+<li>当进行增加或删除元素时，在数组中增加一个元素，需要移动大量元素，在内存中空出一个元素的空间，然后将要增加的元素放在其中。同样，如果想删除一个元素，需要移动大量去填掉被移动的元素，而链表只需改动元素中的指针即可实现增加或删除元素。</li>
+</ul>
+<p><strong>哈希表，是既能具备数组的快速查询的优点，又能融合链表方便快捷的增加删除元素的优势。</strong></p>
+<p>所谓的hash,简单的说就是散列，即将输入的数据通过hash函数得到一个key值，输入的数据存储到数组中下标的key值的数组单元中去。</p>
+<h3 id="栈和队列"><a href="#栈和队列" class="headerlink" title="栈和队列"></a>栈和队列</h3><ul>
+<li>队列是先进先出，栈是先进后出；</li>
+<li>栈的插入和删除操作都是在一端进行的，而队列是在两端进行；</li>
+<li>栈只允许在表尾一端进行插入和删除，而队列只允许在表尾进行插入，在表头进行删除。</li>
+</ul>
+<h3 id="栈和堆"><a href="#栈和堆" class="headerlink" title="栈和堆"></a>栈和堆</h3><ul>
+<li>栈区，由编译器自动分配释放，存放函数的参数值，局部变量等；</li>
+<li>堆区，一般由程序员分配释放，若程序员不释放，程序结束时可能由os回收。</li>
+<li>栈(数据结构)：一种先进后出的数据结构。</li>
+<li>堆(数据结构)：可以看成是一棵树，如:堆排序。</li>
+</ul>
+<h3 id="B树-B-树-B-树"><a href="#B树-B-树-B-树" class="headerlink" title="B树/B+树/B-树"></a>B树/B+树/B-树</h3><h4 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h4><p>B树即二叉搜索树：</p>
+<ul>
+<li>所有非叶子结点至多拥有两个儿子（Left和Right）；</li>
+<li>所有结点存储一个关键字；</li>
+<li>非叶子结点的左指针指向小于其关键字的子树，右指针指向大于其关键字的子树；</li>
+</ul>
+<p><img src="/images/B树.JPG" alt="image"></p>
+<p><strong>B树搜索过程：</strong></p>
+<ul>
+<li>B树的搜索，从根结点开始，如果查询的关键字与结点的关键字相等，那么就命中；</li>
+<li>否则，如果查询关键字比结点关键字小，就进入左儿子；如果比结点关键字大，就进入右儿子；如果左儿子或右儿子的指针为空，则报告找不到相应的关键字；</li>
+</ul>
+<p>如果B树的所有非叶子结点的左右子树的结点数目均保持差不多（平衡），那么B树的搜索性能逼近二分查找；但它比连续内存空间的二分查找的优点是，改变B树结构（插入与删除结点）不需要移动大段的内存数据，甚至通常是常数开销；</p>
+<p>实际使用的B树都是在原B树的基础上加上平衡算法，即“平衡二叉树”；如何保持B树结点分布均匀的平衡算法是平衡二叉树的关键；平衡算法是一种在B树中插入和删除结点的策略；</p>
+<h4 id="B-树"><a href="#B-树" class="headerlink" title="B-树"></a>B-树</h4><p> B-树是一种多路搜索树（并不是二叉的）：</p>
+<ul>
+<li>定义任意非叶子结点最多只有M个儿子；且M&gt;2；</li>
+<li>根结点的儿子数为[2, M]；</li>
+<li>除根结点以外的非叶子结点的儿子数为[M/2, M]；</li>
+<li>每个结点存放至少M/2-1（取上整）和至多M-1个关键字；（至少2个关键字）</li>
+<li>非叶子结点的关键字个数=指向儿子的指针个数-1；</li>
+<li>非叶子结点的关键字：K[1], K[2], …, K[M-1]；且K[i] &lt; K[i+1]；</li>
+<li>非叶子结点的指针：P[1], P[2], P[M]；其中P[1]指向关键字小于K[1]的子树，P[M]指向关键字大于K[M-1]的子树，其它P[i]指向关键字属于(K[i-1], K[i])的子树；</li>
+<li><p>所有叶子结点位于同一层；</p>
+<p>如：（M=3）</p>
+</li>
+</ul>
+<p><img src="/images/B-树.JPG" alt="image"></p>
+<p><strong>B-树搜索过程</strong></p>
+<ul>
+<li>从根结点开始，对结点内的关键字（有序）序列进行二分查找，如果命中则结束，否则进入查询关键字所属范围的儿子结点；重复，直到所对应的儿子指针为空，或已经是叶子结点；</li>
+</ul>
+<p><strong>B-树的特性：</strong></p>
+<ul>
+<li>关键字集合分布在整颗树中；</li>
+<li>任何一个关键字出现且只出现在一个结点中；</li>
+<li>搜索有可能在非叶子结点结束；</li>
+<li>其搜索性能等价于在关键字全集内做一次二分查找；</li>
+<li>自动层次控制；</li>
+</ul>
+<p>由于限制了除根结点以外的非叶子结点，至少含有M/2个儿子，确保了结点的至少利用率。</p>
+<p>所以B-树的性能总是等价于二分查找（与M值无关），也就没有B树平衡的问题；由于M/2的限制，在插入结点时，如果结点已满，需要将结点分裂为两个各占M/2的结点；删除结点时，需将两个不足M/2的兄弟结点合并；</p>
+<h4 id="B-树-1"><a href="#B-树-1" class="headerlink" title="B+树"></a>B+树</h4><p> B+树是B-树的变体，也是一种多路搜索树：其定义基本与B-树同，除了：</p>
+<ul>
+<li>非叶子结点的子树指针与关键字个数相同；</li>
+<li>非叶子结点的子树指针P[i]，指向关键字值属于[K[i], K[i+1])的子树（B-树是开区间）；</li>
+<li>为所有叶子结点增加一个链指针；</li>
+<li><p>所有关键字都在叶子结点出现；</p>
+<p>如：（M=3）</p>
+<p><img src="/images/B+树.JPG" alt="image"></p>
+<p>B+的搜索与B-树也基本相同，区别是B+树只有达到叶子结点才命中（B-树可以在非叶子结点命中），其性能也等价于在关键字全集做一次二分查找；</p>
+<p><strong>B+的特性：</strong></p>
+</li>
+<li>所有关键字都出现在叶子结点的链表中（稠密索引），且链表中的关键字恰好是有序的；</li>
+<li>不可能在非叶子结点命中；</li>
+<li>非叶子结点相当于是叶子结点的索引（稀疏索引），叶子结点相当于是存储（关键字）数据的数据层；</li>
+<li>更适合文件索引系统；</li>
+</ul>
+<h4 id="B-树-2"><a href="#B-树-2" class="headerlink" title="B*树"></a>B*树</h4><p>是B+树的变体，在B+树的非根和非叶子结点再增加指向兄弟的指针；</p>
+<p><img src="/images/B++树.jpg" alt="image"></p>
+<p>B<em>树定义了非叶子结点关键字个数至少为(2/3)</em>M，即块的最低使用率为2/3（代替B+树的1/2）；</p>
+<p><strong>B+树的分裂：</strong> 当一个结点满时，分配一个新的结点，并将原结点中1/2的数据<br>复制到新结点，最后在父结点中增加新结点的指针；B+树的分裂只影响原结点和父结点，而不会影响兄弟结点，所以它不需要指向兄弟的指针；</p>
+<p><strong>B*树的分裂：</strong> 当一个结点满时，如果它的下一个兄弟结点未满，那么将一部分数据移到兄弟结点中，再在原结点插入关键字，最后修改父结点中兄弟结点的关键字（因为兄弟结点的关键字范围改变了）；如果兄弟也满了，则在原结点与兄弟结点之间增加新结点，并各复制1/3的数据到新结点，最后在父结点增加新结点的指针；</p>
+<p>所以，B*树分配新结点的概率比B+树要低，空间使用率更高；</p>
+<p><strong>总结</strong></p>
+<ul>
+<li>B树：二叉树，每个结点只存储一个关键字，等于则命中，小于走左结点，大于走右结点；</li>
+<li>B-树：多路搜索树，每个结点存储M/2到M个关键字，非叶子结点存储指向关键字范围的子结点；所有关键字在整颗树中出现，且只出现一次，非叶子结点可以命中；</li>
+<li>B+树：在B-树基础上，为叶子结点增加链表指针，所有关键字都在叶子结点中出现，非叶子结点作为叶子结点的索引；B+树总是到叶子结点才命中；</li>
+<li>B*树：在B+树基础上，为非叶子结点也增加链表指针，将结点的最低利用率从1/2提高到2/3；</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/07/数组去重方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -392,6 +1158,22 @@
 <blockquote>
 <p>forEach() 退不出循环</p>
 </blockquote>
+<h3 id="字符串操作方法"><a href="#字符串操作方法" class="headerlink" title="字符串操作方法"></a>字符串操作方法</h3><ul>
+<li>concat() – 将两个或多个字符的文本组合起来，返回一个新的字符串。</li>
+<li>indexOf() – 返回字符串中一个子串第一处出现的索引。如果没有匹配项，返回 -1 。</li>
+<li>charAt() – 返回指定位置的字符。</li>
+<li>lastIndexOf() – 返回字符串中一个子串最后一处出现的索引，如果没有匹配项，返回 -1 。</li>
+<li>match() – 检查一个字符串是否匹配一个正则表达式。</li>
+<li>substr() 函数 – 返回从string的startPos位置，长度为length的字符串</li>
+<li>substring() – 返回字符串的一个子串。传入参数是起始位置和结束位置。</li>
+<li>slice() – 提取字符串的一部分，并返回一个新字符串。</li>
+<li>replace() – 用来查找匹配一个正则表达式的字符串，然后使用新字符串代替匹配的字符串。</li>
+<li>search() – 执行一个正则表达式匹配查找。如果查找成功，返回字符串中匹配的索引值。否则返回 -1 。</li>
+<li>split() – 通过将字符串划分成子串，将一个字符串做成一个字符串数组。</li>
+<li>length – 返回字符串的长度，所谓字符串的长度是指其包含的字符的个数。</li>
+<li>toLowerCase() – 将整个字符串转成小写字母。</li>
+<li>toUpperCase() – 将整个字符串转成大写字母。</li>
+</ul>
 
           
         
@@ -2156,711 +2938,9 @@
 <li><strong>git branch –set-upstream branch-name origin/branch-name</strong> 建立本地分支和远程分支的关联</li>
 </ul>
 <p>本地新建的分支如果不推送到远程，对其他人就是不可见的；</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/JS事件流/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aisling Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleCorn个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/06/JS事件流/" itemprop="url">JS事件流</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-06T11:43:37+08:00">
-                2018-03-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="DOM级别与DOM事件"><a href="#DOM级别与DOM事件" class="headerlink" title="DOM级别与DOM事件"></a>DOM级别与DOM事件</h3><p>针对不同级别的DOM，我们的DOM事件处理方式也是不一样的。</p>
-<p>DOM级别一共可以分为4个级别：DOM0级，DOM1级，DOM2级和DOM3级。</p>
-<p>而DOM事件分为3个级别：DOM0级事件处理，DOM2级事件处理和DOM3级事件处理。其中1级DOM标准中并没有定义事件相关的内容，所以没有所谓的1级DOM事件模型。</p>
-<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><ul>
-<li>事件指可以被 JavaScript 侦测到的行为。即鼠标点击、页面或图像载入、鼠标悬浮于页面的某个热点之上、在表单中选取输入框、确认表单、键盘按键等操作。事件通常与函数配合使用，当事件发生时函数才会执行。</li>
-<li>事件名称：click/mouseover/blur(“不带on”)<br>响应某个事件的函数就是事件处理程序(事件侦听器)。</li>
-<li>事件处理程序函数名称：onclick/onmouseove/onblur。</li>
-</ul>
-<h3 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h3><p>事件流指从页面中接收事件的顺序,也可理解为事件在页面中传播的顺序。</p>
 <blockquote>
-<p>早期的IE事件传播方向为由上至下，即从document逐级向下传播到目标元素；而Netscape公司的Netscape Navigator则是朝相反的方向传播，也就是从目标元素开始向上逐级传播最终至window。两家公司对于事件流出现了截然相反的定义。</p>
-<p>后来ECMAScript在DOM2中对事件流进行了进一步规范，基本上就是上述二者的结合。</p>
+<p>git pull相当于从远程获取最新版本并merge到本地。git fetch 相当于从远程获取最新版本到本地，不会自动merge</p>
 </blockquote>
-<p>当事件发生时，最先得到通知的是window，然后是document，由上至下逐级依次而入，直到真正触发事件的那个元素(目标元素)为止，这个过程就是捕获。</p>
-<p>接下来，事件会从目标元素开始起泡，由下至上逐级依次传播，直到window对象为止，这个过程就是冒泡。</p>
-<p><strong>所以捕获比冒泡先执行</strong></p>
-<p>其中DOM3级事件在DOM2的基础之上添加了更多的事件类型。</p>
-<p>DOM2级事件规定的事件流包括三个阶段：</p>
-<ul>
-<li>事件捕获阶段</li>
-<li>处于目标阶段</li>
-<li>事件冒泡阶段。</li>
-</ul>
-<h3 id="事件处理程序"><a href="#事件处理程序" class="headerlink" title="事件处理程序"></a>事件处理程序</h3><p>事件处理程序就是响应某个事件的函数，简单地来说，就是函数。我们又把事件处理程序称为事件侦听器。事件处理程序是以”on”开头的，比如点击事件的处理程序是”onclick”,事件处理程序大概有以下5种。</p>
-<ul>
-<li>HTML事件处理程序</li>
-<li>DOM0级事件处理程序</li>
-<li>DOM2级事件处理程序</li>
-<li>IE事件处理程序</li>
-<li>跨浏览器的事件处理程序</li>
-</ul>
-<h4 id="HTML事件处理程序"><a href="#HTML事件处理程序" class="headerlink" title="HTML事件处理程序"></a>HTML事件处理程序</h4><p><strong>HTML事件处理程序，它是写在html里面的，是全局作用域</strong>：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"alert('hello')"</span>&gt;</span> 点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>当我们需要使用一个复杂的函数时，将js代码写在这里面，显然很不合适，所以有了下面这种写法：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// doSomething()函数写在单独的js文件或<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined">之中</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">'doSomething()'</span>&gt;</span> 点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p>这样会出现一个时差问题，当用户在HTML元素出现一开始就进行点击，有可能js还没有加载好，这时候就会报错。但我们可以将函数封装在try-catch块中来处理：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">'try(doSomething();)catch(err)&#123;&#125;'</span>&gt;</span> 点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>同时，一个函数的改变，同时可能会涉及html和js的修改，这样是很不方便的，综上，我们有了DOM0级事件处理程序。</p>
-<h4 id="DOM0级事件处理程序"><a href="#DOM0级事件处理程序" class="headerlink" title="DOM0级事件处理程序"></a>DOM0级事件处理程序</h4><p>之所以有DOM0级事件处理程序，和我们之前提到的IE以及Netscape对应事件传播方向不同处理而产生的事件处理程序。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn"</span>&gt;</span> 点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span></span><br><span class="line"><span class="javascript">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    alert(<span class="string">'hello'</span>);</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>可以看到button.onclick这种形式，这里事件处理程序作为了btn对象的方法，是局部作用域</strong>。</p>
-<p><strong>所以我们可以用 btn.onclick = null 来删除指定事件处理程序。</strong></p>
-<p>如果我们尝试给事件添加两个事件，如：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn"</span>&gt;</span> 点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span></span><br><span class="line"><span class="javascript">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    alert(<span class="string">'hello'</span>);</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="javascript">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    alert(<span class="string">'hello again'</span>);</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>输出，hello again，很明显，第一个事件函数被第二个事件函数给覆盖掉了。</p>
-<p><strong>所以，DOM0级事件处理程序不能添加多个，也不能控制事件流到底是捕获还是冒泡</strong>。</p>
-<h4 id="DOM2级事件处理程序（不支持IE）"><a href="#DOM2级事件处理程序（不支持IE）" class="headerlink" title="DOM2级事件处理程序（不支持IE）"></a>DOM2级事件处理程序（不支持IE）</h4><p>进一步规范之后，有了DOM2级事件处理程序，其中定义了两个方法：</p>
-<ul>
-<li>addEventListener() —添加事件侦听器</li>
-<li>removeEventListener() —删除事件侦听器</li>
-</ul>
-<p>函数均有3个参数，</p>
-<ul>
-<li>第一个参数是要处理的事件名(不带on前缀的才是事件名)</li>
-<li>第二个参数是作为事件处理程序的函数</li>
-<li>第三个参数是一个boolean值，默认false表示使用冒泡机制，true表示捕获机制。</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn"</span>&gt;</span> 点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">btn.addEventListener(<span class="string">'click'</span>,hello,<span class="literal">false</span>);</span></span><br><span class="line"><span class="javascript">btn.addEventListener(<span class="string">'click'</span>,helloagain,<span class="literal">false</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    alert(<span class="string">'hello'</span>);</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">helloagain</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    alert(<span class="string">'hello again'</span>);</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这时候两个事件处理程序都能够成功触发，说明<strong>可以绑定多个事件处理程序</strong>，但是注意，如果定义了一摸一样时监听方法，是会发生覆盖的，即同样的事件和事件流机制下相同方法只会触发一次，比如：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn"</span>&gt;</span> 点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">btn.addEventListener(<span class="string">'click'</span>,hello,<span class="literal">false</span>);</span></span><br><span class="line"><span class="javascript">btn.addEventListener(<span class="string">'click'</span>,hello,<span class="literal">false</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    alert(<span class="string">'hello'</span>);</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>removeEventListener()的方法几乎和添加时用法一摸一样：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn"</span>&gt;</span> 点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">btn.addEventListener(<span class="string">'click'</span>,hello,<span class="literal">false</span>);</span></span><br><span class="line"><span class="javascript">btn.removeEventListener(<span class="string">'click'</span>,hello,<span class="literal">false</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    alert(<span class="string">'hello'</span>);</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这样的话，事件处理程序只会执行一次。</p>
-<p>但是要注意，如果同一个监听事件分别为“事件捕获”和“事件冒泡”注册了一次，一共两次，这两次事件需要分别移除。两者不会互相干扰</p>
-<p>这时候的this指向该元素的引用。</p>
-<p>这里事件触发的顺序是添加的顺序。</p>
-<h4 id="IE事件处理程序"><a href="#IE事件处理程序" class="headerlink" title="IE事件处理程序"></a>IE事件处理程序</h4><p>对于 Internet Explorer 来说，在IE 9之前，你必须使用 attachEvent 而不是使用标准方法 addEventListener。<br>IE事件处理程序中有类似与DOM2级事件处理程序的两个方法：</p>
-<ul>
-<li>attachEvent()</li>
-<li>detachEvent()</li>
-</ul>
-<p>它们都接收两个参数：</p>
-<ul>
-<li>事件处理程序名称。如onclick、onmouseover，注意：这里不是事件，而是事件处理程序的名称，<strong>所以有on</strong>。</li>
-<li>事件处理程序函数。之所以没有和DOM2级事件处理程序中类似的第三个参数，是因为IE8及更早版本只支持冒泡事件流。<br>removeEventListener()的方法几乎和添加时用法一摸一样：</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn"</span>&gt;</span> 点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">btn.attachEvent(<span class="string">'click'</span>,hello);</span></span><br><span class="line"><span class="javascript">btn.detachEventr(<span class="string">'click'</span>,hello);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    alert(<span class="string">'hello'</span>);</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>这里事件触发的顺序不是添加的顺序，而是添加顺序的相反顺序。</strong></p>
-<p><strong>使用 attachEvent 方法有个缺点，this 的值会变成 window 对象的引用而不是触发事件的元素。</strong></p>
-<h4 id="跨浏览器的事件处理程序"><a href="#跨浏览器的事件处理程序" class="headerlink" title="跨浏览器的事件处理程序"></a>跨浏览器的事件处理程序</h4><p>为了兼容IE浏览器和标准的浏览器，我们需要编写通用的方法来处理：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> EventUtil = &#123;</span><br><span class="line">    addHandler: <span class="function"><span class="keyword">function</span>(<span class="params">el,type,handle</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(el.addEventListener)&#123;</span><br><span class="line">            el.addEventListener(type, handler, <span class="literal">false</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(el.attachEvent)&#123;</span><br><span class="line">            el.attachEvent(<span class="string">"on"</span> + type, handler);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            el[<span class="string">'on'</span> + type] = handler;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    removeHandler: <span class="function"><span class="keyword">function</span>(<span class="params">el,type,handle</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(el.removeEventListener)&#123;</span><br><span class="line">            el.removeEventListener(type, handler, <span class="literal">false</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(el.detachEvent)&#123;</span><br><span class="line">            el.detachEvent(<span class="string">"on"</span> + type, handler);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            el[<span class="string">'on'</span> + type] = <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这一部分需要创建两个方法：</p>
-<ul>
-<li>addHandler() –这个方法职责是视情况来使用DOM0级、DOM2级、IE事件处理程序来添加事件。</li>
-<li>removeHandler()–这个方法就是移除使用addHandler添加的事件。</li>
-</ul>
-<p>这两个方法接收相同的三个参数：</p>
-<ul>
-<li>要操作的元素–通过dom方法获取</li>
-<li>事件名称–注意：没有on，如”click”、”mouseover”</li>
-<li>事件处理程序函数–对应的函数</li>
-</ul>
-<h3 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h3><p>事件对象是用来记录一些事件发生时的相关信息的对象，但事件对象只有事件发生时才会产生，并且只能是事件处理函数内部访问，在所有事件处理函数运行结束后，事件对象就被销毁！</p>
-<p><img src="/images/事件流Event属性.png" alt="image"></p>
-<p><img src="/images/事件流Event方法.png" alt="image"></p>
-<h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn"</span>&gt;</span> 点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">btn.addEventListener(<span class="string">'click'</span>, doCurrent, <span class="literal">true</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">doCurrent</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 获取当前事件触发的div</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> target = event.currentTarget;</span></span><br><span class="line"><span class="undefined">    </span></span><br><span class="line"><span class="javascript">    <span class="comment">//通过判断事件的event.eventPhase属性返回事件传播的当前阶段</span></span></span><br><span class="line"><span class="javascript">    <span class="comment">// 1：捕获阶段、2：正常事件派发、3：冒泡阶段</span></span></span><br><span class="line"><span class="javascript">    <span class="comment">// 得到当前阶段和id值并输出</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> msg = (event.eventPhase == <span class="number">1</span>? <span class="string">'捕获阶段'</span>:<span class="string">'冒泡阶段'</span>) + target.attributes[<span class="string">'id'</span>].value;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(msg);</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p>Event对象主要有以下两个方法，用于处理事件的传播（冒泡、捕获）和事件的取消。</p>
-<p><strong>stopPropagation()——冒泡机制下，阻止事件的进一步往上冒泡</strong></p>
-<p><strong>preventDefault()——用于取消事件的默认操作,比如链接的跳转或者表单的提交，主要是用来阻止标签的默认行为。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span><br><span class="line"><span class="keyword">var</span> content = <span class="built_in">document</span>.getElementById(<span class="string">'content'</span>);</span><br><span class="line"></span><br><span class="line">btn.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">'btn1'</span>);</span><br><span class="line">    event.stopPropagation();</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">content.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">'content'</span>);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br><span class="line"><span class="comment">// 这里会输出btn1，阻止了向content的冒泡</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">'go'</span> <span class="attr">href</span>=<span class="string">"https://www.baidu.com"</span>&gt;</span>禁止跳转<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> go = <span class="built_in">document</span>.getElementById(<span class="string">'go'</span>);</span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">goFn</span>(<span class="params">event</span>)</span>&#123;</span></span><br><span class="line"><span class="undefined">    event.preventDefault();</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 不会跳转</span></span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">go.addEventListener(<span class="string">'click'</span>,goFn,<span class="literal">false</span>);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h4><p>当然，事件对象也存在一定的兼容性问题，在IE8及以前本版之中，通过设置属性注册事件处理程序时，调用的时候并未传递事件对象，需要通过全局对象<strong>window.event</strong>来获取。解决方法如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getEvent</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    event = event || <span class="built_in">window</span>.event;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在IE浏览器上面是event事件是没有preventDefault()这个属性的，所以在IE上，我们需要设置的属性是<strong>returnValue</strong>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.event.returnValue = <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
-<p>stopPropagation()也是，所以需要设置<strong>cancelBubble</strong>，cancelBubble是IE事件对象的一个属性，设置这个属性为true能阻止事件进一步传播。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">event.cancelBubble = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h3><p>事件委托就是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件。</p>
-<p>例子说明，我们为ul添加新的li，其中对li标签元素绑定了click事件，但是发现，后增加的元素没有办法触发我们的click事件。</p>
-<p>这是因为如果事件涉及到更新HTML节点或者添加HTML节点时，新添加的节点无法绑定事件，更新的节点也是无法绑定事件，表现的行为是无法触发事件。</p>
-<p>这也是问题所在：</p>
-<ul>
-<li>首先我们多次操作DOM获取元素，这样势必会降低浏览器处理性能。</li>
-<li>事件不具有继承性，如果我们动态在页面中添加了一个元素，那么还需要重新走一遍上述程序为其添加监听事件。</li>
-</ul>
-<p>那么有没有更好的方法呢？根据事件的冒泡原理，我们还可以实现另外一个很重要的功能：事件委托。</p>
-<p>我们只监听最外层的元素，然后在事件函数中根据事件来源进行不同的事件处理。这样，我们添加事件监听时只需要操作一个元素，极大的降低了DOM访问，并且不用再给新增的元素添加监听事件了，因为元素的事件会冒泡到最外层，被我们截获。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">""</span><span class="attr">btnAdd</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ulList"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> btnAdd = <span class="built_in">document</span>.getElementById(<span class="string">'btnAdd'</span>);</span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> ulList = <span class="built_in">document</span>.getElementById(<span class="string">'ulList'</span>);</span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> num = <span class="number">3</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">ulList.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> event = event || <span class="built_in">window</span>.event;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> target = event.target || event.srcElement;</span></span><br><span class="line"><span class="undefined">    </span></span><br><span class="line"><span class="javascript">    <span class="keyword">if</span>(target.nodeName.toLowerCase() == <span class="string">'li'</span>)&#123;</span></span><br><span class="line"><span class="undefined">        alert(target.innerHTML);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">btnAdd.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="undefined">    num++;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> li = <span class="built_in">document</span>.createElement(<span class="string">'li'</span>);</span></span><br><span class="line"><span class="undefined">    ulList.appendChild(li);</span></span><br><span class="line"><span class="undefined">    doclick();</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这里用父级ul做事件处理，当li被点击时，由于冒泡原理，事件就会冒泡到ul上，因为ul上有点击事件，所以事件就会触发，当然，这里当点击ul的时候，也是会触发的，所以要判断点击的对象到底是不是li标签元素。</p>
-<p>Event对象提供了一个属性叫target，可以返回事件的目标节点，我们成为事件源，也就是说，target就可以表示为当前的事件操作的dom，但是不是真正操作dom，当然，这个是有兼容性的，标准浏览器用<strong>ev.target</strong>，IE浏览器用<strong>event.srcElement</strong>，此时只是获取了当前节点的位置，并不知道是什么节点名称，这里我们用nodeName来获取具体是什么标签名，这个返回的是一个大写的，我们需要转成小写再做比较（习惯问题）。</p>
-<p>这样，我们就实现了我们的事件委托，当然，不是所有的事件都是可以委托的。</p>
-<p><strong>适合用事件委托的事件：click，mousedown，mouseup，keydown，keyup，keypress。</strong></p>
-<p>当用事件委托的时候，根本就不需要去遍历元素的子节点，只需要给父级元素添加事件就好了，新增加的节点也可以触发事件效果。</p>
-<h3 id="DOM3级事件"><a href="#DOM3级事件" class="headerlink" title="DOM3级事件"></a>DOM3级事件</h3><p>DOM3级事件在DOM2级事件的基础上添加了更多的事件类型，全部类型如下：</p>
-<ul>
-<li>UI事件，当用户与页面上的元素交互时触发，如：load、scroll</li>
-<li>焦点事件，当元素获得或失去焦点时触发，如：blur、focus</li>
-<li>鼠标事件，当用户通过鼠标在页面执行操作时触发如：dbclick、mouseup</li>
-<li>滚轮事件，当使用鼠标滚轮或类似设备时触发，如：mousewheel</li>
-<li>文本事件，当在文档中输入文本时触发，如：textInput</li>
-<li>键盘事件，当用户通过键盘在页面上执行操作时触发，如：keydown、keypress</li>
-<li>合成事件，当为IME（输入法编辑器）输入字符时触发，如：compositionstart</li>
-<li>变动事件，当底层DOM结构发生变化时触发，如：DOMsubtreeModified</li>
-</ul>
-<p>DOM3级定义了自定义事件，自定义事件不是由DOM原生触发的，它的目的是让开发人员创建自己的事件。要创建的自定义事件可以由<strong>createEvent(“CustomEvent”)</strong>;</p>
-<p>返回的对象有一个initCustomEven()方法接收如下四个参数。</p>
-<ul>
-<li>type：字符串，触发的事件类型，自定义。例如“keyDown”，“selectedChange”;</li>
-<li>bubble（布尔值）：标示事件是否应该冒泡；</li>
-<li>cancelable(布尔值)：标示事件是否可以取消；</li>
-<li>detail（对象）：任意值，保存在event对象的detail属性中；</li>
-</ul>
-<p>可以像分配其他事件一样在DOM中分派创建的自定义事件对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="built_in">document</span>.implementation.hasFeature(<span class="string">"CustomEvents"</span>,<span class="string">"3.0"</span>))&#123;</span><br><span class="line"><span class="keyword">var</span> e = <span class="built_in">document</span>.createEvent(<span class="string">"CustomEvent"</span>);</span><br><span class="line">e.initCustomEvent(<span class="string">"myEvent"</span>,<span class="literal">true</span>,<span class="literal">false</span>,<span class="string">"hello world!"</span>);</span><br><span class="line">div.dispatchEvent(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="事件代理的优缺点"><a href="#事件代理的优缺点" class="headerlink" title="事件代理的优缺点"></a>事件代理的优缺点</h3><p><strong>优点：</strong></p>
-<ul>
-<li>减少事件注册，节省内存；</li>
-<li>简化dom节点更新时，相应事件的更新。</li>
-</ul>
-<p><strong>缺点：</strong></p>
-<ul>
-<li>事件委托基于冒泡，对于不冒泡的事件不支持；</li>
-<li>层级过多，冒泡过程中，可能会被某层阻止掉；</li>
-<li>理论上委托会导致浏览器频繁调用处理函数，虽然可能不需要处理。所以建议就近委托；</li>
-<li>把所有事件都用代理可能会出现误判。比如，在document中代理了button的click事件，其他人在引用改js时，可能不知道，造成button触发两个click事件。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/HTTP各版本之间的区别/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aisling Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleCorn个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/06/HTTP各版本之间的区别/" itemprop="url">HTTP各版本之间的区别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-06T11:17:18+08:00">
-                2018-03-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机网络</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="HTTP1-0-HTTP-1-1主要区别"><a href="#HTTP1-0-HTTP-1-1主要区别" class="headerlink" title="HTTP1.0 HTTP 1.1主要区别"></a>HTTP1.0 HTTP 1.1主要区别</h3><h4 id="长连接"><a href="#长连接" class="headerlink" title="长连接"></a>长连接</h4><p>HTTP 1.0需要使用keep-alive参数来告知服务器端要建立一个长连接，而HTTP1.1默认支持长连接。</p>
-<p>HTTP是基于TCP/IP协议的，创建一个TCP连接是需要经过三次握手的,有一定的开销，如果每次通讯都要重新建立连接的话，对性能有影响。因此最好能维持一个长连接，可以用个长连接来发多个请求。</p>
-<h4 id="节约带宽"><a href="#节约带宽" class="headerlink" title="节约带宽"></a>节约带宽</h4><p>HTTP 1.1支持只发送header信息(不带任何body信息)，如果服务器认为客户端有权限请求服务器，则返回100，否则返回401。客户端如果接受到100，才开始把请求body发送到服务器。</p>
-<p>这样当服务器返回401的时候，客户端就可以不用发送请求body了，节约了带宽。</p>
-<p>另外HTTP还支持传送内容的一部分。这样当客户端已经有一部分的资源后，只需要跟服务器请求另外的部分资源即可。这是支持文件断点续传的基础。</p>
-<h4 id="HOST域"><a href="#HOST域" class="headerlink" title="HOST域"></a>HOST域</h4><p>现在可以web server例如tomat，设置虚拟站点是非常常见的，也即是说，web server上的多个虚拟站点可以共享同一个ip和端口。</p>
-<p>HTTP1.0是没有host域的，HTTP1.1才支持这个参数。</p>
-<h3 id="HTTP1-1-HTTP-2-0主要区别"><a href="#HTTP1-1-HTTP-2-0主要区别" class="headerlink" title="HTTP1.1 HTTP 2.0主要区别"></a>HTTP1.1 HTTP 2.0主要区别</h3><h4 id="多路复用"><a href="#多路复用" class="headerlink" title="多路复用"></a>多路复用</h4><p>HTTP2.0使用了多路复用的技术，做到同一个连接并发处理多个请求，而且并发请求的数量比HTTP1.1大了好几个数量级。</p>
-<p>当然HTTP1.1也可以多建立几个TCP连接，来支持处理更多并发的请求，但是创建TCP连接本身也是有开销的。</p>
-<p>TCP连接有一个预热和保护的过程，先检查数据是否传送成功，一旦成功过，则慢慢加大传输速度。因此对应瞬时并发的连接，服务器的响应就会变慢。所以最好能使用一个建立好的连接，并且这个连接可以支持瞬时并发的请求。</p>
-<h4 id="数据压缩"><a href="#数据压缩" class="headerlink" title="数据压缩"></a>数据压缩</h4><p>HTTP1.1不支持header数据的压缩，HTTP2.0使用HPACK算法对header的数据进行压缩，这样数据体积小了，在网络上传输就会更快。</p>
-<h4 id="服务器推送"><a href="#服务器推送" class="headerlink" title="服务器推送"></a>服务器推送</h4><p>当我们对支持HTTP2.0的web server请求数据的时候，服务器会顺便把一些客户端需要的资源一起推送到客户端，免得客户端再次创建连接发送请求到服务器端获取。这种方式非常合适加载静态资源。</p>
-<p>服务器端推送的这些资源其实存在客户端的某处地方，客户端直接从本地加载这些资源就可以了，不用走网络，速度自然是快很多的。s</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/05/Http协议详解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aisling Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleCorn个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/05/Http协议详解/" itemprop="url">Http协议详解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-05T22:17:04+08:00">
-                2018-03-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机网络</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="HTTP-基础介绍"><a href="#HTTP-基础介绍" class="headerlink" title="HTTP 基础介绍"></a>HTTP 基础介绍</h3><p>HTTP协议（HyperText Transfer Protocol，超文本传输协议）是用于从WWW服务器传输超文本到本地浏览器的传送协议。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地传输超文本文档，还确定传输文档中的哪一部分，以及哪部分内容首先显示(如文本先于图形)等。</p>
-<p>HTTP是一个面向对象的、无状态的、应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。</p>
-<blockquote>
-<p>URI是以一种抽象的，高层次概念定义统一资源标识，而URL和URN则是具体的资源标识的方式。URL和URN都是一种URI。笼统地说，每个 URL 都是 URI，但不一定每个 URI 都是 URL。这是因为 URI 还包括一个子类，即统一资源名称 (URN)，它命名资源但不指定如何定位资源。。</p>
-</blockquote>
-<p>HTTP协议相关知识思维导图：</p>
-<p><img src="/images/http协议.jpg" alt="image"></p>
-<p>计算机网络体系结构分层：</p>
-<p><img src="/images/http网络模型.png" alt="image"></p>
-<p><strong>TCP/IP通信传输流：</strong></p>
-<p>利用 TCP/IP 协议族进行网络通信时，会通过分层顺序与对方进行通信。发送端从应用层往下走，接收端则从链路层往上走。</p>
-<ul>
-<li>首先作为发送端的客户端在应用层（HTTP 协议）发出一个想看某个 Web 页面的 HTTP 请求。</li>
-<li>接着，为了传输方便，在传输层（TCP 协议）把从应用层处收到的数据（HTTP 请求报文）进行分割，并在各个报文上打上标记序号及端口号后转发给网络层。</li>
-<li>在网络层（IP 协议），增加作为通信目的地的 MAC 地址后转发给链路层。这样一来，发往网络的通信请求就准备齐全了。</li>
-<li>接收端的服务器在链路层接收到数据，按序往上层发送，一直到应用层。当传输到应用层，才能算真正接收到由客户端发送过来的 HTTP请求。</li>
-</ul>
-<p>如下图所示：</p>
-<p><img src="/images/tcp通信传输流.png" alt="image"></p>
-<h3 id="HTTP工作过程"><a href="#HTTP工作过程" class="headerlink" title="HTTP工作过程"></a>HTTP工作过程</h3><p>HTTP通信机制是在一次完整的 HTTP 通信过程中，客户端与服务器之间将完成下列7个步骤：</p>
-<ol>
-<li><strong>建立 TCP 连接。</strong> 在HTTP工作开始之前，客户端首先要通过网络与服务器建立连接，该连接是通过 TCP 来完成的，该协议与 IP 协议共同构建 Internet，即著名的 TCP/IP 协议族，因此 Internet 又被称作是 TCP/IP 网络。HTTP 是比 TCP 更高层次的应用层协议，根据规则，只有低层协议建立之后，才能进行高层协议的连接，因此，首先要建立 TCP 连接，一般 TCP 连接的端口号是80。</li>
-<li><strong>客户端向服务器发送请求命令。</strong> 一旦建立了TCP连接，客户端就会向服务器发送请求命令。</li>
-<li><strong>客户端发送请求头信息。</strong> 客户端发送其请求命令之后，还要以头信息的形式向服务器发送一些别的信息，之后客户端发送了一空白行来通知服务器，它已经结束了该头信息的发送；</li>
-<li><strong>服务器应答。</strong> 客户端向服务器发出请求后，服务器会客户端返回响应；</li>
-<li><strong>服务器返回响应头信息。</strong> 正如客户端会随同请求发送关于自身的信息一样，服务器也会随同响应向用户发送关于它自己的数据及被请求的文档；</li>
-<li><strong>服务器向客户端发送数据。</strong> 服务器向客户端发送头信息后，它会发送一个空白行来表示头信息的发送到此为结束，接着，它就以 Content-Type 响应头信息所描述的格式发送用户所请求的实际数据；</li>
-<li><strong>服务器关闭 TCP 连接。</strong> 一般情况下，一旦服务器向客户端返回了请求数据，它就要关闭 TCP 连接，然后如果客户端或者服务器在其头信息加入了这行代码 Connection:keep-alive ，TCP 连接在发送后将仍然保持打开状态，于是，客户端可以继续通过相同的连接发送请求。保持连接节省了为每个请求建立新连接所需的时间，还节约了网络带宽。</li>
-</ol>
-<h3 id="HTTP协议基础"><a href="#HTTP协议基础" class="headerlink" title="HTTP协议基础"></a>HTTP协议基础</h3><p><strong>通过请求和响应的交换达成通信</strong></p>
-<p>应用 HTTP 协议时，必定是一端担任客户端角色，另一端担任服务器端角色。仅从一条通信线路来说，服务器端和客服端的角色是确定的。HTTP 协议规定，请求从客户端发出，最后服务器端响应该请求并返回。换句话说，肯定是先从客户端开始建立通信的，服务器端在没有接收到请求之前不会发送响应。</p>
-<p><strong>HTTP 是不保存状态的协议</strong></p>
-<p>HTTP 是一种无状态协议。协议自身不对请求和响应之间的通信状态进行保存。也就是说在 HTTP 这个级别，协议对于发送过的请求或响应都不做持久化处理。这是为了更快地处理大量事务，确保协议的可伸缩性，而特意把 HTTP 协议设计成如此简单的。<br>可是随着 Web 的不断发展，我们的很多业务都需要对通信状态进行保存。于是我们引入了 Cookie 技术。有了 Cookie 再用 HTTP 协议通信，就可以管理状态了。</p>
-<p><strong>使用 Cookie 的状态管理</strong></p>
-<p>Cookie 技术通过在请求和响应报文中写入 Cookie 信息来控制客户端的状态。Cookie 会根据从服务器端发送的响应报文内的一个叫做 Set-Cookie 的首部字段信息，通知客户端保存Cookie。当下次客户端再往该服务器发送请求时，客户端会自动在请求报文中加入 Cookie 值后发送出去。服务器端发现客户端发送过来的 Cookie 后，会去检查究竟是从哪一个客户端发来的连接请求，然后对比服务器上的记录，最后得到之前的状态信息。</p>
-<p><strong>请求 URI 定位资源</strong></p>
-<p>HTTP 协议使用 URI 定位互联网上的资源。正是因为 URI 的特定功能，在互联网上任意位置的资源都能访问到。</p>
-<p><strong>告知服务器意图的 HTTP 方法（HTTP/1.1</strong>）</p>
-<p><img src="/images/http方法.png" alt="image"></p>
-<p><strong>持久连接</strong></p>
-<p>HTTP 协议的初始版本中，每进行一个 HTTP 通信都要断开一次 TCP 连接。比如使用浏览器浏览一个包含多张图片的 HTML 页面时，在发送请求访问 HTML 页面资源的同时，也会请求该 HTML 页面里包含的其他资源。因此，每次的请求都会造成无畏的 TCP 连接建立和断开，增加通信量的开销。<br>为了解决上述 TCP 连接的问题，HTTP/1.1 和部分 HTTP/1.0 想出了持久连接的方法。其特点是，只要任意一端没有明确提出断开连接，则保持 TCP 连接状态。旨在建立一次 TCP 连接后进行多次请求和响应的交互。在 HTTP/1.1 中，所有的连接默认都是持久连接。</p>
-<p><strong>管线化</strong></p>
-<p>持久连接使得多数请求以管线化方式发送成为可能。以前发送请求后需等待并接收到响应，才能发送下一个请求。管线化技术出现后，不用等待亦可发送下一个请求。这样就能做到同时并行发送多个请求，而不需要一个接一个地等待响应了。<br>比如，当请求一个包含多张图片的 HTML 页面时，与挨个连接相比，用持久连接可以让请求更快结束。而管线化技术要比持久连接速度更快。请求数越多，时间差就越明显。</p>
-<h3 id="HTTP-协议报文结构"><a href="#HTTP-协议报文结构" class="headerlink" title="HTTP 协议报文结构"></a>HTTP 协议报文结构</h3><p><strong>HTTP报文</strong></p>
-<p>用于 HTTP 协议交互的信息被称为 HTTP 报文。请求端（客户端）的 HTTP 报文叫做请求报文；响应端（服务器端）的叫做响应报文。HTTP 报文本身是由多行（用 CR+LF 作换行符）数据构成的字符串文本</p>
-<p><strong>HTTP 报文结构</strong></p>
-<p>请求报文：</p>
-<p><img src="/images/http请求报文.png" alt="image"></p>
-<p>响应报文：</p>
-<p><img src="/images/http响应报文.png" alt="image"></p>
-<h3 id="HTTP报文首部字段"><a href="#HTTP报文首部字段" class="headerlink" title="HTTP报文首部字段"></a>HTTP报文首部字段</h3><h4 id="首部字段类型："><a href="#首部字段类型：" class="headerlink" title="首部字段类型："></a>首部字段类型：</h4><p><img src="/images/报文首部字段类型.png" alt="image"></p>
-<h4 id="通用首部字段-http-1-1"><a href="#通用首部字段-http-1-1" class="headerlink" title="通用首部字段(http/1.1)"></a>通用首部字段(http/1.1)</h4><p><img src="/images/报文通用首部字段.png" alt="image"></p>
-<h5 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h5><p><strong>请求指令：</strong></p>
-<p><img src="/images/缓存请求指令.png" alt="image"></p>
-<p><strong>响应指令：</strong></p>
-<p><img src="/images/缓存响应指令.png" alt="image"></p>
-<p>注意：</p>
-<ul>
-<li>no-cache 指令代表不缓存过期的指令，缓存会向源服务器进行有效期确认后处理资源；no-store 指令才是真正的不进行缓存。</li>
-<li>s-maxage 指令的功能和 max-age 指令的相同，它们的不同点是 s-maxage 指令只适用于供多位用户使用的公共缓存服务器（一般指代理）。也就是说，对于向同一用户重复返回响应的服务器来说，这个指令没有任何作用。另外，当使用 s-maxage 指令后，则直接忽略对 Expires 首部字段及 max-age 指令的处理。</li>
-<li><strong>应用 HTTP/1.1 版本的缓存服务器遇到同时存在 Expires 首部字段的情况时，会优先处理 max-age 指令，并忽略掉 Expires 首部字段；而 HTTP/1.0 版本的缓存服务器则相反</strong>。</li>
-</ul>
-<h5 id="Connection"><a href="#Connection" class="headerlink" title="Connection"></a>Connection</h5><ul>
-<li>控制不再转发的首部字段。在客户端发送请求和服务器返回响应中，使用 Connection首部字段，可控制不再转发给代理的首部字段，即删除后再转发（即Hop-by-hop首部）。</li>
-<li>管理持久连接。HTTP/1.1 版本的默认连接都是持久连接。当服务器端想明确断开连接时，则指定 Connection 首部字段的值为 close。HTTP/1.1 之前的 HTTP 版本的默认连接都是非持久连接。为此，如果想在旧版本的 HTTP 协议上维持持续连接，则需要指定 Connection 首部字段的值为 Keep-Alive。</li>
-</ul>
-<h5 id="Pragma"><a href="#Pragma" class="headerlink" title="Pragma"></a>Pragma</h5><ul>
-<li>Pragma 首部字段是 HTTP/1.1 版本之前的历史遗留字段，仅作为与 HTTP/1.0 的向后兼容而定义。</li>
-<li>该首部字段属于通用首部字段，但只用在客户端发送的请求中，要求所有的中间服务器不返回缓存的资源。</li>
-</ul>
-<h4 id="请求报文首部字段-http-1-1"><a href="#请求报文首部字段-http-1-1" class="headerlink" title="请求报文首部字段(http/1.1)"></a>请求报文首部字段(http/1.1)</h4><p><img src="/images/报文请求首部字段.png" alt="image"></p>
-<h5 id="Host"><a href="#Host" class="headerlink" title="Host"></a>Host</h5><ul>
-<li>告知服务器，请求的资源所处的互联网主机和端口号</li>
-<li><strong>Host 首部字段是 HTTP/1.1 规范内唯一一个必须被包含在请求内的首部字段。</strong></li>
-<li>若服务器未设定主机名，那直接发送一个空值即可  Host: 。</li>
-</ul>
-<h4 id="响应报文首部字段-http-1-1"><a href="#响应报文首部字段-http-1-1" class="headerlink" title="响应报文首部字段(http/1.1)"></a>响应报文首部字段(http/1.1)</h4><p><img src="/images/报文响应首部字段.png" alt="image"></p>
-<h5 id="ETag"><a href="#ETag" class="headerlink" title="ETag"></a>ETag</h5><ul>
-<li>首部字段 ETag 能告知客户端实体标识。它是一种可将资源以字符串形式做唯一性标识的方式。服务器会为每份资源分配对应的 ETag 值。</li>
-<li>另外，当资源更新时，ETag 值也需要更新。生成 ETag 值时，并没有统一的算法规则，而仅仅是由服务器来分配。</li>
-<li>ETag 中有强 ETag 值和弱 ETag 值之分。强 ETag 值，不论实体发生多么细微的变化都会改变其值；弱 ETag 值只用于提示资源是否相同。只有资源发生了根本改变，产生差异时才会改变 ETag 值。这时，会在字段值最开始处附加 W/： ETag: W/“usagi-1234”。</li>
-</ul>
-<h4 id="实体首部字段-http-1-1"><a href="#实体首部字段-http-1-1" class="headerlink" title="实体首部字段(http/1.1)"></a>实体首部字段(http/1.1)</h4><p><img src="/images/报文实体首部字段.png" alt="image"></p>
-<h5 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h5><ul>
-<li>首部字段 Expires 会将资源失效的日期告知客户端。</li>
-<li>缓存服务器在接收到含有首部字段 Expires 的响应后，会以缓存来应答请求，在 Expires 字段值指定的时间之前，响应的副本会一直被保存。当超过指定的时间后，缓存服务器在请求发送过来时，会转向源服务器请求资源。</li>
-<li>源服务器不希望缓存服务器对资源缓存时，最好在 Expires 字段内写入与首部字段 Date 相同的时间值。</li>
-</ul>
-<h4 id="为-Cookie-服务的首部字段"><a href="#为-Cookie-服务的首部字段" class="headerlink" title="为 Cookie 服务的首部字段"></a>为 Cookie 服务的首部字段</h4><p><img src="/images/为cookie服务的首部字段.png" alt="image"></p>
-<h5 id="Set-Cookie"><a href="#Set-Cookie" class="headerlink" title="Set-Cookie"></a>Set-Cookie</h5><p><img src="/images/setcookie字段值.png" alt="image"></p>
-<ul>
-<li>一旦 Cookie 从服务器端发送至客户端，服务器端就不存在可以显式删除 Cookie 的方法。但可通过覆盖已过期的 Cookie，实现对客户端 Cookie 的实质性删除操作。</li>
-</ul>
-<h3 id="HTTP报文实体"><a href="#HTTP报文实体" class="headerlink" title="HTTP报文实体"></a>HTTP报文实体</h3><p>实体：作为请求或响应的有效载荷数据（补充项）被传输，其内容由实体首部和实体主体组成。</p>
-<blockquote>
-<p>通常，报文主体等于实体主体。只有当传输中进行编码操作时，实体主体的内容发生变化，才导致它和报文主体产生差异。</p>
-</blockquote>
-<h4 id="内容编码"><a href="#内容编码" class="headerlink" title="内容编码"></a>内容编码</h4><ul>
-<li>HTTP 应用程序有时在发送之前需要对内容进行编码。例如，在把很大的 HTML 文档发送给通过慢速连接上来的客户端之前，服务器可能会对其进行压缩，这样有助于减少传输实体的时间。服务器还可以把内容搅乱或加密，以此来防止未授权的第三方看到文档的内容。</li>
-<li>这种类型的编码是在发送方应用到内容之上的。当内容经过内容编码后，编好码的数据就放在实体主体中，像往常一样发送给接收方。</li>
-</ul>
-<p><img src="/images/报文实体编码方式.png" alt="image"></p>
-<h4 id="传输编码"><a href="#传输编码" class="headerlink" title="传输编码"></a>传输编码</h4><p>内容编码是对报文的主体进行的可逆变换，是和内容的具体格式细节紧密相关的。<br>传输编码也是作用在实体主体上的可逆变换，但使用它们是由于架构方面的原因，同内容的格式无关。使用传输编码是为了改变报文中的数据在网络上传输的方式。</p>
-<h3 id="与-HTTP-协作的-Web-服务器"><a href="#与-HTTP-协作的-Web-服务器" class="headerlink" title="与 HTTP 协作的 Web 服务器"></a>与 HTTP 协作的 Web 服务器</h3><p>HTTP 通信时，除客户端和服务器外，还有一些用于协助通信的应用程序。如下列出比较重要的几个：代理、缓存、网关、隧道、Agent 代理。</p>
-<h4 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h4><p><img src="/images/服务器代理.png" alt="image"></p>
-<p>HTTP 代理服务器是 Web 安全、应用集成以及性能优化的重要组成模块。代理位于客户端和服务器端之间，接收客户端所有的 HTTP 请求，并将这些请求转发给服务器（可能会对请求进行修改之后再进行转发）。对用户来说，这些应用程序就是一个代理，代表用户访问服务器。<br>出于安全考虑，通常会将代理作为转发所有 Web 流量的可信任中间节点使用。代理还可以对请求和响应进行过滤，安全上网或绿色上网。</p>
-<h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><p><img src="/images/缓存之第一次请求.png" alt="image"></p>
-<p><img src="/images/缓存之再次请求.png" alt="image"></p>
-<p>Web 缓存或代理缓存是一种特殊的 HTTP 代理服务器，可以将经过代理传输的常用文档复制保存起来。下一个请求同一文档的客户端就可以享受缓存的私有副本所提供的服务了。客户端从附近的缓存下载文档会比从远程 Web 服务器下载快得多。</p>
-<h4 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h4><p><img src="/images/http网关.png" alt="image"></p>
-<p>网关是一种特殊的服务器，作为其他服务器的中间实体使用。通常用于将 HTTP 流量转换成其他的协议。网关接收请求时就好像自己是资源的源服务器一样。客户端可能并不知道自己正在跟一个网关进行通信。</p>
-<h4 id="隧道"><a href="#隧道" class="headerlink" title="隧道"></a>隧道</h4><p><img src="/images/http隧道.png" alt="image"></p>
-<p>隧道是会在建立起来之后，就会在两条连接之间对原始数据进行盲转发的 HTTP 应用程序。HTTP 隧道通常用来在一条或多条 HTTP 连接上转发非 HTTP 数据，转发时不会窥探数据。<br>HTTP 隧道的一种常见用途就是通过 HTTP 连接承载加密的安全套接字层（SSL）流量，这样 SSL 流量就可以穿过只允许 Web 流量通过的防火墙了。<br>。</p>
-<h4 id="Agent代理"><a href="#Agent代理" class="headerlink" title="Agent代理"></a>Agent代理</h4><p>Agent 代理是代表用户发起 HTTP 请求的客户端应用程序。所有发布 Web 请求的应用程序都是 HTTP Agent 代理。</p>
 
           
         
@@ -2950,7 +3030,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2972,7 +3052,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

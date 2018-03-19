@@ -252,6 +252,533 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/15/Vue生命周期/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/15/Vue生命周期/" itemprop="url">Vue生命周期</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-15T10:46:26+08:00">
+                2018-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Vue生命周期"><a href="#Vue生命周期" class="headerlink" title="Vue生命周期"></a>Vue生命周期</h3><p><img src="/images/vue生命周期.png" alt="image"></p>
+<p><img src="/images/vue生命周期钩子.png" alt="image"></p>
+<p>（除了beforeCreate和created钩子之外，其他钩子均在服务器端渲染期间不被调用。）</p>
+<ul>
+<li>beforeCreate执行时：data和el均未初始化，值为undefined；</li>
+<li>created执行时：Vue 实例观察的数据对象data已经配置好，已经可以得到app.message的值，但Vue 实例使用的根 DOM 元素el还未初始化；</li>
+<li>beforeMount执行时：data和el均已经初始化，但从等现象可以看出此时el并没有渲染进数据，el的值为“虚拟”的元素节点；</li>
+<li>mounted执行时：此时el已经渲染完成并挂载到实例上；</li>
+</ul>
+<p><strong>实际应用：</strong></p>
+<ul>
+<li>在created钩子中可以对data数据进行操作，这个时候可以进行ajax请求将返回的数据赋给data；</li>
+<li>在mounted钩子对挂载的dom进行操作；</li>
+<li>在使用vue-router时有时需要使用<keep-alive></keep-alive>来缓存组件状态，这个时候created钩子就不会被重复调用了，如果我们的子组件需要在每次加载的时候进行某些操作，可以使用activated钩子触发。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/14/webpack打包优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/14/webpack打包优化/" itemprop="url">webpack打包优化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-14T13:36:31+08:00">
+                2018-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/开发工具/" itemprop="url" rel="index">
+                    <span itemprop="name">开发工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="babel-loader开启缓存"><a href="#babel-loader开启缓存" class="headerlink" title="babel-loader开启缓存"></a>babel-loader开启缓存</h3><p>babel-loader 提供了 cacheDirectory特定选项（默认 false）：设置时，给定的目录将用于缓存加载器的结果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">rules: [</span><br><span class="line">  &#123;</span><br><span class="line">    test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">    loader: <span class="string">'babel-loader?cacheDirectory=true'</span>,</span><br><span class="line">    exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">    include: [resolve(<span class="string">'src'</span>), resolve(<span class="string">'test'</span>)]</span><br><span class="line">  &#125;,</span><br><span class="line">  ... ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="cnd配合externals"><a href="#cnd配合externals" class="headerlink" title="cnd配合externals"></a>cnd配合externals</h3><p>如今前端开发，自然是使用ES6甚至更高版本，撸将起来才更嗨。但由于浏览器兼容问题，仍得使用 babel 转换。而这 babel-polyfill 也得引入以确保兼容；还比如项目开发中常用到的 moment, lodash等，都是挺大的存在，如果必须引入的话，即考虑外部引入之，再借助 externals 予以指定， webpack可以处理使之不参与打包，而依旧可以在代码中通过CMD、AMD或者window/global全局的方式访问。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack 中予以指定</span></span><br><span class="line">externals: &#123;</span><br><span class="line">  <span class="comment">// 'vue': 'Vue',</span></span><br><span class="line">  <span class="comment">// 'lodash': '_',</span></span><br><span class="line">  <span class="string">'babel-polyfill'</span>: <span class="string">'window'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">&lt;script src=<span class="string">"//cdn.bootcss.com/autotrack/2.4.1/autotrack.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script src=<span class="string">"//cdn.bootcss.com/babel-polyfill/7.0.0-alpha.15/polyfill.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="noParse"><a href="#noParse" class="headerlink" title="noParse"></a>noParse</h3><p>webpack打包的时候，有时不需要解析某些模块的依赖（这些模块并没有依赖，或者并根本就没有模块化），我们可以直接加上这个参数，直接跳过这种解析。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">  noParse: <span class="regexp">/node_modules\/(element-ui\.js)/</span>,</span><br><span class="line">  rules: [</span><br><span class="line">    &#123;</span><br><span class="line">      ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="优化搜索路径"><a href="#优化搜索路径" class="headerlink" title="优化搜索路径"></a>优化搜索路径</h3><p>在webpack打包时，会有各种各样的路径要去查询搜索，我们可以加上一些配置，让它搜索地更快。</p>
+<p>Webpack的resolve.modules配置模块库（即 node_modules）所在的位置，在 js 里出现 import ‘vue’ 这样不是相对、也不是绝对路径的写法时，会去 node_modules 目录下找。但是默认的配置，会采用向上递归搜索的方式去寻找，但通常项目目录里只有一个 node_modules，且是在项目根目录，为了减少搜索范围，可以直接写明 node_modules 的全路径；同样，对于别名(alias)的配置，亦当如此。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resolve</span> (<span class="params">dir</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> path.join(__dirname, <span class="string">'..'</span>, dir)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  resolve: &#123;</span><br><span class="line">    extensions: [<span class="string">'.js'</span>, <span class="string">'.vue'</span>, <span class="string">'.json'</span>],</span><br><span class="line">    modules: [</span><br><span class="line">      resolve(<span class="string">'src'</span>),</span><br><span class="line">      resolve(<span class="string">'node_modules'</span>)</span><br><span class="line">    ],</span><br><span class="line">    alias: &#123;</span><br><span class="line">      <span class="string">'vue$'</span>: <span class="string">'vue/dist/vue.common.js'</span>,</span><br><span class="line">      <span class="string">'src'</span>: resolve(<span class="string">'src'</span>),</span><br><span class="line">      <span class="string">'assets'</span>: resolve(<span class="string">'src/assets'</span>),</span><br><span class="line">      <span class="string">'components'</span>: resolve(<span class="string">'src/components'</span>),</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">      <span class="string">'store'</span>: resolve(<span class="string">'src/store'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="设置include-exclude"><a href="#设置include-exclude" class="headerlink" title="设置include/exclude"></a>设置include/exclude</h3><p>对于include，更精确指定要处理的目录，这可以减少不必要的遍历，从而减少性能损失。同样，对于已经明确知道的，不需要处理的目录，则应该予以排除，从而进一步提升性能。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">  loaders: [</span><br><span class="line">    &#123;</span><br><span class="line">      test: <span class="regexp">/\.vue$/</span>,</span><br><span class="line">      loader: <span class="string">'vue-loader'</span>,</span><br><span class="line">      include: [resolve(<span class="string">'src'</span>)],</span><br><span class="line">      exclude: <span class="regexp">/node_modules\/(?!(autotrack|dom-utils))|vendor\.dll\.js/</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="模块化引入"><a href="#模块化引入" class="headerlink" title="模块化引入"></a>模块化引入</h3><p>有些模块是可以以模块化来引入的，就是说可以只引入其中的一部分，比如说lodash</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原来的引入方式</span></span><br><span class="line"> <span class="keyword">import</span> &#123;debounce&#125; <span class="keyword">from</span> <span class="string">'lodash'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//按模块化的引入方式</span></span><br><span class="line"><span class="keyword">import</span> debounce <span class="keyword">from</span> <span class="string">'lodash/debounce'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="异步加载模块"><a href="#异步加载模块" class="headerlink" title="异步加载模块"></a>异步加载模块</h3><p>根据需要去异步加载，避免无端就引入早成的浪费。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Foo <span class="keyword">from</span> <span class="string">'./Foo.vue'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//按需引入</span></span><br><span class="line"><span class="keyword">const</span> Foo = <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'./Foo.vue'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="ParallelUglifyPlugin"><a href="#ParallelUglifyPlugin" class="headerlink" title="ParallelUglifyPlugin"></a>ParallelUglifyPlugin</h3><p>webpack自带的UglifyJS插件，是单线程执行的，而webpack-parallel-uglify-plugin可以并行运行UglifyJS插件，更加充分合理地使用CPU资源，大大减少构建时间。（该插件应用于生成环境）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ParallelUglifyPlugin = <span class="built_in">require</span>(<span class="string">'webpack-parallel-uglify-plugin'</span>);</span><br><span class="line"><span class="keyword">new</span> ParallelUglifyPlugin(&#123;</span><br><span class="line">  cacheDir: <span class="string">'.cache/'</span>,</span><br><span class="line">  uglifyJS:&#123;</span><br><span class="line">    output: &#123;</span><br><span class="line">      comments: <span class="literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    compress: &#123;</span><br><span class="line">      warnings: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="DllPlugin-DllReferencePlugin"><a href="#DllPlugin-DllReferencePlugin" class="headerlink" title="DllPlugin/DllReferencePlugin"></a>DllPlugin/DllReferencePlugin</h3><blockquote>
+<p>一个dll包，就是一个很纯净的依赖库，它本身不能运行，是用来给你的 app 或者业务代码引用的。</p>
+</blockquote>
+<p>Dll是动态链接库的意思，实际上就是将这些npm打包生成一个JSON文件，这个文件里包含了npm包的路径对应信息。webpack会先打包dll包，然后引用dll包，打包业务代码。</p>
+<p>首先，打包dll包，需要配置一个dll.config.js文件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> vendors = [</span><br><span class="line">    <span class="string">'react'</span>,</span><br><span class="line">    <span class="string">'react-dom'</span>,</span><br><span class="line">    <span class="string">'react-router'</span>,</span><br><span class="line">    <span class="comment">// ...其它库</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: <span class="string">'build'</span>,</span><br><span class="line">        filename: <span class="string">'[name].js'</span>,</span><br><span class="line">        library: <span class="string">'[name]'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    entry: &#123;</span><br><span class="line">        <span class="string">"lib"</span>: vendors,</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> webpack.DllPlugin(&#123;</span><br><span class="line">            path: <span class="string">'manifest.json'</span>,</span><br><span class="line">            name: <span class="string">'[name]'</span>,</span><br><span class="line">            context: __dirname,</span><br><span class="line">        &#125;),</span><br><span class="line">    ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>运行webpack，会输出mainifest.json文件，里面就是相应包的对应信息。</p>
+<p>然后再在项目配置文件中配置DllReferencePlugin，使用manifest这个清单文件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: <span class="string">'build'</span>,</span><br><span class="line">        filename: <span class="string">'[name].js'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    entry: &#123;</span><br><span class="line">        app: <span class="string">'./src/index.js'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> webpack.DllReferencePlugin(&#123;</span><br><span class="line">            context: __dirname,</span><br><span class="line">            manifest: <span class="built_in">require</span>(<span class="string">'./manifest.json'</span>),</span><br><span class="line">        &#125;),</span><br><span class="line">    ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="CommonsChunkPlugin"><a href="#CommonsChunkPlugin" class="headerlink" title="CommonsChunkPlugin"></a>CommonsChunkPlugin</h3><p>使用CommonsChunkPlugin提取公共的模块，可以减少文件体积，也有助于浏览器层的文件缓存，还是比较推荐的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 提取公共模块文件</span></span><br><span class="line"><span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">    chunks: [<span class="string">'home'</span>, <span class="string">'detail'</span>],</span><br><span class="line">    <span class="comment">// 开发环境下需要使用热更新替换，而此时common用chunkhash会出错，可以直接不用hash</span></span><br><span class="line">    filename: <span class="string">'[name].js'</span> + (isProduction ? <span class="string">'?[chunkhash:8]'</span> : <span class="string">''</span>),</span><br><span class="line">    name: <span class="string">'common'</span></span><br><span class="line">&#125;),</span><br><span class="line"></span><br><span class="line"><span class="comment">// 切合公共模块的提取规则，有时后你需要明确指定默认放到公共文件的模块</span></span><br><span class="line"><span class="comment">// 文件入口配置</span></span><br><span class="line">entry: &#123;</span><br><span class="line">    home: <span class="string">'./src/js/home'</span>,</span><br><span class="line">    detail: <span class="string">'./src/js/detail'</span>,</span><br><span class="line">    <span class="comment">// 提取jquery入公共文件</span></span><br><span class="line">    common: [<span class="string">'jquery'</span>, <span class="string">'react'</span>, <span class="string">'react-dom'</span>]</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="HappyPack"><a href="#HappyPack" class="headerlink" title="HappyPack"></a>HappyPack</h3><p>Happypack 的处理思路是：将原有的 webpack 对 loader 的执行过程，从单一进程的形式扩展多进程模式，从而加速代码构建；原本的流程保持不变，这样可以在不修改原有配置的基础上，来完成对编译过程的优化，具体配置如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> HappyPack = <span class="built_in">require</span>(<span class="string">'happypack'</span>);</span><br><span class="line"><span class="keyword">var</span> happyThreadPool = HappyPack.ThreadPool(&#123; <span class="attr">size</span>: os.cpus().length &#125;);</span><br><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">  loaders: [</span><br><span class="line">    &#123;</span><br><span class="line">      test: <span class="regexp">/\.js[x]?$/</span>,</span><br><span class="line">      include: [resolve(<span class="string">'src'</span>)],</span><br><span class="line">      exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">      loader: <span class="string">'happypack/loader?id=happybabel'</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;,</span><br><span class="line">plugins: [</span><br><span class="line">  <span class="keyword">new</span> HappyPack(&#123;</span><br><span class="line">    id: <span class="string">'happybabel'</span>,</span><br><span class="line">    loaders: [<span class="string">'babel-loader'</span>],</span><br><span class="line">    threadPool: happyThreadPool,</span><br><span class="line">    cache: <span class="literal">true</span>,</span><br><span class="line">    verbose: <span class="literal">true</span></span><br><span class="line">  &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>可以看到，通过在 loader 中配置直接指向 happypack 提供的 loader，对于文件实际匹配的处理 loader，则是通过配置在 plugin 属性来传递说明，这里 happypack 提供的 loader 与 plugin 的衔接匹配，则是通过id=happybabel来完成。</p>
+<p>Happypack 在编译过程中，除了利用多进程的模式加速编译，还同时开启了cache计算，能充分利用缓存读取构建文件，对构建的速度提升也是非常明显的。</p>
+<h3 id="ModuleConcatenationPlugin"><a href="#ModuleConcatenationPlugin" class="headerlink" title="ModuleConcatenationPlugin"></a>ModuleConcatenationPlugin</h3><p>这是<strong>webpack3的新特性</strong>（Scope Hoisting），其实是借鉴了Rollup打包工具来的，它将一些有联系的模块，放到一个闭包函数里面去，通过减少闭包函数数量从而加快JS的执行速度。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> webpack.optimize.ModuleConcatenationPlugin()</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/11/Linux上手指南/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/11/Linux上手指南/" itemprop="url">Linux上手指南</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-11T15:44:14+08:00">
+                2018-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Linux-的目录结构"><a href="#Linux-的目录结构" class="headerlink" title="Linux 的目录结构"></a>Linux 的目录结构</h3><p>前面多次提到了类似/dev这样的目录,也提到了目录文件d,不知道你对目录有没有也产生好奇，Linux的目录也是Linux系统中比较重要的一块，不过首先我们得区分Linux的目录和Window的目录的较大的区别：</p>
+<blockquote>
+<p>不同之一体现在目录与存储介质（磁盘，内存，DVD 等）的关系上，Windows 一直是以存储介质为主的，主要以盘符（C 盘，D 盘…）及分区来实现文件管理，然后之下才是目录，目录就显得不是那么重要，除系统文件之外的用户文件放在任何地方任何目录也是没有多大关系。</p>
+</blockquote>
+<p>然而 UNIX/Linux 恰好相反，UNIX 是以目录为主的，Linux 也继承了这一优良特性。 Linux 以树形目录结构的形式来构建整个系统，可以理解为树形目录是一个用户可操作系统的骨架。虽然本质上无论是目录结构还是操作系统内核都是存储在磁盘上的，但从逻辑上来说 Linux 的磁盘是“挂在”（挂载在）目录上的，每一个目录不仅能使用本地磁盘分区的文件系统，也可以使用网络上的文件系统。</p>
+<p>简言之，Windows的目录挂载在磁盘下，而Linux磁盘挂载在目录下，使用Mac的童鞋们，看了这段话是不是突然明白了为什么Mac上安装第三方软件时，会出现盘符。</p>
+<p>初接触Linux时，我们很容易被其看似复杂的文件系统弄得晕头转向，其实在掌握了一定的规律后，Linux的目录结构是比Window简单的，Linux的大部分目录结构是依据FHS标准（英文：Filesystem Hierarchy Standard 中文：文件系统层次结构标准）规定好的。</p>
+<blockquote>
+<p>多数 Linux 版本采用这种文件组织形式，FHS 定义了系统中每个区域的用途、所需要的最小构成的文件和目录同时还给出了例外处理与矛盾处理。</p>
+</blockquote>
+<p><strong>FHS包含两层规范：</strong></p>
+<ul>
+<li><p>第一层是， / 下面的各个目录应该要放什么文件数据，例如 /etc 应该放置设置文件，/bin 与 /sbin 则应该放置可执行文件等等。</p>
+</li>
+<li><p>第二层则是针对 /usr 及 /var 这两个目录的子目录来定义。例如 /var/log 放置系统登录文件，/usr/share 放置共享数据等等。</p>
+</li>
+</ul>
+<p>这里有个有用的命令:<strong>tree</strong>(需要先安装)，可以查看某个目录的子目录的结构，这个命令还可以限制目录的展示层级，通过man tree你可以获知如何进行具体的操作。</p>
+<p>FHS 是根据以往无数 Linux 用户和开发者的经验总结出来的，并且会维持更新，网上有很多结束FHS的文章，如果感兴趣 可以搜索看看。</p>
+<p><strong>关于目录的一些常用相关命令：</strong></p>
+<ul>
+<li><p>..：表示上一级目录</p>
+</li>
+<li><p>cd:切换目录，后面可以是相对目录，也可以是绝对目录，如$ cd /usr/local/bin</p>
+</li>
+<li><p>pwa: 查看当前所在目录</p>
+</li>
+</ul>
+<p><strong>查看目录的容量du</strong></p>
+<p>使用du命令可以查看目录的容量，配合以下参数可以实现更多效果。</p>
+<p>参数： -d  指定查看目录的深度。</p>
+<h3 id="Linux的磁盘管理"><a href="#Linux的磁盘管理" class="headerlink" title="Linux的磁盘管理"></a>Linux的磁盘管理</h3><p>在Linux下磁盘是挂载在目录下的，前文大致聊了目录，接下来我们简单说说磁盘管理，前面刚刚说完如何查看目录容量，我们先看如何查看磁盘的容量。</p>
+<p><strong>查看磁盘容量df</strong></p>
+<p><strong>创建虚拟磁盘dd</strong></p>
+<blockquote>
+<p>dd命令用于转换和复制文件，不过它的复制不同于cp。之前提到过关于 Linux 的很重要的一点，一切即文件，在 Linux 上，硬件的设备驱动（如硬盘）和特殊设备文件（如/dev/zero和/dev/random）都像普通文件一样，只要在各自的驱动程序中实现了对应的功能，dd 也可以读取自和/或写入到这些文件。这样，dd也可以用在备份硬件的引导扇区、获取一定数量的随机数据或者空数据等任务中。dd程序也可以在复制时处理数据，例如转换字节序、或在 ASCII 与 EBCDIC 编码间互换。</p>
+</blockquote>
+<p><strong>语句格式：选项=值</strong></p>
+<p>dd默认从标准输入中读取，并写入到标准输出中,但输入输出也可以用选项if（input file，输入文件）和of（output file，输出文件）改变。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ dd if=/dev/stdin of=/dev/stdout bs=10 count=1</span><br><span class="line"># 将输出的英文字符转换为大写再写入文件</span><br><span class="line">$ dd if=/dev/stdin of=test bs=10 count=1 conv=ucase</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>bs（block size）用于指定块大小（缺省单位为 Byte，也可为其指定如’K’，’M’，’G’等单位），</p>
+</li>
+<li><p>count用于指定块数量。</p>
+</li>
+<li><p>超过bs的多余输入将被截取并保留在标准输入。</p>
+</li>
+</ul>
+<p><strong>使用mkfs命令格式化磁盘</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 输入 sudo mkfs 然后按下Tab键，你可以看到很多个以 mkfs 为前缀的命令,代表不同的文件系统格式</span><br><span class="line"># 格式化virtual.img为ext4格式</span><br><span class="line">$ sudo mkfs.ext4 virtual.img</span><br></pre></td></tr></table></figure>
+<p><strong>使用 mount 命令挂载磁盘到目录树</strong></p>
+<p>用户在 Linux/UNIX 的机器上打开一个文件以前，包含该文件的文件系统必须先进行挂载的动作，此时用户要对该文件系统执行 mount 的指令以进行挂载。<br>Linux/UNIX 文件系统可以对应一个文件而不一定要是硬件设备，所以可以挂载一个包含文件系统的文件到目录树。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 查看下主机已经挂载的文件系统，每一行代表一个设备或虚拟设备格式[设备名]on[挂载点]：</span><br><span class="line">$ sudo mount</span><br><span class="line">➜  ~ sudo mount</span><br><span class="line">Password:</span><br><span class="line">/dev/disk1 on / (hfs, local, journaled)</span><br><span class="line">devfs on /dev (devfs, local, nobrowse)</span><br><span class="line">map -hosts on /net (autofs, nosuid, automounted, nobrowse)</span><br><span class="line">map auto_home on /home (autofs, automounted, nobrowse)</span><br><span class="line">/dev/disk2s1 on /Volumes/微信web开发者工具 (hfs, local, nodev, nosuid, read-only, noowners, quarantine, mounted by zhangwang)</span><br><span class="line"></span><br><span class="line"># 挂载文件到目录树mount [-o [操作选项]] [-t 文件系统类型] [-w|--rw|--ro] [文件系统源] [挂载点]</span><br><span class="line"># 类型可省略，很多时候会自动识别</span><br><span class="line">$ mount -o loop -t ext4 virtual.img /mnt </span><br><span class="line"># 以只读方式挂载</span><br><span class="line">$ mount -o loop --ro virtual.img /mnt</span><br></pre></td></tr></table></figure>
+<p><strong>使用 fdisk 为磁盘分区</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 查看硬盘分区表信息</span><br><span class="line">$ sudo fdisk -l</span><br><span class="line"></span><br><span class="line"># 进入磁盘分区模式</span><br><span class="line">$ sudo fdisk virtual.img</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/11/NodeJS框架对比/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1640,760 +2167,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/08/Grid网格布局/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aisling Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleCorn个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/08/Grid网格布局/" itemprop="url">Grid网格布局</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T11:04:36+08:00">
-                2018-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>flexbox是一维布局，他只能在一条直线上放置你的内容区块；而grid是一个二维布局。可以根据你的设计需求，将内容区块放置到任何你想要放的地方。网络布局可以将应用程序分割成不同的空间，或者定义他们的大小、位置以及层级。</p>
-<p>使用Grid布局非常简单，你只需要给容器（container）定义：display:grid，并设置列（grid-template-columns）和 行（grid-template-rows）的大小，然后用grid-column和grid-row定义容器子元素（grid-item项目）的位置。</p>
-<h4 id="网格容器（Grid-Container）"><a href="#网格容器（Grid-Container）" class="headerlink" title="网格容器（Grid Container）"></a>网格容器（Grid Container）</h4><p>元素应用display:grid，它是其所有网格项的父元素。下面例子container就是网格容器。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item item-1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item item-2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item item-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="网格项（Grid-Item）"><a href="#网格项（Grid-Item）" class="headerlink" title="网格项（Grid Item）"></a>网格项（Grid Item）</h4><p>网格容器的子元素，下面的item元素是网格项，但sub-item不是。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"sub-item"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="网格线（Grid-Line）"><a href="#网格线（Grid-Line）" class="headerlink" title="网格线（Grid Line）"></a>网格线（Grid Line）</h4><p>组成网格线的分界线。它们可以是列网格线（column grid lines），也可以是行网格线（row grid lines）并且居于行或列的任意一侧，下面黄色线就是列网格线。</p>
-<p><img src="/images/grid网格线.png" alt="image"></p>
-<h4 id="网格轨道（Grid-Track）"><a href="#网格轨道（Grid-Track）" class="headerlink" title="网格轨道（Grid Track）"></a>网格轨道（Grid Track）</h4><p>两个相邻的网格线之间为网格轨道。你可以认为它们是网格的列或行，下面在第二个和第三个网格线之间的黄色部分为网格轨道。<br><img src="/images/grid网格轨道.png" alt="image"></p>
-<h4 id="网格单元（Grid-Cell）"><a href="#网格单元（Grid-Cell）" class="headerlink" title="网格单元（Grid Cell）"></a>网格单元（Grid Cell）</h4><p>两个相邻的列网格线和两个相邻的行网格线组成的是网格单元，它是最小的网格单元。下面行网格线1（row grid lines 1）、行网格线2（row grid lines 2）和列网格线2（column grid lines 2）、列网格线3（column grid lines 3）组成的黄色区域为网格单元。</p>
-<p><img src="/images/grid网格单元.png" alt="image"></p>
-<h4 id="网格区（Grid-Area）"><a href="#网格区（Grid-Area）" class="headerlink" title="网格区（Grid Area）"></a>网格区（Grid Area）</h4><p>网格区是由任意数量网格单元组成，下面行网格线1（row grid lines 1）、行网格线3（row grid lines 3）和列网格线1（column grid lines 1）、列网格线3（column grid lines3）组成的黄色区域为网格区。</p>
-<p><img src="/images/grid网格区.png" alt="image"></p>
-<h3 id="网格容器属性"><a href="#网格容器属性" class="headerlink" title="网格容器属性"></a>网格容器属性</h3><h4 id="display"><a href="#display" class="headerlink" title="display"></a>display</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display: grid | inline-grid | subgrid;</span><br></pre></td></tr></table></figure>
-<p>属性值：</p>
-<ul>
-<li>grid: 生成块级网格</li>
-<li>inline-grid: 生成行内网格</li>
-<li>subgrid: 如果网格容器本身是网格项（嵌套网格容器），此属性用来继承其父网格容器的列、行大小。</li>
-</ul>
-<blockquote>
-<p>注：当元素设置了网格布局，column、float、clear、vertical-align属性无效。</p>
-</blockquote>
-<h4 id="grid-template-columns-rows"><a href="#grid-template-columns-rows" class="headerlink" title="grid-template-columns/rows"></a>grid-template-columns/rows</h4><p>设置行和列的大小，在行轨道或列轨道两边是网格线。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grid-template-columns: &lt;track-size&gt; ... | &lt;line-name&gt; &lt;track-size&gt; ... ;</span><br><span class="line">grid-template-rows: &lt;track-size&gt; ... | &lt;line-name&gt; &lt;track-size&gt; ... ;</span><br></pre></td></tr></table></figure></p>
-<p>属性值：</p>
-<ul>
-<li>track-size: 轨道大小，可以使用css长度，百分比或用分数（用fr单位）。</li>
-<li>line-name: 网格线名字，你可以选择任何名字。</li>
-</ul>
-<p>例子：<br>当你设置行或列大小为auto时，网格会自动分配空间和网格线名称。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">40px</span> <span class="number">50px</span> auto <span class="number">50px</span> <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: <span class="number">25%</span> <span class="number">100px</span> auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><img src="/images/grid网格行列.png" alt="image"></p>
-<p>你也可以给网格线定义名字，注意名字需要写在[]里面。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: [first] <span class="number">40px</span> [line2] <span class="number">50px</span> [line3] auto [col4-start] <span class="number">50px</span> [five] <span class="number">40px</span> [end];</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: [row1-start] <span class="number">25%</span> [row1-end] <span class="number">100px</span> [third-line] auto [last-line];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><img src="/images/grid网格行列名.png" alt="image"></p>
-<p>每条网格线可以有多个名字，例如上面行的第二条线有两个名字，分别是row1-end和row2-start。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: [row1-start] <span class="number">25%</span> [row1-end row2-start] <span class="number">25%</span> [row2-end];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>如果你定义包含重复部分，<strong>可以使用repeat()简化。</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(3, 20px [col-start]) <span class="number">5%</span>;</span><br><span class="line">    // 相当于grid-template-columns: 20px [col-start] 20px [col-start] 20px [col-start] 5%;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>用fr单位可以将容器分为几等份</strong>，例如下面分成三等份。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">1</span>fr <span class="number">1</span>fr <span class="number">1</span>fr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>如果fr单位和实际值一起使用，设置fr的行或列将分(除了实际值)剩余部分。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">1</span>fr <span class="number">50px</span> <span class="number">1</span>fr <span class="number">1</span>fr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="grid-template-areas"><a href="#grid-template-areas" class="headerlink" title="grid-template-areas"></a>grid-template-areas</h4><p>通过获取网格项中的grid-area属性值（名称），来定义网格模版。重复网格区（grid-area）名称将跨越网格单元格，‘.’代表空网格单元。</p>
-<p>属性值：</p>
-<ul>
-<li>grid-area-name: 网格项的grid-area属性值（名字）</li>
-<li>‘.’ : 空网格单元</li>
-<li>none: 不定义网格区域</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-a</span>&#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: header;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item-b</span>&#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: main;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item-c</span>&#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: sidebar;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item-d</span>&#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: footer;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">50px</span> <span class="number">50px</span> <span class="number">50px</span> <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: auto;</span><br><span class="line">    <span class="attribute">grid-template-areas</span>: <span class="string">"header header header header"</span></span><br><span class="line">                         <span class="string">"main main . sidebar"</span></span><br><span class="line">                         <span class="string">"footer footer footer footer"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面代码示例会创建四列三行网格，第一行将是header，第二行前两个网格单元是main部分、第三个为空网格单元、第四个为sliderbar，第三行是footer。</p>
-<p><img src="/images/grid网格区域.png" alt="image"></p>
-<h4 id="grid-column-gap"><a href="#grid-column-gap" class="headerlink" title="grid-column-gap"></a>grid-column-gap</h4><p>网格单元间距。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">grid-column-gap</span>：&lt;<span class="selector-tag">line-size</span>&gt;; 和 <span class="selector-tag">grid-row-gap</span>: &lt;<span class="selector-tag">line-size</span>&gt; ;</span><br></pre></td></tr></table></figure></p>
-<p>属性值：</p>
-<ul>
-<li>line-size: 网格线间距,设置单位值。</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">50px</span> <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: <span class="number">80px</span> auto <span class="number">80px</span>; </span><br><span class="line">    <span class="attribute">grid-column-gap</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">grid-row-gap</span>: <span class="number">15px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格单元间距.png" alt="image"></p>
-<blockquote>
-<p>注：间隔仅仅作用在网格单元之间，不作用在容器边缘。</p>
-</blockquote>
-<h4 id="grid-gap"><a href="#grid-gap" class="headerlink" title="grid-gap"></a>grid-gap</h4><p>是grid-column-gap 和 grid-row-gap简写。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">grid-gap</span>：&lt;<span class="selector-tag">grid-column-gap</span>&gt; &lt;<span class="selector-tag">grid-row-gap</span>&gt;;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.container&#123;</span><br><span class="line">    display:grid;</span><br><span class="line">    grid-template-columns: 100px 50px 100px;</span><br><span class="line">    grid-template-rows: 80px auto 80px; </span><br><span class="line">    grid-gap: 10px 15px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注：如果只设置一个值，那么grid-column-gap 和 grid-row-gap都为那个值。</p>
-</blockquote>
-<h4 id="justify-items"><a href="#justify-items" class="headerlink" title="justify-items"></a>justify-items</h4><p>垂直于列网格线对齐，适用于网格容器里的所有网格项。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">justify-items: start | end | center | stretch（默认） ;</span><br></pre></td></tr></table></figure></p>
-<p>属性值：</p>
-<ul>
-<li>start: 左对齐。</li>
-<li>end: 右对齐。</li>
-<li>center: 居中对齐。</li>
-<li>stretch: 填满（默认）。</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">justify-items</span>: start;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格左对齐.png" alt="image"></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">justify-items</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格居中对齐.png" alt="image"></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">justify-items</span>: stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格填满.png" alt="image"></p>
-<h4 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h4><p>垂直于行网格线对齐，适用于网格容器里的所有网格项。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">align-items: start | end | center | stretch ;</span><br></pre></td></tr></table></figure></p>
-<p>属性值：</p>
-<ul>
-<li>start： 顶部对齐。</li>
-<li>end： 底部对齐。</li>
-<li>center： 居中对齐。</li>
-<li>stretch：填满（默认）。</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格垂直居中.png" alt="image"></p>
-<h4 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h4><p>如果用像px非弹性单位定义的话，总网格区域大小有可能小于网格容器，这时候你可以设置网格的对齐方式（水平对齐）<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">justify-content: start | end | center | stretch | space-around | space-between | space-evenly ;</span><br></pre></td></tr></table></figure></p>
-<p>属性值：</p>
-<ul>
-<li>start: 左对齐。</li>
-<li>end: 右对齐。</li>
-<li>center: 居中对齐。</li>
-<li>stretch: 填满网格容器。</li>
-<li>space-around: 网格项两边间距相等，网格项之间间隔是单侧的2倍。</li>
-<li>space-between: 两边对齐，网格项之间间隔相等。</li>
-<li>space-evenly: 网格项间隔相等。</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格justifyContent居中.png" alt="image"></p>
-<h4 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h4><p>如果用像px非弹性单位定义的话，总网格区域大小有可能小于网格容器，这时候你可以设置网格的对齐方式（垂直方向对齐）。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">align-content: start | end | center | stretch | space-around | space-between | space-evenly ;</span><br></pre></td></tr></table></figure></p>
-<p>属性值：</p>
-<ul>
-<li>start: 顶部对齐。</li>
-<li>end: 底部对齐。</li>
-<li>center: 居中对齐。</li>
-<li>stretch: 填满网格容器。</li>
-<li>space-around: - 网格项两边间距相等，网格项之间间隔是单侧的2倍。</li>
-<li>space-between: 两边对齐，网格项之间间隔相等。</li>
-<li>space-evenly: 网格项间隔相等。</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">align-content</span>: center; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格alignContent居中.png" alt="image"></p>
-<h4 id="grid-auto-columns-rows"><a href="#grid-auto-columns-rows" class="headerlink" title="grid-auto-columns/rows"></a>grid-auto-columns/rows</h4><p>自动生成隐式网格轨道（列和行），当你定位网格项超出网格容器范围时，将自动创建隐式网格轨道。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">grid-auto-columns</span>: &lt;<span class="selector-tag">track-size</span>&gt; ... ; 和 <span class="selector-tag">grid-auto-rows</span>: &lt;<span class="selector-tag">track-size</span>&gt; ... ;</span><br></pre></td></tr></table></figure>
-<p>属性值：</p>
-<ul>
-<li>track-size: 网格轨道大小,可以是固定值，百分比或者是分数（fr单位）。</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">60px</span> <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: <span class="number">90px</span> <span class="number">90px</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格auto.png" alt="image"></p>
-<p>这是2✖️2的网格，但是我们来用grid-column 和 grid-row给网格项定位如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-a</span>&#123;</span><br><span class="line">    <span class="attribute">grid-column</span>: <span class="number">1</span> / <span class="number">2</span>;</span><br><span class="line">    <span class="attribute">grid-row</span>: <span class="number">2</span> / <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.item-b</span>&#123;</span><br><span class="line">    <span class="attribute">grid-column</span>: <span class="number">5</span> / <span class="number">6</span>;</span><br><span class="line">    <span class="attribute">grid-row</span>: <span class="number">2</span> / <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><img src="/images/grid网格tracks.png" alt="image"></p>
-<p>我们可以看出，网格项item-b定位在第五根列网格线（column line 5 ）和第六根列网格线（column line 6 ）之间。但是我们网格容器根本不存在这两条网格线，所以就用两个0宽度来填充。在这里我们可以用网格自动行（grid-auto-rows）和网格自动列（grid-auto-columns）来定义这些隐式轨道宽度。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:grid;</span><br><span class="line">    <span class="attribute">grid-auto-columns</span>: <span class="number">60px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格tracksWidths.png" alt="image"></p>
-<h4 id="grid-auto-flow"><a href="#grid-auto-flow" class="headerlink" title="grid-auto-flow"></a>grid-auto-flow</h4><p>在没有设置网格项的位置时，这个属性控制网格项怎样排列。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grid-auto-flow : row（默认） | column | dense ;</span><br></pre></td></tr></table></figure>
-<p>属性值：</p>
-<ul>
-<li>row: 按照行依次从左到右排列。</li>
-<li>column: 按照列依次从上倒下排列。</li>
-<li>dense: 按先后顺序排列。</li>
-</ul>
-<p>来看看下面结构：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item-a"</span>&gt;</span>item-a<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item-b"</span>&gt;</span>item-b<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item-c"</span>&gt;</span>item-c<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item-d"</span>&gt;</span>item-d<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item-e"</span>&gt;</span>item-e<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">.container&#123;</span><br><span class="line">    display: grid;</span><br><span class="line">    grid-template-columns: 60px 60px 60px 60px 60px;</span><br><span class="line">    grid-template-rows: 30px 30px;</span><br><span class="line">    grid-auto-flow: row;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.item-a&#123;</span><br><span class="line">    grid-column: 1;</span><br><span class="line">    grid-row: 1 / 3;</span><br><span class="line">&#125;</span><br><span class="line">.item-e&#123;</span><br><span class="line">    grid-column: 5;</span><br><span class="line">    grid-row: 1 / 3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>由于我们设置了grid-auto-flow：row，item-b、item-c和item-d在行上是从左到右排列，如下：</p>
-<p><img src="/images/grid网格flowrow.png" alt="image"></p>
-<p>如果我们设置 grid-auto-flow: column;结果如下：</p>
-<p><img src="/images/grid网格flowcolumn.png" alt="image"></p>
-<h4 id="grid"><a href="#grid" class="headerlink" title="grid"></a>grid</h4><p>是一种简写形式，设置网格容器所有属性。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grid: none | &lt;grid-template-rows&gt; / &lt;grid-template-columns&gt; | &lt;grid-auto-flow&gt; [&lt;grid-auto-rows&gt; [ / &lt;grid-auto-columns&gt;] ];</span><br></pre></td></tr></table></figure></p>
-<p>属性值：</p>
-<ul>
-<li>none: 设置为所有属性的默认值。</li>
-<li>&lt;\grid-template-rows&gt; / &lt;\grid-template-columns&gt;: 设置行和列的值，其他属性为默认值。</li>
-<li>&lt;\grid-auto-flow&gt; [ &lt;\grid-auto-rows&gt; [ / &lt;\grid-auto-columns&gt;] ] : 设置网格自动流、网格自动行、网格自动列的值，其他未设置则为默认值。</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">grid</span>: <span class="number">200px</span> auto / <span class="number">1</span>fr auto <span class="number">1</span>fr;</span><br><span class="line">&#125;</span><br><span class="line">//等同于</span><br><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>: <span class="number">200px</span> auto;</span><br><span class="line">    <span class="attribute">grid-template-columns</span>: <span class="number">1</span>fr auto <span class="number">1</span>fr;</span><br><span class="line">    <span class="attribute">grid-template-areas</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="网格项属性"><a href="#网格项属性" class="headerlink" title="网格项属性"></a>网格项属性</h3><h4 id="grid-column-start-end"><a href="#grid-column-start-end" class="headerlink" title="grid-column-start/end"></a>grid-column-start/end</h4><p>通过网格线来定义网格项的位置。grid-column-start、grid-row-start定义网格项的开始位置，grid-column-end、grid-row-end定义网格项的结束位置。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">grid-column-start: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto ;</span><br><span class="line">grid-column-end: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto ;</span><br><span class="line">grid-row-start: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto ;</span><br><span class="line">grid-row-end: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto ;</span><br></pre></td></tr></table></figure>
-<p>属性值：</p>
-<ul>
-<li>line: 指定带编号或者名字的网格线。</li>
-<li>span <number>: 跨越轨道的数量。</number></li>
-<li>span <name>: 跨越轨道直到对应名字的网格线。</name></li>
-<li>auto: 自动展示位置，默认跨度为1。</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-a</span>&#123;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">grid-column-end</span>: five;</span><br><span class="line">  <span class="attribute">grid-row-start</span>: row1-start</span><br><span class="line">  grid-row-end: <span class="number">3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格startend.png" alt="image"></p>
-<blockquote>
-<p>注：如果未声明grid-column-end或grid-row-end，默认将跨越一个轨道。项目也可以重叠，设置z-index来确定堆叠顺序。</p>
-</blockquote>
-<h4 id="grid-column-rows"><a href="#grid-column-rows" class="headerlink" title="grid-column/rows"></a>grid-column/rows</h4><p>是 grid-column-start、grid-column-end 和 grid-row-start、grid-row-end 的简写。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grid-column: &lt;start-line&gt; / &lt;end-line&gt; | &lt;start-line&gt; / span &lt;value&gt; ;</span><br><span class="line">grid-row: &lt;start-line&gt; / &lt;end-line&gt; | &lt;start-line&gt; / span &lt;value&gt; ;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-c</span>&#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">3</span> / span <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">grid-row</span>: third-line / <span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格rows简写.png" alt="image"></p>
-<h4 id="grid-area"><a href="#grid-area" class="headerlink" title="grid-area"></a>grid-area</h4><p>定义网格项名字，以便创建模块（容器属性grid-template-areas来定义模块）。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grid-area: &lt;name&gt; | &lt;row-start&gt; / &lt;column-start&gt; / &lt;row-end&gt; / &lt;column-end&gt; ;</span><br></pre></td></tr></table></figure></p>
-<p>属性值：</p>
-<ul>
-<li>name: 项目名子。</li>
-<li>&lt;\row-start&gt; / &lt;\column-start&gt; / &lt;\row-end&gt; / &lt;\column-end&gt;: 可以是数字或网格线名字。</li>
-</ul>
-<h4 id="justify-self"><a href="#justify-self" class="headerlink" title="justify-self"></a>justify-self</h4><p>定义单个网格项垂直于列网格线的对齐方式。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">justify-self: justify-self: start | end | center | stretch;</span><br></pre></td></tr></table></figure></p>
-<p>属性值：</p>
-<ul>
-<li>start: 网格区域左对齐。</li>
-<li>end: 网格区域右对齐。</li>
-<li>center: 网格区域居中。</li>
-<li>stretch: 网格区域填满。</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-a</span>&#123;</span><br><span class="line">  <span class="attribute">justify-self</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格项水平居中.png" alt="image"></p>
-<blockquote>
-<p>提示：也可以在容器上设置justify-items，达到全部网格项对齐。</p>
-</blockquote>
-<h4 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h4><p>定义单个网格项垂直于行网格线的对齐方式。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">align-self: start | end | center | stretch;</span><br></pre></td></tr></table></figure></p>
-<p>属性值：</p>
-<ul>
-<li>start: 网格区域顶部对齐。</li>
-<li>end: 网格区域底部对齐。</li>
-<li>center: 网格区域居中。</li>
-<li>stretch: 网格区域填满</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-a</span>&#123;</span><br><span class="line">  <span class="attribute">align-self</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/grid网格项垂直居中.png" alt="image"></p>
-<blockquote>
-<p>提示：也可以在容器上设置align-items，达到全部网格项对齐。</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/08/前端安全问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aisling Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleCorn个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/08/前端安全问题/" itemprop="url">前端安全问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T10:14:21+08:00">
-                2018-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机网络</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h3><p>跨站脚本（英语：Cross-site scripting，通常简称为：XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。<strong>这类攻击通常包含了HTML以及用户端脚本语言。</strong></p>
-<p>XSS更偏向于代码实现（即写一段拥有跨站请求功能的JavaScript脚本注入到一条帖子里，然后有用户访问了这个帖子，这就算是中了XSS攻击了）</p>
-<blockquote>
-<p>当应用程序收到含有不可信的数据，在没有进行适当的验证和转义的情况下，就将它发送给一个网页浏览器，这就会产生跨站脚本攻击。XSS允许攻击者在受害者的浏览器上执行脚本，从而劫持用户会话、危害网站、或者将用户转向恶意网站。</p>
-</blockquote>
-<p><strong>防御措施：</strong></p>
-<ul>
-<li>对输入内容做格式检查，过滤特殊字符串，客户端和服务端必须都要有。</li>
-<li>输出检查，在输出之前进行转意。</li>
-<li>保护Cookie, 使用HttpOnly字段防止被JS获取（因为攻击通常会采集敏感信息）；</li>
-<li>使用HTTPs代替HTTP，（运营商经常会通过注入广告）</li>
-<li>禁用JS，（这个不太现实）</li>
-<li>设置 X-XSS-Protection 头</li>
-</ul>
-<h3 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h3><p>跨站请求伪造（英语：Cross-site request forgery），也被称为 one-click attack 或者 session riding，通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的Web应用程序上<strong>执行非本意的操作的攻击方法。</strong> </p>
-<blockquote>
-<p>一个跨站请求伪造攻击迫使登录用户的浏览器将伪造的http请求，包含用户的会话cookie和其他认证信息，发送到一个存在漏洞的web应用程序。这就允许攻击者迫使用户浏览器向存在漏洞的应用程序发送请求，而这些请求会被应用程序认为是用户的合法请求。</p>
-</blockquote>
-<p>跟跨网站脚本（XSS）相比，XSS 利用的是用户对指定网站的信任，CSRF 利用的是网站对用户网页浏览器的信任。 </p>
-<p><strong>防御措施：</strong></p>
-<ul>
-<li>检查referer, X-Requested-With, Orign头，是否来自合法的源</li>
-<li>使用POST代替GET</li>
-<li>添加校验Token至表单中</li>
-<li>添加验证码或其他人机验证手段</li>
-</ul>
-<h3 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h3><ul>
-<li>SQL注入不仅能通过输入框，还能通过Url达到目的。</li>
-<li>除了服务器错误页面，还有其他办法获取到数据库信息。</li>
-<li>可通过软件模拟注入行为，这种方式盗取信息的速度要比你想象中快的多。</li>
-<li>漏洞跟语言平台无关，并非asp才有注入漏洞而asp.net就没有注入漏洞，一切要看设计者是否用心。</li>
-</ul>
-<p><strong>关于安全性</strong></p>
-<ol>
-<li>永远不要信任用户的输入，要对用户的输入进行校验，可以通过正则表达式，或限制长度，对单引号和双”-“进行转换等。</li>
-<li>永远不要使用动态拼装SQL，可以使用参数化的SQL或者直接使用存储过程进行数据查询存取。</li>
-<li>永远不要使用管理员权限的数据库连接，为每个应用使用单独的权限有限的数据库连接。</li>
-<li>不要把机密信息明文存放，请加密或者hash掉密码和敏感的信息。</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/07/数据结构知识点/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aisling Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleCorn个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/07/数据结构知识点/" itemprop="url">数据结构知识点</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-07T20:28:11+08:00">
-                2018-03-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机网络</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="数组和链表的区别"><a href="#数组和链表的区别" class="headerlink" title="数组和链表的区别"></a>数组和链表的区别</h3><ul>
-<li><p>数组是将元素在内存中连续存放。链表中的元素在内存中不是顺序存储的，而是通过存在元素中的指针联系到一起。</p>
-</li>
-<li><p>数组必须事先定义固定的长度，不能适应数据动态的增减的情况。当数据增加时，可能超出原先定义的元素个数；当数据减少时，造成内存浪费；链表动态地进行存储分配，可以适应数据动态地增减的情况。</p>
-</li>
-<li>（静态）数组从栈中分配空间，对于程序员方便快速，但是自由度小；链表从堆中分配空间，自由度大但是申请管理比较麻烦。</li>
-</ul>
-<p>数组和链表在存储数据方面到底谁好？根据数组和链表的特性，分两种情况讨论：</p>
-<ul>
-<li>当进行数据查询时，数组可以直接通过下标迅速访问数组中的元素。而链表则需要从第一个元素开始一直找到需要的元素位置，显然，数组的查询效率会比链表的高。</li>
-<li>当进行增加或删除元素时，在数组中增加一个元素，需要移动大量元素，在内存中空出一个元素的空间，然后将要增加的元素放在其中。同样，如果想删除一个元素，需要移动大量去填掉被移动的元素，而链表只需改动元素中的指针即可实现增加或删除元素。</li>
-</ul>
-<p><strong>哈希表，是既能具备数组的快速查询的优点，又能融合链表方便快捷的增加删除元素的优势。</strong></p>
-<p>所谓的hash,简单的说就是散列，即将输入的数据通过hash函数得到一个key值，输入的数据存储到数组中下标的key值的数组单元中去。</p>
-<h3 id="栈和队列"><a href="#栈和队列" class="headerlink" title="栈和队列"></a>栈和队列</h3><ul>
-<li>队列是先进先出，栈是先进后出；</li>
-<li>栈的插入和删除操作都是在一端进行的，而队列是在两端进行；</li>
-<li>栈只允许在表尾一端进行插入和删除，而队列只允许在表尾进行插入，在表头进行删除。</li>
-</ul>
-<h3 id="栈和堆"><a href="#栈和堆" class="headerlink" title="栈和堆"></a>栈和堆</h3><ul>
-<li>栈区，由编译器自动分配释放，存放函数的参数值，局部变量等；</li>
-<li>堆区，一般由程序员分配释放，若程序员不释放，程序结束时可能由os回收。</li>
-<li>栈(数据结构)：一种先进后出的数据结构。</li>
-<li>堆(数据结构)：可以看成是一棵树，如:堆排序。</li>
-</ul>
-<h3 id="B树-B-树-B-树"><a href="#B树-B-树-B-树" class="headerlink" title="B树/B+树/B-树"></a>B树/B+树/B-树</h3><h4 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h4><p>B树即二叉搜索树：</p>
-<ul>
-<li>所有非叶子结点至多拥有两个儿子（Left和Right）；</li>
-<li>所有结点存储一个关键字；</li>
-<li>非叶子结点的左指针指向小于其关键字的子树，右指针指向大于其关键字的子树；</li>
-</ul>
-<p><img src="/images/B树.JPG" alt="image"></p>
-<p><strong>B树搜索过程：</strong></p>
-<ul>
-<li>B树的搜索，从根结点开始，如果查询的关键字与结点的关键字相等，那么就命中；</li>
-<li>否则，如果查询关键字比结点关键字小，就进入左儿子；如果比结点关键字大，就进入右儿子；如果左儿子或右儿子的指针为空，则报告找不到相应的关键字；</li>
-</ul>
-<p>如果B树的所有非叶子结点的左右子树的结点数目均保持差不多（平衡），那么B树的搜索性能逼近二分查找；但它比连续内存空间的二分查找的优点是，改变B树结构（插入与删除结点）不需要移动大段的内存数据，甚至通常是常数开销；</p>
-<p>实际使用的B树都是在原B树的基础上加上平衡算法，即“平衡二叉树”；如何保持B树结点分布均匀的平衡算法是平衡二叉树的关键；平衡算法是一种在B树中插入和删除结点的策略；</p>
-<h4 id="B-树"><a href="#B-树" class="headerlink" title="B-树"></a>B-树</h4><p> B-树是一种多路搜索树（并不是二叉的）：</p>
-<ul>
-<li>定义任意非叶子结点最多只有M个儿子；且M&gt;2；</li>
-<li>根结点的儿子数为[2, M]；</li>
-<li>除根结点以外的非叶子结点的儿子数为[M/2, M]；</li>
-<li>每个结点存放至少M/2-1（取上整）和至多M-1个关键字；（至少2个关键字）</li>
-<li>非叶子结点的关键字个数=指向儿子的指针个数-1；</li>
-<li>非叶子结点的关键字：K[1], K[2], …, K[M-1]；且K[i] &lt; K[i+1]；</li>
-<li>非叶子结点的指针：P[1], P[2], P[M]；其中P[1]指向关键字小于K[1]的子树，P[M]指向关键字大于K[M-1]的子树，其它P[i]指向关键字属于(K[i-1], K[i])的子树；</li>
-<li><p>所有叶子结点位于同一层；</p>
-<p>如：（M=3）</p>
-</li>
-</ul>
-<p><img src="/images/B-树.JPG" alt="image"></p>
-<p><strong>B-树搜索过程</strong></p>
-<ul>
-<li>从根结点开始，对结点内的关键字（有序）序列进行二分查找，如果命中则结束，否则进入查询关键字所属范围的儿子结点；重复，直到所对应的儿子指针为空，或已经是叶子结点；</li>
-</ul>
-<p><strong>B-树的特性：</strong></p>
-<ul>
-<li>关键字集合分布在整颗树中；</li>
-<li>任何一个关键字出现且只出现在一个结点中；</li>
-<li>搜索有可能在非叶子结点结束；</li>
-<li>其搜索性能等价于在关键字全集内做一次二分查找；</li>
-<li>自动层次控制；</li>
-</ul>
-<p>由于限制了除根结点以外的非叶子结点，至少含有M/2个儿子，确保了结点的至少利用率。</p>
-<p>所以B-树的性能总是等价于二分查找（与M值无关），也就没有B树平衡的问题；由于M/2的限制，在插入结点时，如果结点已满，需要将结点分裂为两个各占M/2的结点；删除结点时，需将两个不足M/2的兄弟结点合并；</p>
-<h4 id="B-树-1"><a href="#B-树-1" class="headerlink" title="B+树"></a>B+树</h4><p> B+树是B-树的变体，也是一种多路搜索树：其定义基本与B-树同，除了：</p>
-<ul>
-<li>非叶子结点的子树指针与关键字个数相同；</li>
-<li>非叶子结点的子树指针P[i]，指向关键字值属于[K[i], K[i+1])的子树（B-树是开区间）；</li>
-<li>为所有叶子结点增加一个链指针；</li>
-<li><p>所有关键字都在叶子结点出现；</p>
-<p>如：（M=3）</p>
-<p><img src="/images/B+树.JPG" alt="image"></p>
-<p>B+的搜索与B-树也基本相同，区别是B+树只有达到叶子结点才命中（B-树可以在非叶子结点命中），其性能也等价于在关键字全集做一次二分查找；</p>
-<p><strong>B+的特性：</strong></p>
-</li>
-<li>所有关键字都出现在叶子结点的链表中（稠密索引），且链表中的关键字恰好是有序的；</li>
-<li>不可能在非叶子结点命中；</li>
-<li>非叶子结点相当于是叶子结点的索引（稀疏索引），叶子结点相当于是存储（关键字）数据的数据层；</li>
-<li>更适合文件索引系统；</li>
-</ul>
-<h4 id="B-树-2"><a href="#B-树-2" class="headerlink" title="B*树"></a>B*树</h4><p>是B+树的变体，在B+树的非根和非叶子结点再增加指向兄弟的指针；</p>
-<p><img src="/images/B++树.jpg" alt="image"></p>
-<p>B<em>树定义了非叶子结点关键字个数至少为(2/3)</em>M，即块的最低使用率为2/3（代替B+树的1/2）；</p>
-<p><strong>B+树的分裂：</strong> 当一个结点满时，分配一个新的结点，并将原结点中1/2的数据<br>复制到新结点，最后在父结点中增加新结点的指针；B+树的分裂只影响原结点和父结点，而不会影响兄弟结点，所以它不需要指向兄弟的指针；</p>
-<p><strong>B*树的分裂：</strong> 当一个结点满时，如果它的下一个兄弟结点未满，那么将一部分数据移到兄弟结点中，再在原结点插入关键字，最后修改父结点中兄弟结点的关键字（因为兄弟结点的关键字范围改变了）；如果兄弟也满了，则在原结点与兄弟结点之间增加新结点，并各复制1/3的数据到新结点，最后在父结点增加新结点的指针；</p>
-<p>所以，B*树分配新结点的概率比B+树要低，空间使用率更高；</p>
-<p><strong>总结</strong></p>
-<ul>
-<li>B树：二叉树，每个结点只存储一个关键字，等于则命中，小于走左结点，大于走右结点；</li>
-<li>B-树：多路搜索树，每个结点存储M/2到M个关键字，非叶子结点存储指向关键字范围的子结点；所有关键字在整颗树中出现，且只出现一次，非叶子结点可以命中；</li>
-<li>B+树：在B-树基础上，为叶子结点增加链表指针，所有关键字都在叶子结点中出现，非叶子结点作为叶子结点的索引；B+树总是到叶子结点才命中；</li>
-<li>B*树：在B+树基础上，为非叶子结点也增加链表指针，将结点的最低利用率从1/2提高到2/3；</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2448,7 +2221,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2470,7 +2243,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

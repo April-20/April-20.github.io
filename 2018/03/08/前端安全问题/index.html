@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="LittleCorn个人博客">
 <meta property="og:description" content="XSS跨站脚本（英语：Cross-site scripting，通常简称为：XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。 XSS更偏向于代码实现（即写一段拥有跨站请求功能的JavaScript脚本注入到一条帖子里，然后有用户访问了这个帖子，这就算是中了XSS攻击了）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-18T14:35:14.465Z">
+<meta property="og:updated_time" content="2018-03-19T13:17:36.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端安全问题">
 <meta name="twitter:description" content="XSS跨站脚本（英语：Cross-site scripting，通常简称为：XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。 XSS更偏向于代码实现（即写一段拥有跨站请求功能的JavaScript脚本注入到一条帖子里，然后有用户访问了这个帖子，这就算是中了XSS攻击了）">
@@ -347,15 +347,20 @@
 <blockquote>
 <p>当应用程序收到含有不可信的数据，在没有进行适当的验证和转义的情况下，就将它发送给一个网页浏览器，这就会产生跨站脚本攻击。XSS允许攻击者在受害者的浏览器上执行脚本，从而劫持用户会话、危害网站、或者将用户转向恶意网站。</p>
 </blockquote>
-<p><strong>防御措施：</strong></p>
-<ul>
-<li>对输入内容做格式检查，过滤特殊字符串，客户端和服务端必须都要有。</li>
-<li>输出检查，在输出之前进行转意。</li>
-<li>保护Cookie, 使用HttpOnly字段防止被JS获取（因为攻击通常会采集敏感信息）；</li>
-<li>使用HTTPs代替HTTP，（运营商经常会通过注入广告）</li>
-<li>禁用JS，（这个不太现实）</li>
-<li>设置 X-XSS-Protection 头</li>
-</ul>
+<p><strong>攻击方法：</strong></p>
+<ol>
+<li>手动攻击:<br>编写注入脚本，比如”/&gt;<script>alert(document.cookie());</script>&lt;!–等;<br>手动测试目标网站上有的input, textarea等所有可能输入文本信息的区域</li>
+<li>自动攻击<br>利用工具扫描目标网站所有的网页并自动测试写好的注入脚本，比如：Burpsuite等.</li>
+</ol>
+<p><strong>防御方法：</strong></p>
+<ol>
+<li>将cookie等敏感信息设置为httponly，禁止Javascript通过document.cookie获得</li>
+<li>对所有的输入做严格的校验尤其是在服务器端，过滤掉任何不合法的输入，比如手机号必须是数字，通常可以采用正则表达式</li>
+<li>净化和过滤掉不必要的html标签，比如：<iframe>, alt,<script> 等</li>
+<li>净化和过滤掉不必要的Javascript的事件标签，比如：onclick, onfocus等</li>
+<li>转义单引号，双引号，尖括号等特殊字符，可以采用htmlencode编码 或者过滤掉这些特殊字符</li>
+<li>设置浏览器的安全设置来防范典型的XSS注入(设置 X-XSS-Protection 头)</li>
+</ol>
 <h3 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h3><p>跨站请求伪造（英语：Cross-site request forgery），也被称为 one-click attack 或者 session riding，通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的Web应用程序上<strong>执行非本意的操作的攻击方法。</strong> </p>
 <blockquote>
 <p>一个跨站请求伪造攻击迫使登录用户的浏览器将伪造的http请求，包含用户的会话cookie和其他认证信息，发送到一个存在漏洞的web应用程序。这就允许攻击者迫使用户浏览器向存在漏洞的应用程序发送请求，而这些请求会被应用程序认为是用户的合法请求。</p>
@@ -368,12 +373,19 @@
 <li>添加校验Token至表单中</li>
 <li>添加验证码或其他人机验证手段</li>
 </ul>
-<h3 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h3><ul>
-<li>SQL注入不仅能通过输入框，还能通过Url达到目的。</li>
-<li>除了服务器错误页面，还有其他办法获取到数据库信息。</li>
-<li>可通过软件模拟注入行为，这种方式盗取信息的速度要比你想象中快的多。</li>
-<li>漏洞跟语言平台无关，并非asp才有注入漏洞而asp.net就没有注入漏洞，一切要看设计者是否用心。</li>
+<h3 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h3><p><strong>攻击方法：</strong></p>
+<ul>
+<li>编写恶意字符串，比如‘ or  1=1–等，</li>
+<li>手动测试目标网站上所有涉及数据库操作的地方.</li>
 </ul>
+<p><strong>防御方法：</strong></p>
+<ol>
+<li>禁止目标网站利用动态拼接字符串的方式访问数据库</li>
+<li>减少不必要的数据库抛出的错误信息</li>
+<li>对数据库的操作赋予严格的权限控制</li>
+<li>净化和过滤掉不必要的SQL保留字，比如：where, or, exec 等</li>
+<li>转义单引号，上引号，尖括号等特殊字符，可以采用htmlencode编码 或者过滤掉这些特殊字符</li>
+</ol>
 <p><strong>关于安全性</strong></p>
 <ol>
 <li>永远不要信任用户的输入，要对用户的输入进行校验，可以通过正则表达式，或限制长度，对单引号和双”-“进行转换等。</li>
@@ -381,7 +393,7 @@
 <li>永远不要使用管理员权限的数据库连接，为每个应用使用单独的权限有限的数据库连接。</li>
 <li>不要把机密信息明文存放，请加密或者hash掉密码和敏感的信息。</li>
 </ol>
-
+</script></iframe></li></ol>
       
     </div>
     
@@ -506,7 +518,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -528,7 +540,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -561,7 +573,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#XSS"><span class="nav-number">1.</span> <span class="nav-text">XSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSRF"><span class="nav-number">2.</span> <span class="nav-text">CSRF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL注入"><span class="nav-number">3.</span> <span class="nav-text">SQL注入</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#XSS"><span class="nav-number">1.</span> <span class="nav-text">XSS</span></a></li></ol></div>
             
 
           </div>

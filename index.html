@@ -252,6 +252,500 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/19/JS函数节流/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/19/JS函数节流/" itemprop="url">JS函数节流</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-19T21:24:43+08:00">
+                2018-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="节流的目的"><a href="#节流的目的" class="headerlink" title="节流的目的"></a>节流的目的</h3><p><strong>函数节流就是用来节流函数从而一定程度上优化性能的</strong>。</p>
+<p>例如，DOM 操作比起非DOM 交互需要更多的内存和CPU 时间。连续尝试进行过多的DOM 相关操作可能会导致浏览器挂起，有时候甚至会崩溃。尤其在IE 中使用onresize 事件处理程序的时候容易发生，当调整浏览器大小的时候，该事件会连续触发。在onresize 事件处理程序内部如果尝试进行DOM 操作，其高频率的更改可能会让浏览器崩溃。</p>
+<p>又例如，我们常见的一个搜索的功能，我们一般是绑定keyup事件，每按下一次键盘就搜索一次。但是我们的目的主要是每输入一些内容搜索一次而已。为了解决这些问题，就可以使用定时器对函数进行节流。</p>
+<h3 id="节流的原理"><a href="#节流的原理" class="headerlink" title="节流的原理"></a>节流的原理</h3><p>某些代码不可以在没有间断的情况连续重复执行。第一次调用函数，创建一个定时器，在指定的时间间隔之后运行代码。当第二次调用该函数时，它会清除前一次的定时器并设置另一个。如果前一个定时器已经执行过了，这个操作就没有任何意义。然而，如果前一个定时器尚未执行，其实就是将其替换为一个新的定时器。<strong>目的是只有在执行函数的请求停止了一段时间之后才执行。</strong></p>
+<h3 id="节流的基本模式"><a href="#节流的基本模式" class="headerlink" title="节流的基本模式"></a>节流的基本模式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> processor = &#123;</span><br><span class="line">   timeoutId: <span class="literal">null</span>,</span><br><span class="line">     <span class="comment">//实际进行处理的方法</span></span><br><span class="line">   performProcessing: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="comment">//实际执行的代码</span></span><br><span class="line">   &#125;,</span><br><span class="line">  <span class="comment">//初始处理调用的方法</span></span><br><span class="line">  process: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    clearTimeout(<span class="keyword">this</span>.timeoutId);</span><br><span class="line">    <span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">this</span>.timeoutId = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      that.performProcessing();</span><br><span class="line">    &#125;, <span class="number">100</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//尝试开始执行</span></span><br><span class="line">processor.process();</span><br></pre></td></tr></table></figure>
+<h3 id="输入框搜索节流"><a href="#输入框搜索节流" class="headerlink" title="输入框搜索节流"></a>输入框搜索节流</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">queryData</span>(<span class="params">text</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'搜索'</span>+text);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> input = <span class="built_in">document</span>.getElementById(<span class="string">'search'</span>);</span><br><span class="line"></span><br><span class="line">input.addEventListener(<span class="string">'keyup'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    throttle(queryData,<span class="literal">null</span>,<span class="number">500</span>,<span class="keyword">this</span>.value);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn, context, delay, text</span>)</span>&#123;</span><br><span class="line">    clearTimeout(fn.timeoutId);</span><br><span class="line">    </span><br><span class="line">    fn.timeoutId = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        fn.call(context,text);</span><br><span class="line">    &#125;, delay);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>问题就是，假如我不断地输入，输入了很多内容，但是我每两次之间的输入间隔都小于自己设置的delay值，那么，这个queryData搜索函数就一直得不到调用。实际上，我们更希望的是，当达到某个时间值时，一定要执行一次这个搜索函数。所以，就有了函数节流的改进模式。</p>
+<p><strong>增强版</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">queryData</span>(<span class="params">text</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'搜索'</span>+text);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> input = <span class="built_in">document</span>.getElementById(<span class="string">'search'</span>);</span><br><span class="line"></span><br><span class="line">input.addEventListener(<span class="string">'keyup'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    throttle(queryData,<span class="literal">null</span>,<span class="number">500</span>,<span class="keyword">this</span>.value, <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn, context, delay, text, mustApplyTime</span>)</span>&#123;</span><br><span class="line">    clearTimeout(fn.timer);</span><br><span class="line">    fn._cur=<span class="built_in">Date</span>.now();  <span class="comment">//记录当前时间</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//若该函数是第一次调用，则直接设置_start,即开始时间，为_cur，即此刻的时间</span></span><br><span class="line">    <span class="keyword">if</span>(!fn._start)&#123;</span><br><span class="line">        fn._start = fn._cur;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//当前时间与上一次函数被执行的时间作差，与mustApplyTime比较，若大于，则必须执行一次函数，若小于，则重新设置计时器</span></span><br><span class="line">    <span class="keyword">if</span>(fn._cur - fn._start &gt; mustApplyTime)&#123;</span><br><span class="line">        fn.call(context, text);</span><br><span class="line">        fn._start = fn._cur;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        fn.timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            fn.call(context, text);</span><br><span class="line">        &#125;, delay);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>显然，连续的输入，到一定时间间隔之后，queryData函数必然会被调用，但是又不是频繁的调用。这既达到了节流的目的，又不会影响用户体验。</p>
+<p>进一步的话，就是可以在调用throttle函数之前，先对输入的内容进行判断，若其值为空、值不变都不用再调用。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/19/手撕代码备录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/19/手撕代码备录/" itemprop="url">手撕代码备录</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-19T18:41:33+08:00">
+                2018-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Clone函数"><a href="#Clone函数" class="headerlink" title="Clone函数"></a>Clone函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.clone = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> o = <span class="keyword">this</span>.constructor === <span class="built_in">Array</span> ? [] : &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> e <span class="keyword">in</span> <span class="keyword">this</span>)&#123;</span><br><span class="line">        o[e] = <span class="keyword">typeof</span> <span class="keyword">this</span>[e] === <span class="string">"object"</span> ? <span class="keyword">this</span>[e].clone() : <span class="keyword">this</span>[e];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="判断变量类型"><a href="#判断变量类型" class="headerlink" title="判断变量类型"></a>判断变量类型</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getType</span>(<span class="params">nm</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(nm);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="bind实现"><a href="#bind实现" class="headerlink" title="bind实现"></a>bind实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数柯里化</span></span><br><span class="line"><span class="built_in">Function</span>.prototype.bind = <span class="function"><span class="keyword">function</span>(<span class="params">context</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">var</span> _this = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> _this.apply(context,args.slice(<span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//ES6</span></span><br><span class="line"><span class="built_in">Function</span>.prototype.bind = <span class="function"><span class="keyword">function</span>(<span class="params">context,...res</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> self = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">...arg</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> self.apply(context,[...res,...arg])</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="求一个字符串字节长度"><a href="#求一个字符串字节长度" class="headerlink" title="求一个字符串字节长度"></a>求一个字符串字节长度</h3><blockquote>
+<p>英文占用一个字节，中文占用两个字节</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">GetBytes</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> len = str.length;</span><br><span class="line">    <span class="keyword">var</span> bytes = len;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(str.charCodeAt(i) &gt; <span class="number">255</span>)&#123;</span><br><span class="line">            bytes++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bytes;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="将时间设为当前时间前一天"><a href="#将时间设为当前时间前一天" class="headerlink" title="将时间设为当前时间前一天"></a>将时间设为当前时间前一天</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">date.setDate(date.getDate() - <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="获取URL中的查询参数"><a href="#获取URL中的查询参数" class="headerlink" title="获取URL中的查询参数"></a>获取URL中的查询参数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getQueryString</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> href = <span class="built_in">window</span>.location.href;</span><br><span class="line">    <span class="keyword">var</span> query = href.split(<span class="string">'?'</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(query[<span class="number">0</span>] == href)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> arr = query[<span class="number">1</span>].split(<span class="string">'&amp;'</span>);</span><br><span class="line">    <span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> item = arr[i].split(<span class="string">'='</span>);</span><br><span class="line">        obj[item[<span class="number">0</span>]] = item[<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="清除字符串前后空格"><a href="#清除字符串前后空格" class="headerlink" title="清除字符串前后空格"></a>清除字符串前后空格</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">trim</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(str &amp;&amp; <span class="keyword">typeof</span> str === <span class="string">"string"</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> str.replace(<span class="regexp">/(^\s*)|(\s*)$/g</span>,<span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用正则表达式验证邮箱格式"><a href="#使用正则表达式验证邮箱格式" class="headerlink" title="使用正则表达式验证邮箱格式"></a>使用正则表达式验证邮箱格式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^(\w)+(\.\w+)*@(\w)+((\.\w&#123;2,3&#125;)&#123;1,3&#125;)$/</span>;</span><br><span class="line"><span class="keyword">var</span> email = <span class="string">"example@qq.com"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(email));  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h3 id="实现一个100长度的数组，索引值和值相同（不适用循环语句）"><a href="#实现一个100长度的数组，索引值和值相同（不适用循环语句）" class="headerlink" title="实现一个100长度的数组，索引值和值相同（不适用循环语句）"></a>实现一个100长度的数组，索引值和值相同（不适用循环语句）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//方法1</span></span><br><span class="line">[...arr.keys()];</span><br><span class="line"></span><br><span class="line"><span class="comment">//方法2</span></span><br><span class="line"><span class="built_in">Array</span>.from(arr.keys());</span><br><span class="line"></span><br><span class="line"><span class="comment">//方法3</span></span><br><span class="line"><span class="built_in">Array</span>.from(&#123;<span class="attr">length</span>:<span class="number">100</span>&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//方法4</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reduce</span>(<span class="params">arr,val</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">Object</span>.prototype.toString.apply(val))&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(val &gt;= <span class="number">100</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">    arr.push(val);</span><br><span class="line">    <span class="keyword">return</span> reduce(arr,val+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/19/DOM操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/19/DOM操作/" itemprop="url">DOM操作</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-19T17:03:22+08:00">
+                2018-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="创建新节点"><a href="#创建新节点" class="headerlink" title="创建新节点"></a>创建新节点</h3><ul>
+<li><strong>createDocumentFragment()</strong>：创建一个DOM片段</li>
+<li><strong>createEelement()</strong>：创建一个具体的元素</li>
+<li><strong>createTextNode()</strong>：创建一个文本节点</li>
+<li><strong>createAttribute()</strong>：创建新的属性节点</li>
+<li><strong>createComment()</strong>：创建新的注释节点</li>
+</ul>
+<blockquote>
+<p>element.innerHTML=’text’；也可以添加文本内容</p>
+</blockquote>
+<h3 id="添加节点"><a href="#添加节点" class="headerlink" title="添加节点"></a>添加节点</h3><ul>
+<li><strong>parent.appendChild()</strong>：向父节点最后添加一个新节点</li>
+<li><strong>parent.insertBefore(new,existing)</strong>：向父节点某个特定子节点之前插入新节点</li>
+<li><strong>element.setAttributeNode()</strong>：给元素增加属性节点</li>
+<li><strong>element.setAttribute(name，value)</strong>：给元素增加指定属性，并设定属性值</li>
+</ul>
+<h3 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h3><ul>
+<li><strong>parent.removeChild()</strong>：删除已有子节点，返回值为删除节点</li>
+<li><strong>element.removeAttribute()</strong>：删除具有指定属性名称的属性，无返回值</li>
+<li><strong>element.removeAttributeNode()</strong>：删除指定属性，返回值为删除的属性</li>
+</ul>
+<h3 id="修改节点"><a href="#修改节点" class="headerlink" title="修改节点"></a>修改节点</h3><ul>
+<li><strong>parent.replaceChild(new,existing)</strong>：用新节点替换父节点已有的子节点</li>
+<li><strong>element.setAttributeNode()</strong>：若元素已有该节点，此操作能达到修改该属性值得目的</li>
+<li><strong>element.setAttribute(name,value)</strong>：若元素已有该节点，此操作能达到修改该属性值得目的</li>
+</ul>
+<h3 id="查找节点"><a href="#查找节点" class="headerlink" title="查找节点"></a>查找节点</h3><ul>
+<li><strong>getElementById()</strong>：通过元素id获取元素</li>
+<li><strong>getelementsByName()</strong>：通过元素name属性的值获取所有匹配的元素</li>
+<li><strong>getElementsByTagName()</strong>：通过标签名获取所有匹配的元素</li>
+<li><strong>getElementsByClassName()</strong>：通过class获取所有匹配的元素</li>
+</ul>
+<ul>
+<li><strong>querySelector()</strong>：通过css选择器获取匹配的第一个元素</li>
+<li><strong>querySelectorAll()</strong>：通过css选择器获取所有匹配的元素</li>
+</ul>
+<ul>
+<li><strong>docuemnt.documentElement</strong>：获取页面中的HTML标签</li>
+<li><strong>document.body</strong>：获取页面中的body标签</li>
+<li><strong>document.all[]</strong>：获取所有元素节点的对象集合</li>
+</ul>
+<h3 id="常用DOM属性"><a href="#常用DOM属性" class="headerlink" title="常用DOM属性"></a>常用DOM属性</h3><ul>
+<li><strong>innerHTML</strong> ：获取节点的文本值</li>
+<li><strong>parentNode</strong>：获取父节点</li>
+<li><strong>childNodes</strong>：获取元素的子节点</li>
+<li><strong>attributes</strong>：获取元素的属性节点</li>
+<li><strong>getAttribute()</strong>：返回指定的属性值</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/18/开放性问题备录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -345,13 +839,23 @@
       
         
           
-            <h3 id="前端工程的价值"><a href="#前端工程的价值" class="headerlink" title="前端工程的价值"></a>前端工程的价值</h3><ul>
+            <h3 id="前端工程师的价值"><a href="#前端工程师的价值" class="headerlink" title="前端工程师的价值"></a>前端工程师的价值</h3><ul>
 <li>为简化用户使用提供技术支持（交互部分）</li>
 <li>为多个浏览器兼容性提供支持</li>
 <li>为提高用户浏览速度（浏览器性能）提供支持</li>
 <li>为跨平台或者其他基于webkit或其他渲染引擎的应用提供支持</li>
 <li>为展示数据提供支持（数据接口）</li>
 </ul>
+<h3 id="前端工程师的工作"><a href="#前端工程师的工作" class="headerlink" title="前端工程师的工作"></a>前端工程师的工作</h3><ul>
+<li>参与项目，快速高质量完成实现效果图，精确到1px；</li>
+<li>与团队成员，UI设计，产品经理的沟通；</li>
+<li>做好的页面结构，页面重构和用户体验；</li>
+<li>处理hack，兼容、写出优美的代码格式；</li>
+<li>针对服务器的优化、拥抱最新前端技术。</li>
+</ul>
+<blockquote>
+<p>前端是最贴近用户的程序员，前端的能力就是能让产品从 90分进化到 100 分，甚至更好</p>
+</blockquote>
 
           
         
@@ -1391,533 +1895,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/15/Vue生命周期/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aisling Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleCorn个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/15/Vue生命周期/" itemprop="url">Vue生命周期</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-15T10:46:26+08:00">
-                2018-03-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Vue生命周期"><a href="#Vue生命周期" class="headerlink" title="Vue生命周期"></a>Vue生命周期</h3><p><img src="/images/vue生命周期.png" alt="image"></p>
-<p><img src="/images/vue生命周期钩子.png" alt="image"></p>
-<p>（除了beforeCreate和created钩子之外，其他钩子均在服务器端渲染期间不被调用。）</p>
-<ul>
-<li>beforeCreate执行时：data和el均未初始化，值为undefined；</li>
-<li>created执行时：Vue 实例观察的数据对象data已经配置好，已经可以得到app.message的值，但Vue 实例使用的根 DOM 元素el还未初始化；</li>
-<li>beforeMount执行时：data和el均已经初始化，但从等现象可以看出此时el并没有渲染进数据，el的值为“虚拟”的元素节点；</li>
-<li>mounted执行时：此时el已经渲染完成并挂载到实例上；</li>
-</ul>
-<p><strong>实际应用：</strong></p>
-<ul>
-<li>在created钩子中可以对data数据进行操作，这个时候可以进行ajax请求将返回的数据赋给data；</li>
-<li>在mounted钩子对挂载的dom进行操作；</li>
-<li>在使用vue-router时有时需要使用<keep-alive></keep-alive>来缓存组件状态，这个时候created钩子就不会被重复调用了，如果我们的子组件需要在每次加载的时候进行某些操作，可以使用activated钩子触发。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/14/webpack打包优化/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aisling Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleCorn个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/14/webpack打包优化/" itemprop="url">webpack打包优化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-14T13:36:31+08:00">
-                2018-03-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/开发工具/" itemprop="url" rel="index">
-                    <span itemprop="name">开发工具</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="babel-loader开启缓存"><a href="#babel-loader开启缓存" class="headerlink" title="babel-loader开启缓存"></a>babel-loader开启缓存</h3><p>babel-loader 提供了 cacheDirectory特定选项（默认 false）：设置时，给定的目录将用于缓存加载器的结果。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">rules: [</span><br><span class="line">  &#123;</span><br><span class="line">    test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">    loader: <span class="string">'babel-loader?cacheDirectory=true'</span>,</span><br><span class="line">    exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">    include: [resolve(<span class="string">'src'</span>), resolve(<span class="string">'test'</span>)]</span><br><span class="line">  &#125;,</span><br><span class="line">  ... ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<h3 id="cnd配合externals"><a href="#cnd配合externals" class="headerlink" title="cnd配合externals"></a>cnd配合externals</h3><p>如今前端开发，自然是使用ES6甚至更高版本，撸将起来才更嗨。但由于浏览器兼容问题，仍得使用 babel 转换。而这 babel-polyfill 也得引入以确保兼容；还比如项目开发中常用到的 moment, lodash等，都是挺大的存在，如果必须引入的话，即考虑外部引入之，再借助 externals 予以指定， webpack可以处理使之不参与打包，而依旧可以在代码中通过CMD、AMD或者window/global全局的方式访问。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack 中予以指定</span></span><br><span class="line">externals: &#123;</span><br><span class="line">  <span class="comment">// 'vue': 'Vue',</span></span><br><span class="line">  <span class="comment">// 'lodash': '_',</span></span><br><span class="line">  <span class="string">'babel-polyfill'</span>: <span class="string">'window'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">&lt;script src=<span class="string">"//cdn.bootcss.com/autotrack/2.4.1/autotrack.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script src=<span class="string">"//cdn.bootcss.com/babel-polyfill/7.0.0-alpha.15/polyfill.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-<h3 id="noParse"><a href="#noParse" class="headerlink" title="noParse"></a>noParse</h3><p>webpack打包的时候，有时不需要解析某些模块的依赖（这些模块并没有依赖，或者并根本就没有模块化），我们可以直接加上这个参数，直接跳过这种解析。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">  noParse: <span class="regexp">/node_modules\/(element-ui\.js)/</span>,</span><br><span class="line">  rules: [</span><br><span class="line">    &#123;</span><br><span class="line">      ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="优化搜索路径"><a href="#优化搜索路径" class="headerlink" title="优化搜索路径"></a>优化搜索路径</h3><p>在webpack打包时，会有各种各样的路径要去查询搜索，我们可以加上一些配置，让它搜索地更快。</p>
-<p>Webpack的resolve.modules配置模块库（即 node_modules）所在的位置，在 js 里出现 import ‘vue’ 这样不是相对、也不是绝对路径的写法时，会去 node_modules 目录下找。但是默认的配置，会采用向上递归搜索的方式去寻找，但通常项目目录里只有一个 node_modules，且是在项目根目录，为了减少搜索范围，可以直接写明 node_modules 的全路径；同样，对于别名(alias)的配置，亦当如此。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resolve</span> (<span class="params">dir</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> path.join(__dirname, <span class="string">'..'</span>, dir)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  resolve: &#123;</span><br><span class="line">    extensions: [<span class="string">'.js'</span>, <span class="string">'.vue'</span>, <span class="string">'.json'</span>],</span><br><span class="line">    modules: [</span><br><span class="line">      resolve(<span class="string">'src'</span>),</span><br><span class="line">      resolve(<span class="string">'node_modules'</span>)</span><br><span class="line">    ],</span><br><span class="line">    alias: &#123;</span><br><span class="line">      <span class="string">'vue$'</span>: <span class="string">'vue/dist/vue.common.js'</span>,</span><br><span class="line">      <span class="string">'src'</span>: resolve(<span class="string">'src'</span>),</span><br><span class="line">      <span class="string">'assets'</span>: resolve(<span class="string">'src/assets'</span>),</span><br><span class="line">      <span class="string">'components'</span>: resolve(<span class="string">'src/components'</span>),</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">      <span class="string">'store'</span>: resolve(<span class="string">'src/store'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="设置include-exclude"><a href="#设置include-exclude" class="headerlink" title="设置include/exclude"></a>设置include/exclude</h3><p>对于include，更精确指定要处理的目录，这可以减少不必要的遍历，从而减少性能损失。同样，对于已经明确知道的，不需要处理的目录，则应该予以排除，从而进一步提升性能。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">  loaders: [</span><br><span class="line">    &#123;</span><br><span class="line">      test: <span class="regexp">/\.vue$/</span>,</span><br><span class="line">      loader: <span class="string">'vue-loader'</span>,</span><br><span class="line">      include: [resolve(<span class="string">'src'</span>)],</span><br><span class="line">      exclude: <span class="regexp">/node_modules\/(?!(autotrack|dom-utils))|vendor\.dll\.js/</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="模块化引入"><a href="#模块化引入" class="headerlink" title="模块化引入"></a>模块化引入</h3><p>有些模块是可以以模块化来引入的，就是说可以只引入其中的一部分，比如说lodash</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原来的引入方式</span></span><br><span class="line"> <span class="keyword">import</span> &#123;debounce&#125; <span class="keyword">from</span> <span class="string">'lodash'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//按模块化的引入方式</span></span><br><span class="line"><span class="keyword">import</span> debounce <span class="keyword">from</span> <span class="string">'lodash/debounce'</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="异步加载模块"><a href="#异步加载模块" class="headerlink" title="异步加载模块"></a>异步加载模块</h3><p>根据需要去异步加载，避免无端就引入早成的浪费。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Foo <span class="keyword">from</span> <span class="string">'./Foo.vue'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//按需引入</span></span><br><span class="line"><span class="keyword">const</span> Foo = <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'./Foo.vue'</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="ParallelUglifyPlugin"><a href="#ParallelUglifyPlugin" class="headerlink" title="ParallelUglifyPlugin"></a>ParallelUglifyPlugin</h3><p>webpack自带的UglifyJS插件，是单线程执行的，而webpack-parallel-uglify-plugin可以并行运行UglifyJS插件，更加充分合理地使用CPU资源，大大减少构建时间。（该插件应用于生成环境）</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ParallelUglifyPlugin = <span class="built_in">require</span>(<span class="string">'webpack-parallel-uglify-plugin'</span>);</span><br><span class="line"><span class="keyword">new</span> ParallelUglifyPlugin(&#123;</span><br><span class="line">  cacheDir: <span class="string">'.cache/'</span>,</span><br><span class="line">  uglifyJS:&#123;</span><br><span class="line">    output: &#123;</span><br><span class="line">      comments: <span class="literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    compress: &#123;</span><br><span class="line">      warnings: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h3 id="DllPlugin-DllReferencePlugin"><a href="#DllPlugin-DllReferencePlugin" class="headerlink" title="DllPlugin/DllReferencePlugin"></a>DllPlugin/DllReferencePlugin</h3><blockquote>
-<p>一个dll包，就是一个很纯净的依赖库，它本身不能运行，是用来给你的 app 或者业务代码引用的。</p>
-</blockquote>
-<p>Dll是动态链接库的意思，实际上就是将这些npm打包生成一个JSON文件，这个文件里包含了npm包的路径对应信息。webpack会先打包dll包，然后引用dll包，打包业务代码。</p>
-<p>首先，打包dll包，需要配置一个dll.config.js文件：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> vendors = [</span><br><span class="line">    <span class="string">'react'</span>,</span><br><span class="line">    <span class="string">'react-dom'</span>,</span><br><span class="line">    <span class="string">'react-router'</span>,</span><br><span class="line">    <span class="comment">// ...其它库</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: <span class="string">'build'</span>,</span><br><span class="line">        filename: <span class="string">'[name].js'</span>,</span><br><span class="line">        library: <span class="string">'[name]'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    entry: &#123;</span><br><span class="line">        <span class="string">"lib"</span>: vendors,</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> webpack.DllPlugin(&#123;</span><br><span class="line">            path: <span class="string">'manifest.json'</span>,</span><br><span class="line">            name: <span class="string">'[name]'</span>,</span><br><span class="line">            context: __dirname,</span><br><span class="line">        &#125;),</span><br><span class="line">    ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>运行webpack，会输出mainifest.json文件，里面就是相应包的对应信息。</p>
-<p>然后再在项目配置文件中配置DllReferencePlugin，使用manifest这个清单文件：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: <span class="string">'build'</span>,</span><br><span class="line">        filename: <span class="string">'[name].js'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    entry: &#123;</span><br><span class="line">        app: <span class="string">'./src/index.js'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> webpack.DllReferencePlugin(&#123;</span><br><span class="line">            context: __dirname,</span><br><span class="line">            manifest: <span class="built_in">require</span>(<span class="string">'./manifest.json'</span>),</span><br><span class="line">        &#125;),</span><br><span class="line">    ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="CommonsChunkPlugin"><a href="#CommonsChunkPlugin" class="headerlink" title="CommonsChunkPlugin"></a>CommonsChunkPlugin</h3><p>使用CommonsChunkPlugin提取公共的模块，可以减少文件体积，也有助于浏览器层的文件缓存，还是比较推荐的。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 提取公共模块文件</span></span><br><span class="line"><span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">    chunks: [<span class="string">'home'</span>, <span class="string">'detail'</span>],</span><br><span class="line">    <span class="comment">// 开发环境下需要使用热更新替换，而此时common用chunkhash会出错，可以直接不用hash</span></span><br><span class="line">    filename: <span class="string">'[name].js'</span> + (isProduction ? <span class="string">'?[chunkhash:8]'</span> : <span class="string">''</span>),</span><br><span class="line">    name: <span class="string">'common'</span></span><br><span class="line">&#125;),</span><br><span class="line"></span><br><span class="line"><span class="comment">// 切合公共模块的提取规则，有时后你需要明确指定默认放到公共文件的模块</span></span><br><span class="line"><span class="comment">// 文件入口配置</span></span><br><span class="line">entry: &#123;</span><br><span class="line">    home: <span class="string">'./src/js/home'</span>,</span><br><span class="line">    detail: <span class="string">'./src/js/detail'</span>,</span><br><span class="line">    <span class="comment">// 提取jquery入公共文件</span></span><br><span class="line">    common: [<span class="string">'jquery'</span>, <span class="string">'react'</span>, <span class="string">'react-dom'</span>]</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<h3 id="HappyPack"><a href="#HappyPack" class="headerlink" title="HappyPack"></a>HappyPack</h3><p>Happypack 的处理思路是：将原有的 webpack 对 loader 的执行过程，从单一进程的形式扩展多进程模式，从而加速代码构建；原本的流程保持不变，这样可以在不修改原有配置的基础上，来完成对编译过程的优化，具体配置如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> HappyPack = <span class="built_in">require</span>(<span class="string">'happypack'</span>);</span><br><span class="line"><span class="keyword">var</span> happyThreadPool = HappyPack.ThreadPool(&#123; <span class="attr">size</span>: os.cpus().length &#125;);</span><br><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">  loaders: [</span><br><span class="line">    &#123;</span><br><span class="line">      test: <span class="regexp">/\.js[x]?$/</span>,</span><br><span class="line">      include: [resolve(<span class="string">'src'</span>)],</span><br><span class="line">      exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">      loader: <span class="string">'happypack/loader?id=happybabel'</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;,</span><br><span class="line">plugins: [</span><br><span class="line">  <span class="keyword">new</span> HappyPack(&#123;</span><br><span class="line">    id: <span class="string">'happybabel'</span>,</span><br><span class="line">    loaders: [<span class="string">'babel-loader'</span>],</span><br><span class="line">    threadPool: happyThreadPool,</span><br><span class="line">    cache: <span class="literal">true</span>,</span><br><span class="line">    verbose: <span class="literal">true</span></span><br><span class="line">  &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>可以看到，通过在 loader 中配置直接指向 happypack 提供的 loader，对于文件实际匹配的处理 loader，则是通过配置在 plugin 属性来传递说明，这里 happypack 提供的 loader 与 plugin 的衔接匹配，则是通过id=happybabel来完成。</p>
-<p>Happypack 在编译过程中，除了利用多进程的模式加速编译，还同时开启了cache计算，能充分利用缓存读取构建文件，对构建的速度提升也是非常明显的。</p>
-<h3 id="ModuleConcatenationPlugin"><a href="#ModuleConcatenationPlugin" class="headerlink" title="ModuleConcatenationPlugin"></a>ModuleConcatenationPlugin</h3><p>这是<strong>webpack3的新特性</strong>（Scope Hoisting），其实是借鉴了Rollup打包工具来的，它将一些有联系的模块，放到一个闭包函数里面去，通过减少闭包函数数量从而加快JS的执行速度。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> webpack.optimize.ModuleConcatenationPlugin()</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/11/Linux上手指南/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aisling Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleCorn个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/11/Linux上手指南/" itemprop="url">Linux上手指南</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-11T15:44:14+08:00">
-                2018-03-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Linux-的目录结构"><a href="#Linux-的目录结构" class="headerlink" title="Linux 的目录结构"></a>Linux 的目录结构</h3><p>前面多次提到了类似/dev这样的目录,也提到了目录文件d,不知道你对目录有没有也产生好奇，Linux的目录也是Linux系统中比较重要的一块，不过首先我们得区分Linux的目录和Window的目录的较大的区别：</p>
-<blockquote>
-<p>不同之一体现在目录与存储介质（磁盘，内存，DVD 等）的关系上，Windows 一直是以存储介质为主的，主要以盘符（C 盘，D 盘…）及分区来实现文件管理，然后之下才是目录，目录就显得不是那么重要，除系统文件之外的用户文件放在任何地方任何目录也是没有多大关系。</p>
-</blockquote>
-<p>然而 UNIX/Linux 恰好相反，UNIX 是以目录为主的，Linux 也继承了这一优良特性。 Linux 以树形目录结构的形式来构建整个系统，可以理解为树形目录是一个用户可操作系统的骨架。虽然本质上无论是目录结构还是操作系统内核都是存储在磁盘上的，但从逻辑上来说 Linux 的磁盘是“挂在”（挂载在）目录上的，每一个目录不仅能使用本地磁盘分区的文件系统，也可以使用网络上的文件系统。</p>
-<p>简言之，Windows的目录挂载在磁盘下，而Linux磁盘挂载在目录下，使用Mac的童鞋们，看了这段话是不是突然明白了为什么Mac上安装第三方软件时，会出现盘符。</p>
-<p>初接触Linux时，我们很容易被其看似复杂的文件系统弄得晕头转向，其实在掌握了一定的规律后，Linux的目录结构是比Window简单的，Linux的大部分目录结构是依据FHS标准（英文：Filesystem Hierarchy Standard 中文：文件系统层次结构标准）规定好的。</p>
-<blockquote>
-<p>多数 Linux 版本采用这种文件组织形式，FHS 定义了系统中每个区域的用途、所需要的最小构成的文件和目录同时还给出了例外处理与矛盾处理。</p>
-</blockquote>
-<p><strong>FHS包含两层规范：</strong></p>
-<ul>
-<li><p>第一层是， / 下面的各个目录应该要放什么文件数据，例如 /etc 应该放置设置文件，/bin 与 /sbin 则应该放置可执行文件等等。</p>
-</li>
-<li><p>第二层则是针对 /usr 及 /var 这两个目录的子目录来定义。例如 /var/log 放置系统登录文件，/usr/share 放置共享数据等等。</p>
-</li>
-</ul>
-<p>这里有个有用的命令:<strong>tree</strong>(需要先安装)，可以查看某个目录的子目录的结构，这个命令还可以限制目录的展示层级，通过man tree你可以获知如何进行具体的操作。</p>
-<p>FHS 是根据以往无数 Linux 用户和开发者的经验总结出来的，并且会维持更新，网上有很多结束FHS的文章，如果感兴趣 可以搜索看看。</p>
-<p><strong>关于目录的一些常用相关命令：</strong></p>
-<ul>
-<li><p>..：表示上一级目录</p>
-</li>
-<li><p>cd:切换目录，后面可以是相对目录，也可以是绝对目录，如$ cd /usr/local/bin</p>
-</li>
-<li><p>pwa: 查看当前所在目录</p>
-</li>
-</ul>
-<p><strong>查看目录的容量du</strong></p>
-<p>使用du命令可以查看目录的容量，配合以下参数可以实现更多效果。</p>
-<p>参数： -d  指定查看目录的深度。</p>
-<h3 id="Linux的磁盘管理"><a href="#Linux的磁盘管理" class="headerlink" title="Linux的磁盘管理"></a>Linux的磁盘管理</h3><p>在Linux下磁盘是挂载在目录下的，前文大致聊了目录，接下来我们简单说说磁盘管理，前面刚刚说完如何查看目录容量，我们先看如何查看磁盘的容量。</p>
-<p><strong>查看磁盘容量df</strong></p>
-<p><strong>创建虚拟磁盘dd</strong></p>
-<blockquote>
-<p>dd命令用于转换和复制文件，不过它的复制不同于cp。之前提到过关于 Linux 的很重要的一点，一切即文件，在 Linux 上，硬件的设备驱动（如硬盘）和特殊设备文件（如/dev/zero和/dev/random）都像普通文件一样，只要在各自的驱动程序中实现了对应的功能，dd 也可以读取自和/或写入到这些文件。这样，dd也可以用在备份硬件的引导扇区、获取一定数量的随机数据或者空数据等任务中。dd程序也可以在复制时处理数据，例如转换字节序、或在 ASCII 与 EBCDIC 编码间互换。</p>
-</blockquote>
-<p><strong>语句格式：选项=值</strong></p>
-<p>dd默认从标准输入中读取，并写入到标准输出中,但输入输出也可以用选项if（input file，输入文件）和of（output file，输出文件）改变。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ dd if=/dev/stdin of=/dev/stdout bs=10 count=1</span><br><span class="line"># 将输出的英文字符转换为大写再写入文件</span><br><span class="line">$ dd if=/dev/stdin of=test bs=10 count=1 conv=ucase</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>bs（block size）用于指定块大小（缺省单位为 Byte，也可为其指定如’K’，’M’，’G’等单位），</p>
-</li>
-<li><p>count用于指定块数量。</p>
-</li>
-<li><p>超过bs的多余输入将被截取并保留在标准输入。</p>
-</li>
-</ul>
-<p><strong>使用mkfs命令格式化磁盘</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 输入 sudo mkfs 然后按下Tab键，你可以看到很多个以 mkfs 为前缀的命令,代表不同的文件系统格式</span><br><span class="line"># 格式化virtual.img为ext4格式</span><br><span class="line">$ sudo mkfs.ext4 virtual.img</span><br></pre></td></tr></table></figure>
-<p><strong>使用 mount 命令挂载磁盘到目录树</strong></p>
-<p>用户在 Linux/UNIX 的机器上打开一个文件以前，包含该文件的文件系统必须先进行挂载的动作，此时用户要对该文件系统执行 mount 的指令以进行挂载。<br>Linux/UNIX 文件系统可以对应一个文件而不一定要是硬件设备，所以可以挂载一个包含文件系统的文件到目录树。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 查看下主机已经挂载的文件系统，每一行代表一个设备或虚拟设备格式[设备名]on[挂载点]：</span><br><span class="line">$ sudo mount</span><br><span class="line">➜  ~ sudo mount</span><br><span class="line">Password:</span><br><span class="line">/dev/disk1 on / (hfs, local, journaled)</span><br><span class="line">devfs on /dev (devfs, local, nobrowse)</span><br><span class="line">map -hosts on /net (autofs, nosuid, automounted, nobrowse)</span><br><span class="line">map auto_home on /home (autofs, automounted, nobrowse)</span><br><span class="line">/dev/disk2s1 on /Volumes/微信web开发者工具 (hfs, local, nodev, nosuid, read-only, noowners, quarantine, mounted by zhangwang)</span><br><span class="line"></span><br><span class="line"># 挂载文件到目录树mount [-o [操作选项]] [-t 文件系统类型] [-w|--rw|--ro] [文件系统源] [挂载点]</span><br><span class="line"># 类型可省略，很多时候会自动识别</span><br><span class="line">$ mount -o loop -t ext4 virtual.img /mnt </span><br><span class="line"># 以只读方式挂载</span><br><span class="line">$ mount -o loop --ro virtual.img /mnt</span><br></pre></td></tr></table></figure>
-<p><strong>使用 fdisk 为磁盘分区</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 查看硬盘分区表信息</span><br><span class="line">$ sudo fdisk -l</span><br><span class="line"></span><br><span class="line"># 进入磁盘分区模式</span><br><span class="line">$ sudo fdisk virtual.img</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1972,7 +1949,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1994,7 +1971,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
