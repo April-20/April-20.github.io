@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="LittleCorn个人博客">
 <meta property="og:description" content="进程和线程 进程是一个工厂，工厂有它的独立资源-工厂之间相互独立；线程是工厂中的工人，多个工人协作完成任务-工厂内有一个或多个工人-工人之间共享空间。 工厂的资源-&amp;gt;系统分配的内存（独立的一块内存）-工厂之间的相互独立-&amp;gt;进程之间相互独立-多个工人协作完成任务-&amp;gt;多个线程在进程中协作完成任务-工厂内有一个或多个工人-&amp;gt;一个进程由一个或多个线程组成-工人之间共享空间-&amp;gt;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-20T14:27:27.264Z">
+<meta property="og:updated_time" content="2018-03-20T14:29:40.630Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS运行机制">
 <meta name="twitter:description" content="进程和线程 进程是一个工厂，工厂有它的独立资源-工厂之间相互独立；线程是工厂中的工人，多个工人协作完成任务-工厂内有一个或多个工人-工人之间共享空间。 工厂的资源-&amp;gt;系统分配的内存（独立的一块内存）-工厂之间的相互独立-&amp;gt;进程之间相互独立-多个工人协作完成任务-&amp;gt;多个线程在进程中协作完成任务-工厂内有一个或多个工人-&amp;gt;一个进程由一个或多个线程组成-工人之间共享空间-&amp;gt;">
@@ -482,7 +482,7 @@
 <li>最常用的方式：translate3d、translateZ</li>
 <li>opacity属性/过渡动画（需要动画执行的过程中才会创建合成层，动画没有开始或结束后元素还会回到之前的状态）。</li>
 <li>will-chang属性（这个比较偏僻），一般配合opacity与translate使用（而且经测试，除了上述可以引发硬件加速的属性外，其它属性并不会变成复合层），作用是提前告诉浏览器要变化，这样浏览器会开始做一些优化工作（这个最好用完后就释放）。</li>
-<li>&lt;\video&gt;<iframe><canvas><webgl>等元素。</webgl></canvas></iframe></li>
+<li>&lt;\video&gt;&lt;\iframe&gt;&lt;\canvas&gt;&lt;\webgl&gt;等元素。</li>
 <li>其它，譬如以前的flash插件。</li>
 </ul>
 <p><strong>absolute和硬件加速的区别</strong></p>
