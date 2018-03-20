@@ -252,6 +252,261 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/Git使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/06/Git使用/" itemprop="url">Git使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-06T14:27:57+08:00">
+                2018-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/开发工具/" itemprop="url" rel="index">
+                    <span itemprop="name">开发工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><ul>
+<li><strong>git init</strong> 把指定目录变成Git可以管理的仓库：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line">Initialized empty Git repository in /Users/michael/learngit/.git/</span><br></pre></td></tr></table></figure>
+<h3 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h3><ul>
+<li><strong>git add <file></file></strong>  把文件添加到仓库：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add readme.txt</span><br></pre></td></tr></table></figure>
+<p>可反复多次使用，添加多个文件。</p>
+<ul>
+<li><strong>git commit</strong> 把文件提交到仓库：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;wrote a readme file&quot;</span><br><span class="line">[master (root-commit) cb926e7] wrote a readme file</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br><span class="line"> create mode 100644 readme.txt</span><br></pre></td></tr></table></figure>
+<p>-m 后面输入的是本次提交的说明，可以输入任意内容，当然最好是有意义的，这样你就能从历史记录里方便地找到改动记录。</p>
+<h3 id="查看差异"><a href="#查看差异" class="headerlink" title="查看差异"></a>查看差异</h3><ul>
+<li><p><strong>git status</strong>  随时掌握工作区的状态</p>
+</li>
+<li><p><strong>git diff</strong> 查看修改内容</p>
+</li>
+</ul>
+<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><ul>
+<li><strong>git reset –hard commit_id</strong>  HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭。</li>
+<li><strong>git log</strong> 可以查看提交历史，以便确定要回退到哪个版本。</li>
+<li><strong>git reflog</strong> 查看命令历史，以便确定要回到未来的哪个版本。</li>
+</ul>
+<h3 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h3><ul>
+<li><strong>工作区</strong>： 就是你在电脑里能看到的目录。</li>
+<li><strong>版本库</strong>：工作区有一个隐藏目录.git，Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的<strong>暂存区</strong>，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。</li>
+</ul>
+<p>用git add添加文件，实际上就是把文件修改添加到暂存区。</p>
+<p>用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。</p>
+<h3 id="管理修改"><a href="#管理修改" class="headerlink" title="管理修改"></a>管理修改</h3><p>Git是如何跟踪修改的？每次修改，如果不add到暂存区，那就不会加入到commit中。</p>
+<p>第一次修改 -&gt; git add -&gt; 第二次修改 -&gt; git add -&gt; git commit。</p>
+<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><ul>
+<li><strong>git checkout – file</strong> 撤销文件修改。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- readme.txt</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>有两种情况：</p>
+<ol>
+<li>一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态。</li>
+<li>一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。</li>
+</ol>
+<p>总之，就是让这个文件回到最近一次git commit或git add时的状态。</p>
+<ul>
+<li><strong>git reset HEAD file</strong> 可以把暂存区的修改撤销掉（unstage），重新放回工作区：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git reset HEAD readme.txt</span><br><span class="line">Unstaged changes after reset:</span><br><span class="line">M       readme.txt</span><br></pre></td></tr></table></figure>
+<p>git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。</p>
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><ul>
+<li><strong>git rm</strong> 删除一个文件。</li>
+</ul>
+<p>一是确实要从版本库中删除该文件，那就用命令git rm删掉，并且git commit：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git rm test.txt</span><br><span class="line">rm &apos;test.txt&apos;</span><br><span class="line">$ git commit -m &quot;remove test.txt&quot;</span><br><span class="line">[master d17efd8] remove test.txt</span><br><span class="line"> 1 file changed, 1 deletion(-)</span><br><span class="line"> delete mode 100644 test.txt</span><br></pre></td></tr></table></figure>
+<p>另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- test.txt</span><br></pre></td></tr></table></figure>
+<p>git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。</p>
+<p>如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容。</p>
+<h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><p>本地Git仓库和GitHub仓库之间的传输是通过SSH加密。</p>
+<p>为什么GitHub需要SSH Key呢？因为GitHub需要识别出你推送的提交确实是你推送的，而不是别人冒充的，而Git支持SSH协议，所以，GitHub只要知道了你的公钥，就可以确认只有你自己才能推送。</p>
+<p>当然，GitHub允许你添加多个Key。假定你有若干电脑，你一会儿在公司提交，一会儿在家里提交，只要把每台电脑的Key都添加到GitHub，就可以在每台电脑上往GitHub推送了。</p>
+<ul>
+<li><p><strong>git remote add origin git@server-name:path/repo-name.git</strong> 要关联一个远程库。</p>
+</li>
+<li><p><strong>git push</strong> 把当前分支master推送到远程。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master</span><br><span class="line">Counting objects: 19, done.</span><br><span class="line">Delta compression using up to 4 threads.</span><br><span class="line">Compressing objects: 100% (19/19), done.</span><br><span class="line">Writing objects: 100% (19/19), 13.73 KiB, done.</span><br><span class="line">Total 23 (delta 6), reused 0 (delta 0)</span><br><span class="line">To git@github.com:michaelliao/learngit.git</span><br><span class="line"> * [new branch]      master -&gt; master</span><br><span class="line">Branch master set up to track remote branch master from origin.</span><br></pre></td></tr></table></figure>
+<p>由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。</p>
+<p>此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；</p>
+<ul>
+<li><strong>git clone</strong> 克隆一个仓库。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git@github.com:michaelliao/gitskills.git</span><br></pre></td></tr></table></figure>
+<p>Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快。</p>
+<h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><ul>
+<li><strong>git branch</strong> 查看分支</li>
+<li><strong>git branch <name></name></strong> 创建分支</li>
+<li><strong>git checkout <name></name></strong> 切换分支</li>
+<li><strong>git checkout -b <name></name></strong> 创建+切换分支</li>
+<li><strong>git merge <name></name></strong> 合并某分支到当前分支</li>
+<li><strong>git branch -d <name></name></strong> 删除分支</li>
+</ul>
+<hr>
+<ul>
+<li><strong>git merge –no-ff</strong> 禁用Fast forward模式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git merge --no-ff -m &quot;merge with no-ff&quot; dev</span><br><span class="line">Merge made by the &apos;recursive&apos; strategy.</span><br><span class="line"> readme.txt |    1 +</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br></pre></td></tr></table></figure>
+<p>合并分支时，加上–no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。</p>
+<h3 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h3><p>当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。</p>
+<ul>
+<li><strong>git log –graph</strong> 可以看到分支合并图.</li>
+</ul>
+<h3 id="Bug分支"><a href="#Bug分支" class="headerlink" title="Bug分支"></a>Bug分支</h3><ul>
+<li><strong>git stash</strong> 可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作。</li>
+<li><strong>git stash list</strong> 查看刚才的工作现场存到哪去了</li>
+<li><strong>git stash apply</strong> 恢复到工作现场，stash内容并不删除</li>
+<li><strong>git stash drop</strong> 删除stash内容</li>
+<li><strong>git stash pop</strong>  恢复的同时把stash内容也删了</li>
+</ul>
+<p>修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；</p>
+<p>当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场。</p>
+<h3 id="Feature分支"><a href="#Feature分支" class="headerlink" title="Feature分支"></a>Feature分支</h3><p>开发一个新feature，最好新建一个分支；</p>
+<p>如果要丢弃一个没有被合并过的分支，可以通过git branch -D <name>强行删除。</name></p>
+<h3 id="多人协作"><a href="#多人协作" class="headerlink" title="多人协作"></a>多人协作</h3><ul>
+<li><strong>git remote -v</strong> 查看远程库的信息。</li>
+<li><strong>git push origin branch-name</strong> 从本地推送分支</li>
+<li><strong>git pull</strong> 抓取远程的新提交</li>
+<li><strong>git checkout -b branch-name origin/branch-name</strong> 在本地创建和远程分支对应的分支</li>
+<li><strong>git branch –set-upstream branch-name origin/branch-name</strong> 建立本地分支和远程分支的关联</li>
+</ul>
+<p>本地新建的分支如果不推送到远程，对其他人就是不可见的；</p>
+<blockquote>
+<p>git pull相当于从远程获取最新版本并merge到本地。git fetch 相当于从远程获取最新版本到本地，不会自动merge</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/JS事件流/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2543,197 +2798,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/04/JS设计模式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aisling Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleCorn个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/04/JS设计模式/" itemprop="url">JS设计模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-04T22:52:01+08:00">
-                2018-03-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><p><strong>概念：</strong> 单例模式提供了一种将代码组织为一个逻辑单元的手段，这个逻辑单元中的代码可以通过单一变量进行访问。</p>
-<p><strong>特点：</strong></p>
-<ul>
-<li>可以用来划分命名空间，减少全局变量的数量。</li>
-<li>可以把代码组织的更为一致，便于阅读和维护。</li>
-<li>可以被实例化，且只能实例化一次。</li>
-</ul>
-<p><strong>最常见的单例模式</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Singleton = &#123;</span><br><span class="line">    attr1: <span class="number">1</span>,</span><br><span class="line">    method1: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>闭包方法的单例模式</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> single = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> _a, _b;</span><br><span class="line">    <span class="keyword">var</span> that = &#123;&#125;;</span><br><span class="line">    </span><br><span class="line">    that.getA = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> _a;&#125;;</span><br><span class="line">    that.getB = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> _b&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> that; <span class="comment">//返回单例</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
-<p><strong>惰性单例模式</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> single = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> _a, _b;</span><br><span class="line">    <span class="keyword">var</span> Class = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">    <span class="keyword">var</span> that = &#123;&#125;;</span><br><span class="line">    </span><br><span class="line">    that.getA = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> _a;&#125;;</span><br><span class="line">    that.getB = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> _b&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> instance = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">var</span> getInstance = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!instance)&#123;</span><br><span class="line">            _instance = <span class="keyword">new</span> Class();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> _instance;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    Class.prototype = that;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        getInstance: getInstance</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-<p>惰性单例模式即只有需要用到的时候才实例化一个实例。</p>
-<p><strong>应用场景：</strong> 登录框。利用分支技术把浏览器间的差异封装在运行期间进行设置。（在脚本加载时一次性地确定针对浏览器的代码）</p>
-<h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><p><strong>概念：</strong> 提供创建对象的接口，意思就是根据调用者的参数，生成相应的对象。</p>
-<h4 id="简单工厂模式："><a href="#简单工厂模式：" class="headerlink" title="简单工厂模式："></a>简单工厂模式：</h4><p>使用一个类，通常为单体，来生产实例。</p>
-<p><strong>优点：</strong> 能够解决多个相似的问题。<br><strong>缺点：</strong> 识别不了对象的类型。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这是一个简单工厂模式</span></span><br><span class="line"><span class="keyword">var</span> XMLHttpFactory =<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;　　　　　　</span><br><span class="line">XMLHttpFactory.createXMLHttp =<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　 <span class="keyword">var</span> XMLHttp = <span class="literal">null</span>;</span><br><span class="line">　 <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest)&#123;</span><br><span class="line">　　　 XMLHttp = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">　 &#125;<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.ActiveXObject)&#123;</span><br><span class="line">　 XMLHttp = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>)</span><br><span class="line">　 &#125;</span><br><span class="line">　 <span class="keyword">return</span> XMLHttp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//XMLHttpFactory.createXMLHttp()这个方法根据当前环境的具体情况返回一个XHR对象。</span></span><br><span class="line"><span class="keyword">var</span> AjaxHander =<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　<span class="keyword">var</span> XMLHttp = XMLHttpFactory.createXMLHttp();</span><br><span class="line">　　　　...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="复杂工厂模式"><a href="#复杂工厂模式" class="headerlink" title="复杂工厂模式"></a>复杂工厂模式</h4><p>将其成员对象的实例化推到子类中，子类可以重写父类接口方法以便创建的时候指定自己的对象类型。</p>
-<p>父类只对创建过程中的一般性问题进行处理，这些处理会被子类继承，子类之间是相互独立的，具体的业务逻辑会放在子类中进行编写。</p>
-<p>思路：先设计一个抽象类，这个类不能被实例化，只能用来派生子类，最后通过对子类的扩展实现工厂方法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这是一个抽象工厂模式</span></span><br><span class="line"><span class="keyword">var</span> XMLHttpFactory =<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;　     </span><br><span class="line"></span><br><span class="line">XMLHttpFactory.prototype = &#123;</span><br><span class="line">　　<span class="comment">//如果真的要调用这个方法会抛出一个错误，它不能被实例化，只能用来派生子类</span></span><br><span class="line">　　createFactory:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  　　<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'This is an abstract class'</span>);</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> XHRHandler =<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;; <span class="comment">//定义一个子类</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 子类继承父类原型方法</span></span><br><span class="line">extend( XHRHandler , XMLHttpFactory );</span><br><span class="line"></span><br><span class="line">XHRHandler.prototype =<span class="keyword">new</span> XMLHttpFactory(); <span class="comment">//把超类原型引用传递给子类,实现继承</span></span><br><span class="line"></span><br><span class="line">XHRHandler.prototype.constructor = XHRHandler; <span class="comment">//重置子类原型的构造器为子类自身</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//重新定义createFactory 方法</span></span><br><span class="line">XHRHandler.prototype.createFactory =<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　<span class="keyword">var</span> XMLHttp =<span class="literal">null</span>;</span><br><span class="line">　　<span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest)&#123;</span><br><span class="line"></span><br><span class="line">  　　XMLHttp =<span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line"></span><br><span class="line">　　&#125;<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.ActiveXObject)&#123;</span><br><span class="line"></span><br><span class="line">  　　XMLHttp =<span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>)</span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">return</span> XMLHttp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>应用场景：</strong>  处理大量具有相同属性的小对象；需要依赖具体环境创建不同实例；对象的构建十分复杂时。</p>
-<p><strong>优点：</strong> 弱化对象见的耦合，防止代码的重复。在一个方法中进行类的实例化，可以消除重复性的代码。重复性的代码可以放到父类中去编写，子类继承于父类的所有成员属性和方法，子类只专注于实现自己的的业务逻辑。</p>
-<p><strong>缺点：</strong> 当工厂增加到一定程度的时候，提升了代码的复杂度，可读性下降。而且没有解决对象的识别问题。</p>
-<h3 id="观察者模式-发布订阅模式"><a href="#观察者模式-发布订阅模式" class="headerlink" title="观察者模式(发布订阅模式)"></a>观察者模式(发布订阅模式)</h3><p><strong>概念：</strong> 定义了对象间的一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象，当一个对象的状态发生改变时，所有依赖它的对象都得到通知并自动刷新。</p>
-<p><strong>流程：</strong> </p>
-<ul>
-<li>首先确定谁是发布者</li>
-<li>然后给发布者添加一个缓存列表，用于存放回调函数来通知订阅者。</li>
-<li>接下来就是发布消息。发布者遍历整个缓存列表，依次触发里面存放的订阅者的回调函数。</li>
-<li>最后时退订。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pubsub = &#123;&#125;;   <span class="comment">// 定义发布者</span></span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">q</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> list = [],  <span class="comment">//回调函数存放的数组，也就是记录有多少人订阅了我们东西</span></span><br><span class="line">        subUid = <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 发布消息,遍历订阅者</span></span><br><span class="line">    q.publish = <span class="function"><span class="keyword">function</span> (<span class="params">type, content</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// type 为文章类型，content为文章内容</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 如果没有人订阅，直接返回</span></span><br><span class="line">        <span class="keyword">if</span> (!list[type]) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> subscribers = list[type],</span><br><span class="line">                len = subscribers ? subscribers.length : <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (len--) &#123;</span><br><span class="line">                <span class="comment">// 将内容注入到订阅者那里</span></span><br><span class="line">                subscribers[len].func(type, content);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//订阅方法，由订阅者来执行</span></span><br><span class="line">    q.subscribe = <span class="function"><span class="keyword">function</span> (<span class="params">type, func</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 如果之前没有订阅过</span></span><br><span class="line">        <span class="keyword">if</span> (!list[type]) &#123;</span><br><span class="line">            list[type] = [];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// token相当于订阅者的id，这样的话如果退订，我们就可以针对它来知道是谁退订了。</span></span><br><span class="line">        <span class="keyword">var</span> token = (++subUid).toString();</span><br><span class="line">        <span class="comment">// 每订阅一个，就把它存入到我们的数组中去</span></span><br><span class="line">        list[type].push(&#123;</span><br><span class="line">            token: token,</span><br><span class="line">            func: func</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> token;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//退订方法</span></span><br><span class="line">    q.unsubscribe = <span class="function"><span class="keyword">function</span> (<span class="params">token</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> m <span class="keyword">in</span> list) &#123;</span><br><span class="line">            <span class="keyword">if</span> (list[m]) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, j = list[m].length; i &lt; j; i++) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (list[m][i].token === token) &#123;</span><br><span class="line">                        list[m].splice(i, <span class="number">1</span>);</span><br><span class="line">                        <span class="keyword">return</span> token;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">&#125; (pubsub));</span><br><span class="line"></span><br><span class="line"><span class="comment">//将订阅赋值给一个变量，以便退订</span></span><br><span class="line"><span class="keyword">var</span> girlA = pubsub.subscribe(<span class="string">'js类的文章'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">type, content</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'girlA订阅的'</span>+type + <span class="string">": 内容内容为："</span> + content);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> girlB = pubsub.subscribe(<span class="string">'js类的文章'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">type, content</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'girlB订阅的'</span>+type + <span class="string">": 内容内容为："</span> + content);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> girlC = pubsub.subscribe(<span class="string">'js类的文章'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">type, content</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'girlC订阅的'</span>+type + <span class="string">": 内容内容为："</span> + content);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//发布通知</span></span><br><span class="line">pubsub.publish(<span class="string">'js类的文章'</span>, <span class="string">'关于js的内容'</span>);  </span><br><span class="line"><span class="comment">// 输出：</span></span><br><span class="line"><span class="comment">// girlC订阅的js类的文章: 内容内容为：关于js的内容</span></span><br><span class="line"><span class="comment">// test3.html:78 girlB订阅的js类的文章: 内容内容为：关于js的内容</span></span><br><span class="line"><span class="comment">// test3.html:75 girlA订阅的js类的文章: 内容内容为：关于js的内容</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//girlA退订了关于js类的文章 </span></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    pubsub.unsubscribe(girlA);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//再发布一次，验证一下是否还能够输出信息</span></span><br><span class="line">pubsub.publish(<span class="string">'js类的文章'</span>, <span class="string">"关于js的第二篇文章"</span>);</span><br><span class="line"><span class="comment">// 输出：</span></span><br><span class="line"><span class="comment">// girlB订阅的js类的文章: 内容内容为：关于js的第二篇文章</span></span><br><span class="line"><span class="comment">// girlC订阅的js类的文章: 内容内容为：关于js的第二篇文章</span></span><br></pre></td></tr></table></figure>
-<p><strong>优点：</strong> 支持简单的广播通信，当对象状态发生改变时，会自动通知已经订阅过的对象。发布者与订阅者耦合性降低，发布者只管发布一条消息，它不用关系这条消息如何被订阅者使用，同时，订阅者只监听发布者的事件名，不关心它如何发布。</p>
-<p><strong>缺点：</strong> 创建订阅者需要消耗一定的时间和内存。虽然可以弱化对象之间的联系，如果过度使用的话，反而使代码不好理解以及代码不好维护等。</p>
-<h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><p><strong>概念：</strong> 代理模式就是把对一个对象的访问，交给另一个代理对象来操作。代理是一个对象，它可以用来控制对本体对象的访问，它与本地对象实现了同样的接口，代理对象会把所有的调用方法传递给本体对象；代理模式最基本的形式是对访问进行控制，而本体对象则负责执行所分派的那个对象的函数或者类，简单的来讲本体对象注重的执行页面上的代码，代理对象则控制本地对象何时被实例化。</p>
-<p><strong>应用场景：</strong> 图片的预加载</p>
-<p>在图片加载完成之前，给个loading，加载完成后再替换成实体路径。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myImage = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> imgNode = <span class="built_in">document</span>.createElement(<span class="string">"img"</span>);</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(imgNode);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">src</span>)</span>&#123;</span><br><span class="line">        imgNode.src = src; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line"><span class="comment">// 代理模式</span></span><br><span class="line"><span class="keyword">var</span> ProxyImage = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">    img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        myImage(<span class="keyword">this</span>.src);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">src</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 占位图片loading</span></span><br><span class="line">        myImage(<span class="string">"http://img.lanrentuku.com/img/allimg/1212/5-121204193Q9-50.gif"</span>);</span><br><span class="line">        img.src = src;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用方式</span></span><br><span class="line">ProxyImage(<span class="string">"https://img.alicdn.com/tps/i4/TB1b_neLXXXXXcoXFXXc8PZ9XXX-130-200.png"</span>); <span class="comment">// 真实要展示的图片</span></span><br></pre></td></tr></table></figure>
-<p>这样，myImage只做一件事，只负责将实际图片加入到页面中，而loading图片交给代理对象去做。从而降低代码的耦合度。</p>
-<p><strong>优点：</strong> 代理对象可以代替本体被实例化，并使其可以被远程访问。它还可以把本体对象实例化推迟到真正需要的时候，对于实例化比较费时的本体对象，或者因为尺寸比较大以至于不适用保存在内存中的本体，我们可以推迟实例化该对象。</p>
-<p><strong>应用场景：</strong> 缓存代理</p>
-<p>缓存代理的含义就是对第一次运行时候进行缓存，当再一次运行相同的时候，直接从缓存里面取，这样做的好处是避免重复一次运算功能，如果运算非常复杂的话，对性能很耗费，那么使用缓存对象可以提高性能。</p>
-<p><strong>应用场景：</strong> 虚拟代理合并http请求</p>
-<p>比如在做后端系统中，有表格数据，每一条数据前面有复选框按钮，当点击复选框按钮时候，需要获取该id后需要传递给给服务器发送ajax请求，服务器端需要记录这条数据，去请求，如果我们每当点击一下向服务器发送一个http请求的话，对于服务器来说压力比较大，网络请求比较频繁，但是如果现在该系统的实时数据不是很高的话，我们可以通过一个代理函数收集一段时间内(比如说2-3秒)的所有id，一次性发ajax请求给服务器，相对来说网络请求降低了, 服务器压力减少了。</p>
-<h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><p><strong>概念：</strong> 策略模式是指定义一系列的算法，把他们一个个封装起来，目的就是将算法的使用和算法的实现分离开来。（说白了就是以前要做很多判定的写法，现在把判定里面的内容抽离开来，变成一个个小的个体）。</p>
-<p><strong>应用场景：</strong> 比如某个“类”中包含大量的条件性语句，比如if…else或者switch。每一个条件分支都会引起该“类”的特定行为以不同的方式做出改变。与其维护一段庞大的条件性语句，不如将每一个行为划分为多个独立的对象。每一个对象被称为一个策略。设置多个这种策略对象，可以改进我们的代码质量，也更好的进行单元测试。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//代码如下：</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="string">"A"</span>: <span class="function"><span class="keyword">function</span>(<span class="params">salary</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> salary * <span class="number">4</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"B"</span> : <span class="function"><span class="keyword">function</span>(<span class="params">salary</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> salary * <span class="number">3</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"C"</span> : <span class="function"><span class="keyword">function</span>(<span class="params">salary</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> salary * <span class="number">2</span>;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> calculateBouns =<span class="function"><span class="keyword">function</span>(<span class="params">level,salary</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> obj[level](salary);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(calculateBouns(<span class="string">'A'</span>,<span class="number">10000</span>)); <span class="comment">// 40000</span></span><br></pre></td></tr></table></figure>
-<p><strong>优点：</strong> 策略模式利用组合，委托等技术和思想，有效的避免很多if条件语句。策略模式提供了开放-封闭的原则，使代码更容易理解和扩展。策略模式中的代码可以复用。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2788,7 +2852,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

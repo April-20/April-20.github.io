@@ -252,6 +252,381 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/20/JS运行机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/20/JS运行机制/" itemprop="url">JS运行机制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-20T14:00:59+08:00">
+                2018-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h3><blockquote>
+<p><strong>进程</strong>是一个工厂，工厂有它的独立资源-工厂之间相互独立；<br><strong>线程</strong>是工厂中的工人，多个工人协作完成任务-工厂内有一个或多个工人-工人之间共享空间。</p>
+<p>工厂的资源-&gt;系统分配的内存（独立的一块内存）-工厂之间的相互独立-&gt;进程之间相互独立-多个工人协作完成任务-&gt;多个线程在进程中协作完成任务-工厂内有一个或多个工人-&gt;一个进程由一个或多个线程组成-工人之间共享空间-&gt;同一进程下的各个线程之间共享程序的内存空间（包括代码段、数据集、堆等）.</p>
+</blockquote>
+<p><strong>概念：</strong></p>
+<ul>
+<li>进程是CPU资源分配的最小单位，是能拥有资源和独立运行的最小单位。</li>
+<li>线程是CPU调度的最小单位，线程是建立在进程的基础上的一次程序运行单位，一个进程中可以有多个线程。</li>
+</ul>
+<p><strong>提示：</strong></p>
+<ul>
+<li>进程之间也可以通信，但是代价较大。</li>
+<li>现在，一般通用的叫法：单线程与多线程，都是指在一个进程内的单和多。（所以核心还是属于一个进程才行）。</li>
+</ul>
+<h3 id="浏览器是多进程的"><a href="#浏览器是多进程的" class="headerlink" title="浏览器是多进程的"></a>浏览器是多进程的</h3><ul>
+<li>浏览器是多进程的；</li>
+<li>浏览器之所以能够运行，是因为系统给它的进程分配了资源(CPU,内存)；</li>
+<li>简单理解：没打开一个Tab页，就相当于创建了一个独立的浏览器进程。</li>
+</ul>
+<p>注意：在这里浏览器应该也有自己的优化机制，有时候打开多个tab页后，可以在Chrome任务管理器中看到，有些进程被合并了（所以每一个Tab标签对应一个进程并不一定是绝对的）。</p>
+<p><strong>浏览器包含的主要进程有以下几种：</strong></p>
+<h4 id="Browser进程"><a href="#Browser进程" class="headerlink" title="Browser进程"></a>Browser进程</h4><p>这是浏览器主进程，负责协调、主控，只有一个。</p>
+<p>作用：</p>
+<ul>
+<li>负责浏览器界面显示，与用户交互。如前进、后退等；</li>
+<li>负责各个页面的管理，创建和销毁其他进程；</li>
+<li>将Render进程得到的内存中的Bitmap，绘制到用户界面上；</li>
+<li>网络资源的管理，下载等。</li>
+</ul>
+<h4 id="第三方插件进程"><a href="#第三方插件进程" class="headerlink" title="第三方插件进程"></a>第三方插件进程</h4><p>每种类型的插件对应一个进程，仅当使用该插件时才创建。</p>
+<h4 id="CPU进程"><a href="#CPU进程" class="headerlink" title="CPU进程"></a>CPU进程</h4><p>最多一个，用于3D绘制等。</p>
+<h4 id="渲染进程"><a href="#渲染进程" class="headerlink" title="渲染进程"></a>渲染进程</h4><p>即浏览器内核，Render进程，其内部是多线程的。默认每个Tab页面一个进程，互不影响。</p>
+<p>主要作用：</p>
+<ul>
+<li>页面渲染</li>
+<li>脚本执行</li>
+<li>事件处理</li>
+</ul>
+<h4 id="多进程的优势"><a href="#多进程的优势" class="headerlink" title="多进程的优势"></a>多进程的优势</h4><ul>
+<li>避免单个页面崩溃的时候影响整个浏览器；</li>
+<li>避免第三方插件崩溃的时候影响整个浏览器；</li>
+<li>多进程充分利用多核优势；</li>
+<li>方便使用沙盒模式隔离插件等进程，提高浏览器稳定性。</li>
+</ul>
+<h3 id="重点是浏览器内核-渲染进程"><a href="#重点是浏览器内核-渲染进程" class="headerlink" title="重点是浏览器内核(渲染进程)"></a>重点是浏览器内核(渲染进程)</h3><p>页面的渲染，JS的执行，事件循环，都是在这个进程内进行。</p>
+<blockquote>
+<p>强调一遍：渲染进程是多线程的。</p>
+</blockquote>
+<h4 id="GUI渲染线程"><a href="#GUI渲染线程" class="headerlink" title="GUI渲染线程"></a>GUI渲染线程</h4><ul>
+<li>负责渲染浏览器界面，解析HTML、CSS、构建DOM树和渲染树，布局和绘制等。</li>
+<li>当界面需要重绘或由于某种操作引发回流的时候，该线程就会执行。</li>
+</ul>
+<blockquote>
+<p>注意！GUI渲染线程和JS引擎线程是互斥的，当JS引擎执行时GUI线程会被挂起， GUI更新会被保存在一个队列中等到JS引擎空闲时立即被执行。</p>
+</blockquote>
+<h4 id="JS引擎线程"><a href="#JS引擎线程" class="headerlink" title="JS引擎线程"></a>JS引擎线程</h4><ul>
+<li>也称为“JS内核”，负责处理JavaScript脚本程序。</li>
+<li>JS引擎线程负责解析JavaScript脚本，运行代码。</li>
+<li>JS引擎一直等待着任务队列中任务的到来，然后加以处理，一个Tab页中无论什么时候都只有一个JS线程在运行JS程序。</li>
+</ul>
+<blockquote>
+<p>再次注意！GUI渲染线程和JS引擎线程是互斥的，所以如果JS执行的时间过长，这样就会造成页面的渲染不连贯，导致页面渲染加载阻塞。</p>
+</blockquote>
+<h4 id="事件触发线程"><a href="#事件触发线程" class="headerlink" title="事件触发线程"></a>事件触发线程</h4><ul>
+<li>用来控制事件循环。</li>
+<li>当JS引擎执行代码块如setTimeout时（也可以来自浏览器内核其他线程，如鼠标点击，Ajax异步请求等），会将对应任务添加到事件线程中。</li>
+<li>当对应的事件符合触发条件被触发时，该线程会把事件添加到待处理队列的队尾，等待JS引擎的处理。</li>
+</ul>
+<blockquote>
+<p>注意！由于JS的单线程的关系，所以这些待处理队列中的事件都得排队等待JS引擎处理(JS引擎空闲时才会去执行)</p>
+</blockquote>
+<h4 id="定时触发线程"><a href="#定时触发线程" class="headerlink" title="定时触发线程"></a>定时触发线程</h4><ul>
+<li>setTimeout和setInterval所在的线程。</li>
+<li>浏览器定时计数器并不是由JS引擎计数的（因为JS引擎是单线程的，如果处于阻塞线程状态就会影响计时的准确性）。</li>
+<li>因此通过单独线程来计时并触发定时（计时完毕后，添加到事件队列中，等待JS引擎空闲后执行）。</li>
+</ul>
+<blockquote>
+<p>注意！W3C在HTML标准中规定，规定要求setTimeout中低于4ms的时间间隔算为4ms。</p>
+</blockquote>
+<h4 id="异步HTTP请求线程"><a href="#异步HTTP请求线程" class="headerlink" title="异步HTTP请求线程"></a>异步HTTP请求线程</h4><ul>
+<li>在XMLHttpRequest在连接后是通过浏览器新开一个线程请求。</li>
+<li>将检测到状态变更时，如果设置有回调函数，异步线程就会产生状态变更事件，将这个回调再放入事件队列中。再由JS引擎执行。</li>
+</ul>
+<h3 id="Browser进程和浏览器内核的通信过程"><a href="#Browser进程和浏览器内核的通信过程" class="headerlink" title="Browser进程和浏览器内核的通信过程"></a>Browser进程和浏览器内核的通信过程</h3><ul>
+<li>Browser进程收到用户请求，首先需要获取页面内容，随后将该任务通过RenderHost接口传递给渲染进程；</li>
+<li>Render进程的RenderHost接口收到信息，简单解释后，交给渲染线程，然后开始渲染；</li>
+<li>渲染线程收到请求，加载网页并渲染网页，这其中可能需要Browser进程获取资源和需要GUI进程来帮助渲染；</li>
+<li>当然可能会有JS线程操作DOM(这样可能会造成回流并重绘)；</li>
+<li>最后Render进程将结果传递给Browser进程；</li>
+<li>Browser进程接收到结果并将结果绘制处理。</li>
+</ul>
+<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><h4 id="GUI渲染和JS引擎互斥"><a href="#GUI渲染和JS引擎互斥" class="headerlink" title="GUI渲染和JS引擎互斥"></a>GUI渲染和JS引擎互斥</h4><p>由于JavaScript是可以操作DOM的，如果咋修改这些元素同时渲染界面(即JS线程和UI线程同时运行)，那么渲染线程前后获得元素数据就不一致了。</p>
+<p>因此为了防止渲染出现不可预期的结果，浏览器设置GUI渲染线程与JS引擎为互斥关系，当JS引擎执行时GUI线程会被挂起，GUI更新则会被保存在一个队列中等到JS引擎线程空闲时立即被执行。</p>
+<h4 id="JS阻塞页面加载"><a href="#JS阻塞页面加载" class="headerlink" title="JS阻塞页面加载"></a>JS阻塞页面加载</h4><p>当JS引擎正在进行大量的计算时，就算GUI有更新，也会被保存在队列中，等待JS引擎空闲时执行。然后，由于巨量计算，所以JS引擎很可能很长时间后才能空闲，就会感觉到页面巨卡。</p>
+<p>所以要尽量避免JS执行时间过长，这样会造成页面的渲染不连贯，导致页面渲染加载阻塞的感觉。</p>
+<h4 id="WebWorker-多线程"><a href="#WebWorker-多线程" class="headerlink" title="WebWorker 多线程"></a>WebWorker 多线程</h4><blockquote>
+<p>WebWorker为Web内容在后台线程中运行脚本提供了一种简单的方法。线程可以执行任务而不干扰用户界面。一个worker是使用一个构造函数创建的一个对象(e.g.Worker())，运行一个命名的JavaScript文件，这个文件包含将在工作线程中运行的代码;workers运行在另一个全局上下文中,不同于当前的window因此，使用window快捷方式获取当前全局的范围(而不是self)在一个Worker内将返回错误。</p>
+</blockquote>
+<ul>
+<li>创建worker时，JS引擎向浏览器申请开一个子线程（子线程是浏览器开的，完全受主线程控制，而且不能操作DOM）。</li>
+<li>JS引擎线程与worker线程间通过特定的方式通信（postMessage API，需要通过序列号对象来与线程交互特定的数据）。</li>
+</ul>
+<p>所以，如果有非常耗时的工作，请单独开一个worker线程，这样里面不管如何让翻天覆地都不会影响JS引擎主线程，只需等待计算出结果后，将结果通信给主线程即可。</p>
+<blockquote>
+<p>注意！JS引擎是单线程的，这一点本质仍然未改变，worker可以理解是浏览器给JS引擎开的外挂，专门用来解决那些大量计算问题。</p>
+</blockquote>
+<p><strong>WebWorker与SharedWorker</strong></p>
+<ul>
+<li>WebWorker只属于某个页面，不会和其他页面的Render进程共享。</li>
+<li>所以Chrome在Render进程中，创建一个新的线程来运行worker中的JS程序。</li>
+<li>SharedWorker是浏览器所有页面共享的，不能采用与worker同样的方式出现，因为它不属于某个Render进程，可以为多个Render进程共享使用。</li>
+<li>所以Chrome浏览器为SharedWorker单独创建一个进程来运行JavaScript程序，在浏览器中每个相同的JavaScript只存在一个SharedWorker进程，不管它被创建多少次。</li>
+</ul>
+<blockquote>
+<p>SharedWorker由独立的进程管理，WebWorker只是属于render进程下的一个线程。</p>
+</blockquote>
+<h4 id="css加载是否会阻塞DOM树渲染"><a href="#css加载是否会阻塞DOM树渲染" class="headerlink" title="css加载是否会阻塞DOM树渲染"></a>css加载是否会阻塞DOM树渲染</h4><p>css是单独的下载线程异步下载的。</p>
+<ul>
+<li>css加载不会阻塞DOM树解析（异步加载时DOM照常构建）。</li>
+<li>但会阻塞render树渲染（渲染时需等css加载完毕，因为render树需要css信息）。</li>
+</ul>
+<p>这可能也是浏览器的一种优化机制。</p>
+<p>因为你加载css的时候，可能会修改下面DOM节点的样式，如果css加载不阻塞render树渲染的话，那么当css加载完之后，render树可能又得重新重绘或者回流了，这就造成了一些没有必要的损耗。</p>
+<p>所以干脆就先把DOM树的结构先解析完，把可以做的工作做完，然后等你css加载完之后，在根据最终的样式来渲染render树，这种做法性能方面确实会比较好一点。</p>
+<h4 id="普通图层和复合图层"><a href="#普通图层和复合图层" class="headerlink" title="普通图层和复合图层"></a>普通图层和复合图层</h4><p>可以简单的这样理解，浏览器渲染的图层一般包含两大类：普通图层以及复合图层。</p>
+<ul>
+<li><p>首先，普通文档流内可以理解为一个复合图层（这里称为默认复合层，里面不管添加多少元素，其实都是在同一个复合图层中）</p>
+</li>
+<li><p>其次，absolute布局（fixed也一样），虽然可以脱离普通文档流，但它仍然属于默认复合层。</p>
+</li>
+<li><p>然后，可以通过硬件加速的方式，声明一个新的复合图层，它会单独分配资源<br>（当然也会脱离普通文档流，这样一来，不管这个复合图层中怎么变化，也不会影响默认复合层里的回流重绘）</p>
+</li>
+</ul>
+<p>可以简单理解下：GPU中，各个复合图层是单独绘制的，所以互不影响，这也是为什么某些场景硬件加速效果一级棒。</p>
+<p><strong>如何变成复合图层</strong></p>
+<p>将该元素变成一个复合图层，就是传说中的<strong>硬件加速</strong>技术</p>
+<ul>
+<li>最常用的方式：translate3d、translateZ</li>
+<li>opacity属性/过渡动画（需要动画执行的过程中才会创建合成层，动画没有开始或结束后元素还会回到之前的状态）。</li>
+<li>will-chang属性（这个比较偏僻），一般配合opacity与translate使用（而且经测试，除了上述可以引发硬件加速的属性外，其它属性并不会变成复合层），作用是提前告诉浏览器要变化，这样浏览器会开始做一些优化工作（这个最好用完后就释放）。</li>
+<li>&lt;\video&gt;<iframe><canvas><webgl>等元素。</webgl></canvas></iframe></li>
+<li>其它，譬如以前的flash插件。</li>
+</ul>
+<p><strong>absolute和硬件加速的区别</strong></p>
+<ul>
+<li>可以看到，absolute虽然可以脱离普通文档流，但是无法脱离默认复合层。</li>
+<li>所以，就算absolute中信息改变时不会改变普通文档流中render树，但是，浏览器最终绘制时，是整个复合层绘制的，所以absolute中信息的改变，仍然会影响整个复合层的绘制。</li>
+</ul>
+<p>（浏览器会重绘它，如果复合层中内容多，absolute带来的绘制信息变化过大，资源消耗是非常严重的）</p>
+<ul>
+<li>而硬件加速直接就是在另一个复合层了（另起炉灶），所以它的信息改变不会影响默认复合层（当然了，内部肯定会影响属于自己的复合层），仅仅是引发最后的合成（输出视图）</li>
+</ul>
+<p><strong>复合图层的作用</strong></p>
+<p>一般一个元素开启硬件加速后会变成复合图层，可以独立于普通文档流中，改动后可以避免整个页面重绘，提升性能。</p>
+<p>但是尽量不要大量使用复合图层，否则由于资源消耗过度，页面反而会变的更卡。</p>
+<p><strong>硬件加速时请使用index</strong></p>
+<p>使用硬件加速时，尽可能的使用index，防止浏览器默认给后续的元素创建复合层渲染。</p>
+<p>具体的原理时这样的：</p>
+<ul>
+<li>webkit CSS3中，如果这个元素添加了硬件加速，并且index层级比较低，</li>
+<li>那么在这个元素的后面其它元素（层级比这个元素高的，或者相同的，并且releative或absolute属性相同的），会默认变为复合层渲染，如果处理不当会极大的影响性能。</li>
+</ul>
+<p>简单点理解，其实可以认为是一个隐式合成的概念：如果a是一个复合图层，而且b在a上面，那么b也会被隐式转为一个复合图层，这点需要特别注意。</p>
+<h3 id="JS运行机制"><a href="#JS运行机制" class="headerlink" title="JS运行机制"></a>JS运行机制</h3><ul>
+<li>JS分为同步任务和异步任务</li>
+<li>同步任务都在主线程上执行，形成一个执行栈。</li>
+<li>主线程之外，事件触发线程管理着一个任务队列，只要异步任务有了运行结果，就在任务队列之中放置一个事件。</li>
+<li>一旦执行栈中的所有同步任务执行完毕（此时JS引擎空闲），系统就会读取任务队列，将可运行的异步任务添加到可执行栈中，开始执行。</li>
+</ul>
+<p><strong>定时器</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="string">'hello!'</span>);&#125;,<span class="number">0</span>);<span class="built_in">console</span>.log(<span class="string">'begin'</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>执行结果是：先begin后hello!</li>
+<li>虽然代码的本意是0毫秒后就推入事件队列，但是W3C在HTML标准中规定，规定要求setTimeout中低于4ms的时间间隔算为4ms。<br>(不过也有一说是不同浏览器有不同的最小时间设定)</li>
+<li>就算不等待4ms，就算假设0毫秒就推入事件队列，也会先执行begin（因为只有可执行栈内空了后才会主动读取事件队列）</li>
+</ul>
+<p><strong>setTimeout而不是setInterval</strong></p>
+<p>用setTimeout模拟定期计时和直接用setInterval是有区别的。</p>
+<ul>
+<li>因为每次setTimeout计时到后就会去执行，然后执行一段时间后才会继续setTimeout，中间就多了误差（误差多少与代码执行时间有关）。</li>
+<li>而setInterval则是每次都精确的隔一段时间推入一个事件<br>（但是，事件的实际执行时间不一定就准确，还有可能是这个事件还没执行完毕，下一个事件就来了）</li>
+</ul>
+<p>而且setInterval有一些比较致命的问题就是：</p>
+<ul>
+<li>累计效应（上面提到的），如果setInterval代码在（setInterval）再次添加到队列之前还没有完成执行，就会导致定时器代码连续运行好几次，而之间没有间隔。就算正常间隔执行，多个setInterval的代码执行时间可能会比预期小（因为代码执行需要一定时间）</li>
+<li>譬如像iOS的webview,或者Safari等浏览器中都有一个特点，在滚动的时候是不执行JS的，如果使用了setInterval，会发现在滚动结束后会执行多次由于滚动不执行JS积攒回调，如果回调执行时间过长,就会非常容器造成卡顿问题和一些不可知的错误（这一块后续有补充，setInterval自带的优化，不会重复添加回调）</li>
+<li>而且把浏览器最小化显示等操作时，setInterval并不是不执行程序，它会把setInterval的回调函数放在队列中，等浏览器窗口再次打开时，一瞬间全部执行时。</li>
+</ul>
+<p>所以，鉴于这么多但问题，目前一般认为的最佳方案是：用setTimeout模拟setInterval，或者特殊场合直接用requestAnimationFrame</p>
+<h4 id="macrotask和microtask"><a href="#macrotask和microtask" class="headerlink" title="macrotask和microtask"></a>macrotask和microtask</h4><p>JS中分为两种任务类型：macrotask和microtask，在ECMAScript中，microtask称为jobs，macrotask可称为task。</p>
+<ul>
+<li><strong>macrotask</strong>（又称之为宏任务），可以理解是每次执行栈执行的代码就是一个宏任务（包括每次从事件队列中获取一个事件回调并放到执行栈中执行）。</li>
+<li>每一个task会从头到尾将这个任务执行完毕，不会执行其它。</li>
+<li><p>浏览器为了能够使得JS内部task与DOM任务能够有序的执行，会在一个task执行结束后，在下一个 task 执行开始前，对页面进行重新渲染<br>（task-&gt;渲染-&gt;task-&gt;…）</p>
+</li>
+<li><p><strong>microtask</strong>（又称为微任务），可以理解是在当前 task 执行结束后立即执行的任务。</p>
+</li>
+<li>也就是说，在当前task任务后，下一个task之前，在渲染之前。</li>
+<li>所以它的响应速度相比setTimeout（setTimeout是task）会更快，因为无需等渲染</li>
+<li>也就是说，在某一个macrotask执行完后，就会将在它执行期间产生的所有microtask都执行完毕（在渲染前）。</li>
+</ul>
+<p><strong>macrotask和microtask场景</strong></p>
+<ul>
+<li>macrotask：主代码块，setTimeout，setInterval等（可以看到，事件队列中的每一个事件都是一个macrotask）</li>
+<li>microtask：Promise，process.nextTick等</li>
+</ul>
+<blockquote>
+<p>在node环境下，process.nextTick的优先级高于Promise，也就是可以简单理解为：在宏任务结束后会先执行微任务队列中的nextTickQueue部分，然后才会执行微任务中的Promise部分。</p>
+<p>另外，setImmediate则是规定：在下一次Event Loop（宏任务）时触发（所以它是属于优先级较高的宏任务），（Node.js文档中称，setImmediate指定的回调函数，总是排在setTimeout前面），所以setImmediate如果嵌套的话，是需要经过多个Loop才能完成的，而不会像process.nextTick一样没完没了。</p>
+</blockquote>
+<p>macrotask中的事件都是放在一个事件队列中的，而这个队列由事件触发线程维护。</p>
+<p>microtask中的所有微任务都是添加到微任务队列（Job Queues）中，等待当前macrotask执行完毕后执行，而这个队列由JS引擎线程维护。</p>
+<p><strong>运行机制流程：</strong></p>
+<ul>
+<li>执行一个宏任务（栈中没有就从事件队列中获取）</li>
+<li>执行过程中如果遇到微任务，就将它添加到微任务的任务队列中</li>
+<li>宏任务执行完毕后，立即执行当前微任务队列中的所有微任务（依次执行）</li>
+<li>当前宏任务执行完毕，开始检查渲染，然后GUI线程接管渲染</li>
+<li>渲染完毕后，JS线程继续接管，开始下一个宏任务（从事件队列中获取）</li>
+</ul>
+<p>另外，请注意下Promise的polyfill与官方版本的区别：</p>
+<ul>
+<li>官方版本中，是标准的microtask形式</li>
+<li>polyfill，一般都是通过setTimeout模拟的，所以是macrotask形式</li>
+</ul>
+<blockquote>
+<p>注意，有一些浏览器执行结果不一样（因为它们可能把microtask当成macrotask来执行了），但是为了简单，这里不描述一些不标准的浏览器下的场景（但记住，有些浏览器可能并不标准）</p>
+</blockquote>
+<p>MutationObserver可以用来实现microtask（它属于microtask，优先级小于Promise，一般是Promise不支持时才会这样做）</p>
+<p>它是HTML5中的新特性，作用是：监听一个DOM变动，当DOM对象树发生任何变动时，Mutation Observer会得到通知.</p>
+<p>像以前的Vue源码中就是利用它来模拟nextTick的，具体原理是，创建一个TextNode并监听内容变化，然后要nextTick的时候去改一下这个节点的文本内容，如下：（Vue的源码，未修改）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> counter=<span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> observer=newMutationObserver(nextTickHandler)</span><br><span class="line"><span class="keyword">var</span> textNode=<span class="built_in">document</span>.createTextNode(<span class="built_in">String</span>(counter))</span><br><span class="line">observer.observe(textNode,&#123;<span class="attr">characterData</span>:<span class="literal">true</span>&#125;)</span><br><span class="line">timerFunc=<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    counter=(counter+<span class="number">1</span>)%<span class="number">2</span></span><br><span class="line">    textNode.data=<span class="built_in">String</span>(counter)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不过，现在的Vue（2.5+）的nextTick实现移除了MutationObserver的方式（据说是兼容性原因），取而代之的是使用MessageChannel（当然，默认情况仍然是Promise，不支持才兼容的）。</p>
+<p>MessageChannel属于宏任务，优先级是：setImmediate-&gt;MessageChannel-&gt;setTimeout，所以Vue（2.5+）内部的nextTick与2.4及之前的实现是不一样的，需要注意下。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/19/JS函数节流/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1713,188 +2088,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/16/Vue路由Router/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aisling Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleCorn个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/16/Vue路由Router/" itemprop="url">Vue路由Router</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T10:27:31+08:00">
-                2018-03-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
-<li>route，它是一条路由，由这个英文单词也可以看出来，它是单数， Home按钮  =&gt; home内容， 这是一条route,  about按钮 =&gt; about 内容， 这是另一条路由。</li>
-<li>routes 是一组路由，把上面的每一条路由组合起来，形成一个数组。[{home 按钮 =&gt;home内容 }， { about按钮 =&gt; about 内容}]</li>
-<li>router 是一个机制，相当于一个管理者，它来管理路由。因为routes 只是定义了一组路由，它放在哪里是静止的，当真正来了请求，怎么办？ 就是当用户点击home 按钮的时候，怎么办？这时router 就起作用了，它到routes 中去查找，去找到对应的 home 内容，所以页面中就显示了 home 内容。</li>
-</ul>
-<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><p><strong>页面实现（html模版中）</strong></p>
-<p>在vue-router中, 我们看到它定义了两个标签&lt;\router-link&gt; 和&lt;\router-view&gt;来对应点击和显示部分。&lt;\router-link&gt; 就是定义页面中点击的部分，&lt;\router-view&gt; 定义显示部分，就是点击后，区配的内容显示在什么地方。所以 &lt;\router-link&gt; 还有一个非常重要的属性 to，定义点击之后，要到哪里去， 如：&lt;\router-link  to=”/home”&gt;Home&lt;\/router-link&gt;</p>
-<p><strong>js 中配置路由</strong></p>
-<p>首先要定义route,一条路由的实现。它是一个对象，由两个部分组成： path和component.  path 指路径，component 指的是组件。如：{path:’/home’, component: home}</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/home'</span>, <span class="attr">component</span>: Home &#125;,</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/about'</span>, <span class="attr">component</span>: About &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>创建router 对路由进行管理，它是由构造函数 new vueRouter() 创建，接受routes 参数。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">      routes <span class="comment">// routes: routes 的简写</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>配置完成后，把router 实例注入到 vue 根实例中,就可以使用路由了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  router</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>)</span><br></pre></td></tr></table></figure>
-<p>执行过程：当用户点击 router-link 标签时，会去寻找它的 to 属性， 它的 to 属性和 js 中配置的路径{ path: ‘/home’, component: Home}  path 一一对应，从而找到了匹配的组件， 最后把组件渲染到 &lt;\router-view&gt; 标签所在的地方。所有的这些实现才是基于hash 实现的。</p>
-<p><strong>实现原理：</strong></p>
-<p>打开浏览器控制台，首先看到 router-link 标签渲染成了 a 标签，to 属性变成了a 标签的 href 属性，这时就明白了点击跳转的意思。router-view 标签渲染成了我们定义的组件，其实它就是一个占位符，它在什么地方，匹配路径的组件就在什么地方，所以 router-link 和router-view 标签一一对应，成对出现。</p>
-<h3 id="redirect-重定向"><a href="#redirect-重定向" class="headerlink" title="redirect 重定向"></a>redirect 重定向</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/'</span>, <span class="attr">redirect</span>: <span class="string">'/goods'</span>&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>还可以是一个方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">path</span>: <span class="string">'/a'</span>, <span class="attr">redirect</span>: <span class="function"><span class="params">to</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 方法接收 目标路由 作为参数</span></span><br><span class="line">      <span class="comment">// return 重定向的 字符串路径/路径对象</span></span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h3><p>上面我们定义的路由，都是严格匹配的，只有router-link 中的to属性和 js 中一条路由route中 path 一模一样，才能显示相应的组件component. 但有时现实却不是这样的，比如不同用户都会进入同一个组件，根据userid来区分，符合路由规则，就会加载指定组件。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*新增user路径，配置了动态的id*/</span></span><br><span class="line">&#123;</span><br><span class="line">    path: <span class="string">"/user/:id"</span>,</span><br><span class="line">    component: user</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>params获取动态路由参数</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$route.params.id</span><br></pre></td></tr></table></figure>
-<p><strong>watch监听$route的变化</strong></p>
-<p>动态路由在来回切换时，由于它们都是指向同一组件，vue不会销毁再创建这个组件，而是复用这个组件，就是当第一次点击（如：user123）的时候，vue 把对应的组件渲染出来，但在user123, user456点击来回切换的时候，这个组件就不会发生变化了，组件的生命周期不管用了。这时如果想要在组件来回切换的时候做点事情，那么只能在组件内部（user.vue中）利用<strong>watch 来监听$route 的变化</strong>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">        data () &#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                dynamicSegment: <span class="string">''</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        watch: &#123;</span><br><span class="line">            $route (to,<span class="keyword">from</span>)&#123;</span><br><span class="line">                <span class="comment">// to表示的是你要去的那个组件，from 表示的是你从哪个组件过来的，它们是两个对象，你可以把它打印出来，它们也有一个param 属性</span></span><br><span class="line">                <span class="built_in">console</span>.log(to);</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="keyword">from</span>);</span><br><span class="line">                <span class="keyword">this</span>.dynamicSegment = to.params.id</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="嵌套路由"><a href="#嵌套路由" class="headerlink" title="嵌套路由"></a>嵌套路由</h3><p>路由嵌套路由，父子路由。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link to=&quot;这里要写绝对路径：parent/child&quot;&gt;&lt;/router-link&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">    &#123;</span><br><span class="line">        path:<span class="string">"/home"</span>,</span><br><span class="line">　　　　　<span class="comment">// 下面这个属性也不能少，因为，我们是先进入home页面，才能进入子路由</span></span><br><span class="line">        component: home,</span><br><span class="line">　　　　 <span class="comment">// 子路由</span></span><br><span class="line">        children: [</span><br><span class="line">            &#123;</span><br><span class="line">                path: <span class="string">"phone"</span>,</span><br><span class="line">                component: phone</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                path: <span class="string">"tablet"</span>,</span><br><span class="line">                component: tablet</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                path: <span class="string">"computer"</span>,</span><br><span class="line">                component: computer</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        path: <span class="string">"/about"</span>,</span><br><span class="line">        component: about</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        path: <span class="string">"/user/:id"</span>,</span><br><span class="line">        component: user</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        path: <span class="string">'/'</span>, </span><br><span class="line">        redirect: <span class="string">'/home'</span> </span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<h3 id="命名路由"><a href="#命名路由" class="headerlink" title="命名路由"></a>命名路由</h3><p>给路由定义不同的名字，根据名字进行匹配。给不同的router-view定义名字，通过名字进行对应组件的渲染 。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link to=&quot;/user/123&quot;&gt;User123&lt;/router-link&gt; // 和下面等价 </span><br><span class="line">&lt;router-link :to=&quot;&#123; name: &apos;user&apos;, params: &#123; userId: 123 &#125;&#125;&quot;&gt;User&lt;/router-link&gt;   // 当使用对象作为路由的时候，to前面要加一个冒号,表示绑定</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    path: <span class="string">"/user/:id"</span>,</span><br><span class="line">    name: <span class="string">"user"</span>,</span><br><span class="line">    component: user</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="编程式路由"><a href="#编程式路由" class="headerlink" title="编程式路由"></a>编程式路由</h3><p>这主要应用到按钮点击上。当点击按钮的时候，跳转另一个组件, 这只能用代码，调用<strong>rourter.push()</strong> 方法。 当们把router 注入到根实例中后，组件中通过 this.$router 可以获取到router, 所以在组件中使用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">this.$router.push(&quot;home&quot;);//就可以跳转到home界面</span><br><span class="line"></span><br><span class="line">this.$router.push(&quot;name&quot;);</span><br><span class="line">this.$router.push(&#123;path: &quot;name&quot;&#125;);</span><br><span class="line">this.$router.push(&#123;path: &quot;name?a=123&quot;&#125;);</span><br><span class="line">//或者 </span><br><span class="line">this.$router.push(&#123;path: &quot;name&quot;, query:&#123;a: 123&#125;&#125;);</span><br><span class="line">this.$router.go(1);</span><br></pre></td></tr></table></figure>
-<p><strong>query获取push的路由参数</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$route.query.name;</span><br></pre></td></tr></table></figure>
-<p><strong>$router.go(n)</strong> 这个方法的参数是一个整数，意思是在history记录中向前或者后退多少步，类似window.history.go(n)</p>
-<h3 id="History模式"><a href="#History模式" class="headerlink" title="History模式"></a>History模式</h3><p>mode：history || hash  默认是hash，区别是hash带#，history不带#    </p>
-<p>使用history模式时，URL就是正常的url。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  mode: <span class="string">'history'</span>,</span><br><span class="line">  routes: [...]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1949,7 +2142,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
