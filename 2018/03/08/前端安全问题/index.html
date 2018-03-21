@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="LittleCorn个人博客">
 <meta property="og:description" content="XSS跨站脚本（英语：Cross-site scripting，通常简称为：XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。 XSS更偏向于代码实现（即写一段拥有跨站请求功能的JavaScript脚本注入到一条帖子里，然后有用户访问了这个帖子，这就算是中了XSS攻击了）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-19T13:17:36.760Z">
+<meta property="og:updated_time" content="2018-03-21T06:38:53.751Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端安全问题">
 <meta name="twitter:description" content="XSS跨站脚本（英语：Cross-site scripting，通常简称为：XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。 XSS更偏向于代码实现（即写一段拥有跨站请求功能的JavaScript脚本注入到一条帖子里，然后有用户访问了这个帖子，这就算是中了XSS攻击了）">
@@ -349,14 +349,14 @@
 </blockquote>
 <p><strong>攻击方法：</strong></p>
 <ol>
-<li>手动攻击:<br>编写注入脚本，比如”/&gt;<script>alert(document.cookie());</script>&lt;!–等;<br>手动测试目标网站上有的input, textarea等所有可能输入文本信息的区域</li>
+<li>手动攻击:<br>编写注入脚本，比如”/&gt;&lt;\script&gt;alert(document.cookie());&lt;\/script&gt;&lt;!–等;<br>手动测试目标网站上有的input, textarea等所有可能输入文本信息的区域</li>
 <li>自动攻击<br>利用工具扫描目标网站所有的网页并自动测试写好的注入脚本，比如：Burpsuite等.</li>
 </ol>
 <p><strong>防御方法：</strong></p>
 <ol>
 <li>将cookie等敏感信息设置为httponly，禁止Javascript通过document.cookie获得</li>
 <li>对所有的输入做严格的校验尤其是在服务器端，过滤掉任何不合法的输入，比如手机号必须是数字，通常可以采用正则表达式</li>
-<li>净化和过滤掉不必要的html标签，比如：<iframe>, alt,<script> 等</li>
+<li>净化和过滤掉不必要的html标签，比如：&lt;\iframe&gt;, alt,&lt;\script&gt; 等</li>
 <li>净化和过滤掉不必要的Javascript的事件标签，比如：onclick, onfocus等</li>
 <li>转义单引号，双引号，尖括号等特殊字符，可以采用htmlencode编码 或者过滤掉这些特殊字符</li>
 <li>设置浏览器的安全设置来防范典型的XSS注入(设置 X-XSS-Protection 头)</li>
@@ -393,7 +393,7 @@
 <li>永远不要使用管理员权限的数据库连接，为每个应用使用单独的权限有限的数据库连接。</li>
 <li>不要把机密信息明文存放，请加密或者hash掉密码和敏感的信息。</li>
 </ol>
-</script></iframe></li></ol>
+
       
     </div>
     
@@ -573,7 +573,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#XSS"><span class="nav-number">1.</span> <span class="nav-text">XSS</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#XSS"><span class="nav-number">1.</span> <span class="nav-text">XSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSRF"><span class="nav-number">2.</span> <span class="nav-text">CSRF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL注入"><span class="nav-number">3.</span> <span class="nav-text">SQL注入</span></a></li></ol></div>
             
 
           </div>
