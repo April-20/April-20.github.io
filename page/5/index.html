@@ -252,6 +252,700 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/05/Flex弹性布局/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/05/Flex弹性布局/" itemprop="url">Flex弹性布局</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-05T15:04:52+08:00">
+                2018-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Flex基本概念"><a href="#Flex基本概念" class="headerlink" title="Flex基本概念"></a>Flex基本概念</h3><ul>
+<li>Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。任何一个容器都可以指定为 Flex 布局。</li>
+<li>Webkit 内核的浏览器，必须加上-webkit前缀。</li>
+<li>设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效。</li>
+</ul>
+<h3 id="父容器的属性"><a href="#父容器的属性" class="headerlink" title="父容器的属性"></a>父容器的属性</h3><h4 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h4><p>决定主轴的方向，即项目的排列方向</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">    flex-direction:row | row-reverse |column |column-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>row（默认值）：主轴为水平方向，起点在左端。</li>
+<li>row-reverse：主轴为水平方向，起点在右端。</li>
+<li>column：主轴为垂直方向，起点在上沿。</li>
+<li>column-reverse：主轴为垂直方向，起点在下沿。</li>
+</ul>
+<h4 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h4><p>决定项目在轴线上排不下的时候的换行行为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">    flex-wrap: nowrap | wrap | wrap-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>nowrap（默认）：不换行。</li>
+<li>wrap：换行，第一行在上方。</li>
+<li>wrap-reverse：换行，第一行在下方。</li>
+</ul>
+<h4 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h4><p>是flex-direction 和 flex-wrap属性的简写形式，默认值：row nowrap</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h4><p>定义项目在主轴上的对齐方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  justify-content: flex-start | flex-end | center | space-between | space-around;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>flex-start（默认值）：左对齐</li>
+<li>flex-end：右对齐</li>
+<li>center： 居中</li>
+<li>space-between：两端对齐，项目之间的间隔都相等。</li>
+<li>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</li>
+</ul>
+<h4 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h4><p>定义项目在交叉轴上的对齐方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  align-items: flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>flex-start：交叉轴的起点对齐。</li>
+<li>flex-end：交叉轴的终点对齐。</li>
+<li>center：交叉轴的中点对齐。</li>
+<li>baseline: 项目的第一行文字的基线对齐。</li>
+<li>stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。</li>
+</ul>
+<h4 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h4><p>定义多根轴线的对齐方式，如果项目只有一根轴线，该属性不起作用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  align-content: flex-start | flex-end | center | space-between | space-around | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>flex-start：与交叉轴的起点对齐。</li>
+<li>flex-end：与交叉轴的终点对齐。</li>
+<li>与交叉轴的中点对齐。</li>
+<li>space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。</li>
+<li>space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</li>
+<li>stretch（默认值）：轴线占满整个交叉轴。</li>
+</ul>
+<h3 id="子项目的属性"><a href="#子项目的属性" class="headerlink" title="子项目的属性"></a>子项目的属性</h3><h4 id="order"><a href="#order" class="headerlink" title="order"></a>order</h4><p>定义项目的排列顺序。数字越小，排列越靠前，默认0。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  order: &lt;integer&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h4><p>定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  flex-grow: &lt;number&gt;; /* default 0 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
+<h4 id="flex-shrink"><a href="#flex-shrink" class="headerlink" title="flex-shrink"></a>flex-shrink</h4><p>定义项目的缩小比例，默认为1，即如果空间不足，该项目缩小。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  flex-shrink: &lt;number&gt;; /* default 1 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。</p>
+<h4 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h4><p>定义在分配多余空间之前，项目占据的主轴空间。浏览器根据这个属性，计算主轴是否有多余空间。默认值为auto，即项目的本来大小。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  flex-basis: &lt;length&gt; | auto; /* default auto */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。</p>
+<h4 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h4><p>是flex-grow、flex-shrink、flex-basis属性的简写，默认值为 0 1 auto。后两个属性可选。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  flex: none | [ &lt;&apos;flex-grow&apos;&gt; &lt;&apos;flex-shrink&apos;&gt;? || &lt;&apos;flex-basis&apos;&gt; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。</p>
+<h4 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h4><p>该属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值是auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  align-self: auto | flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该属性可能取6个值，除了auto，其他都与align-items属性完全一致。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/05/CSS知识点总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/05/CSS知识点总结/" itemprop="url">CSS知识点总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-05T12:04:01+08:00">
+                2018-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h3><p>标准盒子模型：宽度 = 内容宽度(contengt) + border + padding + margin;</p>
+<p>低版本IE盒子模型：宽度 = 内容宽度(content + border + padding) + margin;</p>
+<h3 id="box-sizing"><a href="#box-sizing" class="headerlink" title="box-sizing"></a>box-sizing</h3><p>用来控制元素的盒子模型的解析模式，默认为content-box。</p>
+<ul>
+<li>content-box：在宽度和高度之外绘制元素的内边框和边框。</li>
+<li>border-box：为元素设置的任何padding和border都将在已设定的宽度和高度内进行绘制。</li>
+<li>inherit：规定应从父元素继续box-sizing属性的值。</li>
+</ul>
+<h3 id="display属性值"><a href="#display属性值" class="headerlink" title="display属性值"></a>display属性值</h3><ul>
+<li>inline（默认）–行内元素</li>
+<li>none–隐藏</li>
+<li>block–块元素</li>
+<li>table–表格显示</li>
+<li>list-item–项目列表</li>
+<li>inline-block–行内块级元素</li>
+</ul>
+<p><strong>块级元素：</strong> div、p、h1~h6、form、ul、li、ol、dl、address、hr、menu、table</p>
+<p><strong>行内元素：</strong> a、span、strong、br、img、input、label、select、textarea、cite</p>
+<p><strong>区别：</strong></p>
+<ul>
+<li>块级元素会独占一行，其宽度自动填满其父元素宽度。行内元素不会独占一行，相邻的行内元素会排列在同一行里，直到一行排不下，才会换行，其宽度随着元素的内容而变化。</li>
+<li>块级元素可以设置width、height属性。行内元素设置宽高无效。</li>
+<li>块级元素可以设置margin、padding。行内元素的水平方向的padding、margin可以产生边距效果，但是竖直方向的padding、margin设置无效。</li>
+<li>块级元素可以包含块级元素和行内元素，但是行内元素只能包含文本或其他行内元素，不能包含块级元素。</li>
+</ul>
+<p><strong>注意：</strong> 对于div之间或span之间因标签换行产生的间距，可以通过给父元素设置font-size：0，或者去掉换行，来消除。</p>
+<p><strong>display:inline-block产生间隙</strong></p>
+<ul>
+<li>有空格的时候会产生间隙。解决办法：移除空格。</li>
+<li>margin正值的时候产生间隙。解决办法：margin使用负值。</li>
+<li>使用font-size的时候产生间隙。解决办法：font-size:0、 letter-space、word-spacing。</li>
+</ul>
+<h3 id="position属性值"><a href="#position属性值" class="headerlink" title="position属性值"></a>position属性值</h3><ul>
+<li>static：（默认）按照正常文档流进行排列。</li>
+<li>relative：（相对定位）不脱离文档流，参考自身静态位置通过top、bottom、left、right进行定位。(原本的空间还占据着)</li>
+<li>absolute：（绝对定位）会脱离文档流，参考距离自己最近的一个不为static的父级元素通过top、left、bottom、right进行定位。（不占有原本的空间，后面的元素会顶上去，而且不论元素是行内元素还是块级元素，都会生成一个块级框）</li>
+<li>fixed：（固定定位）参考可视窗口(浏览器)进行定位。</li>
+</ul>
+<p><strong>包含块：</strong> 可以理解为一个矩形，其作用为它里面包含的元素提供一个参考，元素的尺寸和位置的计算往往是由该元素所在的包含块决定的。</p>
+<ul>
+<li>static元素和relative元素：包含块由它最近的块级、单元格或者行内块祖先元素的内容框创建。</li>
+<li>fixed元素：包含块是当前浏览器窗口。</li>
+<li>absolute元素：包含块由最近的position不为static的祖先元素创建。如果创建包含块的祖先元素是行内元素，包含块的范围是这个祖先元素中的第一个和最后一个行内块的padding围起来的区域。如果祖先元素不是行内元素，包含块的范围就是这个祖先元素的内边距+width区域。如果没有找到这样的祖先元素，这个绝对定位的元素的包含块为初始块。</li>
+</ul>
+<p><strong>position、display、float：</strong><br>display属性规定元素应该生成的框的类型，position属性规定元素的定位类型；float属性是一种布局方式，定义元素在哪个方向浮动。</p>
+<blockquote>
+<p>position:absolute和float的共同点，可以让元素脱离文档流，并且可以设置宽高。不同点是：float仍会占据位置，absolute会覆盖文档流中的其他元素。</p>
+</blockquote>
+<h3 id="visibility属性值"><a href="#visibility属性值" class="headerlink" title="visibility属性值"></a>visibility属性值</h3><ul>
+<li>visible：(默认值)元素可见。</li>
+<li>hidden：元素不可见。</li>
+<li>collapse：当在表格元素中使用时，此值可删除一行或一列，但是他不会影响表格的布局。被行或列占据的空间会留给其他内容使用。如果此值在其他元素上使用，会呈现为“hidden”。</li>
+<li>inherit：规定从父元素继承visibility属性值。</li>
+</ul>
+<p><strong>collapse浏览器不同表现：</strong> </p>
+<ul>
+<li>chrome中，使用collapse值和使用hidden没有区别。</li>
+<li>firefox，opera和IE中，使用collapse值和使用display:none没有区别。</li>
+</ul>
+<p><strong>dispaly:none和visibility:hidden的区别：</strong></p>
+<ul>
+<li>display:none，不显示对应的元素，在文档布局中不再分配空间（回流+重绘）。</li>
+<li>visibility:hidden，隐藏对应元素，在文档布局中仍保留原来的空间（重绘）。</li>
+</ul>
+<h3 id="overflow属性值"><a href="#overflow属性值" class="headerlink" title="overflow属性值"></a>overflow属性值</h3><ul>
+<li>scroll:必会出现滚动条。</li>
+<li>auto：子元素内容大于父元素时出现滚动条。</li>
+<li>visible：（默认值）溢出的内容出现在父元素之外。</li>
+<li>hidden：溢出隐藏。</li>
+</ul>
+<h3 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h3><ul>
+<li>父级div定义height。</li>
+<li>最后一个浮动元素后面加空div，并添加clear:both样式。</li>
+<li>包含浮动元素的父元素添加overflow:hidden/auto样式。</li>
+<li>父级div加伪类：after。</li>
+<li>父级div定义zoom(IE6/7)。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">    <span class="attribute">clear</span>:both;</span><br><span class="line">    <span class="attribute">content</span>:<span class="string">''</span>;</span><br><span class="line">    <span class="attribute">display</span>:block;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">visibility</span>:hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>浮动带来的问题：</strong></p>
+<ul>
+<li>父元素的高度无法被撑开，影响与父元素同级的元素。</li>
+<li>与浮动元素同级的非浮动元素会跟随其后。</li>
+<li>若非第一个元素浮动，则该元素之前的元素也需要浮动，否则会影响页面显示的结构。</li>
+</ul>
+<p><strong>设置元素浮动后，该元素的display值为block。</strong></p>
+<h3 id="BFC-块级格式上下文"><a href="#BFC-块级格式上下文" class="headerlink" title="BFC(块级格式上下文)"></a>BFC(块级格式上下文)</h3><p>BFC规定了内部块级元素如何布局：</p>
+<ul>
+<li>内部的div会在垂直方向上一个接一个放置。</li>
+<li>div垂直方向的距离由margin决定，属于同一个BFC的两个相邻的div的margin会<strong>发生重叠</strong>。(取较大的值)</li>
+<li>每个元素的margin-left，与包含块的左边相接触。</li>
+<li>BFC的区域不会与float元素重叠。</li>
+<li>BFC是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。</li>
+<li>计算BFC的高度时，浮动元素也会参与计算。</li>
+</ul>
+<p><strong>触发BFC的条件：</strong></p>
+<ul>
+<li>根元素，即html。</li>
+<li>float的值不为none(默认值)时。</li>
+<li>overflow的值不为visible(默认值)时。</li>
+<li>display的值为inline-block、table-cell、table-caption时。</li>
+<li>position的值为absolute或fixed时。</li>
+<li>flex布局(display:flex或inline-flex)。</li>
+</ul>
+<p><strong>margin重叠解决方法：</strong></p>
+<ul>
+<li>在其中一个元素的外面包裹一层容器，并触发该容器生成一个BFC。那么两个元素便属于不同的BFC，就不会发生margin重叠。</li>
+<li>规定css规范，统一margin-top或者margin-bottom.</li>
+</ul>
+<p><strong>BFC应用场景：</strong></p>
+<ul>
+<li>解决浮动问题。给父元素设置overflow:hidden,触发BFC，所以他内部的元素就不会影响外面的布局。BFC就把浮动的子元素高度当做了自己内部的高度去处理溢出，所以外面看起来是清除了浮动。</li>
+<li>解决侵占浮动元素的问题。为非浮动元素建立BFC环境，根据BFC不与float元素重叠的规则，可以解决侵占问题。</li>
+</ul>
+<h3 id="IFC-内联格式化上下文"><a href="#IFC-内联格式化上下文" class="headerlink" title="IFC(内联格式化上下文)"></a>IFC(内联格式化上下文)</h3><p>IFC的line box（线框）高度由其包含行内元素中最高的实际高度计算而来（不受到竖直方向的padding/margin影响)。</p>
+<p>每个IFC对外表现为块级元素，与div垂直排列。</p>
+<p><strong>使用场景：</strong></p>
+<ul>
+<li>水平居中：当一个块要在环境中水平居中时，设置其为inline-block则会在外层产生IFC，通过text-align则可以使其水平居中。</li>
+<li>垂直居中：创建一个IFC，用其中一个元素撑开父元素的高度，然后设置其vertical-align:middle，其他行内元素则可以在此父元素下垂直居中。</li>
+</ul>
+<p><strong>GFC</strong></p>
+<p>GFC(GridLayout Formatting Contexts)直译为”网格布局格式化上下文”，当为一个元素设置display值为grid的时候，此元素将会获得一个独立的渲染区域，我们可以通过在网格容器上定义网格定义行和网格定义列属性，在网格项目上定义网格行和网格列,为每一个网格项目定义位置和空间。</p>
+<p><strong>FFC</strong></p>
+<p>FFC(Flex Formatting Contexts)直译为”自适应格式化上下文”，display值为flex或者inline-flex的元素将会生成自适应容器。伸缩容器中的每一个子元素都是一个伸缩项目。伸缩项目可以是任意数量的。伸缩容器外和伸缩项目内的一切元素都不受影响。简单地说，Flexbox 定义了伸缩容器内伸缩项目该如何布局。</p>
+<h3 id="FOUC"><a href="#FOUC" class="headerlink" title="FOUC"></a>FOUC</h3><p>Flash Of Unstyled Content 文档样式闪烁</p>
+<p>通过@import引入css文件，浏览器DOM加载完到css加载完成中间会有一段时间页面上的内容是没有样式的，这段时间长度跟网速有关，样式加载完毕后，页面重新渲染，引起重绘，重排。</p>
+<p><strong>解决方法：</strong></p>
+<p>把@import换成link标签，或者在link后面加一个script标签</p>
+<h3 id="margin和padding适用场景"><a href="#margin和padding适用场景" class="headerlink" title="margin和padding适用场景"></a>margin和padding适用场景</h3><p><strong>margin的使用：</strong></p>
+<ul>
+<li>需要在border外侧添加空白。</li>
+<li>空白处不需要背景色。</li>
+<li>上下相连的两个盒子之间的空白，需要相互抵消时。</li>
+</ul>
+<p><strong>padding的使用：</strong></p>
+<ul>
+<li>需要在border内测添加空白。</li>
+<li>空白处需要背景色。</li>
+<li>上下相连的两个盒子的空白，希望为两者之和时。</li>
+</ul>
+<h3 id="元素竖直方向百分比"><a href="#元素竖直方向百分比" class="headerlink" title="元素竖直方向百分比"></a>元素竖直方向百分比</h3><p>当按百分比设定一个元素的宽度时，它是相对于父容器的宽度计算的，但是，对于一些表示竖向距离的属性，例如 padding-top , padding-bottom , margin-top , margin-bottom 等，当按百分比设定它们时，依据的也是父容器的宽度，而不是高度。</p>
+<h3 id="line-height"><a href="#line-height" class="headerlink" title="line-height"></a>line-height</h3><p>行高是指一行文字的高度，具体说是两行文字间基线的距离。CSS中起高度作用的是height和line-height，没有定义height属性，最终其表现作用一定是line-height。</p>
+<p>单行文本垂直居中：把line-height值设置为height一样大小的值可以实现单行文字的垂直居中，其实也可以把height删除。<br>多行文本垂直居中：需要设置display属性为inline-block。</p>
+<h3 id="css创建三角形"><a href="#css创建三角形" class="headerlink" title="css创建三角形"></a>css创建三角形</h3><p>首先，需要把元素宽度、高度设为0，然后其中三个边框设为透明。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">width</span>: 0;</span><br><span class="line"><span class="selector-tag">height</span>: 0;</span><br><span class="line"><span class="selector-tag">border-top</span>: 40<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-tag">transparent</span>;</span><br><span class="line"><span class="selector-tag">border-left</span>: 40<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-tag">transparent</span>;</span><br><span class="line"><span class="selector-tag">border-right</span>: 40<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-tag">transparent</span>;</span><br><span class="line"><span class="selector-tag">border-bottom</span>: 40<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#ff0000</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="常见兼容性问题"><a href="#常见兼容性问题" class="headerlink" title="常见兼容性问题"></a>常见兼容性问题</h3><ol>
+<li>不同浏览器的标签默认的margin和padding不一样。我们可以设置*{margin: 0; padding: 0}</li>
+<li>IE6双边距bug：块属性标签float后，又有水平方向的margin情况下，在IE6显示左边的margin可能会变成两倍宽度。我们可以设置 display: inline，将其转化为行内元素，或者改变padding。</li>
+<li>设置较小高度标签（小于10px），在IE6，IE7中高度超出自己设置的高度。我们可以给超出高度的标签设置 overflow: hidden，或者设置行高line-height小于你设置的高度。</li>
+<li><strong>Chrome中文界面下默认会将小于12px的文本强制按照12px显示。我们可以加入css属性 -webkit-text-size-adjust: none(高版本不支持);或者设置transform:scale(0.8)</strong></li>
+<li>超链接访问过后hover样式不见了，被点击访问过的超链接样式不再具有hover和active了。我们可以改变css属性排列顺序：L-V-H-A: a：link{},a:visited{},a:hover{},a:active{}.</li>
+</ol>
+<h3 id="全屏滚动原理"><a href="#全屏滚动原理" class="headerlink" title="全屏滚动原理"></a>全屏滚动原理</h3><ul>
+<li>原理：有点类似于轮播，整体的元素一直排列下去，假设有5个需要展示的全屏页面，那么高度是500%，只是展示100%，剩下的可以通过transform进行y轴定位，也可以通过margin-top实现。</li>
+<li>overflow：hidden；transition：all 1000ms ease；</li>
+</ul>
+<h3 id="让页面字体边清晰变细"><a href="#让页面字体边清晰变细" class="headerlink" title="让页面字体边清晰变细"></a>让页面字体边清晰变细</h3><p>-webkit-font-smoothing在window系统下没有起作用，但是在IOS设备上起作用-webkit-font-smoothing：antialiased是最佳的，灰度平滑。</p>
+<h3 id="响应式设计"><a href="#响应式设计" class="headerlink" title="响应式设计"></a>响应式设计</h3><p>响应式网站设计(Responsive Web design)是一个网站能够兼容多个终端，而不是为每一个终端做一个特定的版本。</p>
+<p><strong>基本原理：</strong> 是通过媒体查询检测不同的设备屏幕尺寸做处理。<br>页面头部必须有meta声明的viewport。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=’viewport’ </span><br><span class="line">content=”width=device-width, initial-scale=1. maximum-scale=1,</span><br><span class="line">user-scalable=no”&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="移动端媒体查询"><a href="#移动端媒体查询" class="headerlink" title="移动端媒体查询"></a>移动端媒体查询</h3><p>通过媒体查询可以为不同大小和尺寸的媒体定义不同的css，适应相应的设备的显示。</p>
+<ul>
+<li><p><head>里边</head></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;xxx.css&quot; media=&quot;only screen and (max-device-width:480px)&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CSS : @media only screen and (max-device-width:480px) {/css样式/}</p>
+</li>
+</ul>
+<h3 id="视差滚动效果"><a href="#视差滚动效果" class="headerlink" title="视差滚动效果"></a>视差滚动效果</h3><p>视差滚动（Parallax Scrolling）通过在网页向下滚动的时候，控制背景的移动速度比前景的移动速度慢来创建出令人惊叹的3D效果。</p>
+<ul>
+<li>CSS3实现。优点：开发时间短、性能和开发效率比较好，缺点是不能兼容到低版本的浏览器。</li>
+<li>jQuery实现。通过控制不同层滚动速度，计算每一层的时间，控制滚动效果。优点：能兼容到各个版本的，效果可控性好<br>缺点：开发起来对制作者要求高。</li>
+<li>插件实现方式<br>例如：parallax-scrolling，兼容性十分好。</li>
+</ul>
+<h3 id="浏览器怎样解析css选择器"><a href="#浏览器怎样解析css选择器" class="headerlink" title="浏览器怎样解析css选择器"></a>浏览器怎样解析css选择器</h3><p>CSS选择器的解析是从右向左解析的。若从左向右的匹配，发现不符合规则，需要进行回溯，会损失很多性能。</p>
+<p>若从右向左匹配，先找到所有的最右节点，对于每一个节点，向上寻找其父节点直到找到根元素或满足条件的匹配规则，则结束这个分支的遍历。</p>
+<p>两种匹配规则的性能差别很大，是因为从右向左的匹配在第一步就筛选掉了大量的不符合条件的最右节点（叶子节点），而从左向右的匹配规则的性能都浪费在了失败的查找上面。</p>
+<p>而在 CSS 解析完毕后，需要将解析的结果与 DOM Tree 的内容一起进行分析建立一棵 Render Tree，最终用来进行绘图。</p>
+<p>在建立 Render Tree 时（WebKit 中的「Attachment」过程），浏览器就要为每个 DOM Tree 中的元素根据 CSS 的解析结果（Style Rules）来确定生成怎样的 Render Tree。</p>
+<h3 id="在网页中应该使用偶数字体"><a href="#在网页中应该使用偶数字体" class="headerlink" title="在网页中应该使用偶数字体"></a>在网页中应该使用偶数字体</h3><p>使用偶数字体。偶数字号相对更容易和 web 设计的其他部分构成比例关系。Windows 自带的点阵宋体（中易宋体）从 Vista 开始只提供 12、14、16 px 这三个大小的点阵，而 13、15、17 px时用的是小一号的点。（即每个字占的空间大了 1 px，但点阵没变），于是略显稀疏。</p>
+<h3 id="手写动画，最小时间间隔"><a href="#手写动画，最小时间间隔" class="headerlink" title="手写动画，最小时间间隔"></a>手写动画，最小时间间隔</h3><p>多数显示器默认频率是60Hz，即1秒刷新60次，所以理论上最小间隔为1/60＊1000ms ＝ 16.7ms。</p>
+<h3 id="li与li之间的空白间隔"><a href="#li与li之间的空白间隔" class="headerlink" title="li与li之间的空白间隔"></a>li与li之间的空白间隔</h3><p>行框的排列会受到中间空白（回车空格）等的影响，因为空格也属于字符,这些空白也会被应用样式，占据空间，所以会有间隔，把字符大小设为0，就没有空格了。</p>
+<p>解决方法：</p>
+<ul>
+<li>可以将li代码全部写在一排。</li>
+<li>浮动li中float：left。</li>
+<li>在ul中用font-size：0（谷歌不支持）；可以使用letter-space：-3px。</li>
+</ul>
+<h3 id="div设置边框"><a href="#div设置边框" class="headerlink" title="div设置边框"></a>div设置边框</h3><ul>
+<li>border </li>
+<li>outline</li>
+<li>border-image</li>
+<li>box-shadow</li>
+</ul>
+<h3 id="css选择器"><a href="#css选择器" class="headerlink" title="css选择器"></a>css选择器</h3><p>id选择器(#myid)、类选择器(.myclassname)、标签选择器(div, h1, p)、相邻选择器(h1 + p)、子选择器（ul &gt; li）、后代选择器（li a）、通配符选择器（*）、属性选择器（a[rel=”external”]）、伪类选择器（a:hover, li:nth-child）</p>
+<p><strong>优先级：</strong> 从高到低</p>
+<ul>
+<li>！important</li>
+<li>内联样式(标签的style属性)</li>
+<li>id选择器</li>
+<li>class选择器、属性选择器、伪类选择器</li>
+<li>标签选择器、伪元素选择器</li>
+<li>通配符选择器、子选择器、相邻选择器</li>
+<li>选择器相同时，后面的会覆盖前面的</li>
+<li>继承的样式优先级最低</li>
+</ul>
+<p><strong>权重计算：</strong></p>
+<p>把选择器的特殊性分为4个等级，每个等级代表一类选择器：</p>
+<ul>
+<li>内联样式的权值：1000</li>
+<li>ID选择器的权值：100</li>
+<li>Class选择器的权值：10</li>
+<li>标签选择器的权值：1</li>
+</ul>
+<p>通配符等选择器不在这个等级中，它们的权值为0，继承的样式没有权值。</p>
+<p>最终选择器的权值为：每一个选择器的权值的总和，权值越大，优先级越高。（其中！important高于所有的选择器，IE6不支持）</p>
+<h3 id="css3伪类"><a href="#css3伪类" class="headerlink" title="css3伪类"></a>css3伪类</h3><ul>
+<li>p:first-of-type 选择属于其父元素的首个元素</li>
+<li>p:last-of-type 选择属于其父元素的最后元素</li>
+<li>p:only-of-type 选择属于其父元素唯一的元素</li>
+<li>p:only-child 选择属于其父元素的唯一子元素</li>
+<li>p:nth-child(2) 选择属于其父元素的第二个子元素</li>
+<li>:enabled :disabled 表单控件的禁用状态。</li>
+<li>:checked 单选框或复选框被选中。</li>
+</ul>
+<h3 id="before和-after"><a href="#before和-after" class="headerlink" title="::before和:after"></a>::before和:after</h3><ul>
+<li>单冒号(:)用于CSS3伪类，双冒号(::)用于CSS3伪元素。</li>
+<li>::before就是以一个子元素的存在，定义在元素主体内容之前的一个伪元素。并不存在于dom之中，只存在在页面之中。</li>
+<li>:before 和 :after 这两个伪元素，是在CSS2.1里新出现的。起初，伪元素的前缀使用的是单冒号语法，但随着Web的进化，在CSS3的规范里，伪元素的语法被修改成使用双冒号，成为::before ::after。</li>
+</ul>
+<h3 id="css3新特性"><a href="#css3新特性" class="headerlink" title="css3新特性"></a>css3新特性</h3><ul>
+<li>RGBA和透明度</li>
+<li>background-image， background-origin(content-box/padding-box/border-box)， background-size， background-repeat。</li>
+<li>word-wrap（对长的不可分割单词换行）word-wrap：break-word</li>
+<li>文字阴影：text-shadow： 5px 5px 5px #FF0000;（水平阴影，垂直阴影，模糊距离，阴影颜色）</li>
+<li>font-face属性：定义自己的字体</li>
+<li>圆角（边框半径）：border-radius 属性用于创建圆角</li>
+<li>边框图片：border-image: url(border.png) 30 30 round</li>
+<li>盒阴影：box-shadow: 10px 10px 5px #888888</li>
+<li>媒体查询：定义两套css，当浏览器的尺寸变化时会采用不同的属性。</li>
+<li>transform转换: rotate，translate，scale，skew，matrix</li>
+<li>transition动画</li>
+<li>animation动画：3D可以调用硬件加速</li>
+<li>新的长度单位：rem，ch，vw，vh，vmax，vmin等</li>
+<li>felx布局</li>
+<li>伪类选择器：：target，:enabled，:disabed，:first-child，:last-child等</li>
+</ul>
+<h3 id="CSS-Sprites"><a href="#CSS-Sprites" class="headerlink" title="CSS Sprites"></a>CSS Sprites</h3><p>将一个页面涉及到的所有图片都包含到一张大图中去，然后利用CSS的 background-image，background- repeat，background-position 的组合进行背景定位。利用CSS Sprites能很好地减少网页的http请求，从而大大的提高页面的性能；CSS Sprites能减少图片的字节。</p>
+<h3 id="style标签位置"><a href="#style标签位置" class="headerlink" title="style标签位置"></a>style标签位置</h3><p>页面加载自上而下 当然是先加载样式。<br>写在body标签后由于浏览器以逐行方式对HTML文档进行解析，当解析到写在尾部的样式表（外联或写在style标签）会导致浏览器停止之前的渲染，等待加载且解析样式表完成之后重新渲染，在windows的IE下可能会出现FOUC现象（即样式失效导致的页面闪烁问题）。</p>
+<h3 id="png、jpg、gif图片格式，webp"><a href="#png、jpg、gif图片格式，webp" class="headerlink" title="png、jpg、gif图片格式，webp"></a>png、jpg、gif图片格式，webp</h3><ul>
+<li>png是便携式网络图片（Portable Network Graphics）是一种无损数据压缩位图文件格式.优点是：压缩比高，色彩好。 大多数地方都可以用。</li>
+<li>jpg是一种针对相片使用的一种失真压缩方法，是一种破坏性的压缩，在色调及颜色平滑变化做的不错。在www上，被用来储存和传输照片的格式。</li>
+<li>gif是一种位图文件格式，以8位色重现真色彩的图像。可以实现动画效果。</li>
+<li>webp格式是谷歌在2010年推出的图片格式，压缩率只有jpg的2/3，大小比png小了45%。缺点是压缩的时间更久了，兼容性不好，目前谷歌和opera支持。</li>
+</ul>
+<h3 id="有一个高度自适应的div，里面有两个div，一个高度100px，希望另一个填满剩下的高度"><a href="#有一个高度自适应的div，里面有两个div，一个高度100px，希望另一个填满剩下的高度" class="headerlink" title="有一个高度自适应的div，里面有两个div，一个高度100px，希望另一个填满剩下的高度"></a>有一个高度自适应的div，里面有两个div，一个高度100px，希望另一个填满剩下的高度</h3><p>外层div使用position：relative；高度要求自适应的div使用position: absolute; top: 100px; bottom: 0; left: 0。</p>
+<h3 id="用div模拟textarea"><a href="#用div模拟textarea" class="headerlink" title="用div模拟textarea"></a>用div模拟textarea</h3><p>加个contenteditable</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div contenteditable=&quot;true&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>注意点：</strong></p>
+<ul>
+<li>现代浏览器如Firefox在可编辑模式下的div获取焦点的时候会有虚框，而实际上textarea是没有虚框显示的，可以这样处理：outline：0</li>
+<li>Firefox浏览器下可编辑模式的div如果内部元素是空空的，那么其在获取焦点是时候，光标不可见或是与外部div齐高，可以这样处理：默认情况下，我们可以在此div中增加一个孤单的<br>换行标签。</li>
+<li>可编辑模式的div输入的内容都会是很正宗的HTML代码，如果作为内容提交的话需要进行HTML字符过滤.</li>
+</ul>
+<h3 id="input和textarea的区别"><a href="#input和textarea的区别" class="headerlink" title="input和textarea的区别"></a>input和textarea的区别</h3><p><strong>input</strong></p>
+<ul>
+<li>可以指定 type 为 url, email,可以方便地检测用户输入。还是指定为 file, submit, button, checkbox, radio, datetime, color等，改变input的样式和行为</li>
+<li>input标签作为text类型使用时是单行文本框，不会换行。</li>
+<li>可以通过 value 属性指定初始值。</li>
+<li>通过size属性指定显示字符的长度，注意：当使用css限定了宽高，那么size属性就不再起作用。</li>
+<li>可以通过width和height设置宽高，但是也不会增加行数</li>
+</ul>
+<p><strong>textarea</strong></p>
+<ul>
+<li>textarea是多行文本输入框，它能自动换行，文本区中可容纳较多数量的文本。</li>
+<li>可以通过 cols 和 rows 属性来规定 textarea 的尺寸。</li>
+</ul>
+<p><strong>相同</strong>： 都可以使用 maxlength, minlength等限制输入。</p>
+<h3 id="忽略页面中的电话号码"><a href="#忽略页面中的电话号码" class="headerlink" title="忽略页面中的电话号码"></a>忽略页面中的电话号码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="1px边框问题"><a href="#1px边框问题" class="headerlink" title="1px边框问题"></a>1px边框问题</h3><p>由于移动端一般都会设置屏幕宽度为设备宽度，width=device-width,initial-scale=1, 而有些屏幕是2倍屏，导致在移动端上设置1px就是看上去的2px。</p>
+<p><strong>解决方法：</strong></p>
+<ul>
+<li>伪类+transform：原理是把原先元素的 border 去掉，然后利用 :before 或者 :after 重做 border ，并 transform 的 scale 缩小一半，原先的元素相对定位，新做的 border 绝对定位。</li>
+<li>viewport + rem：设置对应viewport的rem基准值，这种方式就可以像以前一样轻松愉快的写1px了。</li>
+</ul>
+<h3 id="rem和em的区别"><a href="#rem和em的区别" class="headerlink" title="rem和em的区别"></a>rem和em的区别</h3><ul>
+<li>em作为font-size的单位时，其代表父元素的字体大小，em作为其他属性单位时，代表自身字体大小。em做弹性布局的缺点还在于牵一发而动全身，一旦某个节点的字体大小发生变化，那么其后代元素都得重新计算。</li>
+<li>rem作用于非根元素时，相对于根元素字体大小；rem作用于根元素字体大小时，相对于其出初始字体大小。</li>
+</ul>
+<p><strong>vw、vh</strong></p>
+<p>vw —— 视口宽度的 1/100；vh —— 视口高度的 1/100 </p>
+<h3 id="requestAnimationFrame"><a href="#requestAnimationFrame" class="headerlink" title="requestAnimationFrame"></a>requestAnimationFrame</h3><blockquote>
+<p>window.requestAnimationFrame() 方法告诉浏览器您希望执行动画，并请求浏览器调用指定的函数在下一次重绘之前更新动画。该方法将在重绘之前调用的回调作为参数。</p>
+</blockquote>
+<p><strong>优点：</strong></p>
+<ul>
+<li>在浏览器重绘前调用，保证浏览器渲染效率和性能</li>
+<li>可以精准地控制动画的每一帧</li>
+</ul>
+<p>它的主要场景在游戏，动画方面，用这个方法可以保持较高帧率和效率。比如一个60帧率的游戏，requestAnimationFrame一般会以16ms的间隔调用一次。</p>
+<h3 id="attribute和property"><a href="#attribute和property" class="headerlink" title="attribute和property"></a>attribute和property</h3><ul>
+<li>attribute是DOM元素在文档中作为html标签拥有的属性；</li>
+<li>property是DOM元素在js中作为对象拥有的属性。</li>
+</ul>
+<p>对于html来说，attribute和property是同步的，是会自动更新的。但是对于自定义属性来说，他们是不同的。</p>
+<h3 id="语义化"><a href="#语义化" class="headerlink" title="语义化"></a>语义化</h3><ul>
+<li>丢失样式的时候浏览器可以让页面呈现出清晰的结构；</li>
+<li>有利于SEO：和搜索引擎建立良好的沟通，有助于爬虫抓取更多的有效信息。</li>
+<li>方便其他设备解析：如屏幕阅读器、盲人阅读器等；</li>
+<li>便于团队开发和维护，语义化更具有可读性。</li>
+</ul>
+<h3 id="link和-import"><a href="#link和-import" class="headerlink" title="link和@import"></a>link和@import</h3><ul>
+<li>link属于html标签，而@import是css提供的；</li>
+<li>页面加载的时候，link会被同时加载，而@import会等到加载完整个HTML文件后再加载，会造成文档闪烁；</li>
+<li>@import只有在IE5以上才能识别，而link是HTML标签，无兼容问题；</li>
+<li>link方式的样式的权重 高于@import的权重。</li>
+<li>link除了加载css文件外，还可以定义RSS，定义rel属性等，import只能加载css文件。</li>
+<li>link支持使用JavaScript控制DOM去改变样式，而import不支持。</li>
+</ul>
+<h3 id="src和href"><a href="#src和href" class="headerlink" title="src和href"></a>src和href</h3><ul>
+<li><p>href 是指向网络资源所在位置，建立和当前元素（锚点）或当前文档（链接）之间的链接，用于超链接。</p>
+</li>
+<li><p>src是指向外部资源的位置，指向的内容将会嵌入到文档中当前标签所在位置；在请求src资源时会将其指向的资源下载并应用到文档内，例如js脚本，img图片和frame等元素。</p>
+</li>
+</ul>
+<blockquote>
+<p>当浏览器解析到带有src的元素时，会暂停其他资源的下载和处理，直到将该资源加载、编译、执行完毕，图片和框架等元素也如此，类似于将所指向资源嵌入当前标签内。这也是为什么将js脚本放在底部而不是头部。</p>
+</blockquote>
+<h3 id="title和alt"><a href="#title和alt" class="headerlink" title="title和alt"></a>title和alt</h3><ul>
+<li>title是html全局标签属性之一，用于为元素提供附加的提示信息。通常当鼠标滑动到元素上的时候显示。</li>
+<li>alt是img的特有属性，是图片内容的等价描述，用于图片无法加载时显示，读屏器阅读图片。可提高图片访问性，除了纯装饰的图片都必须设置有意义的值，搜索引擎会重点分析。</li>
+</ul>
+<h3 id="重排和重绘"><a href="#重排和重绘" class="headerlink" title="重排和重绘"></a>重排和重绘</h3><ul>
+<li>部分渲染树（或者整个渲染树）需要重新分析并且节点尺寸需要重新计算。这被称为<strong>重排</strong>。注意这里至少会有一次重排-初始化页面布局。</li>
+<li>由于节点的几何属性发生改变或者由于样式发生改变，例如改变元素背景色时，屏幕上的部分内容需要更新。这样的更新被称为<strong>重绘</strong>。</li>
+</ul>
+<p><strong>触发场景：</strong></p>
+<ul>
+<li>添加、删除、更新 DOM 节点</li>
+<li>通过 display: none 隐藏一个 DOM 节点-触发重排和重绘</li>
+<li>通过 visibility: hidden 隐藏一个 DOM节点-只触发重绘，因为没有几何变化</li>
+<li>移动或者给页面中的 DOM 节点添加动画</li>
+<li>添加一个样式表，调整样式属性</li>
+<li>用户行为，例如调整窗口大小，改变字号，或者滚动。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/04/JS设计模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1766,351 +2460,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/27/OSI七层网络模型/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aisling Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleCorn个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/27/OSI七层网络模型/" itemprop="url">OSI七层网络模型</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-27T00:00:56+08:00">
-                2018-02-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机网络</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="/images/七层网络模型.jpg" alt="image"></p>
-<p>TCP/IP五层模型：<br>应用层、传输层、网络层、数据链路层、物理层</p>
-<ul>
-<li>物理层：通过媒介传输比特,确定机械及电气规范（比特Bit）</li>
-<li>数据链路层：将比特组装成帧和点到点的传递（帧Frame）</li>
-<li>网络层：负责数据包从源到宿的传递和网际互连（包PackeT）</li>
-<li>传输层：提供端到端的可靠报文传递和错误恢复（段Segment）</li>
-<li>会话层：建立、管理和终止会话（会话协议数据单元SPDU）</li>
-<li>表示层：对数据进行翻译、加密和压缩（表示协议数据单元PPDU）</li>
-<li>应用层：允许访问OSI环境的手段（应用协议数据单元APDU）</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/26/WebSocket/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aisling Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleCorn个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/26/WebSocket/" itemprop="url">WebSocket</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-26T22:12:18+08:00">
-                2018-02-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/HTML5/" itemprop="url" rel="index">
-                    <span itemprop="name">HTML5</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><blockquote>
-<p>前后端通信方式：Ajax、WebSocket、CORS</p>
-</blockquote>
-<p>WebSocket是HTML5开始提供的一种在单个 TCP 连接上进行全双工通讯的协议。</p>
-<p><strong>特点：</strong></p>
-<ul>
-<li>它的最大特点就是，服务器可以主动向客户端推送信息，客户端也可以主动向服务器发送信息，是真正的双向平等对话，属于服务器推送技术的一种。</li>
-<li>建立在 TCP 协议之上，服务器端的实现比较容易。</li>
-<li>与 HTTP 协议有着良好的兼容性。默认端口也是80和443，并且握手阶段采用 HTTP 协议，因此握手时不容易屏蔽，能通过各种 HTTP 代理服务器。</li>
-<li>数据格式比较轻量，性能开销小，通信高效。</li>
-<li>可以发送文本，也可以发送二进制数据。</li>
-<li>没有同源限制，客户端可以与任意服务器通信。</li>
-<li>协议标识符是ws（如果加密，则为wss），服务器网址就是 URL。</li>
-</ul>
-<blockquote>
-<p>HTTP 协议有一个缺陷：通信只能由客户端发起。这种单向请求的特点，注定了如果服务器有连续的状态变化，客户端要获知就非常麻烦。我们只能使用”轮询”：每隔一段时候，就发出一个询问，了解服务器有没有新的信息。最典型的场景就是聊天室。（还有一种长连接：和轮询相似，但是为阻塞模式的轮询，客户端请求新的数据request，服务器会阻塞请求，直到有新数据后才返回response给客户端；然后客户端再重复此过程。）</p>
-<p>轮询的效率低，非常浪费资源（因为必须不停连接，或者 HTTP 连接始终打开）</p>
-</blockquote>
-<p>WebSocket 对象作为一个构造函数，用于新建 WebSocket 实例。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ws = <span class="keyword">new</span> WebSocket(<span class="string">'ws://localhost:8080'</span>);</span><br></pre></td></tr></table></figure></p>
-<p>执行上面语句之后，客户端就会与服务器进行连接。</p>
-<h3 id="WebSocket-属性"><a href="#WebSocket-属性" class="headerlink" title="WebSocket 属性"></a>WebSocket 属性</h3><p><strong>Socket.readyState：</strong> 表示连接状态，只读。值从0到4变化：</p>
-<ul>
-<li>0：表示连接尚未建立。</li>
-<li>1：表示连接已建立，可以进行通信。</li>
-<li>2：表示连接正在进行关闭。</li>
-<li>3：表示连接已经关闭或者连接不能打开。</li>
-</ul>
-<p><strong>Socket.bufferedAmount：</strong> 表示还有多少个字节的二进制数据没有发送出去，只读。可以用来判断发送是否结束。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = <span class="keyword">new</span> <span class="built_in">ArrayBuffer</span>(<span class="number">10000000</span>);</span><br><span class="line">ws.send(data);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (ws.bufferedAmount === <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="comment">// 发送完毕</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 发送还没结束</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="WebSocket-方法"><a href="#WebSocket-方法" class="headerlink" title="WebSocket 方法"></a>WebSocket 方法</h3><p><strong>Socket.send()：</strong> 方法用于向服务器发送数据。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//发送文本</span></span><br><span class="line">ws.send(<span class="string">'your message'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//发送 Blob 对象</span></span><br><span class="line"><span class="keyword">var</span> file = <span class="built_in">document</span></span><br><span class="line">  .querySelector(<span class="string">'input[type="file"]'</span>)</span><br><span class="line">  .files[<span class="number">0</span>];</span><br><span class="line">ws.send(file);</span><br><span class="line"></span><br><span class="line"><span class="comment">//发送 ArrayBuffer 对象</span></span><br><span class="line"><span class="comment">// Sending canvas ImageData as ArrayBuffer</span></span><br><span class="line"><span class="keyword">var</span> img = canvas_context.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">400</span>, <span class="number">320</span>);</span><br><span class="line"><span class="keyword">var</span> binary = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(img.data.length);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; img.data.length; i++) &#123;</span><br><span class="line">  binary[i] = img.data[i];</span><br><span class="line">&#125;</span><br><span class="line">ws.send(binary.buffer);</span><br></pre></td></tr></table></figure></p>
-<p><strong>Socket.close():</strong> 关闭连接。</p>
-<h3 id="WebSocket-事件"><a href="#WebSocket-事件" class="headerlink" title="WebSocket 事件"></a>WebSocket 事件</h3><p><strong>Socket.onopen：</strong> 用于指定连接成功后的回调函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ws.onopen = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  ws.send(<span class="string">'Hello Server!'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Socket.onmessage：</strong> 用于指定收到服务器数据后的回调函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> data = event.data;</span><br><span class="line">  <span class="comment">// 处理数据</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>服务器数据可能是文本，也可能是二进制数据（blob对象或Arraybuffer对象）。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> event.data === <span class="built_in">String</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Received data string"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(event.data <span class="keyword">instanceof</span> <span class="built_in">ArrayBuffer</span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> buffer = event.data;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Received arraybuffer"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>除了动态判断收到的数据类型，也可以使用binaryType属性，显式指定收到的二进制数据类型。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 收到的是 blob 数据</span></span><br><span class="line">ws.binaryType = <span class="string">"blob"</span>;</span><br><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e.data.size);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 收到的是 ArrayBuffer 数据</span></span><br><span class="line">ws.binaryType = <span class="string">"arraybuffer"</span>;</span><br><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e.data.byteLength);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Socket.onerror：</strong> 用于指定报错时的回调函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">socket.onerror = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// handle error event</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Socket.onclose：</strong> 用于指定连接关闭后的回调函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ws.onclose = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> code = event.code;</span><br><span class="line">  <span class="keyword">var</span> reason = event.reason;</span><br><span class="line">  <span class="keyword">var</span> wasClean = event.wasClean;</span><br><span class="line">  <span class="comment">// handle close event</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="Socket-IO"><a href="#Socket-IO" class="headerlink" title="Socket.IO"></a>Socket.IO</h3><p>node.js提供了高效的服务端运行环境，但是由于浏览器端对HTML5的支持不一，为了兼容所有浏览器，提供卓越的实时的用户体验，并且为程序员提供客户端与服务端一致的编程体验，于是Socket.IO诞生。</p>
-<p>Socket.IO将WebSocket和轮询机制以及其他的实时通信方式封装成了通用的接口，并且在服务端实现了这些实时机制的相应代码。也就是说，WebSocket只是Socket.IO实现实时通信的一个子集。  </p>
-<p>服务端<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">const</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//1、http服务</span></span><br><span class="line"><span class="keyword">const</span> httpServer = http.createServer(<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">    fs.readFile(<span class="string">`www<span class="subst">$&#123;req.url&#125;</span>`</span>,(err,data)=&gt;&#123;</span><br><span class="line">        <span class="keyword">if</span>(err)&#123;</span><br><span class="line">            res.writeHeader(<span class="number">404</span>);</span><br><span class="line">            res.write(<span class="string">'not found'</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            res.write(data);</span><br><span class="line">        &#125;</span><br><span class="line">        res.end();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">httpServer.listen(<span class="number">8080</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//2、ws服务</span></span><br><span class="line"><span class="keyword">const</span> wsServer = io.listen(httpServer);</span><br><span class="line">wsServer.on(<span class="string">'connection'</span>,sock=&gt;&#123;</span><br><span class="line">    sock.on(<span class="string">'a'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(data);</span><br><span class="line">    &#125;);</span><br><span class="line">    sock.emit(<span class="string">'b'</span>,&#123;<span class="attr">name</span>:<span class="string">'cyl'</span>,<span class="attr">age</span>:<span class="number">18</span>&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>客户端：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"/socket.io/socket.io.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">let</span> sock = io.connect(<span class="string">'ws://localhost:8080/'</span>);</span><br><span class="line">  </span><br><span class="line">  sock.emit(<span class="string">'a'</span>,<span class="string">'你好吗？'</span>);</span><br><span class="line">  sock.on(<span class="string">'b'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(data);</span><br><span class="line">  &#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2165,7 +2514,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">67</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2187,7 +2536,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

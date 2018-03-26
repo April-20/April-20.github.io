@@ -252,6 +252,760 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/Linux常用命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/06/Linux常用命令/" itemprop="url">Linux常用命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-06T17:50:28+08:00">
+                2018-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>shell是壳的意思，有壳就有核，核指的是 UNIX/Linux 内核，Shell之所以叫Shell 是因为它隐藏了操作系统底层的细节。我们可以换个大家一下就能懂的词来理解Shell:<strong>命令解析器</strong>。</p>
+<p>当我们在终端中输入node，按回车，会启用node解释器，输入python按回车会启动Python解释器，之后就可以在里面输入并执行对应语言的代码啦。</p>
+<p>在 UNIX/Linux 中比较流行的常见的 Shell 有 bash、zsh、ksh、csh 等等，Ubuntu 终端默认使用的是 bash。</p>
+<h3 id="shell常用快捷键"><a href="#shell常用快捷键" class="headerlink" title="shell常用快捷键"></a>shell常用快捷键</h3><ul>
+<li><p>Tap: 点击Tab键可以实现命令补全,目录补全、命令参数补全;</p>
+</li>
+<li><p>Ctrl+c: 强行终止当前程序（常用）;</p>
+</li>
+<li><p>Ctrl+d: 键盘输入结束或退出终端（常用）;</p>
+</li>
+<li><p>Ctrl+s: 暂停当前程序，暂停后按下任意键恢复运行;</p>
+</li>
+<li><p>Ctrl+z: 将当前程序放到后台运行，恢复到前台为命令fg;</p>
+</li>
+<li><p>Ctrl+a: 将光标移至输入行头，相当于Home键;</p>
+</li>
+<li><p>Ctrl+e: 将光标移至输入行末，相当于End键;</p>
+</li>
+<li><p>Ctrl+k: 删除从光标所在位置到行末,常配合ctrl+a使用;</p>
+</li>
+<li><p>Alt+Backspace: 向前删除一个单词，常配合ctrl+e使用;</p>
+</li>
+<li><p>Shift+PgUp: 将终端显示向上滚动;</p>
+</li>
+<li><p>Shift+PgDn: 将终端显示向下滚动;</p>
+</li>
+<li><p>上下方向键: 浏览历史输入记录;</p>
+</li>
+</ul>
+<h3 id="常见的bash命令"><a href="#常见的bash命令" class="headerlink" title="常见的bash命令"></a>常见的bash命令</h3><h4 id="文件相关"><a href="#文件相关" class="headerlink" title="文件相关"></a>文件相关</h4><ul>
+<li><p>ls 列出某文件夹下的文件，添加参数可实现更细致的功能，</p>
+</li>
+<li><p>ls -a 列出所有文件，包括隐藏文件</p>
+</li>
+<li><p>ls -l 列出文件及其详细信息</p>
+</li>
+<li><p>cd 切换目录（cd到不存在的目录时会报错）</p>
+</li>
+<li><p>pwd 打印当前目录</p>
+</li>
+<li><p>cat 读取某一个文件内的内容</p>
+</li>
+<li><p>wc 获取某一个文件的行数和字数</p>
+</li>
+<li><p>cp 复制某文件</p>
+</li>
+<li><p>mkdir 创建目录</p>
+</li>
+<li><p>rmdir 删除目录</p>
+</li>
+<li><p>rm-rf: r删除内部所有文件，f参数表示强制，rm -r junk删除junk目录及其下面的所有文件；</p>
+</li>
+<li><p>mv 移动 mv photos.jpg Photos 将photos移动到文件夹Photos下</p>
+</li>
+<li><p>sort 排序</p>
+</li>
+<li><p>diff 比较两个文件的异同</p>
+</li>
+</ul>
+<h4 id="系统相关"><a href="#系统相关" class="headerlink" title="系统相关"></a>系统相关</h4><ul>
+<li><p>date 获取当前时间</p>
+</li>
+<li><p>uname 返回系统名称</p>
+</li>
+<li><p>hostname 返回系统的主机名称</p>
+</li>
+</ul>
+<h4 id="网络相关"><a href="#网络相关" class="headerlink" title="网络相关"></a>网络相关</h4><ul>
+<li><p>host xx.xxx.com 显示某域名相关托管服务器/邮件服务器</p>
+</li>
+<li><p>ping 8.8.8.8 检测连接</p>
+</li>
+</ul>
+<h4 id="搜索相关命令"><a href="#搜索相关命令" class="headerlink" title="搜索相关命令"></a>搜索相关命令</h4><p><strong>whereis</strong></p>
+<ul>
+<li><p>描述：简单快捷</p>
+</li>
+<li><p>使用 $whereis who</p>
+</li>
+<li><p>说明：这个搜索很快，因为它并没有从硬盘中依次查找，而是直接从数据库中查询。whereis 只能搜索二进制文件(-b)，man 帮助文件(-m)和源代码文件(-s)。</p>
+</li>
+</ul>
+<p><strong>locate</strong></p>
+<ul>
+<li><p>描述：快而全</p>
+</li>
+<li><p>使用 $locate /etc/sh （查找 /etc 下所有以 sh 开头的文件），$locate /usr/share/*.jpg （注意要添加 * 号前面的反斜杠转义，否则会无法找到。)</p>
+</li>
+<li></li>
+<li><p>说明：通过/var/lib/mlocate/mlocate.db 数据库查找，不过这个数据库也不是实时更新的，系统会使用定时任务每天自动执行 updatedb 命令更新一次，所以有时候你刚添加的文件，它可能会找不到，需要手动执行一次 updatedb 命令（在我们的环境中必须先执行一次该命令）。它可以用来查找指定目录下的不同文件类型</p>
+</li>
+<li><p>可带参数：如-i 参数可以忽略大小写进行查找</p>
+</li>
+</ul>
+<p><strong>which</strong></p>
+<ul>
+<li><p>描述：小而精</p>
+</li>
+<li><p>使用：$ which man</p>
+</li>
+<li><p>说明：我们通常使用 which 来确定是否安装了某个指定的软件，因为它只从 PATH 环境变量指定的路径中去搜索命令。</p>
+</li>
+</ul>
+<p><strong>find</strong></p>
+<ul>
+<li><p>描述：精而细</p>
+</li>
+<li><p>使用：$sudo find /etc/ -name interfaces/</p>
+</li>
+<li><p>格式 find [path] [option] [action];</p>
+</li>
+<li><p>说明：find 应该是这几个命令中<strong>最强大的</strong>了，它不但可以通过文件类型、文件名进行查找而且可以根据文件的属性（如文件的时间戳，文件的权限等）进行搜索。find很强大也相对而言很复杂，在此先不赘述；</p>
+</li>
+</ul>
+<h4 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h4><ul>
+<li><p>–version/-V 查看某个程序的版本</p>
+</li>
+<li><p>history 显示历史</p>
+</li>
+<li><p>echo：返回你给的值,可以简单理解为js中的console或python中的print</p>
+</li>
+<li><p>man 使用一个叫做less的程序，查看某个命令的帮助文档</p>
+</li>
+<li><p>less: linenumer u d keyarray search(大小写敏感)，正则表达式</p>
+</li>
+</ul>
+<h4 id="通配符（Globbing）"><a href="#通配符（Globbing）" class="headerlink" title="通配符（Globbing）"></a>通配符（Globbing）</h4><p>使用命令时可在参数中使用通配符：</p>
+<ul>
+<li><code>*</code>：匹配 0 或多个字符，如<code>ls *.html</code>将匹配所有以html结尾的文件,<code>ls b*.png</code>将匹配所有以b开头，png结尾的文件；</li>
+<li><code>?</code>：匹配任意一个字符,如<code>ls abc?.png</code> 可匹配abcd.png/abce.png</li>
+<li><code>[list]</code>:匹配 list 中的任意单一字符</li>
+<li><code>[!list]</code>:匹配 除list 中的任意单一字符以外的字符</li>
+<li><code>[c1-c2]</code>:匹配 c1-c2 中的任意单一字符 如：[0-9] [a-z]</li>
+<li><code>{string1,string2,...}</code>:匹配 string1 或 string2 (或更多)其一字符串，如 <code>{css,html}</code>， <code>ls app.{html.css}</code>将匹配app.css 和app.html;</li>
+<li><p><code>{c1..c2}</code>:匹配 c1-c2 中全部字符 如{1..10}</p>
+</li>
+<li><p>使用<code>man</code>查看帮助（man分类如下：）</p>
+</li>
+<li>注意通配符大小写敏感</li>
+</ul>
+<h3 id="用户管理系统"><a href="#用户管理系统" class="headerlink" title="用户管理系统"></a>用户管理系统</h3><p>Linux 是一个可以实现多用户登陆的操作系统，多用户可以同时登陆同一台主机，共享主机的一些资源，不同的用户也分别有自己的用户空间，可用于存放各自的文件。虽然不同用户的文件是放在同一个物理磁盘上的甚至同一个逻辑分区或者目录里，但是由于 Linux 的用户管理和 文件权限机制，不同用户不可以轻易地查看、修改彼此的文件。</p>
+<h4 id="查看用户"><a href="#查看用户" class="headerlink" title="查看用户"></a>查看用户</h4><ul>
+<li><p>$ who am i 只列出用户名</p>
+</li>
+<li><p>$ who mom likes/who am i 列出用户名，所使用终端的编号和开启时间；</p>
+</li>
+<li><p>$ finger 列出当前用户的详细信息，需使用apt-get提前安装；</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ who mom likes</span><br><span class="line">zhangwang ttys003  May  8 14:58 </span><br><span class="line">$ who am i</span><br><span class="line">zhangwang ttys003  May  8 14:58 </span><br><span class="line"><span class="comment"># pts/0 中 pts(mac ttys) 表示伪终端,pts/0(ttys003) 后面那个数字就表示打开的伪终端序号</span></span><br><span class="line">$ sudo apt-get finger</span><br><span class="line">$ finger</span><br><span class="line"><span class="comment"># 会列出当前用户的信息</span></span><br><span class="line">Login      Name        Tty      Idle  Login Time   Office     Office Phone</span><br><span class="line">zhangwang  zhangwang   pts/0          May  4 21:04 (125.34.199.251)</span><br></pre></td></tr></table></figure>
+<p><strong>老大用户root</strong></p>
+<p>一般通过上面的操作会发现我们当前登录的用户并非root,在Linux中，老大root 账户拥有整个系统至高无上的权利，它可以操作系统中所有的对象。在某些发行版中，这个用户并不显式存在，不过如果其它的用户具有使用sudo的权利（后文会叙述如何获取），通过sudo 命令也可以达到用root账号操作的效果。创建用户就是一个需要sudo权限的命令。</p>
+<h4 id="创建用户adduser"><a href="#创建用户adduser" class="headerlink" title="创建用户adduser"></a>创建用户adduser</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">zhangwang@Ubuntu:~$ sudo adduser student</span><br><span class="line">[sudo] password for zhangwang: </span><br><span class="line">Adding user `student&apos; ...</span><br><span class="line">Adding new group `student&apos; (1002) ...</span><br><span class="line">Adding new user `student&apos; (1002) with group `student&apos; ...</span><br><span class="line">Creating home directory `/home/student&apos; ...</span><br><span class="line">Copying files from `/etc/skel&apos; ...</span><br><span class="line">Enter new UNIX password: </span><br><span class="line">Retype new UNIX password: </span><br><span class="line">passwd: password updated successfully</span><br><span class="line">Changing the user information for student</span><br><span class="line">Enter the new value, or press ENTER for the default</span><br><span class="line">    Full Name []: Udacity Linux Student</span><br><span class="line">    Room Number []: </span><br><span class="line">    Work Phone []: </span><br><span class="line">    Home Phone []: </span><br><span class="line">    Other []: </span><br><span class="line">Is the information correct? [Y/n] Y</span><br><span class="line"># finger 用户管理用户</span><br><span class="line">zhangwang@Ubuntu:~$ finger student</span><br><span class="line">Login: student                    Name: Udacity Linux Student</span><br><span class="line">Directory: /home/student                Shell: /bin/bash</span><br><span class="line">Never logged in.</span><br><span class="line">No mail.</span><br><span class="line">No Plan.</span><br></pre></td></tr></table></figure>
+<h4 id="切换用户相关命令"><a href="#切换用户相关命令" class="headerlink" title="切换用户相关命令"></a>切换用户相关命令</h4><ul>
+<li><p>su <user>: 切换到用户user,执行时需要输入目标用户的密码；</user></p>
+</li>
+<li><p>su - <user>: 切换用户，同时环境变量也会跟着改变成目标用户的环境变量。</user></p>
+</li>
+<li><p>su -l lilei: 切换登录用户;</p>
+</li>
+</ul>
+<p>有时候我们也会看到添加用户使用的命令是useradd,而非adduser下面说说二者的区别：</p>
+<ul>
+<li><p>sudo adduser lilei: 新建一个叫做lilei的用户，添加用户到系统，同时也会默认为新用户创建 home目录：</p>
+</li>
+<li><p>sudo useradd: 只创建用户，创建完了需要用 passwd lilei 去设置新用户的密码;</p>
+</li>
+</ul>
+<h4 id="查看用户属于那些组（groups）"><a href="#查看用户属于那些组（groups）" class="headerlink" title="查看用户属于那些组（groups）"></a>查看用户属于那些组（groups）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~ groups zhangwang</span><br><span class="line"># staff everyone localaccounts _appserverusr admin...</span><br></pre></td></tr></table></figure>
+<p>关于用户组我们需要注意：</p>
+<ul>
+<li><p>每次新建用户如果不指定用户组的话，默认会自动创建一个与用户名相同的用户组；</p>
+</li>
+<li><p>默认情况下在 sudo 用户组里的可以使用 sudo 命令获得 root 权限。</p>
+</li>
+<li><p>使用cat /etc/group | sort命令查看某组包含那些成员:/etc/group文件中分行显示了用户组（Group）、用户组口令、GID 及该用户组所包含的用户（User），格式如下：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">group_name:password:GID:user_list</span><br><span class="line">group:*:16:</span><br><span class="line">interactusers:*:51:</span><br><span class="line">kmem:*:2:root</span><br><span class="line">localaccounts:*:61:</span><br><span class="line"># *表示密码不可见</span><br><span class="line">mail:*:6:_teamsserver</span><br></pre></td></tr></table></figure>
+<h4 id="为用户添加组织"><a href="#为用户添加组织" class="headerlink" title="为用户添加组织"></a>为用户添加组织</h4><p>不同的组对不同的文件可能具有不同的操作权限，比如说通过上述命令新建的用户默认是没有使用sudo的权限的，我们可以使用<strong>usermod</strong>命令把它加入sudo组用以具备相应的权限。<br>方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo usermod -G sudo student</span><br><span class="line">$ groups lilei</span><br><span class="line"># lilei:lilei sudo</span><br></pre></td></tr></table></figure>
+<h4 id="删除用户的方法"><a href="#删除用户的方法" class="headerlink" title="删除用户的方法"></a>删除用户的方法</h4><p>删除用户也是一个需要管理员权限的命令，使用方法如下：</p>
+<ul>
+<li><p><strong>sudo deluser student –remove-home</strong>：删除用户及用户相关文件；</p>
+</li>
+<li><p>直接的<strong>deluser</strong>会删除该用户，但是不会删除用户相关文件；</p>
+</li>
+</ul>
+<h3 id="文件权限管理"><a href="#文件权限管理" class="headerlink" title="文件权限管理"></a>文件权限管理</h3><ul>
+<li><p>ls -l: 查看文件及其权限;</p>
+</li>
+<li><p>ls -A：显示隐藏文件（包括以.开头的文件）；(a-&gt;all)</p>
+</li>
+<li><p>ls -Al: 显示隐藏文件及其权限；</p>
+</li>
+<li><p>ls -dl &lt;查看一文件的完整属性&gt;:(d-&gt;detail)</p>
+</li>
+<li><p>ls -AsSh: 显示所有文件大小，并以普通人类能看懂的方式呈现(小 s 为显示文件大小，大 S 为按文件大小排序);</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">➜  Python ls -l</span><br><span class="line">total 0</span><br><span class="line">drwxr-xr-x   9 zhangwang  staff  306  5 11 19:06 Bucketlist</span><br><span class="line">drwxr-xr-x  10 zhangwang  staff  340  5  4 13:58 TofelWePrograme</span><br><span class="line">drwxr-xr-x  14 zhangwang  staff  476  4 25 16:41 alien_invasion</span><br><span class="line">drwxr-xr-x  12 zhangwang  staff  408  5 25 11:13 flasky</span><br><span class="line">drwxr-xr-x  10 zhangwang  staff  340  4 26 19:06 learning_log</span><br><span class="line"># 文件类型和权限 链接数 所有者 用户所在组 大小 最后修改时间 文件名称</span><br></pre></td></tr></table></figure>
+<h4 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h4><p>说到文件，不得不提文件类型，Linux中的文件不同于Windows中的文件，在Linux 里面一切皆文件，主要文件类型有以下几种：</p>
+<ul>
+<li><p>普通文件：一般是用一些相关的应用程序创建的（如图像工具、文档工具、归档工具… 或 cp工具等),这类文件的删除方式是用rm 命令,而创建使用touch命令,用符号-表示；</p>
+</li>
+<li><p>目录：目录在Linux是一个比较特殊的文件，用字符d表示，删除用rm 或rmdir命令；</p>
+</li>
+<li><p>块设备文件：存在于/dev目录下，如硬盘，光驱等设备，用字符d表示;</p>
+</li>
+<li><p>设备文件：（ /dev 目录下有各种设备文件，大都跟具体的硬件设备相关），如猫的串口设备，用字符c表示；</p>
+</li>
+<li><p>socket文件; 用字符s表示，比如启动MySQL服务器时，产生的mysql.sock的文件;</p>
+</li>
+<li><p>pipe 管道文件：可以实现两个程序（可以从不同机器上telnet）实时交互，用字符p表示；</p>
+</li>
+<li><p>链接文件: 软链接等同于 Windows 上的快捷方式；用字符 l 表示；</p>
+</li>
+</ul>
+<blockquote>
+<p>软硬链接文件的共同点和区别：无论是修改软链接，硬链接生成的文件还是直接修改源文件，相应的文件都会改变，但是如果删除了源文件，硬链接生成的文件依旧存在而软链接生成的文件就不再有效了。</p>
+</blockquote>
+<h4 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h4><p>上面的代码示例中，另一个比较让人疑惑的是drwxr-xr-x这样的语句，这段语句表明了文件的权限。Linux中文件权限主要由以下几种：</p>
+<ul>
+<li><p>读权限：可以使用 cat <file name=""> 之类的命令来读取某个文件的内容;</file></p>
+</li>
+<li><p>写权限，表示你可以编辑和修改某个文件；</p>
+</li>
+<li><p>执行权限，通常指可以运行的二进制程序文件或者脚本文件(Linux 上不是通过文件后缀名来区分文件的类型);</p>
+</li>
+<li><p>所有者权限，所属用户组权限，是指你所在的用户组中的所有其它用户对于该文件的权限。</p>
+</li>
+</ul>
+<blockquote>
+<p>一个目录同时具有读权限和执行权限才可以打开并查看内部文件，而一个目录要有写权限才允许在其中创建其它文件，这是因为目录文件实际保存着该目录里面的文件的列表等信息。</p>
+</blockquote>
+<p><img src="/images/Linux文件权限.jpg" alt="image"></p>
+<h4 id="修改文件权限-chmod"><a href="#修改文件权限-chmod" class="headerlink" title="修改文件权限(chmod)"></a>修改文件权限(chmod)</h4><p>从上图中可以看出，每个文件有三组权限（拥有者，所属用户组，其他用户，这个顺序是一定的），修改权限的命令是chmod,修改文件权限的方法有两种,所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 用数字的形式表示，数字的来源及计算方法见下图,数字的意义见下图</span><br><span class="line">$ chmod 700 iphone6 # 让用户对iPhone6文件具备读写权限，所在组和其它用户都没有读写权限</span><br><span class="line"># 用字母的形式表示，g、o 还有 u 分别表示 group、others 和 user，+ 和 - 分别表示增加和去掉相应的权限</span><br><span class="line">$ chmod go-rw iphone6 # 让用户所属用户组及其它用户对iPhone6这个文件不再有读写权限</span><br></pre></td></tr></table></figure>
+<h4 id="更改文件所有者-chown"><a href="#更改文件所有者-chown" class="headerlink" title="更改文件所有者(chown)"></a>更改文件所有者(chown)</h4><p>上面描述文件权限时，都是以自己，所在组，其它三个级别来描述的，那如果你登录的当前账户不是某个文件的所有者，你又不想让这个文件对所有用户开发你想用到的权限，该怎么办呢。还记得前面我们说过老大root用户对所有的文件具有绝对的支配权，我们可以利用这个账号把一个文件过继给另外一个用户（更改文件的所有者）以方便该用户对该文件的操作，使用方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># sudo 表示以root的权限执行，下面语句的意思是把/etc/apt文件夹下面的sources.list的所有权转让给用户zhangwang</span><br><span class="line">$ sudo chown zhangwang /etc/apt/sources.list </span><br><span class="line">$ sudo chmod 700 /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+<h4 id="文件基本操作"><a href="#文件基本操作" class="headerlink" title="文件基本操作"></a>文件基本操作</h4><p><strong>创建 touch:</strong></p>
+<ul>
+<li><p>主要作用是来更改已有文件的时间戳的（比如，最近访问时间，最近修改时间）;</p>
+</li>
+<li><p>在不加任何参数的情况下，只指定一个文件名，则可以创建一个指定文件名的空白普通文件（不会覆盖已有同名文件）</p>
+</li>
+</ul>
+<p><strong>创建 mkdir:</strong></p>
+<ul>
+<li><p>新建空目录 $mkdir mydir</p>
+</li>
+<li><p>新建多级目录 $mkdir -p father/son/grandson</p>
+</li>
+</ul>
+<p><strong>复制移动 cp:</strong></p>
+<ul>
+<li><p>$ cp test father/son/grandson: 复制test文件到father/son/grandson；</p>
+</li>
+<li><p>$ cp -r father family: 递归复制目录</p>
+</li>
+</ul>
+<p><strong>移动mv:</strong></p>
+<ul>
+<li><p>$ mv file1 Documents: 移动文件files到Documents目录</p>
+</li>
+<li><p>$ mv file1 myfile: 将文件“ file1 ”重命名为“ myfile ”</p>
+</li>
+</ul>
+<p><strong>删除rm:</strong></p>
+<ul>
+<li><p>$ rm test</p>
+</li>
+<li><p>$ rm -f test: 删除只读文件，强制删除</p>
+</li>
+<li><p>$ rm -r family: 删除目录（递归删除其中的子文件）</p>
+</li>
+</ul>
+<p><strong>其它操作</strong></p>
+<ul>
+<li>rename: 批量重命名,需要用到正则表达式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 使用通配符批量创建 5 个文件:</span><br><span class="line">$ touch file&#123;1..5&#125;.txt</span><br><span class="line"></span><br><span class="line"># 批量将这 5 个后缀为 .txt 的文本文件重命名为以 .c 为后缀的文件:</span><br><span class="line">$ rename &apos;s/\.txt/\.c/&apos; *.txt</span><br><span class="line"></span><br><span class="line"># 批量将这 5 个文件，文件名改为大写:</span><br><span class="line">$ rename &apos;y/a-z/A-Z/&apos; *.c</span><br></pre></td></tr></table></figure>
+<h4 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h4><p><strong>cat: 打印文件内容到标准输出（终端）(正序)；</strong></p>
+<ul>
+<li><p>cat -n passwd: 显示行号</p>
+</li>
+<li><p>tac: 打印文件内容到标准输出（终端）(逆序)；</p>
+</li>
+</ul>
+<blockquote>
+<p>标准输入输出：当我们执行一个 shell 命令行时通常会自动打开三个标准文件，即标准输入文件（stdin），默认对应终端的键盘、标准输出文件（stdout）和标准错误输出文件（stderr），后两个文件都对应被重定向到终端的屏幕，以便我们能直接看到输出内容。进程将从标准输入文件中得到输入数据，将正常输出数据输出到标准输出文件，而将错误信息送到标准错误文件中。</p>
+</blockquote>
+<p>对cat,tac参数的说明如下：</p>
+<ul>
+<li>-b : 指定添加行号的方式，主要有两种：<ul>
+<li>-b a: 表示无论是否为空行，同样列出行号(“cat -n”就是这种方式)</li>
+<li>-b t: 只列出非空行的编号并列出（默认为这种方式）</li>
+</ul>
+</li>
+<li>-n : 设置行号的样式，主要有三种：<ul>
+<li>-n ln: 在行号字段最左端显示</li>
+<li>-n rn: 在行号字段最右边显示，且不加 0</li>
+<li>-n rz: 在行号字段最右边显示，且加 0</li>
+</ul>
+</li>
+<li>-w : 行号字段占用的位数(默认为 6 位)</li>
+</ul>
+<hr>
+<ul>
+<li><p><strong>more</strong>: 比较简单，只能向一个方向滚动,查看文件：打开后默认只显示一屏内容，终端底部显示当前阅读的进度。可以使用 Enter 键向下滚动一行，使用 Space 键向下滚动一屏，按下 h 显示帮助，q 退出。</p>
+</li>
+<li><p><strong>less</strong>: less 基于 more 和 vi查看文件，使用基本和 more 一致</p>
+</li>
+<li><p><strong>head</strong>: 查看文件的头几行（默认10行）</p>
+</li>
+<li><p><strong>tail</strong>: 查看文件的尾几行（默认10行）</p>
+<ul>
+<li>$ tail -n 1 /etc/passwd 查看固定行数</li>
+</ul>
+</li>
+<li><p><strong>file</strong>: 查看文件类型$ file /bin/ls</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/JS模块化开发/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Aisling Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LittleCorn个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/06/JS模块化开发/" itemprop="url">JS模块化开发</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-06T15:43:37+08:00">
+                2018-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a>CommonJS</h3><p>NodeJS是CommonJS规范的实现，webpack 也是以CommonJS的形式来书写。</p>
+<p>在CommonJS中，有一个全局性方法require()，用于加载模块。</p>
+<p>CommonJS定义的模块分为:</p>
+<ul>
+<li>模块引用(require) </li>
+<li>模块定义(exports)</li>
+<li>模块标识(module)</li>
+</ul>
+<p>require()用来引入外部模块；exports对象用于导出当前模块的方法或变量，唯一的导出口；module对象就代表模块本身。</p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p><strong>浏览器不兼容CommonJS的根本原因，在于缺少四个Node.js环境的变量。</strong></p>
+<ul>
+<li>module</li>
+<li>exports</li>
+<li>require</li>
+<li>global</li>
+</ul>
+<p>只要能够提供这四个变量，浏览器就能加载 CommonJS 模块。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="built_in">module</span> = &#123;</span><br><span class="line">  exports: &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">module, exports</span>) </span>&#123;</span><br><span class="line">  exports.multiply = <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123; <span class="keyword">return</span> n * <span class="number">1000</span> &#125;;</span><br><span class="line">&#125;(<span class="built_in">module</span>, <span class="built_in">module</span>.exports))</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f = <span class="built_in">module</span>.exports.multiply;</span><br><span class="line">f(<span class="number">5</span>) <span class="comment">// 5000</span></span><br></pre></td></tr></table></figure>
+<p>上面代码向一个立即执行函数提供 module 和 exports 两个外部变量，模块就放在这个立即执行函数里面。模块的输出值放在 module.exports 之中，这样就实现了模块的加载。</p>
+<h4 id="Browserify-的实现"><a href="#Browserify-的实现" class="headerlink" title="Browserify 的实现"></a>Browserify 的实现</h4><p>Browserify 是目前最常用的 CommonJS 格式转换的工具。</p>
+<p>请看一个例子，main.js 模块加载 foo.js 模块。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// foo.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(x);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="built_in">require</span>(<span class="string">"./foo"</span>);</span><br><span class="line">foo(<span class="string">"Hi"</span>)</span><br></pre></td></tr></table></figure>
+<p>使用下面的命令，就能将main.js转为浏览器可用的格式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ browserify main.js &gt; compiled.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ browser-unpack &lt; compiled.js</span><br><span class="line"></span><br><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;id&quot;:1,</span><br><span class="line">    &quot;source&quot;:&quot;module.exports = function(x) &#123;\n  console.log(x);\n&#125;;&quot;,</span><br><span class="line">    &quot;deps&quot;:&#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;id&quot;:2,</span><br><span class="line">    &quot;source&quot;:&quot;var foo = require(\&quot;./foo\&quot;);\nfoo(\&quot;Hi\&quot;);&quot;,</span><br><span class="line">    &quot;deps&quot;:&#123;&quot;./foo&quot;:1&#125;,</span><br><span class="line">    &quot;entry&quot;:true</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>browerify 将所有模块放入一个数组，id 属性是模块的编号，source 属性是模块的源码，deps 属性是模块的依赖。</p>
+<p>因为 main.js 里面加载了 foo.js，所以 deps 属性就指定 ./foo 对应1号模块。执行的时候，浏览器遇到 require(‘./foo’) 语句，就自动执行1号模块的 source 属性，并将执行后的 module.exports 属性值输出。</p>
+<h3 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h3><blockquote>
+<p>CommonJS的require是同步的，这对服务器端不是一个问题，因为所有的模块都存放在本地硬盘，可以同步加载完成，等待时间就是硬盘的读取时间。但是，对于浏览器，这却是一个大问题，因为模块都放在服务器端，等待时间取决于网速的快慢，可能要等很长时间，浏览器处于”假死”状态。</p>
+<p>因此，浏览器端的模块，不能采用”同步加载”（synchronous），只能采用”异步加载”（asynchronous）。这就是AMD规范诞生的背景。</p>
+</blockquote>
+<p>AMD是”Asynchronous Module Definition”的缩写，意思就是”<strong>异步模块定义</strong>“。它采用异步方式加载模块，模块的加载不影响它后面语句的运行。所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行。</p>
+<p>AMD也采用require()语句加载模块，但是不同于CommonJS，它要求两个参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">require([module], callback);</span><br></pre></td></tr></table></figure>
+<p>第一个参数[module]，是一个数组，里面的成员就是要加载的模块；第二个参数callback，则是加载成功之后的回调函数。</p>
+<p>如果将前面的代码改写成AMD形式，就是下面这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">require([&apos;math&apos;], function (math) &#123;</span><br><span class="line">　 math.add(2, 3);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>math.add()与math模块加载不是同步的，浏览器不会发生假死。所以很显然，AMD比较适合浏览器环境。目前，主要有两个Javascript库实现了AMD规范：<strong>require.js和curl.js</strong>。</p>
+<p><strong>AMD特点：</strong></p>
+<ul>
+<li>AMD推崇的是依赖前置。</li>
+<li>AMD对加载的模块是提前读取并加载。</li>
+</ul>
+<h4 id="RequireJS"><a href="#RequireJS" class="headerlink" title="RequireJS"></a>RequireJS</h4><blockquote>
+<p>最早的时候，所有Javascript代码都写在一个文件里面，只要加载这一个文件就够了。后来，代码越来越多，一个文件不够了，必须分成多个文件，依次加载。</p>
+<p>这样的写法有很大的缺点。首先，加载的时候，浏览器会停止网页渲染，加载文件越多，网页失去响应的时间就会越长；其次，由于js文件之间存在依赖关系，因此必须严格保证加载顺序，依赖性最大的模块一定要放到最后加载，当依赖关系很复杂的时候，代码的编写和维护都会变得困难</p>
+</blockquote>
+<p>require.js的诞生，就是为了解决这两个问题：</p>
+<ul>
+<li>实现js文件的异步加载，避免网页失去响应；</li>
+<li>管理模块之间的依赖性，便于代码的编写和维护。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;js/require.js&quot; defer async=&quot;true&quot; &gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>有人可能会想到，加载这个文件，也可能造成网页失去响应。解决办法有两个，一个是把它放在网页底部加载，另一个是写成上面这样。</p>
+<p>async属性表明这个文件需要异步加载，避免网页失去响应。IE不支持这个属性，只支持defer，所以把defer也写上。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"js/require.js"</span> data-main=<span class="string">"js/main"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>data-main属性的作用是，指定网页程序的主模块。在上例中，就是js目录下面的main.js，这个文件会第一个被require.js加载。由于require.js默认的文件后缀名是js，所以可以把main.js简写成main。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="built_in">require</span>([<span class="string">'moduleA'</span>, <span class="string">'moduleB'</span>, <span class="string">'moduleC'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">moduleA, moduleB, moduleC</span>)</span>&#123;</span><br><span class="line">　 <span class="comment">// some code here</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>require()异步加载moduleA，moduleB和moduleC，浏览器不会失去响应；它指定的回调函数，只有前面的模块都加载成功后，才会运行，解决了依赖性的问题。</p>
+<p>使用<strong>require.config()</strong>方法，我们可以对模块的加载行为进行自定义。require.config()就写在主模块（main.js）的头部。参数就是一个对象，这个对象的paths属性指定各个模块的加载路径。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>.config(&#123;</span><br><span class="line">　 paths: &#123;</span><br><span class="line">　　　　<span class="string">"jquery"</span>: <span class="string">"lib/jquery.min"</span>,</span><br><span class="line">　　　　<span class="string">"underscore"</span>: <span class="string">"lib/underscore.min"</span>,</span><br><span class="line">　　　　<span class="string">"backbone"</span>: <span class="string">"lib/backbone.min"</span></span><br><span class="line">　　&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 也可以改变基本目录</span></span><br><span class="line"><span class="built_in">require</span>.config(&#123;</span><br><span class="line">  baseUrl：<span class="string">'js/lib'</span>,</span><br><span class="line">　 paths: &#123;</span><br><span class="line">　　　　<span class="string">"jquery"</span>: <span class="string">"lib/jquery.min"</span>,</span><br><span class="line">　　　　<span class="string">"underscore"</span>: <span class="string">"lib/underscore.min"</span>,</span><br><span class="line">　　　　<span class="string">"backbone"</span>: <span class="string">"lib/backbone.min"</span></span><br><span class="line">　　&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果某个模块在另一台主机上，也可以直接指定它的网址</span></span><br><span class="line"><span class="built_in">require</span>.config(&#123;</span><br><span class="line">　 paths: &#123;</span><br><span class="line">　　　　<span class="string">"jquery"</span>: <span class="string">"https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min"</span>,</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>require.js要求，每个模块是一个单独的js文件。这样的话，如果加载多个模块，就会发出多次HTTP请求，会影响网页的加载速度。因此，require.js提供了一个优化工具，当模块部署完毕以后，可以用这个工具将多个模块合并在一个文件中，减少HTTP请求数。</p>
+<h5 id="AMD模块写法"><a href="#AMD模块写法" class="headerlink" title="AMD模块写法"></a>AMD模块写法</h5><p>模块必须采用特定的define()函数来定义。如果一个模块不依赖其他模块，那么可以直接定义在define()函数之中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// math.js</span></span><br><span class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">　　<span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span> (<span class="params">x,y</span>)</span>&#123;</span><br><span class="line">　　　　<span class="keyword">return</span> x+y;</span><br><span class="line">　　&#125;;</span><br><span class="line">　　<span class="keyword">return</span> &#123;</span><br><span class="line">　　　　add: add</span><br><span class="line">　　&#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>加载方式如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="built_in">require</span>([<span class="string">'math'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">math</span>)</span>&#123;</span><br><span class="line">   alert(math.add(<span class="number">1</span>,<span class="number">1</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>如果math.js还依赖其他模式，那么define()函数第一个参数，必须是一个数组，知名该模块的依赖性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">define([<span class="string">'myLib'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">myLib</span>)</span>&#123;</span><br><span class="line">　　<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　  myLib.doSomething();</span><br><span class="line">　　&#125;</span><br><span class="line">　　<span class="keyword">return</span> &#123;</span><br><span class="line">　　　　foo : foo</span><br><span class="line">　　&#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>当require()函数加载上面这个模块的时候，就会先加载myLib.js文件。</p>
+<h5 id="加载非规范的模块"><a href="#加载非规范的模块" class="headerlink" title="加载非规范的模块"></a>加载非规范的模块</h5><p>理论上，require.js加载的模块，必须是按照AMD规范、用define()函数定义的模块。但是实际上，虽然已经有一部分流行的函数库（比如jQuery）符合AMD规范，更多的库并不符合。那么，require.js是否能够加载非规范的模块呢？</p>
+<p>回答是可以的。</p>
+<p>这样的模块在用require()加载之前，要先用require.config()方法，定义它们的一些特征。</p>
+<p>举例来说，underscore和backbone这两个库，都没有采用AMD规范编写。如果要加载它们的话，必须先定义它们的特征。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>.config(&#123;</span><br><span class="line">　　shim: &#123;</span><br><span class="line">　　　  <span class="string">'underscore'</span>:&#123;</span><br><span class="line">　　　　　　exports: <span class="string">'_'</span></span><br><span class="line">　　　　 &#125;,</span><br><span class="line">　　　　 <span class="string">'backbone'</span>: &#123;</span><br><span class="line">　　　　　　deps: [<span class="string">'underscore'</span>, <span class="string">'jquery'</span>],</span><br><span class="line">　　　　　　exports: <span class="string">'Backbone'</span></span><br><span class="line">　　　　 &#125;</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>require.config()接受一个配置对象，这个对象除了有前面说过的paths属性之外，还有一个shim属性，专门用来配置不兼容的模块。具体来说，每个模块要定义</p>
+<ul>
+<li>exports值（输出的变量名），表明这个模块外部调用时的名称；</li>
+<li>deps数组，表明该模块的依赖性。</li>
+</ul>
+<h3 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h3><p>CMD是指Common Module Definition，通用模块定义。<strong>异步的模块加载机制</strong>。是在推广sea.js时对模块规范化产出。<br>说到CMD，大家千万不要望文生义，认为这和Common.js在服务器端的加载方式相同，其实并不一样。<br>其实CMD更像是Amd和Common.js的升级版，结合了两者的优点。</p>
+<p>Common.js可以做到当需要这个模块时，再读取并加载。<br>AMD可以做到避免Common.js的“临时读取并加载文件”，它是提前读取并加载。</p>
+<p><strong>而CMD可以做到的是，“提前读取文件，但在需要再加载”，这样可以避免浏览器临时加载文件的假死，也可以避免提前加载引起的逻辑问题。</strong></p>
+<p>所以大家叫sea.js懒加载，也就是 “as lazy as possible”,这也是Cmd的标志！</p>
+<p><strong>懒加载</strong>可以很好的作为判别AMD和CMD的方法哈！</p>
+<p><strong>CMD的特点：</strong></p>
+<ul>
+<li>CMD推崇的是就近依赖。</li>
+<li>CMD对加载的模块是提前读取并不加载，而是在需要时加载。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CMD</span></span><br><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports, module</span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">'./a'</span>)</span><br><span class="line">a.doSomething()</span><br><span class="line"><span class="comment">// 此处略去 100 行</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="built_in">require</span>(<span class="string">'./b'</span>) <span class="comment">// 依赖可以就近书写</span></span><br><span class="line">b.doSomething()</span><br><span class="line"><span class="comment">// ... </span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>推广理念有差异</strong>。RequireJS 在尝试让第三方类库修改自身来支持 RequireJS，目前只有少数社区采纳。Sea.js 不强推，采用自主封装的方式来“海纳百川”，目前已有较成熟的封装策略。</p>
+<p><strong>对开发调试的支持有差异</strong>。Sea.js 非常关注代码的开发调试，有 nocache、debug 等用于调试的插件。RequireJS 无这方面的明显支持。</p>
+<p><strong>插件机制不同</strong>。RequireJS 采取的是在源码中预留接口的形式，插件类型比较单一。Sea.js 采取的是通用事件机制，插件类型更丰富。</p>
+<h3 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h3><p>ES6 模块的设计思想是尽量的静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量。CommonJS 和 AMD 模块，都只能在运行时确定这些东西。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CommonJS模块</span></span><br><span class="line"><span class="keyword">let</span> &#123; stat, exists, readFile &#125; = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">let</span> _fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">let</span> stat = _fs.stat;</span><br><span class="line"><span class="keyword">let</span> exists = _fs.exists;</span><br><span class="line"><span class="keyword">let</span> readfile = _fs.readfile;</span><br></pre></td></tr></table></figure>
+<p>整体加载fs模块（即加载fs的所有方法），生成一个对象（_fs），然后再从这个对象上面读取 3 个方法。这种加载称为“运行时加载”，因为只有运行时才能得到这个对象，导致完全没办法在编译时做“静态优化”。</p>
+<p>ES6 模块不是对象，而是通过export命令显式指定输出的代码，再通过import命令输入。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES6模块</span></span><br><span class="line"><span class="keyword">import</span> &#123; stat, exists, readFile &#125; <span class="keyword">from</span> <span class="string">'fs'</span>;</span><br></pre></td></tr></table></figure>
+<p>上面代码的实质是从fs模块加载 3 个方法，其他方法不加载。这种加载称为“<strong>编译时加载</strong>”或者<strong>静态加载</strong>，即 ES6 可以在编译时就完成模块加载，效率要比 CommonJS 模块的加载方式高。当然，这也导致了没法引用 ES6 模块本身，因为它不是对象。</p>
+<p><strong>ES6 的模块自动采用严格模式，不管你有没有在模块头部加上”use strict”;。</strong></p>
+<p>ES6 模块之中，顶层的this指向undefined，即不应该在顶层代码使用this。</p>
+<h4 id="export"><a href="#export" class="headerlink" title="export"></a>export</h4><p>模块功能主要由两个命令构成：export和import。export命令用于规定模块的对外接口，import命令用于输入其他模块提供的功能。</p>
+<p>一个模块就是一个独立的文件。该文件内部的所有变量，外部无法获取。如果你希望外部能够读取模块内部的某个变量，就必须使用export关键字输出该变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// profile.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> firstName = <span class="string">'Michael'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> lastName = <span class="string">'Jackson'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> year = <span class="number">1958</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">multiply</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x * y;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 另一种写法</span></span><br><span class="line"><span class="keyword">var</span> firstName = <span class="string">'Michael'</span>;</span><br><span class="line"><span class="keyword">var</span> lastName = <span class="string">'Jackson'</span>;</span><br><span class="line"><span class="keyword">var</span> year = <span class="number">1958</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;firstName, lastName, year&#125;;</span><br></pre></td></tr></table></figure>
+<p>通常情况下，export输出的变量就是本来的名字，但是可以使用as关键字重命名。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">v1</span>(<span class="params"></span>) </span>&#123; ... &#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">v2</span>(<span class="params"></span>) </span>&#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">  v1 <span class="keyword">as</span> streamV1,</span><br><span class="line">  v2 <span class="keyword">as</span> streamV2,</span><br><span class="line">  v2 <span class="keyword">as</span> streamLatestVersion</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>export命令可以出现在模块的任何位置，只要处于模块顶层就可以。如果处于块级作用域内，就会报错，下一节的import命令也是如此。这是因为处于条件代码块之中，就没法做静态优化了，违背了 ES6 模块的设计初衷。</p>
+<h4 id="import"><a href="#import" class="headerlink" title="import"></a>import</h4><p>使用export命令定义了模块的对外接口以后，其他 JS 文件就可以通过import命令加载这个模块。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">import</span> &#123;firstName, lastName, year&#125; <span class="keyword">from</span> <span class="string">'./profile.js'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setName</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">  element.textContent = firstName + <span class="string">' '</span> + lastName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>import命令接受一对大括号，里面指定要从其他模块导入的变量名。大括号里面的变量名，必须与被导入模块（profile.js）对外接口的名称相同。</p>
+<p>如果想为输入的变量重新取一个名字，import命令要使用as关键字，将输入的变量重命名。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#123; lastName as surname &#125; from &apos;./profile.js&apos;;</span><br></pre></td></tr></table></figure>
+<p><strong>注意，import命令具有提升效果，会提升到整个模块的头部，首先执行。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">foo();</span><br><span class="line">import &#123; foo &#125; from &apos;my_module&apos;;</span><br></pre></td></tr></table></figure>
+<p>这种行为的本质是，import命令是编译阶段执行的，在代码运行之前。</p>
+<h4 id="export-default"><a href="#export-default" class="headerlink" title="export default"></a>export default</h4><p>为了给用户提供方便，让他们不用阅读文档就能加载模块，就要用到export default命令，为模块指定默认输出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// export-default.js</span><br><span class="line">export default function () &#123;</span><br><span class="line">  console.log(&apos;foo&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其他模块加载该模块时，import命令可以为该匿名函数指定任意名字。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// import-default.js</span><br><span class="line">import customName from &apos;./export-default&apos;;</span><br><span class="line">customName(); // &apos;foo&apos;</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，这时import命令后面，不使用大括号。</p>
+<p>export default命令用于指定模块的默认输出。显然，<strong>一个模块只能有一个默认输出，因此export default命令只能使用一次</strong>。所以，import命令后面才不用加大括号，因为只可能唯一对应export default命令。</p>
+<p>本质上，export default就是输出一个叫做default的变量或方法，然后系统允许你为它取任意名字。</p>
+<h4 id="import-1"><a href="#import-1" class="headerlink" title="import()"></a>import()</h4><p>import()函数，完成<strong>动态加载</strong>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import(specifier)</span><br></pre></td></tr></table></figure>
+<p>上面代码中，import函数的参数specifier，指定所要加载的模块的位置。import命令能够接受什么参数，import()函数就能接受什么参数，两者区别主要是后者为动态加载。</p>
+<p>import()函数可以用在任何地方，不仅仅是模块，非模块的脚本也可以使用。它是<strong>运行时执行</strong>，也就是说，什么时候运行到这一句，也会加载指定的模块。另外，import()函数与所加载的模块没有静态连接关系，这点也是与import语句不相同。</p>
+<p><strong>import()类似于 Node 的require方法，区别主要是前者是异步加载，后者是同步加载</strong>。</p>
+<p><strong>适用场景：</strong></p>
+<ul>
+<li>按需加载</li>
+<li>条件加载</li>
+<li>动态的模块路径</li>
+</ul>
+<p>import()加载模块成功以后，这个模块会作为一个对象，当作then方法的参数。因此，可以使用对象解构赋值的语法，获取输出接口。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import(&apos;./myModule.js&apos;)</span><br><span class="line">.then((&#123;export1, export2&#125;) =&gt; &#123;</span><br><span class="line">  // ...·</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>上面代码中，export1和export2都是myModule.js的输出接口，可以解构获得。</p>
+<h4 id="export和import复合写法"><a href="#export和import复合写法" class="headerlink" title="export和import复合写法"></a>export和import复合写法</h4><p>如果在一个模块之中，先输入后输出同一个模块，import语句可以与export语句写在一起。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; foo, bar &#125; <span class="keyword">from</span> <span class="string">'my_module'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以简单理解为</span></span><br><span class="line"><span class="keyword">import</span> &#123; foo, bar &#125; <span class="keyword">from</span> <span class="string">'my_module'</span>;</span><br><span class="line"><span class="keyword">export</span> &#123; foo, bar &#125;;</span><br></pre></td></tr></table></figure>
+<p>但需要注意的是，写成一行以后，foo和bar实际上并没有被导入当前模块，只是相当于对外转发了这两个接口，导致当前模块不能直接使用foo和bar。</p>
+<h4 id="与CommonJS的差异"><a href="#与CommonJS的差异" class="headerlink" title="与CommonJS的差异"></a>与CommonJS的差异</h4><ul>
+<li>CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。</li>
+<li>CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。</li>
+</ul>
+<p>CommonJS 模块输出的是值的拷贝，也就是说，一旦输出一个值，模块内部的变化就影响不到这个值。</p>
+<p>ES6 模块的运行机制与 CommonJS 不一样。JS 引擎对脚本静态分析的时候，遇到模块加载命令import，就会生成一个只读引用。等到脚本真正执行时，再根据这个只读引用，到被加载的那个模块里面去取值。换句话说，ES6 的import有点像 Unix 系统的“符号连接”，原始值变了，import加载的值也会跟着变。因此，ES6 模块是动态引用，并且不会缓存值，模块里面的变量绑定其所在的模块。</p>
+<p>第二个差异是因为 CommonJS 加载的是一个对象（即module.exports属性），该对象只有在脚本运行完才会生成。而 ES6 模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。</p>
+<p><strong>ES6 模块加载 CommonJS 模块</strong> </p>
+<p>CommonJS 模块的输出都定义在module.exports这个属性上面。Node 的import命令加载 CommonJS 模块，Node 会自动将module.exports属性，当作模块的默认输出，即等同于export default xxx。</p>
+<p><strong>CommonJS 模块加载 ES6 模块</strong></p>
+<p>CommonJS 模块加载 ES6 模块，不能使用require命令，而要使用import()函数。ES6 模块的所有输出接口，会成为输入对象的属性。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/Git使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2104,700 +2858,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/05/Flex弹性布局/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aisling Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleCorn个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/05/Flex弹性布局/" itemprop="url">Flex弹性布局</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-05T15:04:52+08:00">
-                2018-03-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Flex基本概念"><a href="#Flex基本概念" class="headerlink" title="Flex基本概念"></a>Flex基本概念</h3><ul>
-<li>Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。任何一个容器都可以指定为 Flex 布局。</li>
-<li>Webkit 内核的浏览器，必须加上-webkit前缀。</li>
-<li>设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效。</li>
-</ul>
-<h3 id="父容器的属性"><a href="#父容器的属性" class="headerlink" title="父容器的属性"></a>父容器的属性</h3><h4 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h4><p>决定主轴的方向，即项目的排列方向</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">    flex-direction:row | row-reverse |column |column-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>row（默认值）：主轴为水平方向，起点在左端。</li>
-<li>row-reverse：主轴为水平方向，起点在右端。</li>
-<li>column：主轴为垂直方向，起点在上沿。</li>
-<li>column-reverse：主轴为垂直方向，起点在下沿。</li>
-</ul>
-<h4 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h4><p>决定项目在轴线上排不下的时候的换行行为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">    flex-wrap: nowrap | wrap | wrap-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>nowrap（默认）：不换行。</li>
-<li>wrap：换行，第一行在上方。</li>
-<li>wrap-reverse：换行，第一行在下方。</li>
-</ul>
-<h4 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h4><p>是flex-direction 和 flex-wrap属性的简写形式，默认值：row nowrap</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h4><p>定义项目在主轴上的对齐方式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  justify-content: flex-start | flex-end | center | space-between | space-around;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>flex-start（默认值）：左对齐</li>
-<li>flex-end：右对齐</li>
-<li>center： 居中</li>
-<li>space-between：两端对齐，项目之间的间隔都相等。</li>
-<li>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</li>
-</ul>
-<h4 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h4><p>定义项目在交叉轴上的对齐方式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  align-items: flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>flex-start：交叉轴的起点对齐。</li>
-<li>flex-end：交叉轴的终点对齐。</li>
-<li>center：交叉轴的中点对齐。</li>
-<li>baseline: 项目的第一行文字的基线对齐。</li>
-<li>stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。</li>
-</ul>
-<h4 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h4><p>定义多根轴线的对齐方式，如果项目只有一根轴线，该属性不起作用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  align-content: flex-start | flex-end | center | space-between | space-around | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>flex-start：与交叉轴的起点对齐。</li>
-<li>flex-end：与交叉轴的终点对齐。</li>
-<li>与交叉轴的中点对齐。</li>
-<li>space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。</li>
-<li>space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</li>
-<li>stretch（默认值）：轴线占满整个交叉轴。</li>
-</ul>
-<h3 id="子项目的属性"><a href="#子项目的属性" class="headerlink" title="子项目的属性"></a>子项目的属性</h3><h4 id="order"><a href="#order" class="headerlink" title="order"></a>order</h4><p>定义项目的排列顺序。数字越小，排列越靠前，默认0。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  order: &lt;integer&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h4><p>定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  flex-grow: &lt;number&gt;; /* default 0 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
-<h4 id="flex-shrink"><a href="#flex-shrink" class="headerlink" title="flex-shrink"></a>flex-shrink</h4><p>定义项目的缩小比例，默认为1，即如果空间不足，该项目缩小。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  flex-shrink: &lt;number&gt;; /* default 1 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。</p>
-<h4 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h4><p>定义在分配多余空间之前，项目占据的主轴空间。浏览器根据这个属性，计算主轴是否有多余空间。默认值为auto，即项目的本来大小。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  flex-basis: &lt;length&gt; | auto; /* default auto */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。</p>
-<h4 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h4><p>是flex-grow、flex-shrink、flex-basis属性的简写，默认值为 0 1 auto。后两个属性可选。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  flex: none | [ &lt;&apos;flex-grow&apos;&gt; &lt;&apos;flex-shrink&apos;&gt;? || &lt;&apos;flex-basis&apos;&gt; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。</p>
-<h4 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h4><p>该属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值是auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  align-self: auto | flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>该属性可能取6个值，除了auto，其他都与align-items属性完全一致。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/05/CSS知识点总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Aisling Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LittleCorn个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/05/CSS知识点总结/" itemprop="url">CSS知识点总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-05T12:04:01+08:00">
-                2018-03-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h3><p>标准盒子模型：宽度 = 内容宽度(contengt) + border + padding + margin;</p>
-<p>低版本IE盒子模型：宽度 = 内容宽度(content + border + padding) + margin;</p>
-<h3 id="box-sizing"><a href="#box-sizing" class="headerlink" title="box-sizing"></a>box-sizing</h3><p>用来控制元素的盒子模型的解析模式，默认为content-box。</p>
-<ul>
-<li>content-box：在宽度和高度之外绘制元素的内边框和边框。</li>
-<li>border-box：为元素设置的任何padding和border都将在已设定的宽度和高度内进行绘制。</li>
-<li>inherit：规定应从父元素继续box-sizing属性的值。</li>
-</ul>
-<h3 id="display属性值"><a href="#display属性值" class="headerlink" title="display属性值"></a>display属性值</h3><ul>
-<li>inline（默认）–行内元素</li>
-<li>none–隐藏</li>
-<li>block–块元素</li>
-<li>table–表格显示</li>
-<li>list-item–项目列表</li>
-<li>inline-block–行内块级元素</li>
-</ul>
-<p><strong>块级元素：</strong> div、p、h1~h6、form、ul、li、ol、dl、address、hr、menu、table</p>
-<p><strong>行内元素：</strong> a、span、strong、br、img、input、label、select、textarea、cite</p>
-<p><strong>区别：</strong></p>
-<ul>
-<li>块级元素会独占一行，其宽度自动填满其父元素宽度。行内元素不会独占一行，相邻的行内元素会排列在同一行里，直到一行排不下，才会换行，其宽度随着元素的内容而变化。</li>
-<li>块级元素可以设置width、height属性。行内元素设置宽高无效。</li>
-<li>块级元素可以设置margin、padding。行内元素的水平方向的padding、margin可以产生边距效果，但是竖直方向的padding、margin设置无效。</li>
-<li>块级元素可以包含块级元素和行内元素，但是行内元素只能包含文本或其他行内元素，不能包含块级元素。</li>
-</ul>
-<p><strong>注意：</strong> 对于div之间或span之间因标签换行产生的间距，可以通过给父元素设置font-size：0，或者去掉换行，来消除。</p>
-<p><strong>display:inline-block产生间隙</strong></p>
-<ul>
-<li>有空格的时候会产生间隙。解决办法：移除空格。</li>
-<li>margin正值的时候产生间隙。解决办法：margin使用负值。</li>
-<li>使用font-size的时候产生间隙。解决办法：font-size:0、 letter-space、word-spacing。</li>
-</ul>
-<h3 id="position属性值"><a href="#position属性值" class="headerlink" title="position属性值"></a>position属性值</h3><ul>
-<li>static：（默认）按照正常文档流进行排列。</li>
-<li>relative：（相对定位）不脱离文档流，参考自身静态位置通过top、bottom、left、right进行定位。(原本的空间还占据着)</li>
-<li>absolute：（绝对定位）会脱离文档流，参考距离自己最近的一个不为static的父级元素通过top、left、bottom、right进行定位。（不占有原本的空间，后面的元素会顶上去，而且不论元素是行内元素还是块级元素，都会生成一个块级框）</li>
-<li>fixed：（固定定位）参考可视窗口(浏览器)进行定位。</li>
-</ul>
-<p><strong>包含块：</strong> 可以理解为一个矩形，其作用为它里面包含的元素提供一个参考，元素的尺寸和位置的计算往往是由该元素所在的包含块决定的。</p>
-<ul>
-<li>static元素和relative元素：包含块由它最近的块级、单元格或者行内块祖先元素的内容框创建。</li>
-<li>fixed元素：包含块是当前浏览器窗口。</li>
-<li>absolute元素：包含块由最近的position不为static的祖先元素创建。如果创建包含块的祖先元素是行内元素，包含块的范围是这个祖先元素中的第一个和最后一个行内块的padding围起来的区域。如果祖先元素不是行内元素，包含块的范围就是这个祖先元素的内边距+width区域。如果没有找到这样的祖先元素，这个绝对定位的元素的包含块为初始块。</li>
-</ul>
-<p><strong>position、display、float：</strong><br>display属性规定元素应该生成的框的类型，position属性规定元素的定位类型；float属性是一种布局方式，定义元素在哪个方向浮动。</p>
-<blockquote>
-<p>position:absolute和float的共同点，可以让元素脱离文档流，并且可以设置宽高。不同点是：float仍会占据位置，absolute会覆盖文档流中的其他元素。</p>
-</blockquote>
-<h3 id="visibility属性值"><a href="#visibility属性值" class="headerlink" title="visibility属性值"></a>visibility属性值</h3><ul>
-<li>visible：(默认值)元素可见。</li>
-<li>hidden：元素不可见。</li>
-<li>collapse：当在表格元素中使用时，此值可删除一行或一列，但是他不会影响表格的布局。被行或列占据的空间会留给其他内容使用。如果此值在其他元素上使用，会呈现为“hidden”。</li>
-<li>inherit：规定从父元素继承visibility属性值。</li>
-</ul>
-<p><strong>collapse浏览器不同表现：</strong> </p>
-<ul>
-<li>chrome中，使用collapse值和使用hidden没有区别。</li>
-<li>firefox，opera和IE中，使用collapse值和使用display:none没有区别。</li>
-</ul>
-<p><strong>dispaly:none和visibility:hidden的区别：</strong></p>
-<ul>
-<li>display:none，不显示对应的元素，在文档布局中不再分配空间（回流+重绘）。</li>
-<li>visibility:hidden，隐藏对应元素，在文档布局中仍保留原来的空间（重绘）。</li>
-</ul>
-<h3 id="overflow属性值"><a href="#overflow属性值" class="headerlink" title="overflow属性值"></a>overflow属性值</h3><ul>
-<li>scroll:必会出现滚动条。</li>
-<li>auto：子元素内容大于父元素时出现滚动条。</li>
-<li>visible：（默认值）溢出的内容出现在父元素之外。</li>
-<li>hidden：溢出隐藏。</li>
-</ul>
-<h3 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h3><ul>
-<li>父级div定义height。</li>
-<li>最后一个浮动元素后面加空div，并添加clear:both样式。</li>
-<li>包含浮动元素的父元素添加overflow:hidden/auto样式。</li>
-<li>父级div加伪类：after。</li>
-<li>父级div定义zoom(IE6/7)。</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">    <span class="attribute">clear</span>:both;</span><br><span class="line">    <span class="attribute">content</span>:<span class="string">''</span>;</span><br><span class="line">    <span class="attribute">display</span>:block;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">visibility</span>:hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>浮动带来的问题：</strong></p>
-<ul>
-<li>父元素的高度无法被撑开，影响与父元素同级的元素。</li>
-<li>与浮动元素同级的非浮动元素会跟随其后。</li>
-<li>若非第一个元素浮动，则该元素之前的元素也需要浮动，否则会影响页面显示的结构。</li>
-</ul>
-<p><strong>设置元素浮动后，该元素的display值为block。</strong></p>
-<h3 id="BFC-块级格式上下文"><a href="#BFC-块级格式上下文" class="headerlink" title="BFC(块级格式上下文)"></a>BFC(块级格式上下文)</h3><p>BFC规定了内部块级元素如何布局：</p>
-<ul>
-<li>内部的div会在垂直方向上一个接一个放置。</li>
-<li>div垂直方向的距离由margin决定，属于同一个BFC的两个相邻的div的margin会<strong>发生重叠</strong>。(取较大的值)</li>
-<li>每个元素的margin-left，与包含块的左边相接触。</li>
-<li>BFC的区域不会与float元素重叠。</li>
-<li>BFC是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。</li>
-<li>计算BFC的高度时，浮动元素也会参与计算。</li>
-</ul>
-<p><strong>触发BFC的条件：</strong></p>
-<ul>
-<li>根元素，即html。</li>
-<li>float的值不为none(默认值)时。</li>
-<li>overflow的值不为visible(默认值)时。</li>
-<li>display的值为inline-block、table-cell、table-caption时。</li>
-<li>position的值为absolute或fixed时。</li>
-<li>flex布局(display:flex或inline-flex)。</li>
-</ul>
-<p><strong>margin重叠解决方法：</strong></p>
-<ul>
-<li>在其中一个元素的外面包裹一层容器，并触发该容器生成一个BFC。那么两个元素便属于不同的BFC，就不会发生margin重叠。</li>
-<li>规定css规范，统一margin-top或者margin-bottom.</li>
-</ul>
-<p><strong>BFC应用场景：</strong></p>
-<ul>
-<li>解决浮动问题。给父元素设置overflow:hidden,触发BFC，所以他内部的元素就不会影响外面的布局。BFC就把浮动的子元素高度当做了自己内部的高度去处理溢出，所以外面看起来是清除了浮动。</li>
-<li>解决侵占浮动元素的问题。为非浮动元素建立BFC环境，根据BFC不与float元素重叠的规则，可以解决侵占问题。</li>
-</ul>
-<h3 id="IFC-内联格式化上下文"><a href="#IFC-内联格式化上下文" class="headerlink" title="IFC(内联格式化上下文)"></a>IFC(内联格式化上下文)</h3><p>IFC的line box（线框）高度由其包含行内元素中最高的实际高度计算而来（不受到竖直方向的padding/margin影响)。</p>
-<p>每个IFC对外表现为块级元素，与div垂直排列。</p>
-<p><strong>使用场景：</strong></p>
-<ul>
-<li>水平居中：当一个块要在环境中水平居中时，设置其为inline-block则会在外层产生IFC，通过text-align则可以使其水平居中。</li>
-<li>垂直居中：创建一个IFC，用其中一个元素撑开父元素的高度，然后设置其vertical-align:middle，其他行内元素则可以在此父元素下垂直居中。</li>
-</ul>
-<p><strong>GFC</strong></p>
-<p>GFC(GridLayout Formatting Contexts)直译为”网格布局格式化上下文”，当为一个元素设置display值为grid的时候，此元素将会获得一个独立的渲染区域，我们可以通过在网格容器上定义网格定义行和网格定义列属性，在网格项目上定义网格行和网格列,为每一个网格项目定义位置和空间。</p>
-<p><strong>FFC</strong></p>
-<p>FFC(Flex Formatting Contexts)直译为”自适应格式化上下文”，display值为flex或者inline-flex的元素将会生成自适应容器。伸缩容器中的每一个子元素都是一个伸缩项目。伸缩项目可以是任意数量的。伸缩容器外和伸缩项目内的一切元素都不受影响。简单地说，Flexbox 定义了伸缩容器内伸缩项目该如何布局。</p>
-<h3 id="FOUC"><a href="#FOUC" class="headerlink" title="FOUC"></a>FOUC</h3><p>Flash Of Unstyled Content 文档样式闪烁</p>
-<p>通过@import引入css文件，浏览器DOM加载完到css加载完成中间会有一段时间页面上的内容是没有样式的，这段时间长度跟网速有关，样式加载完毕后，页面重新渲染，引起重绘，重排。</p>
-<p><strong>解决方法：</strong></p>
-<p>把@import换成link标签，或者在link后面加一个script标签</p>
-<h3 id="margin和padding适用场景"><a href="#margin和padding适用场景" class="headerlink" title="margin和padding适用场景"></a>margin和padding适用场景</h3><p><strong>margin的使用：</strong></p>
-<ul>
-<li>需要在border外侧添加空白。</li>
-<li>空白处不需要背景色。</li>
-<li>上下相连的两个盒子之间的空白，需要相互抵消时。</li>
-</ul>
-<p><strong>padding的使用：</strong></p>
-<ul>
-<li>需要在border内测添加空白。</li>
-<li>空白处需要背景色。</li>
-<li>上下相连的两个盒子的空白，希望为两者之和时。</li>
-</ul>
-<h3 id="元素竖直方向百分比"><a href="#元素竖直方向百分比" class="headerlink" title="元素竖直方向百分比"></a>元素竖直方向百分比</h3><p>当按百分比设定一个元素的宽度时，它是相对于父容器的宽度计算的，但是，对于一些表示竖向距离的属性，例如 padding-top , padding-bottom , margin-top , margin-bottom 等，当按百分比设定它们时，依据的也是父容器的宽度，而不是高度。</p>
-<h3 id="line-height"><a href="#line-height" class="headerlink" title="line-height"></a>line-height</h3><p>行高是指一行文字的高度，具体说是两行文字间基线的距离。CSS中起高度作用的是height和line-height，没有定义height属性，最终其表现作用一定是line-height。</p>
-<p>单行文本垂直居中：把line-height值设置为height一样大小的值可以实现单行文字的垂直居中，其实也可以把height删除。<br>多行文本垂直居中：需要设置display属性为inline-block。</p>
-<h3 id="css创建三角形"><a href="#css创建三角形" class="headerlink" title="css创建三角形"></a>css创建三角形</h3><p>首先，需要把元素宽度、高度设为0，然后其中三个边框设为透明。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">width</span>: 0;</span><br><span class="line"><span class="selector-tag">height</span>: 0;</span><br><span class="line"><span class="selector-tag">border-top</span>: 40<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-tag">transparent</span>;</span><br><span class="line"><span class="selector-tag">border-left</span>: 40<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-tag">transparent</span>;</span><br><span class="line"><span class="selector-tag">border-right</span>: 40<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-tag">transparent</span>;</span><br><span class="line"><span class="selector-tag">border-bottom</span>: 40<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#ff0000</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="常见兼容性问题"><a href="#常见兼容性问题" class="headerlink" title="常见兼容性问题"></a>常见兼容性问题</h3><ol>
-<li>不同浏览器的标签默认的margin和padding不一样。我们可以设置*{margin: 0; padding: 0}</li>
-<li>IE6双边距bug：块属性标签float后，又有水平方向的margin情况下，在IE6显示左边的margin可能会变成两倍宽度。我们可以设置 display: inline，将其转化为行内元素，或者改变padding。</li>
-<li>设置较小高度标签（小于10px），在IE6，IE7中高度超出自己设置的高度。我们可以给超出高度的标签设置 overflow: hidden，或者设置行高line-height小于你设置的高度。</li>
-<li><strong>Chrome中文界面下默认会将小于12px的文本强制按照12px显示。我们可以加入css属性 -webkit-text-size-adjust: none(高版本不支持);或者设置transform:scale(0.8)</strong></li>
-<li>超链接访问过后hover样式不见了，被点击访问过的超链接样式不再具有hover和active了。我们可以改变css属性排列顺序：L-V-H-A: a：link{},a:visited{},a:hover{},a:active{}.</li>
-</ol>
-<h3 id="全屏滚动原理"><a href="#全屏滚动原理" class="headerlink" title="全屏滚动原理"></a>全屏滚动原理</h3><ul>
-<li>原理：有点类似于轮播，整体的元素一直排列下去，假设有5个需要展示的全屏页面，那么高度是500%，只是展示100%，剩下的可以通过transform进行y轴定位，也可以通过margin-top实现。</li>
-<li>overflow：hidden；transition：all 1000ms ease；</li>
-</ul>
-<h3 id="让页面字体边清晰变细"><a href="#让页面字体边清晰变细" class="headerlink" title="让页面字体边清晰变细"></a>让页面字体边清晰变细</h3><p>-webkit-font-smoothing在window系统下没有起作用，但是在IOS设备上起作用-webkit-font-smoothing：antialiased是最佳的，灰度平滑。</p>
-<h3 id="响应式设计"><a href="#响应式设计" class="headerlink" title="响应式设计"></a>响应式设计</h3><p>响应式网站设计(Responsive Web design)是一个网站能够兼容多个终端，而不是为每一个终端做一个特定的版本。</p>
-<p><strong>基本原理：</strong> 是通过媒体查询检测不同的设备屏幕尺寸做处理。<br>页面头部必须有meta声明的viewport。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=’viewport’ </span><br><span class="line">content=”width=device-width, initial-scale=1. maximum-scale=1,</span><br><span class="line">user-scalable=no”&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="移动端媒体查询"><a href="#移动端媒体查询" class="headerlink" title="移动端媒体查询"></a>移动端媒体查询</h3><p>通过媒体查询可以为不同大小和尺寸的媒体定义不同的css，适应相应的设备的显示。</p>
-<ul>
-<li><p><head>里边</head></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;xxx.css&quot; media=&quot;only screen and (max-device-width:480px)&quot;&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>CSS : @media only screen and (max-device-width:480px) {/css样式/}</p>
-</li>
-</ul>
-<h3 id="视差滚动效果"><a href="#视差滚动效果" class="headerlink" title="视差滚动效果"></a>视差滚动效果</h3><p>视差滚动（Parallax Scrolling）通过在网页向下滚动的时候，控制背景的移动速度比前景的移动速度慢来创建出令人惊叹的3D效果。</p>
-<ul>
-<li>CSS3实现。优点：开发时间短、性能和开发效率比较好，缺点是不能兼容到低版本的浏览器。</li>
-<li>jQuery实现。通过控制不同层滚动速度，计算每一层的时间，控制滚动效果。优点：能兼容到各个版本的，效果可控性好<br>缺点：开发起来对制作者要求高。</li>
-<li>插件实现方式<br>例如：parallax-scrolling，兼容性十分好。</li>
-</ul>
-<h3 id="浏览器怎样解析css选择器"><a href="#浏览器怎样解析css选择器" class="headerlink" title="浏览器怎样解析css选择器"></a>浏览器怎样解析css选择器</h3><p>CSS选择器的解析是从右向左解析的。若从左向右的匹配，发现不符合规则，需要进行回溯，会损失很多性能。</p>
-<p>若从右向左匹配，先找到所有的最右节点，对于每一个节点，向上寻找其父节点直到找到根元素或满足条件的匹配规则，则结束这个分支的遍历。</p>
-<p>两种匹配规则的性能差别很大，是因为从右向左的匹配在第一步就筛选掉了大量的不符合条件的最右节点（叶子节点），而从左向右的匹配规则的性能都浪费在了失败的查找上面。</p>
-<p>而在 CSS 解析完毕后，需要将解析的结果与 DOM Tree 的内容一起进行分析建立一棵 Render Tree，最终用来进行绘图。</p>
-<p>在建立 Render Tree 时（WebKit 中的「Attachment」过程），浏览器就要为每个 DOM Tree 中的元素根据 CSS 的解析结果（Style Rules）来确定生成怎样的 Render Tree。</p>
-<h3 id="在网页中应该使用偶数字体"><a href="#在网页中应该使用偶数字体" class="headerlink" title="在网页中应该使用偶数字体"></a>在网页中应该使用偶数字体</h3><p>使用偶数字体。偶数字号相对更容易和 web 设计的其他部分构成比例关系。Windows 自带的点阵宋体（中易宋体）从 Vista 开始只提供 12、14、16 px 这三个大小的点阵，而 13、15、17 px时用的是小一号的点。（即每个字占的空间大了 1 px，但点阵没变），于是略显稀疏。</p>
-<h3 id="手写动画，最小时间间隔"><a href="#手写动画，最小时间间隔" class="headerlink" title="手写动画，最小时间间隔"></a>手写动画，最小时间间隔</h3><p>多数显示器默认频率是60Hz，即1秒刷新60次，所以理论上最小间隔为1/60＊1000ms ＝ 16.7ms。</p>
-<h3 id="li与li之间的空白间隔"><a href="#li与li之间的空白间隔" class="headerlink" title="li与li之间的空白间隔"></a>li与li之间的空白间隔</h3><p>行框的排列会受到中间空白（回车空格）等的影响，因为空格也属于字符,这些空白也会被应用样式，占据空间，所以会有间隔，把字符大小设为0，就没有空格了。</p>
-<p>解决方法：</p>
-<ul>
-<li>可以将li代码全部写在一排。</li>
-<li>浮动li中float：left。</li>
-<li>在ul中用font-size：0（谷歌不支持）；可以使用letter-space：-3px。</li>
-</ul>
-<h3 id="div设置边框"><a href="#div设置边框" class="headerlink" title="div设置边框"></a>div设置边框</h3><ul>
-<li>border </li>
-<li>outline</li>
-<li>border-image</li>
-<li>box-shadow</li>
-</ul>
-<h3 id="css选择器"><a href="#css选择器" class="headerlink" title="css选择器"></a>css选择器</h3><p>id选择器(#myid)、类选择器(.myclassname)、标签选择器(div, h1, p)、相邻选择器(h1 + p)、子选择器（ul &gt; li）、后代选择器（li a）、通配符选择器（*）、属性选择器（a[rel=”external”]）、伪类选择器（a:hover, li:nth-child）</p>
-<p><strong>优先级：</strong> 从高到低</p>
-<ul>
-<li>！important</li>
-<li>内联样式(标签的style属性)</li>
-<li>id选择器</li>
-<li>class选择器、属性选择器、伪类选择器</li>
-<li>标签选择器、伪元素选择器</li>
-<li>通配符选择器、子选择器、相邻选择器</li>
-<li>选择器相同时，后面的会覆盖前面的</li>
-<li>继承的样式优先级最低</li>
-</ul>
-<p><strong>权重计算：</strong></p>
-<p>把选择器的特殊性分为4个等级，每个等级代表一类选择器：</p>
-<ul>
-<li>内联样式的权值：1000</li>
-<li>ID选择器的权值：100</li>
-<li>Class选择器的权值：10</li>
-<li>标签选择器的权值：1</li>
-</ul>
-<p>通配符等选择器不在这个等级中，它们的权值为0，继承的样式没有权值。</p>
-<p>最终选择器的权值为：每一个选择器的权值的总和，权值越大，优先级越高。（其中！important高于所有的选择器，IE6不支持）</p>
-<h3 id="css3伪类"><a href="#css3伪类" class="headerlink" title="css3伪类"></a>css3伪类</h3><ul>
-<li>p:first-of-type 选择属于其父元素的首个元素</li>
-<li>p:last-of-type 选择属于其父元素的最后元素</li>
-<li>p:only-of-type 选择属于其父元素唯一的元素</li>
-<li>p:only-child 选择属于其父元素的唯一子元素</li>
-<li>p:nth-child(2) 选择属于其父元素的第二个子元素</li>
-<li>:enabled :disabled 表单控件的禁用状态。</li>
-<li>:checked 单选框或复选框被选中。</li>
-</ul>
-<h3 id="before和-after"><a href="#before和-after" class="headerlink" title="::before和:after"></a>::before和:after</h3><ul>
-<li>单冒号(:)用于CSS3伪类，双冒号(::)用于CSS3伪元素。</li>
-<li>::before就是以一个子元素的存在，定义在元素主体内容之前的一个伪元素。并不存在于dom之中，只存在在页面之中。</li>
-<li>:before 和 :after 这两个伪元素，是在CSS2.1里新出现的。起初，伪元素的前缀使用的是单冒号语法，但随着Web的进化，在CSS3的规范里，伪元素的语法被修改成使用双冒号，成为::before ::after。</li>
-</ul>
-<h3 id="css3新特性"><a href="#css3新特性" class="headerlink" title="css3新特性"></a>css3新特性</h3><ul>
-<li>RGBA和透明度</li>
-<li>background-image， background-origin(content-box/padding-box/border-box)， background-size， background-repeat。</li>
-<li>word-wrap（对长的不可分割单词换行）word-wrap：break-word</li>
-<li>文字阴影：text-shadow： 5px 5px 5px #FF0000;（水平阴影，垂直阴影，模糊距离，阴影颜色）</li>
-<li>font-face属性：定义自己的字体</li>
-<li>圆角（边框半径）：border-radius 属性用于创建圆角</li>
-<li>边框图片：border-image: url(border.png) 30 30 round</li>
-<li>盒阴影：box-shadow: 10px 10px 5px #888888</li>
-<li>媒体查询：定义两套css，当浏览器的尺寸变化时会采用不同的属性。</li>
-<li>transform转换: rotate，translate，scale，skew，matrix</li>
-<li>transition动画</li>
-<li>animation动画：3D可以调用硬件加速</li>
-<li>新的长度单位：rem，ch，vw，vh，vmax，vmin等</li>
-<li>felx布局</li>
-<li>伪类选择器：：target，:enabled，:disabed，:first-child，:last-child等</li>
-</ul>
-<h3 id="CSS-Sprites"><a href="#CSS-Sprites" class="headerlink" title="CSS Sprites"></a>CSS Sprites</h3><p>将一个页面涉及到的所有图片都包含到一张大图中去，然后利用CSS的 background-image，background- repeat，background-position 的组合进行背景定位。利用CSS Sprites能很好地减少网页的http请求，从而大大的提高页面的性能；CSS Sprites能减少图片的字节。</p>
-<h3 id="style标签位置"><a href="#style标签位置" class="headerlink" title="style标签位置"></a>style标签位置</h3><p>页面加载自上而下 当然是先加载样式。<br>写在body标签后由于浏览器以逐行方式对HTML文档进行解析，当解析到写在尾部的样式表（外联或写在style标签）会导致浏览器停止之前的渲染，等待加载且解析样式表完成之后重新渲染，在windows的IE下可能会出现FOUC现象（即样式失效导致的页面闪烁问题）。</p>
-<h3 id="png、jpg、gif图片格式，webp"><a href="#png、jpg、gif图片格式，webp" class="headerlink" title="png、jpg、gif图片格式，webp"></a>png、jpg、gif图片格式，webp</h3><ul>
-<li>png是便携式网络图片（Portable Network Graphics）是一种无损数据压缩位图文件格式.优点是：压缩比高，色彩好。 大多数地方都可以用。</li>
-<li>jpg是一种针对相片使用的一种失真压缩方法，是一种破坏性的压缩，在色调及颜色平滑变化做的不错。在www上，被用来储存和传输照片的格式。</li>
-<li>gif是一种位图文件格式，以8位色重现真色彩的图像。可以实现动画效果。</li>
-<li>webp格式是谷歌在2010年推出的图片格式，压缩率只有jpg的2/3，大小比png小了45%。缺点是压缩的时间更久了，兼容性不好，目前谷歌和opera支持。</li>
-</ul>
-<h3 id="有一个高度自适应的div，里面有两个div，一个高度100px，希望另一个填满剩下的高度"><a href="#有一个高度自适应的div，里面有两个div，一个高度100px，希望另一个填满剩下的高度" class="headerlink" title="有一个高度自适应的div，里面有两个div，一个高度100px，希望另一个填满剩下的高度"></a>有一个高度自适应的div，里面有两个div，一个高度100px，希望另一个填满剩下的高度</h3><p>外层div使用position：relative；高度要求自适应的div使用position: absolute; top: 100px; bottom: 0; left: 0。</p>
-<h3 id="用div模拟textarea"><a href="#用div模拟textarea" class="headerlink" title="用div模拟textarea"></a>用div模拟textarea</h3><p>加个contenteditable</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div contenteditable=&quot;true&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>注意点：</strong></p>
-<ul>
-<li>现代浏览器如Firefox在可编辑模式下的div获取焦点的时候会有虚框，而实际上textarea是没有虚框显示的，可以这样处理：outline：0</li>
-<li>Firefox浏览器下可编辑模式的div如果内部元素是空空的，那么其在获取焦点是时候，光标不可见或是与外部div齐高，可以这样处理：默认情况下，我们可以在此div中增加一个孤单的<br>换行标签。</li>
-<li>可编辑模式的div输入的内容都会是很正宗的HTML代码，如果作为内容提交的话需要进行HTML字符过滤.</li>
-</ul>
-<h3 id="input和textarea的区别"><a href="#input和textarea的区别" class="headerlink" title="input和textarea的区别"></a>input和textarea的区别</h3><p><strong>input</strong></p>
-<ul>
-<li>可以指定 type 为 url, email,可以方便地检测用户输入。还是指定为 file, submit, button, checkbox, radio, datetime, color等，改变input的样式和行为</li>
-<li>input标签作为text类型使用时是单行文本框，不会换行。</li>
-<li>可以通过 value 属性指定初始值。</li>
-<li>通过size属性指定显示字符的长度，注意：当使用css限定了宽高，那么size属性就不再起作用。</li>
-<li>可以通过width和height设置宽高，但是也不会增加行数</li>
-</ul>
-<p><strong>textarea</strong></p>
-<ul>
-<li>textarea是多行文本输入框，它能自动换行，文本区中可容纳较多数量的文本。</li>
-<li>可以通过 cols 和 rows 属性来规定 textarea 的尺寸。</li>
-</ul>
-<p><strong>相同</strong>： 都可以使用 maxlength, minlength等限制输入。</p>
-<h3 id="忽略页面中的电话号码"><a href="#忽略页面中的电话号码" class="headerlink" title="忽略页面中的电话号码"></a>忽略页面中的电话号码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot; /&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="1px边框问题"><a href="#1px边框问题" class="headerlink" title="1px边框问题"></a>1px边框问题</h3><p>由于移动端一般都会设置屏幕宽度为设备宽度，width=device-width,initial-scale=1, 而有些屏幕是2倍屏，导致在移动端上设置1px就是看上去的2px。</p>
-<p><strong>解决方法：</strong></p>
-<ul>
-<li>伪类+transform：原理是把原先元素的 border 去掉，然后利用 :before 或者 :after 重做 border ，并 transform 的 scale 缩小一半，原先的元素相对定位，新做的 border 绝对定位。</li>
-<li>viewport + rem：设置对应viewport的rem基准值，这种方式就可以像以前一样轻松愉快的写1px了。</li>
-</ul>
-<h3 id="rem和em的区别"><a href="#rem和em的区别" class="headerlink" title="rem和em的区别"></a>rem和em的区别</h3><ul>
-<li>em作为font-size的单位时，其代表父元素的字体大小，em作为其他属性单位时，代表自身字体大小。em做弹性布局的缺点还在于牵一发而动全身，一旦某个节点的字体大小发生变化，那么其后代元素都得重新计算。</li>
-<li>rem作用于非根元素时，相对于根元素字体大小；rem作用于根元素字体大小时，相对于其出初始字体大小。</li>
-</ul>
-<p><strong>vw、vh</strong></p>
-<p>vw —— 视口宽度的 1/100；vh —— 视口高度的 1/100 </p>
-<h3 id="requestAnimationFrame"><a href="#requestAnimationFrame" class="headerlink" title="requestAnimationFrame"></a>requestAnimationFrame</h3><blockquote>
-<p>window.requestAnimationFrame() 方法告诉浏览器您希望执行动画，并请求浏览器调用指定的函数在下一次重绘之前更新动画。该方法将在重绘之前调用的回调作为参数。</p>
-</blockquote>
-<p><strong>优点：</strong></p>
-<ul>
-<li>在浏览器重绘前调用，保证浏览器渲染效率和性能</li>
-<li>可以精准地控制动画的每一帧</li>
-</ul>
-<p>它的主要场景在游戏，动画方面，用这个方法可以保持较高帧率和效率。比如一个60帧率的游戏，requestAnimationFrame一般会以16ms的间隔调用一次。</p>
-<h3 id="attribute和property"><a href="#attribute和property" class="headerlink" title="attribute和property"></a>attribute和property</h3><ul>
-<li>attribute是DOM元素在文档中作为html标签拥有的属性；</li>
-<li>property是DOM元素在js中作为对象拥有的属性。</li>
-</ul>
-<p>对于html来说，attribute和property是同步的，是会自动更新的。但是对于自定义属性来说，他们是不同的。</p>
-<h3 id="语义化"><a href="#语义化" class="headerlink" title="语义化"></a>语义化</h3><ul>
-<li>丢失样式的时候浏览器可以让页面呈现出清晰的结构；</li>
-<li>有利于SEO：和搜索引擎建立良好的沟通，有助于爬虫抓取更多的有效信息。</li>
-<li>方便其他设备解析：如屏幕阅读器、盲人阅读器等；</li>
-<li>便于团队开发和维护，语义化更具有可读性。</li>
-</ul>
-<h3 id="link和-import"><a href="#link和-import" class="headerlink" title="link和@import"></a>link和@import</h3><ul>
-<li>link属于html标签，而@import是css提供的；</li>
-<li>页面加载的时候，link会被同时加载，而@import会等到加载完整个HTML文件后再加载，会造成文档闪烁；</li>
-<li>@import只有在IE5以上才能识别，而link是HTML标签，无兼容问题；</li>
-<li>link方式的样式的权重 高于@import的权重。</li>
-<li>link除了加载css文件外，还可以定义RSS，定义rel属性等，import只能加载css文件。</li>
-<li>link支持使用JavaScript控制DOM去改变样式，而import不支持。</li>
-</ul>
-<h3 id="src和href"><a href="#src和href" class="headerlink" title="src和href"></a>src和href</h3><ul>
-<li><p>href 是指向网络资源所在位置，建立和当前元素（锚点）或当前文档（链接）之间的链接，用于超链接。</p>
-</li>
-<li><p>src是指向外部资源的位置，指向的内容将会嵌入到文档中当前标签所在位置；在请求src资源时会将其指向的资源下载并应用到文档内，例如js脚本，img图片和frame等元素。</p>
-</li>
-</ul>
-<blockquote>
-<p>当浏览器解析到带有src的元素时，会暂停其他资源的下载和处理，直到将该资源加载、编译、执行完毕，图片和框架等元素也如此，类似于将所指向资源嵌入当前标签内。这也是为什么将js脚本放在底部而不是头部。</p>
-</blockquote>
-<h3 id="title和alt"><a href="#title和alt" class="headerlink" title="title和alt"></a>title和alt</h3><ul>
-<li>title是html全局标签属性之一，用于为元素提供附加的提示信息。通常当鼠标滑动到元素上的时候显示。</li>
-<li>alt是img的特有属性，是图片内容的等价描述，用于图片无法加载时显示，读屏器阅读图片。可提高图片访问性，除了纯装饰的图片都必须设置有意义的值，搜索引擎会重点分析。</li>
-</ul>
-<h3 id="重排和重绘"><a href="#重排和重绘" class="headerlink" title="重排和重绘"></a>重排和重绘</h3><ul>
-<li>部分渲染树（或者整个渲染树）需要重新分析并且节点尺寸需要重新计算。这被称为<strong>重排</strong>。注意这里至少会有一次重排-初始化页面布局。</li>
-<li>由于节点的几何属性发生改变或者由于样式发生改变，例如改变元素背景色时，屏幕上的部分内容需要更新。这样的更新被称为<strong>重绘</strong>。</li>
-</ul>
-<p><strong>触发场景：</strong></p>
-<ul>
-<li>添加、删除、更新 DOM 节点</li>
-<li>通过 display: none 隐藏一个 DOM 节点-触发重排和重绘</li>
-<li>通过 visibility: hidden 隐藏一个 DOM节点-只触发重绘，因为没有几何变化</li>
-<li>移动或者给页面中的 DOM 节点添加动画</li>
-<li>添加一个样式表，调整样式属性</li>
-<li>用户行为，例如调整窗口大小，改变字号，或者滚动。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2852,7 +2912,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">67</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2874,7 +2934,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
